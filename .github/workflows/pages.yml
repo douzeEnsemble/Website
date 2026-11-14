@@ -1,4 +1,4 @@
-name: Déploiement
+name: Déploiement GitHub Pages
 
 # Construit le site (cartes des réalisations générées depuis l'API GitHub)
 # et le publie sur GitHub Pages une fois la CI verte sur main, et chaque matin.

@@ -44,7 +44,7 @@ jobs:
           retention-days: 14
 
   mutation-testing:
-    name: Mutation testing
+    name: Mutation testing (logique pure)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -74,3 +74,20 @@ jobs:
       # Outils de développement uniquement : le site publié n'embarque
       # aucune dépendance npm.
       - run: npm audit --audit-level=high
+
+  build:
+    name: Build de production
+    needs: [lint, unit-tests, mutation-testing, audit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Même build que le déploiement (les cartes des réalisations viennent de
+      # l'API GitHub) : une erreur de build se voit avant le merge.
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
