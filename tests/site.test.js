@@ -267,7 +267,8 @@ describe('startBounce', () => {
     startBounce(title, win, sequence(0, 0));
     win.runFrame(0);
     win.runFrame(100);
-    expect(title.style.transform).toBe('translate(0px, 0px)');
+    // jsdom >= 31 sérialise translate(0px, 0px) en translate(0px) : même valeur CSS.
+    expect(title.style.transform).toMatch(/^translate\(0px(, 0px)?\)$/);
   });
 
   it('continue jusqu’à la fin de la durée puis revient au centre', async () => {
