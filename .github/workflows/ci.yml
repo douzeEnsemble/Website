@@ -73,7 +73,10 @@ jobs:
       - run: npm ci
       # Outils de développement uniquement : le site publié n'embarque
       # aucune dépendance npm.
-      - run: npm audit --audit-level=high
+      - name: Audit des dépendances de production
+        run: npm audit --omit=dev --audit-level=moderate
+      - name: Audit complet (production + développement)
+        run: npm audit --audit-level=high
 
   build:
     name: Build de production
