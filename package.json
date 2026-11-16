@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.js",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html && npm run lint:arch",
     "lint:js": "eslint .",
     "lint:css": "stylelint style.css",
+    "lint:arch": "depcruise js scripts",
     "lint:html": "html-validate index.html contact/index.html realisations/index.html prestations/index.html",
     "test": "vitest run --coverage",
     "test:mutation": "stryker run"
@@ -16,6 +17,7 @@
     "@stryker-mutator/core": "^10.1.1",
     "@stryker-mutator/vitest-runner": "^10.1.1",
     "@vitest/coverage-v8": "^5.1.0",
+    "dependency-cruiser": "^18.7.2",
     "eslint": "^10.14.0",
     "globals": "^17.14.0",
     "html-validate": "^11.21.0",
