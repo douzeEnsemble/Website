@@ -30,3 +30,4 @@ Tout `js/` et `scripts/` est couvert à 100 % et muté à 100 % ; un mutant équ
 
 - `doc/` : `architecture.md` (règles de dépendances vérifiées), `codage.md` (conventions), `improvement.md` (backlog).
 - Commits au format conventionnel (`type(portée): sujet`) ; hook : `git config core.hooksPath .githooks`. La version se déduit des commits (semantic-release, `release.yml`) : ne jamais éditer un numéro de version ni un changelog à la main.
+- Audit (CI-13) : le niveau `high` complet passe par `.github/scripts/audit-check.mjs` ; un avis sans correctif se déclare dans `.github/audit-exceptions.json` (raison + expiration, 30 jours au plus), jamais en baissant le seuil.
