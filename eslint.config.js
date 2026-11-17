@@ -17,6 +17,10 @@ export default [
     languageOptions: { globals: globals.node },
   },
   {
+    files: ['.github/scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+  },
+  {
     files: ['*.config.js'],
     languageOptions: { globals: globals.node },
   },
