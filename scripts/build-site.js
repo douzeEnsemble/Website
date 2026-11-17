@@ -15,9 +15,32 @@ export const SITE_FILES = [
 
 export const REALISATIONS_PAGE = join('realisations', 'index.html');
 
-// Copie le site dans `output` (relatif à `root`) et y écrit les cartes des
-// réalisations.
-export async function buildSite({ root, out: output, fetchFn, token }) {
+// Pages qui affichent la version du projet (VER-09) : leur pied de page porte
+// VERSION_PLACEHOLDER, remplacé à la construction par le dernier tag v*.
+export const PAGES = [
+  'index.html',
+  join('contact', 'index.html'),
+  join('prestations', 'index.html'),
+  REALISATIONS_PAGE,
+];
+export const VERSION_PLACEHOLDER = '<span class="app-version">dev</span>';
+
+export function injectVersion(html, version) {
+  return html.replace(
+    VERSION_PLACEHOLDER,
+    `<span class="app-version">${version}</span>`,
+  );
+}
+
+// Copie le site dans `output` (relatif à `root`), y écrit les cartes des
+// réalisations et le numéro de version.
+export async function buildSite({
+  root,
+  out: output,
+  fetchFn,
+  token,
+  version,
+}) {
   const projects = await fetchProjects(fetchFn, token);
   const out = resolve(root, output);
   rmSync(out, { recursive: true, force: true });
@@ -27,5 +50,9 @@ export async function buildSite({ root, out: output, fetchFn, token }) {
   }
   const page = join(out, REALISATIONS_PAGE);
   writeFileSync(page, injectProjects(String(readFileSync(page)), projects));
+  for (const file of PAGES) {
+    const path = join(out, file);
+    writeFileSync(path, injectVersion(String(readFileSync(path)), version));
+  }
   return projects;
 }
