@@ -23,6 +23,7 @@ Tout `js/` et `scripts/` est couvert à 100 % et muté à 100 % ; un mutant équ
 ## CI/CD
 
 - `ci.yml` : Linter, Tests unitaires + couverture, Mutation testing, Audit des dépendances, Build de production ; `codeql.yml` et `audit.yml` en complément.
+- La mutation (un seul job) ne tourne que la nuit (2 h UTC) et en `workflow_dispatch` ; elle est sautée sur PR et push, le check requis passe donc sans elle (MUT-10). Si elle échoue la nuit, corriger dans la PR suivante (GIT-04). `build` garde `if: !failure() && !cancelled()` sans quoi il serait sauté avec elle.
 - `pages.yml` déploie sur GitHub Pages quand la CI réussit sur `main`, et chaque jour (les réalisations viennent de l'API GitHub).
 - Ruleset de `main` : `.github/rulesets/main.json`.
 

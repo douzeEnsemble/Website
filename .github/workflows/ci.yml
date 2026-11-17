@@ -4,12 +4,16 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Contrôle de mutation la nuit : un seul job, donc pas de sélection par module (MUT-10).
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}-${{ github.event_name == 'schedule' }}
   cancel-in-progress: true
 
 jobs:
@@ -45,6 +49,9 @@ jobs:
 
   mutation-testing:
     name: Mutation testing (logique pure)
+    # PR et push : sauté (un check sauté compte comme réussi pour le ruleset) ;
+    # la nuit et en lancement manuel : mutation complète (MUT-10).
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -81,6 +88,8 @@ jobs:
   build:
     name: Build de production
     needs: [lint, unit-tests, mutation-testing, audit]
+    # Sans cette condition, `success()` implicite exige que la mutation (sautée sur PR et push) ait réussi : le build serait sauté (MUT-10).
+    if: ${{ !failure() && !cancelled() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
