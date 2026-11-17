@@ -5,6 +5,10 @@ import { join } from 'node:path';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { SITE_FILES } from '../scripts/build-site.js';
 
+vi.mock('../.github/scripts/app-version.mjs', () => ({
+  appVersion: () => 'v9.9.9',
+}));
+
 const repoRoot = process.cwd();
 let fetchFn;
 let log;
@@ -45,6 +49,8 @@ it('construit le site dans _site par défaut, avec le jeton GitHub', async () =>
   expect(fetchFn.mock.calls[0][1].headers.Authorization).toBe('Bearer jeton');
   const page = readFileSync(join(dir, '_site', 'realisations', 'index.html'));
   expect(page.toString()).toContain('carte-nom">site<');
+  const accueil = readFileSync(join(dir, '_site', 'index.html'));
+  expect(accueil.toString()).toContain('<span class="app-version">v9.9.9</span>');
   expect(log).toHaveBeenCalledWith('1 réalisations générées');
 });
 

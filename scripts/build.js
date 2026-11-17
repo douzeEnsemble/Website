@@ -1,3 +1,4 @@
+import { appVersion } from '../.github/scripts/app-version.mjs';
 import { buildSite } from './build-site.js';
 
 const projects = await buildSite({
@@ -5,5 +6,6 @@ const projects = await buildSite({
   out: process.env.SITE_OUT ?? '_site',
   fetchFn: fetch,
   token: process.env.GITHUB_TOKEN,
+  version: appVersion(),
 });
 console.log(`${projects.length} réalisations générées`);
