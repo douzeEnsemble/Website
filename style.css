@@ -261,9 +261,21 @@ body.awesome h1 {
   color: #05131d;
 }
 
+/* Version du projet : fixe en bas, discrète comme le menu (le body est un flex
+   centré : un pied de page en flux se retrouverait à côté du contenu). */
 .pied-version {
-  margin: 2rem 0 1rem;
-  text-align: center;
+  position: fixed;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  font-family: sans-serif;
   font-size: 0.75rem;
-  color: #5a6670;
+  text-align: center;
+  color: #fff;
+  mix-blend-mode: difference;
+  opacity: 0.35;
+}
+
+.pied-version p {
+  margin: 0;
 }
