@@ -50,6 +50,10 @@
             "integration_id": 15368
           },
           {
+            "context": "Tests fonctionnels (Playwright)",
+            "integration_id": 15368
+          },
+          {
             "context": "Mutation testing (logique pure)",
             "integration_id": 15368
           },

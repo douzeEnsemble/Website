@@ -8,6 +8,7 @@ Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. P
 - `npm test` : Vitest sous jsdom avec couverture (seuil 100 % sur `js/` et `scripts/`).
 - `npm run test:mutation` : Stryker, seuil 100 %.
 - `npm run build` : `scripts/build.js` génère `_site/` (fichiers publiés + liste des réalisations).
+- `npm run test:e2e` : Playwright (axe-core, reflow à 320 px) contre le site construit `_site/`, servi par `python3 -m http.server` (CI-14) ; lancer `GITHUB_TOKEN=$(gh auth token) npm run build` avant. Le menu et la version, discrets par choix de design, sont exemptés du contraste (voir `e2e/a11y.spec.js`).
 - Lancer un seul test : `npx vitest run tests/site.test.js -t "<nom du test>"`.
 
 ## Architecture
