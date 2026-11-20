@@ -7,6 +7,7 @@ const SIREN_FORMAT = /^\d{9}$/;
 // Variables) : une ligne n'apparaît que si sa variable est renseignée.
 export const MENTIONS_FIELDS = [
   ['RAISON_SOCIALE', 'Raison sociale'],
+  ['FORME_JURIDIQUE', 'Forme juridique'],
   ['ADRESSE', 'Adresse'],
   ['DIRECTEUR_PUBLICATION', 'Directeur de la publication'],
 ];

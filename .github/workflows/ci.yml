@@ -66,6 +66,7 @@ jobs:
           # Mentions légales de la page À propos (variables du dépôt)
           SIREN: ${{ vars.SIREN }}
           RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}
+          FORME_JURIDIQUE: ${{ vars.FORME_JURIDIQUE }}
           ADRESSE: ${{ vars.ADRESSE }}
           DIRECTEUR_PUBLICATION: ${{ vars.DIRECTEUR_PUBLICATION }}
       - run: npm run test:e2e
