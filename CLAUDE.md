@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`), style dans `style.css`, comportement en modules ES dans `js/`.
+Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`, `carte/`), style dans `style.css`, comportement en modules ES dans `js/`.
 
 ## Commandes
 
@@ -13,7 +13,7 @@ Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. P
 
 ## Architecture
 
-- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js` sont les points d'entrée) ; `site.js` et `realisations.js` portent la logique.
+- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js` sont les points d'entrée) ; `site.js`, `realisations.js` et `carte.js` (rotation 3D de la carte de visite) portent la logique.
 - `scripts/build-site.js` copie les fichiers publiés (`SITE_FILES`) et injecte les réalisations récupérées via l'API GitHub au moment du build ; `scripts/build.js` le lance.
 - Détail des règles de dépendances : `doc/architecture.md`.
 

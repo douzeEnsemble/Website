@@ -33,6 +33,7 @@ const pages = [
   { nom: 'prestations', chemin: '/prestations/' },
   { nom: 'réalisations', chemin: '/realisations/' },
   { nom: 'contact', chemin: '/contact/' },
+  { nom: 'carte de visite', chemin: '/carte/' },
 ];
 
 for (const { nom, chemin } of pages) {

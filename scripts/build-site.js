@@ -11,6 +11,7 @@ export const SITE_FILES = [
   'contact',
   'prestations',
   'realisations',
+  'carte',
 ];
 
 export const REALISATIONS_PAGE = join('realisations', 'index.html');
@@ -22,6 +23,7 @@ export const PAGES = [
   join('contact', 'index.html'),
   join('prestations', 'index.html'),
   REALISATIONS_PAGE,
+  join('carte', 'index.html'),
 ];
 export const VERSION_PLACEHOLDER = '<span class="app-version">dev</span>';
 
