@@ -12,6 +12,7 @@ describe('MENTIONS_FIELDS', () => {
   it('liste les variables et leur libellé', () => {
     expect(MENTIONS_FIELDS).toEqual([
       ['RAISON_SOCIALE', 'Raison sociale'],
+      ['FORME_JURIDIQUE', 'Forme juridique'],
       ['ADRESSE', 'Adresse'],
       ['DIRECTEUR_PUBLICATION', 'Directeur de la publication'],
     ]);
@@ -35,11 +36,12 @@ describe('mentionsHtml', () => {
     expect(
       mentionsHtml({
         RAISON_SOCIALE: '  Dupont & Fils ',
+        FORME_JURIDIQUE: 'SASU',
         ADRESSE: '',
         DIRECTEUR_PUBLICATION: 'Renaud',
       }),
     ).toBe(
-      '<dt>Raison sociale</dt><dd>Dupont &amp; Fils</dd>\n        <dt>Directeur de la publication</dt><dd>Renaud</dd>',
+      '<dt>Raison sociale</dt><dd>Dupont &amp; Fils</dd>\n        <dt>Forme juridique</dt><dd>SASU</dd>\n        <dt>Directeur de la publication</dt><dd>Renaud</dd>',
     );
   });
 
