@@ -80,5 +80,11 @@ for (const { nom, chemin } of pages) {
       // un lien ne se replie jamais sur plusieurs lignes
       expect(height).toBeLessThan(30);
     }
+    // deux colonnes alignées, pas une ligne de texte qui se replie
+    const colonnes = new Set();
+    for (const lien of await page.locator('.menu a').all()) {
+      colonnes.add(Math.round((await lien.boundingBox()).x));
+    }
+    expect(colonnes.size).toBe(2);
   });
 }
