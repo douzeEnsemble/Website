@@ -261,6 +261,38 @@ body.awesome h1 {
   color: #05131d;
 }
 
+/* Page À propos : mentions légales issues des variables GitHub. */
+.apropos {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 40rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 4rem 1.25rem 2rem;
+  font-family: sans-serif;
+}
+
+.apropos-titre {
+  font-size: 2.5rem;
+}
+
+.mentions dt {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.mentions dd {
+  margin: 0.25rem 0 0;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.mentions-lien {
+  color: inherit;
+}
+
 /* Version du projet : fixe en bas à droite, très discrète, visible au survol
    (le body est un flex centré : un pied de page en flux se retrouverait à côté
    du contenu). */

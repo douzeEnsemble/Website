@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { MENTIONS_MARKER } from '../scripts/mentions.js';
 import { PARTAGE_MARKER } from '../scripts/partage.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -26,7 +27,7 @@ const respond = (body, ok = true) =>
 
 function fakeRepo() {
   const root = mkdtempSync(join(tmpdir(), 'site-'));
-  for (const dir of ['js', 'contact', 'prestations', 'realisations', 'carte', 'tests']) {
+  for (const dir of ['js', 'contact', 'prestations', 'realisations', 'carte', 'apropos', 'tests']) {
     mkdirSync(join(root, dir));
   }
   writeFileSync(join(root, 'CNAME'), 'www.douzeensemble.fr');
@@ -44,6 +45,10 @@ function fakeRepo() {
   writeFileSync(
     join(root, 'carte', 'index.html'),
     `carte ${VERSION_PLACEHOLDER}`,
+  );
+  writeFileSync(
+    join(root, 'apropos', 'index.html'),
+    `<dl>${MENTIONS_MARKER}</dl>${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(join(root, 'tests', 'x.test.js'), 'test');
   writeFileSync(join(root, 'package.json'), '{}');
@@ -65,6 +70,7 @@ describe('SITE_FILES', () => {
       'prestations',
       'realisations',
       'carte',
+      'apropos',
     ]);
     expect(REALISATIONS_PAGE).toBe(join('realisations', 'index.html'));
   });
@@ -78,6 +84,7 @@ describe('PAGES', () => {
       join('prestations', 'index.html'),
       REALISATIONS_PAGE,
       join('carte', 'index.html'),
+      join('apropos', 'index.html'),
     ]);
   });
 });
@@ -137,6 +144,19 @@ describe('buildSite', () => {
     expect(readFileSync(join(root, REALISATIONS_PAGE), 'utf8')).toContain(
       'repli',
     );
+  });
+
+  it('écrit les mentions légales dans la page À propos', async () => {
+    await buildSite({
+      root,
+      out,
+      fetchFn: respond([project]),
+      env: { SIREN: '123456789', ADRESSE: '1 rue <A>' },
+    });
+    const page = readFileSync(join(out, 'apropos', 'index.html'), 'utf8');
+    expect(page).toContain('<dd>1 rue &lt;A&gt;</dd>');
+    expect(page).toContain('/entreprise/123456789"');
+    expect(page).not.toContain(MENTIONS_MARKER);
   });
 
   it('vide le dossier de sortie avant de construire', async () => {

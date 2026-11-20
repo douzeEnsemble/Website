@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fetchProjects, injectProjects } from '../js/realisations.js';
+import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
 
 // Fichiers publiés sur GitHub Pages.
@@ -13,6 +14,7 @@ export const SITE_FILES = [
   'prestations',
   'realisations',
   'carte',
+  'apropos',
 ];
 
 export const REALISATIONS_PAGE = join('realisations', 'index.html');
@@ -25,6 +27,7 @@ export const PAGES = [
   join('prestations', 'index.html'),
   REALISATIONS_PAGE,
   join('carte', 'index.html'),
+  join('apropos', 'index.html'),
 ];
 export const VERSION_PLACEHOLDER = '<span class="app-version">dev</span>';
 
@@ -43,6 +46,7 @@ export async function buildSite({
   fetchFn,
   token,
   version,
+  env = {},
 }) {
   const projects = await fetchProjects(fetchFn, token);
   const out = resolve(root, output);
@@ -55,7 +59,10 @@ export async function buildSite({
   writeFileSync(page, injectProjects(String(readFileSync(page)), projects));
   for (const file of PAGES) {
     const path = join(out, file);
-    const html = injectPartage(String(readFileSync(path)), file);
+    const html = injectMentions(
+      injectPartage(String(readFileSync(path)), file),
+      env,
+    );
     writeFileSync(path, injectVersion(html, version));
   }
   return projects;

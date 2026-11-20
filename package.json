@@ -8,7 +8,7 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint style.css",
     "lint:arch": "depcruise js scripts",
-    "lint:html": "html-validate index.html contact/index.html realisations/index.html prestations/index.html carte/index.html",
+    "lint:html": "html-validate index.html contact/index.html realisations/index.html prestations/index.html carte/index.html apropos/index.html",
     "test": "vitest run --coverage",
     "test:mutation": "stryker run",
     "test:e2e": "playwright test"
