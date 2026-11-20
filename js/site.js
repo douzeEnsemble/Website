@@ -30,13 +30,16 @@ export const KONAMI = [
 export const BOUNCE_DURATION = 2500;
 export const RETURN_DURATION = 500;
 
-// Fond et texte de teintes opposées, l'un clair et l'autre sombre.
+// Fond et texte de teintes opposées, l'un clair et l'autre sombre. Les
+// luminosités (88/24 % et 18/78 %) garantissent un contraste d'au moins 3:1,
+// seuil WCAG AA du grand texte (le titre), pour les 360 teintes : à 30 % et
+// 75 %, un texte jaune sur fond bleu (ou l'inverse) tombait à 2,3:1.
 export function randomPalette(random) {
   const hue = Math.floor(random() * 360);
   const dark = random() < 0.5;
   return {
     background: `hsl(${hue} 70% ${dark ? 18 : 88}%)`,
-    color: `hsl(${(hue + 180) % 360} 80% ${dark ? 75 : 30}%)`,
+    color: `hsl(${(hue + 180) % 360} 80% ${dark ? 78 : 24}%)`,
   };
 }
 
