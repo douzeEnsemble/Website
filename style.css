@@ -32,6 +32,10 @@ body.awesome h1 {
   position: fixed;
   top: 1rem;
   right: 1.25rem;
+
+  /* Laisse la place du bouton de partage (en haut à gauche) : au-delà, les
+     entrées passent à la ligne au lieu de déborder de l'écran. */
+  left: 3.5rem;
   font-family: sans-serif;
   font-size: 0.9rem;
   mix-blend-mode: difference;
@@ -46,7 +50,9 @@ body.awesome h1 {
 
 .menu ul {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -55,6 +61,7 @@ body.awesome h1 {
 .menu a {
   color: #fff;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .menu a:hover,
