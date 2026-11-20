@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carte de visite · douzeEnsemble</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" src="../js/carte-main.js"></script>
+  </head>
+  <body>
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../prestations/">Prestations</a></li>
+        <li><a href="../realisations/">Réalisations</a></li>
+        <li><a href="../contact/">Contact</a></li>
+        <li><a href="./" aria-current="page">Carte de visite</a></li>
+      </ul>
+    </nav>
+    <main class="carte">
+      <h1 class="invisible">Carte de visite</h1>
+      <div class="carte-stage" tabindex="0" role="group" aria-label="Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.">
+        <div class="carte-scene">
+          <div class="carte-objet">
+            <span class="carte-ombre"></span>
+            <div class="carte-face carte-recto">
+              <p class="carte-douze">12<span>.</span></p>
+              <div>
+                <p class="carte-marque">douze<span>Ensemble</span></p>
+                <p class="carte-role">Renaud</p>
+              </div>
+              <span class="carte-reflet"></span>
+            </div>
+            <div class="carte-face carte-verso">
+              <p class="carte-etiquette">Contact</p>
+              <div class="carte-boutons">
+                <button type="button" class="carte-bouton" data-contact="email">Afficher l’email</button>
+                <button type="button" class="carte-bouton" data-contact="telephone">Afficher le téléphone</button>
+              </div>
+              <p class="carte-etiquette">www.douzeensemble.fr</p>
+              <span class="carte-reflet"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p><button type="button" class="contact-bouton carte-retourner">Retourner</button></p>
+      <noscript><p>Activez JavaScript pour faire tourner la carte.</p></noscript>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+    </footer>
+  </body>
+</html>

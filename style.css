@@ -283,3 +283,194 @@ body.awesome h1 {
 .pied-version p {
   margin: 0;
 }
+
+/* Texte réservé aux lecteurs d'écran. */
+.invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Carte de visite : objet 3D de 85 x 55 mm, tranche faite de fines couches,
+   reflet holographique piloté par js/carte.js (--gx, --gy). */
+.carte {
+  width: 100%;
+  max-width: 40rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.carte-stage {
+  display: grid;
+  height: 24rem;
+  place-items: center;
+  border-radius: 0.5rem;
+  container-type: inline-size;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.carte-stage:active {
+  cursor: grabbing;
+}
+
+.carte-scene {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  perspective: 70rem;
+}
+
+.carte-objet {
+  --w: min(26rem, 88cqw);
+
+  position: relative;
+  width: var(--w);
+  height: calc(var(--w) * 55 / 85);
+  transform-style: preserve-3d;
+}
+
+.carte-tranche,
+.carte-face,
+.carte-reflet {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.65rem;
+}
+
+.carte-tranche {
+  background: #cfc9c0;
+}
+
+.carte-face {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: calc(var(--w) * 0.07);
+  overflow: hidden;
+  backface-visibility: hidden;
+  text-align: left;
+}
+
+.carte-recto {
+  background: #14110f;
+  color: #fffdf9;
+  transform: translateZ(4.5px);
+}
+
+.carte-verso {
+  background: #fffdf9;
+  color: #14110f;
+  transform: rotateY(180deg) translateZ(4.5px);
+}
+
+.carte-ombre {
+  position: absolute;
+  right: 8%;
+  bottom: -2rem;
+  left: 8%;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 35%), transparent);
+  pointer-events: none;
+  transform: translateZ(-60px);
+}
+
+.carte-douze {
+  margin: 0;
+  font-size: calc(var(--w) * 0.26);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+}
+
+.carte-douze span,
+.carte-marque span {
+  color: #fe8a18;
+}
+
+.carte-marque {
+  margin: 0;
+  font-size: calc(var(--w) * 0.085);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.carte-role {
+  margin: 0.4em 0 0;
+  color: #b9b1a6;
+  font-size: calc(var(--w) * 0.045);
+}
+
+.carte-etiquette {
+  margin: 0;
+  color: #6b645c;
+  font-size: calc(var(--w) * 0.035);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.carte-boutons {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--w) * 0.025);
+  align-items: flex-start;
+}
+
+.carte-bouton {
+  padding: 0.3em 0.9em;
+  border: 0.1rem solid #14110f;
+  border-radius: 2rem;
+  background: none;
+  color: #14110f;
+  font: inherit;
+  font-size: calc(var(--w) * 0.042);
+  cursor: pointer;
+}
+
+.carte-bouton:hover,
+.carte-bouton:focus-visible {
+  background: #14110f;
+  color: #fffdf9;
+}
+
+.carte .contact-lien {
+  font-size: calc(var(--w) * 0.05);
+  user-select: text;
+}
+
+.carte-reflet {
+  background:
+    radial-gradient(
+      circle at var(--gx, 50%) var(--gy, 30%),
+      rgb(255 255 255 / 90%),
+      transparent 55%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      hsl(0deg 90% 70% / 45%),
+      hsl(120deg 90% 60% / 45%),
+      hsl(220deg 90% 70% / 45%),
+      transparent 75%
+    );
+  background-position:
+    0 0,
+    var(--gx, 50%) 0;
+  background-size:
+    100% 100%,
+    300% 100%;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.carte-recto .carte-reflet {
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
