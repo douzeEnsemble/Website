@@ -474,3 +474,162 @@ body.awesome h1 {
   mix-blend-mode: screen;
   opacity: 0.55;
 }
+
+/* Bouton de partage : discret comme le menu, en haut à gauche (cible de
+   28 px minimum, visible au survol et au focus). */
+.partage-ouvrir {
+  position: fixed;
+  top: 0.6rem;
+  left: 0.9rem;
+  display: flex;
+  padding: 0.4rem;
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  mix-blend-mode: difference;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+}
+
+.partage-ouvrir svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.partage-ouvrir:hover,
+.partage-ouvrir:focus-visible {
+  opacity: 1;
+}
+
+/* Fenêtre native <dialog> : un ticket aux couleurs de la page, posé de
+   travers. Les couleurs viennent de js/partage.js (--partage-fond/-texte). */
+.partage {
+  width: min(19rem, calc(100% - 2rem));
+  padding: 0;
+  border: 0.125rem solid var(--partage-texte, #05131d);
+  border-radius: 1.1rem;
+  background: var(--partage-fond, #fff);
+  color: var(--partage-texte, #05131d);
+  font-family: sans-serif;
+  transform: rotate(-2deg);
+}
+
+.partage::backdrop {
+  background: rgb(0 0 0 / 35%);
+  backdrop-filter: blur(0.4rem);
+}
+
+.partage-contenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.1rem;
+  text-align: center;
+}
+
+.partage-fermer {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.partage-fermer:hover,
+.partage-fermer:focus-visible {
+  background: rgb(128 128 128 / 25%);
+}
+
+.partage-marque {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.partage-qr {
+  align-self: center;
+  width: 11.5rem;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.partage-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.partage-url {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.6rem;
+  border: 0.1rem solid currentcolor;
+  border-radius: 0.5rem;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.partage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.partage-bouton {
+  min-height: 2.75rem;
+  padding: 0.4em 1.1em;
+  border: 0.125rem solid currentcolor;
+  border-radius: 2rem;
+  background: var(--partage-texte, #05131d);
+  color: var(--partage-fond, #fff);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.partage-partager {
+  background: none;
+  color: inherit;
+}
+
+.partage-bouton:hover,
+.partage-bouton:focus-visible {
+  opacity: 0.85;
+}
+
+.partage-etat,
+.partage-aide {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.partage-etat:empty {
+  display: none;
+}
+
+/* QR de l'accueil au verso de la carte de visite. */
+.carte-qr {
+  position: absolute;
+  right: calc(var(--w) * 0.05);
+  bottom: calc(var(--w) * 0.05);
+  width: calc(var(--w) * 0.24);
+}
+
+.carte-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}

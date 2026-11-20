@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fetchProjects, injectProjects } from '../js/realisations.js';
+import { injectPartage } from './partage.js';
 
 // Fichiers publiés sur GitHub Pages.
 export const SITE_FILES = [
@@ -54,7 +55,8 @@ export async function buildSite({
   writeFileSync(page, injectProjects(String(readFileSync(page)), projects));
   for (const file of PAGES) {
     const path = join(out, file);
-    writeFileSync(path, injectVersion(String(readFileSync(path)), version));
+    const html = injectPartage(String(readFileSync(path)), file);
+    writeFileSync(path, injectVersion(html, version));
   }
   return projects;
 }

@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { PARTAGE_MARKER } from '../scripts/partage.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -34,7 +35,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'js', 'main.js'), 'js');
   writeFileSync(
     join(root, 'contact', 'index.html'),
-    `contact ${VERSION_PLACEHOLDER}`,
+    `contact ${PARTAGE_MARKER} ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(
     join(root, 'prestations', 'index.html'),
@@ -119,9 +120,11 @@ describe('buildSite', () => {
     );
     expect(readFileSync(join(out, 'style.css'), 'utf8')).toBe('css');
     expect(readFileSync(join(out, 'js', 'main.js'), 'utf8')).toBe('js');
-    expect(readFileSync(join(out, 'contact', 'index.html'), 'utf8')).toBe(
-      'contact <span class="app-version">v1.2.3</span>',
-    );
+    const contact = readFileSync(join(out, 'contact', 'index.html'), 'utf8');
+    expect(contact).toContain('<dialog class="partage"');
+    expect(contact).toContain('https://www.douzeensemble.fr/contact/');
+    expect(contact).not.toContain(PARTAGE_MARKER);
+    expect(contact.endsWith(' <span class="app-version">v1.2.3</span>')).toBe(true);
     expect(readFileSync(join(out, 'prestations', 'index.html'), 'utf8')).toBe(
       'prestations <span class="app-version">v1.2.3</span>',
     );

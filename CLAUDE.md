@@ -13,7 +13,8 @@ Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. P
 
 ## Architecture
 
-- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js` sont les points d'entrée) ; `site.js`, `realisations.js` et `carte.js` (rotation 3D de la carte de visite) portent la logique.
+- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js`, `partage-main.js` sont les points d'entrée) ; `site.js`, `realisations.js` et `carte.js` (rotation 3D de la carte de visite) et `partage.js` (fenêtre de partage) portent la logique.
+- `scripts/partage.js` génère à la construction le QR code (SVG, dépendance `qrcode-generator`) et la fenêtre de partage de chaque page, aux marqueurs `<!--PARTAGE-->` et `<!--QR-ACCUEIL-->` des pages HTML.
 - `scripts/build-site.js` copie les fichiers publiés (`SITE_FILES`) et injecte les réalisations récupérées via l'API GitHub au moment du build ; `scripts/build.js` le lance.
 - Détail des règles de dépendances : `doc/architecture.md`.
 
