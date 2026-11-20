@@ -6,11 +6,11 @@ import { expect, test } from '@playwright/test';
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 // Exception connue, pour la seule règle `color-contrast` et seulement sur ces
-// éléments : le menu (opacité 0,35) et la version (opacité 0,2) sont discrets
+// éléments : le menu et le bouton de partage (opacité 0,35) et la version (opacité 0,2) sont discrets
 // par choix de design, visibles au survol et au focus (voir style.css). Le
 // reste de la page, et toutes les autres règles sur ces éléments, restent
 // contrôlés. À reconsidérer avec le propriétaire (critère 1.4.3).
-const DISCRETS = '.menu, .pied-version';
+const DISCRETS = '.menu, .pied-version, .partage-ouvrir';
 
 async function violations(page) {
   const resultats = await new AxeBuilder({ page }).withTags(TAGS).analyze();
@@ -41,6 +41,17 @@ for (const { nom, chemin } of pages) {
     await page.goto(chemin);
     // toEqual([]) : le rapport s'affiche en entier à l'échec
     expect(await violations(page)).toEqual([]);
+  });
+
+  // La fenêtre de partage ouverte passe aussi par axe, avec ses couleurs de page.
+  test(`axe : fenêtre de partage ouverte sur ${nom}`, async ({ page }) => {
+    await page.goto(chemin);
+    await page.click('.partage-ouvrir');
+    await expect(page.locator('dialog.partage')).toBeVisible();
+    expect(await violations(page)).toEqual([]);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('dialog.partage')).toBeHidden();
+    await expect(page.locator('.partage-ouvrir')).toBeFocused();
   });
 
   // A11Y-06 : reflow à 320 px, sans défilement horizontal (critère 1.4.10).
