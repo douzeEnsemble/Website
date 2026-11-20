@@ -64,4 +64,21 @@ for (const { nom, chemin } of pages) {
     );
     expect(debordement).toBeLessThanOrEqual(0);
   });
+
+  // Le menu est fixe : il ne crée pas de défilement, mais il peut sortir de
+  // l'écran ou passer sous le bouton de partage. Il doit rester entier.
+  test(`menu entier et sans chevauchement à 320 px sur ${nom}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 640 });
+    await page.goto(chemin);
+    const menu = await page.locator('.menu').boundingBox();
+    const partage = await page.locator('.partage-ouvrir').boundingBox();
+    expect(menu.x).toBeGreaterThanOrEqual(0);
+    expect(menu.x + menu.width).toBeLessThanOrEqual(320);
+    expect(menu.x).toBeGreaterThanOrEqual(partage.x + partage.width);
+    for (const lien of await page.locator('.menu a').all()) {
+      const { height } = await lien.boundingBox();
+      // un lien ne se replie jamais sur plusieurs lignes
+      expect(height).toBeLessThan(30);
+    }
+  });
 }
