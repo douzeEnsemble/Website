@@ -63,6 +63,11 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Mentions légales de la page À propos (variables du dépôt)
+          SIREN: ${{ vars.SIREN }}
+          RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}
+          ADRESSE: ${{ vars.ADRESSE }}
+          DIRECTEUR_PUBLICATION: ${{ vars.DIRECTEUR_PUBLICATION }}
       - run: npm run test:e2e
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
@@ -127,3 +132,8 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Mentions légales de la page À propos (variables du dépôt)
+          SIREN: ${{ vars.SIREN }}
+          RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}
+          ADRESSE: ${{ vars.ADRESSE }}
+          DIRECTEUR_PUBLICATION: ${{ vars.DIRECTEUR_PUBLICATION }}

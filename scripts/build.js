@@ -7,5 +7,6 @@ const projects = await buildSite({
   fetchFn: fetch,
   token: process.env.GITHUB_TOKEN,
   version: appVersion(),
+  env: process.env,
 });
 console.log(`${projects.length} réalisations générées`);
