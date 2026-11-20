@@ -64,6 +64,17 @@ body.awesome h1 {
   white-space: nowrap;
 }
 
+/* Petit écran : deux colonnes alignées (trois entrées chacune), pour que le
+   menu ne ressemble pas à une phrase qui passe à la ligne. */
+@media (width <= 40rem) {
+  .menu ul {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    justify-content: end;
+  }
+}
+
 .menu a:hover,
 .menu a:focus-visible,
 .menu a[aria-current="page"] {
