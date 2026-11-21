@@ -89,6 +89,31 @@ for (const { nom, chemin } of pages) {
   });
 }
 
+// Pages longues : le contenu commence et défile sous le menu fixe, jamais
+// dessous, sur ordinateur comme sur mobile, avec ou sans texte agrandi.
+const PAGES_LONGUES = ['/prestations/', '/realisations/', '/apropos/'];
+const LARGEURS = [320, 375, 900, 1280];
+
+for (const chemin of PAGES_LONGUES) {
+  for (const largeur of LARGEURS) {
+    for (const agrandi of [false, true]) {
+      test(`titre et contenu sous le menu à ${largeur} px${agrandi ? ' (texte agrandi)' : ''} sur ${chemin}`, async ({ page }) => {
+        await page.setViewportSize({ width: largeur, height: 700 });
+        await page.goto(chemin);
+        if (agrandi) {
+          await page.evaluate(() => document.documentElement.setAttribute('data-large-text', ''));
+        }
+        const menu = await page.locator('.menu').boundingBox();
+        const titre = await page.locator('main h1').boundingBox();
+        const contenu = await page.locator('main').boundingBox();
+        expect(titre.y).toBeGreaterThanOrEqual(menu.y + menu.height);
+        // la zone qui défile démarre sous le menu
+        expect(contenu.y).toBeGreaterThanOrEqual(menu.y + menu.height);
+      });
+    }
+  }
+}
+
 // Page introuvable : servie par GitHub Pages à toute adresse inconnue. Elle n'a
 // pas de bouton de partage (une adresse inconnue n'a rien à partager).
 test('axe : aucune violation sur la page introuvable', async ({ page }) => {
