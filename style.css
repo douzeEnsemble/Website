@@ -1,3 +1,34 @@
+/* Couleurs du site : thème clair par défaut, thème sombre quand le système
+   le demande. L'accueil garde ses couleurs aléatoires (js/site.js) et la carte
+   de visite ses couleurs d'objet imprimé. */
+:root {
+  --fond: #fff;
+  --texte: #05131d;
+  --texte-doux: #3d4650;
+  --texte-pale: #6b7480;
+  --numero: #8a9097;
+  --surface: #fff;
+  --bordure: #d5d8dc;
+  --filet: #eef0f2;
+  --ombre: rgb(5 19 29 / 12%);
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #0f1419;
+    --texte: #e8eaed;
+    --texte-doux: #b4bac2;
+    --texte-pale: #959ca6;
+    --numero: #7d8590;
+    --surface: #182029;
+    --bordure: #3a424c;
+    --filet: #26303a;
+    --ombre: rgb(0 0 0 / 40%);
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -9,7 +40,8 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #fff;
+  background: var(--fond);
+  color: var(--texte);
 }
 
 h1 {
@@ -24,6 +56,26 @@ body.awesome h1 {
   color: #fff;
   -webkit-text-stroke: 0.04em #000;
   paint-order: stroke fill;
+}
+
+/* Accueil : le nom et, dessous, une phrase qui dit ce que fait douzeEnsemble. */
+.accueil {
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.accroche {
+  margin: 0.5em 0 0;
+  font-family: sans-serif;
+  font-size: clamp(1rem, 2.6vw, 1.6rem);
+}
+
+body.awesome .accroche {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  border-radius: 2rem;
+  background: #fff;
+  color: #05131d;
 }
 
 /* Menu discret : en haut à droite, presque transparent, visible au survol.
@@ -138,10 +190,10 @@ body.awesome h1 {
   box-sizing: border-box;
   height: 100%;
   padding: 1.25rem;
-  border: 0.0625rem solid #d5d8dc;
+  border: 0.0625rem solid var(--bordure);
   border-radius: 0.75rem;
-  background: #fff;
-  color: #05131d;
+  background: var(--surface);
+  color: var(--texte);
   text-decoration: none;
   transition:
     border-color 0.2s,
@@ -151,8 +203,8 @@ body.awesome h1 {
 
 #projets a:hover,
 #projets a:focus-visible {
-  border-color: #05131d;
-  box-shadow: 0 0.5rem 1.25rem rgb(5 19 29 / 12%);
+  border-color: var(--texte);
+  box-shadow: 0 0.5rem 1.25rem var(--ombre);
   transform: translateY(-0.15rem);
 }
 
@@ -163,7 +215,7 @@ body.awesome h1 {
 .carte-description {
   flex-grow: 1;
   margin: 0;
-  color: #3d4650;
+  color: var(--texte-doux);
   line-height: 1.45;
 }
 
@@ -176,13 +228,13 @@ body.awesome h1 {
 .carte-topic {
   padding: 0.15em 0.6em;
   border-radius: 1rem;
-  background: #eef0f2;
-  color: #3d4650;
+  background: var(--filet);
+  color: var(--texte-doux);
   font-size: 0.75rem;
 }
 
 .carte-infos {
-  color: #6b7480;
+  color: var(--texte-pale);
   font-size: 0.8rem;
 }
 
@@ -217,18 +269,18 @@ body.awesome h1 {
 .prestation {
   position: relative;
   padding: 1.5rem;
-  border: 0.0625rem solid #d5d8dc;
-  border-top: 0.25rem solid #05131d;
+  border: 0.0625rem solid var(--bordure);
+  border-top: 0.25rem solid var(--texte);
   border-radius: 0.75rem;
-  background: #fff;
-  color: #05131d;
+  background: var(--surface);
+  color: var(--texte);
 }
 
 .prestation-numero {
   position: absolute;
   top: 1rem;
   right: 1.25rem;
-  color: #8a9097;
+  color: var(--numero);
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -240,7 +292,7 @@ body.awesome h1 {
 
 .prestation p {
   margin: 0 0 1rem;
-  color: #3d4650;
+  color: var(--texte-doux);
   line-height: 1.45;
 }
 
@@ -252,9 +304,9 @@ body.awesome h1 {
 
 .prestation-point {
   padding: 0.35rem 0 0.35rem 1.4rem;
-  border-top: 0.0625rem solid #eef0f2;
+  border-top: 0.0625rem solid var(--filet);
   background: no-repeat left 0.8em / 0.5rem 0.5rem
-    radial-gradient(circle, #05131d 45%, transparent 50%);
+    radial-gradient(circle, var(--texte) 45%, transparent 50%);
   font-size: 0.95rem;
 }
 
@@ -265,18 +317,41 @@ body.awesome h1 {
 .prestations-cta {
   display: inline-block;
   padding: 0.6em 1.4em;
-  border: 0.125rem solid #05131d;
+  border: 0.125rem solid var(--texte);
   border-radius: 2rem;
-  background: #05131d;
-  color: #fff;
+  background: var(--texte);
+  color: var(--fond);
   font-weight: bold;
   text-decoration: none;
 }
 
 .prestations-cta:hover,
 .prestations-cta:focus-visible {
-  background: #fff;
-  color: #05131d;
+  background: var(--fond);
+  color: var(--texte);
+}
+
+/* Page introuvable (404.html). */
+.introuvable {
+  padding: 0 1.25rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.introuvable-titre {
+  font-size: 2rem;
+}
+
+.introuvable p {
+  margin: 1rem 0 0;
+}
+
+.introuvable .introuvable-code {
+  margin: 0;
+  color: var(--numero);
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 1;
 }
 
 /* Page À propos : mentions légales issues des variables GitHub. */
@@ -674,4 +749,23 @@ body.awesome h1 {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Réglage « réduire les animations » du système : transitions et animations
+   coupées partout (le rebond du titre est coupé dans js/site.js, la rotation
+   de la carte de visite dans js/carte.js). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #projets a:hover,
+  #projets a:focus-visible {
+    transform: none;
+  }
 }
