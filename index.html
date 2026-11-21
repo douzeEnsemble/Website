@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <!--
   Statuts :
-  Lint      https://github.com/douzeEnsemble/Website/actions/workflows/lint.yml/badge.svg
-  Tests     https://github.com/douzeEnsemble/Website/actions/workflows/tests.yml/badge.svg
-  Mutation  https://github.com/douzeEnsemble/Website/actions/workflows/mutation.yml/badge.svg
-  Détails   https://github.com/douzeEnsemble/Website/actions
+  CI          https://github.com/douzeEnsemble/Website/actions/workflows/ci.yml/badge.svg
+  Déploiement https://github.com/douzeEnsemble/Website/actions/workflows/pages.yml/badge.svg
+  CodeQL      https://github.com/douzeEnsemble/Website/actions/workflows/codeql.yml/badge.svg
+  Détails     https://github.com/douzeEnsemble/Website/actions
 -->
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>douzeEnsemble</title>
+    <!--SEO-->
     <link rel="stylesheet" href="style.css">
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/partage-main.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "douzeEnsemble",
+        "url": "https://www.douzeensemble.fr/",
+        "logo": "https://www.douzeensemble.fr/apple-touch-icon.png",
+        "image": "https://www.douzeensemble.fr/og.png",
+        "description": "Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.",
+        "founder": { "@type": "Person", "name": "Renaud" },
+        "areaServed": "FR",
+        "inLanguage": "fr"
+      }
+    </script>
   </head>
   <body>
     <nav class="menu" aria-label="Menu">
@@ -27,7 +42,10 @@
       </ul>
     </nav>
     <!--PARTAGE-->
-    <h1>douzeEnsemble</h1>
+    <main class="accueil">
+      <h1>douzeEnsemble</h1>
+      <p class="accroche">Sites, applications et accompagnement numérique</p>
+    </main>
     <footer class="pied-version">
       <p>Version <span class="app-version">dev</span></p>
     </footer>
