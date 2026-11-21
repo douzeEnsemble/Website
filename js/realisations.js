@@ -58,7 +58,12 @@ export function projectCard(project) {
   }
   const infos = [new URL(url).host, project.language].filter(Boolean);
   parts.push(`<span class="carte-infos">${escapeHtml(infos.join(' · '))}</span>`);
-  return `<li><a href="${escapeHtml(url)}">${parts.join('')}</a></li>`;
+  const name = escapeHtml(project.name);
+  parts.push(
+    `<a class="carte-lien" href="${escapeHtml(url)}">Voir le site` +
+      `<span class="invisible"> ${name}</span><span aria-hidden="true"> ↗</span></a>`,
+  );
+  return `<li><div class="carte-projet">${parts.join('')}</div></li>`;
 }
 
 // Remplace le contenu entre les marqueurs de la page par les cartes.

@@ -30,19 +30,6 @@ export const KONAMI = [
 export const BOUNCE_DURATION = 2500;
 export const RETURN_DURATION = 500;
 
-// Fond et texte de teintes opposées, l'un clair et l'autre sombre. Les
-// luminosités (92/20 % et 15/85 %) garantissent un contraste d'au moins 4,5:1,
-// seuil WCAG AA du texte courant (l'accroche sous le titre), pour les 360
-// teintes : à 88/24 % et 18/78 %, on tombait à 3,4:1.
-export function randomPalette(random) {
-  const hue = Math.floor(random() * 360);
-  const dark = random() < 0.5;
-  return {
-    background: `hsl(${hue} 70% ${dark ? 15 : 92}%)`,
-    color: `hsl(${(hue + 180) % 360} 80% ${dark ? 85 : 20}%)`,
-  };
-}
-
 // Réglage « réduire les animations » du système : pas de rebond.
 export const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
@@ -105,6 +92,11 @@ export function startBounce(el, win, random) {
     vx: Math.cos(angle) * speed,
     vy: Math.sin(angle) * speed,
   };
+  // Le titre quitte le flux : une cale de même hauteur garde en place les
+  // éléments qui le suivent (l'accroche).
+  const spacer = win.document.createElement('div');
+  spacer.style.height = `${rect.height}px`;
+  el.before(spacer);
   Object.assign(el.style, {
     position: 'fixed',
     left: '0px',
@@ -124,6 +116,7 @@ export function startBounce(el, win, random) {
           transform: '',
           transition: '',
         });
+        spacer.remove();
         resolve();
       }, RETURN_DURATION);
     };
@@ -149,14 +142,8 @@ export function init(win, random) {
   const { body } = win.document;
   const title = win.document.querySelector('h1');
 
-  // Le titre et l'accroche héritent de la couleur du texte.
-  const palette = randomPalette(random);
-  body.style.background = palette.background;
-  body.style.color = palette.color;
-
   const konami = createKonamiTracker(KONAMI, () => {
     body.style.background = awesomeGradient(AWESOME_COLORS);
-    body.style.color = '';
     body.classList.add('awesome');
   });
   win.document.addEventListener('keydown', (event) => konami(event.key));

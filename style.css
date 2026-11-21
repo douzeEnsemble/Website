@@ -1,6 +1,5 @@
 /* Couleurs du site : thème clair par défaut, thème sombre quand le système
-   le demande. L'accueil garde ses couleurs aléatoires (js/site.js) et la carte
-   de visite ses couleurs d'objet imprimé. */
+   le demande. La carte de visite garde ses couleurs d'objet imprimé. */
 :root {
   --fond: #fff;
   --texte: #05131d;
@@ -11,6 +10,7 @@
   --bordure: #d5d8dc;
   --filet: #eef0f2;
   --ombre: rgb(5 19 29 / 12%);
+  --orange-texte: #b85c00;
 
   color-scheme: light dark;
 }
@@ -26,6 +26,7 @@
     --bordure: #3a424c;
     --filet: #26303a;
     --ombre: rgb(0 0 0 / 40%);
+    --orange-texte: #fe8a18;
   }
 }
 
@@ -50,6 +51,20 @@ h1 {
   font-family: sans-serif;
   user-select: none;
   cursor: default;
+}
+
+.contact h1,
+.prestations h1,
+.realisations h1,
+.apropos h1 {
+  font-size: clamp(2rem, 10vw, 5rem);
+  overflow-wrap: anywhere;
+  text-decoration: underline #fe8a18 0.35rem;
+  text-underline-offset: 0.5rem;
+}
+
+.accueil h1 {
+  color: var(--orange-texte);
 }
 
 body.awesome h1 {
@@ -147,14 +162,59 @@ body.awesome .accroche {
   font-size: 2rem;
 }
 
-.contact-bouton {
-  padding: 0.4em 1em;
-  border: 0.15rem solid currentcolor;
+.contact-bouton,
+.carte-bouton,
+.carte-lien,
+.prestations-cta {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.45em 1.1em;
+  border: 0.125rem solid currentcolor;
   border-radius: 2rem;
   background: none;
   color: inherit;
   font: inherit;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* L'action est un lien explicite, pas la carte entière. */
+.carte-lien {
+  align-self: flex-end;
+  margin-top: 0.25rem;
+}
+
+.contact .contact-bouton,
+.carte-lien,
+.carte-bouton,
+.carte-retourner,
+.prestations-cta {
+  border-color: #fe8a18;
+}
+
+.contact .contact-bouton,
+.carte-lien,
+.prestations-cta {
+  color: var(--texte);
+}
+
+.carte-bouton {
+  font-size: calc(var(--w) * 0.042);
+}
+
+/* Le survol teinte le bouton de sa propre couleur, quel que soit le fond. */
+.contact-bouton:hover,
+.contact-bouton:focus-visible,
+.carte-bouton:hover,
+.carte-bouton:focus-visible,
+.carte-lien:hover,
+.carte-lien:focus-visible,
+.prestations-cta:hover,
+.prestations-cta:focus-visible {
+  background: color-mix(in srgb, currentcolor 18%, transparent);
 }
 
 .contact-lien {
@@ -164,10 +224,12 @@ body.awesome .accroche {
 .realisations {
   box-sizing: border-box;
   width: 100%;
-  max-width: 60rem;
   max-height: 100vh;
   overflow-y: auto;
-  padding: 4rem 1.25rem 2rem;
+
+  /* Pleine largeur pour que la barre de défilement soit au bord droit ;
+     le contenu reste centré sur 60rem grâce au remplissage latéral. */
+  padding: 4rem max(1.25rem, calc((100% - 60rem) / 2)) 2rem;
   font-family: sans-serif;
   text-align: center;
 }
@@ -183,7 +245,7 @@ body.awesome .accroche {
   text-align: left;
 }
 
-#projets a {
+#projets .carte-projet {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -191,21 +253,15 @@ body.awesome .accroche {
   height: 100%;
   padding: 1.25rem;
   border: 0.0625rem solid var(--bordure);
+  border-top: 0.25rem solid var(--k);
   border-radius: 0.75rem;
-  background: var(--surface);
+  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
   color: var(--texte);
-  text-decoration: none;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s,
-    transform 0.2s;
+  transition: box-shadow 0.2s;
 }
 
-#projets a:hover,
-#projets a:focus-visible {
-  border-color: var(--texte);
+#projets .carte-projet:hover {
   box-shadow: 0 0.5rem 1.25rem var(--ombre);
-  transform: translateY(-0.15rem);
 }
 
 .carte-nom {
@@ -228,8 +284,8 @@ body.awesome .accroche {
 .carte-topic {
   padding: 0.15em 0.6em;
   border-radius: 1rem;
-  background: var(--filet);
-  color: var(--texte-doux);
+  background: color-mix(in srgb, var(--k) 18%, var(--surface));
+  color: var(--texte);
   font-size: 0.75rem;
 }
 
@@ -241,10 +297,12 @@ body.awesome .accroche {
 .prestations {
   box-sizing: border-box;
   width: 100%;
-  max-width: 60rem;
   max-height: 100vh;
   overflow-y: auto;
-  padding: 4rem 1.25rem 2rem;
+
+  /* Pleine largeur pour que la barre de défilement soit au bord droit ;
+     le contenu reste centré sur 60rem grâce au remplissage latéral. */
+  padding: 4rem max(1.25rem, calc((100% - 60rem) / 2)) 2rem;
   font-family: sans-serif;
   text-align: center;
 }
@@ -270,9 +328,9 @@ body.awesome .accroche {
   position: relative;
   padding: 1.5rem;
   border: 0.0625rem solid var(--bordure);
-  border-top: 0.25rem solid var(--texte);
+  border-top: 0.25rem solid var(--k);
   border-radius: 0.75rem;
-  background: var(--surface);
+  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
   color: var(--texte);
 }
 
@@ -280,7 +338,7 @@ body.awesome .accroche {
   position: absolute;
   top: 1rem;
   right: 1.25rem;
-  color: var(--numero);
+  color: color-mix(in srgb, var(--k) 60%, var(--texte));
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -306,29 +364,34 @@ body.awesome .accroche {
   padding: 0.35rem 0 0.35rem 1.4rem;
   border-top: 0.0625rem solid var(--filet);
   background: no-repeat left 0.8em / 0.5rem 0.5rem
-    radial-gradient(circle, var(--texte) 45%, transparent 50%);
+    radial-gradient(circle, var(--k) 45%, transparent 50%);
   font-size: 0.95rem;
+}
+
+/* Une teinte par carte, en rotation (--k) : le fond, les tags et le numéro
+   en dérivent, dans les thèmes clair et sombre. */
+.prestation:nth-child(4n + 1),
+#projets li:nth-child(4n + 1) {
+  --k: #fe8a18;
+}
+
+.prestation:nth-child(4n + 2),
+#projets li:nth-child(4n + 2) {
+  --k: #2e86de;
+}
+
+.prestation:nth-child(4n + 3),
+#projets li:nth-child(4n + 3) {
+  --k: #17a589;
+}
+
+.prestation:nth-child(4n),
+#projets li:nth-child(4n) {
+  --k: #d63384;
 }
 
 .prestations-contact {
   margin: 2rem 0 0;
-}
-
-.prestations-cta {
-  display: inline-block;
-  padding: 0.6em 1.4em;
-  border: 0.125rem solid var(--texte);
-  border-radius: 2rem;
-  background: var(--texte);
-  color: var(--fond);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.prestations-cta:hover,
-.prestations-cta:focus-visible {
-  background: var(--fond);
-  color: var(--texte);
 }
 
 /* Page introuvable (404.html). */
@@ -358,15 +421,13 @@ body.awesome .accroche {
 .apropos {
   box-sizing: border-box;
   width: 100%;
-  max-width: 40rem;
   max-height: 100vh;
   overflow-y: auto;
-  padding: 4rem 1.25rem 2rem;
-  font-family: sans-serif;
-}
 
-.apropos-titre {
-  font-size: 2.5rem;
+  /* Comme les autres pages : barre de défilement au bord droit, contenu
+     centré sur 40rem. */
+  padding: 4rem max(1.25rem, calc((100% - 40rem) / 2)) 2rem;
+  font-family: sans-serif;
 }
 
 .mentions dt {
@@ -530,7 +591,6 @@ body.awesome .accroche {
   color: #6b645c;
   font-size: calc(var(--w) * 0.035);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .carte-boutons {
@@ -538,23 +598,6 @@ body.awesome .accroche {
   flex-direction: column;
   gap: calc(var(--w) * 0.025);
   align-items: flex-start;
-}
-
-.carte-bouton {
-  padding: 0.3em 0.9em;
-  border: 0.1rem solid #14110f;
-  border-radius: 2rem;
-  background: none;
-  color: #14110f;
-  font: inherit;
-  font-size: calc(var(--w) * 0.042);
-  cursor: pointer;
-}
-
-.carte-bouton:hover,
-.carte-bouton:focus-visible {
-  background: #14110f;
-  color: #fffdf9;
 }
 
 .carte .contact-lien {

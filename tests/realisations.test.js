@@ -120,21 +120,25 @@ describe('projectCard', () => {
         }),
       ),
     ).toBe(
-      '<li><a href="https://site.example">' +
+      '<li><div class="carte-projet">' +
         '<strong class="carte-nom">site</strong>' +
         '<p class="carte-description">Le site</p>' +
         '<span class="carte-topics">' +
         '<span class="carte-topic">pwa</span>' +
         '<span class="carte-topic">react</span></span>' +
-        '<span class="carte-infos">site.example · JavaScript</span></a></li>',
+        '<span class="carte-infos">site.example · JavaScript</span>' +
+        '<a class="carte-lien" href="https://site.example">Voir le site' +
+        '<span class="invisible"> site</span><span aria-hidden="true"> ↗</span></a></div></li>',
     );
   });
 
   it('fait une carte minimale', () => {
     expect(projectCard(repo('outil', { homepage: null, has_pages: true }))).toBe(
-      '<li><a href="https://renauddouze.github.io/outil/">' +
+      '<li><div class="carte-projet">' +
         '<strong class="carte-nom">outil</strong>' +
-        '<span class="carte-infos">renauddouze.github.io</span></a></li>',
+        '<span class="carte-infos">renauddouze.github.io</span>' +
+        '<a class="carte-lien" href="https://renauddouze.github.io/outil/">Voir le site' +
+        '<span class="invisible"> outil</span><span aria-hidden="true"> ↗</span></a></div></li>',
     );
   });
 
@@ -156,6 +160,7 @@ describe('projectCard', () => {
     expect(card).toContain('&lt;b&gt;gras&lt;/b&gt;');
     expect(card).toContain('&lt;t&gt;');
     expect(card).toContain('x.example · &lt;l&gt;');
+    expect(card).toContain('<span class="invisible"> &lt;i&gt;</span>');
   });
 });
 
