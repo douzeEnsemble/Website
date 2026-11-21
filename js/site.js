@@ -1,3 +1,5 @@
+import { REDUCE_MOTION_ATTRIBUTE } from './preferences.js';
+
 // Couleurs LEGO des 11 figurines du set 40516, de gauche à droite :
 // noir, marron, arc-en-ciel (rouge à violet), puis bleu clair, blanc et rose.
 export const AWESOME_COLORS = [
@@ -150,7 +152,11 @@ export function init(win, random) {
 
   let bouncing = false;
   title.addEventListener('dblclick', async () => {
-    if (bouncing || win.matchMedia(REDUCED_MOTION).matches) {
+    if (
+      bouncing ||
+      win.matchMedia(REDUCED_MOTION).matches ||
+      win.document.documentElement.hasAttribute(REDUCE_MOTION_ATTRIBUTE)
+    ) {
       return;
     }
     bouncing = true;

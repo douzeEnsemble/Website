@@ -16,7 +16,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --fond: #0f1419;
     --texte: #e8eaed;
     --texte-doux: #b4bac2;
@@ -28,6 +28,67 @@
     --ombre: rgb(0 0 0 / 40%);
     --orange-texte: #fe8a18;
   }
+}
+
+/* Thème choisi par le visiteur (bouton en bas à droite) : il l'emporte sur le
+   réglage du système. */
+:root[data-theme='dark'] {
+  --fond: #0f1419;
+  --texte: #e8eaed;
+  --texte-doux: #b4bac2;
+  --texte-pale: #959ca6;
+  --numero: #7d8590;
+  --surface: #182029;
+  --bordure: #3a424c;
+  --filet: #26303a;
+  --ombre: rgb(0 0 0 / 40%);
+  --orange-texte: #fe8a18;
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* Contraste élevé : noir sur blanc ou blanc sur noir selon le thème, bordures
+   franches, éléments discrets pleinement visibles. */
+:root[data-high-contrast] {
+  --texte: #000;
+  --texte-doux: #000;
+  --texte-pale: #000;
+  --numero: #000;
+  --bordure: #000;
+  --orange-texte: #8a3d00;
+}
+
+:root[data-high-contrast][data-theme='dark'] {
+  --fond: #000;
+  --texte: #fff;
+  --texte-doux: #fff;
+  --texte-pale: #fff;
+  --numero: #fff;
+  --surface: #000;
+  --bordure: #fff;
+  --orange-texte: #ffb050;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-high-contrast]:not([data-theme='light']) {
+    --fond: #000;
+    --texte: #fff;
+    --texte-doux: #fff;
+    --texte-pale: #fff;
+    --numero: #fff;
+    --surface: #000;
+    --bordure: #fff;
+    --orange-texte: #ffb050;
+  }
+}
+
+/* Texte plus grand : tout ce qui se dimensionne en rem suit. */
+:root[data-large-text] {
+  font-size: 125%;
 }
 
 html,
@@ -452,7 +513,7 @@ body.awesome .accroche {
    du contenu). */
 .pied-version {
   position: fixed;
-  right: 1.25rem;
+  left: 1.25rem;
   bottom: 0.75rem;
   font-family: sans-serif;
   font-size: 0.65rem;
@@ -811,4 +872,148 @@ body.awesome .accroche {
   #projets a:focus-visible {
     transform: none;
   }
+}
+
+:root[data-high-contrast] a {
+  text-decoration: underline;
+}
+
+/* Même réglage choisi dans la fenêtre d'accessibilité. */
+:root[data-reduce-motion] *,
+:root[data-reduce-motion] ::before,
+:root[data-reduce-motion] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+}
+
+:root[data-reduce-motion] #projets a:hover,
+:root[data-reduce-motion] #projets a:focus-visible {
+  transform: none;
+}
+
+/* Préférences d'affichage (A11Y-11) : groupe fixé en bas à droite, boutons
+   d'icône de 44 px, au-dessus du contenu. Le groupe est le premier élément du
+   HTML, donc le premier dans l'ordre de tabulation. */
+html {
+  scroll-padding-bottom: 7rem;
+}
+
+.preferences {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.preferences-bouton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0.125rem solid var(--bordure);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--texte);
+  cursor: pointer;
+}
+
+.preferences-bouton:hover,
+.preferences-bouton:focus-visible {
+  border-color: var(--orange-texte);
+}
+
+.preferences-bouton svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+/* Une seule icône de thème à la fois, selon l'état du bouton. */
+.preferences-theme svg {
+  display: none;
+}
+
+.preferences-theme:not([data-theme]) .icone-auto,
+.preferences-theme[data-theme='auto'] .icone-auto,
+.preferences-theme[data-theme='light'] .icone-clair,
+.preferences-theme[data-theme='dark'] .icone-sombre {
+  display: block;
+}
+
+.preferences-dialogue {
+  width: min(20rem, calc(100% - 2rem));
+  padding: 0;
+  border: 0.125rem solid var(--bordure);
+  border-radius: 1.1rem;
+  background: var(--surface);
+  color: var(--texte);
+  font-family: sans-serif;
+}
+
+.preferences-dialogue::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+
+.preferences-contenu {
+  position: relative;
+  padding: 1.1rem;
+}
+
+.preferences-contenu h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.preferences-fermer {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.preferences-fermer:hover,
+.preferences-fermer:focus-visible {
+  background: var(--filet);
+}
+
+.preferences-reglages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.preferences-case {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.preferences-case input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--orange-texte);
+}
+
+/* Contraste élevé : les éléments discrets deviennent pleinement visibles. */
+:root[data-high-contrast] .menu,
+:root[data-high-contrast] .pied-version,
+:root[data-high-contrast] .partage-ouvrir {
+  opacity: 1;
 }

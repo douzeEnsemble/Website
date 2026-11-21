@@ -104,3 +104,86 @@ test('reflow à 320 px sur la page introuvable', async ({ page }) => {
   );
   expect(debordement).toBeLessThanOrEqual(0);
 });
+
+// A11Y-11 : préférences d'affichage (thème et réglages d'accessibilité).
+const REGLAGES = [
+  ['Texte plus grand', 'data-large-text'],
+  ['Contraste élevé', 'data-high-contrast'],
+  ['Animations réduites', 'data-reduce-motion'],
+];
+
+test.describe('préférences d’affichage', () => {
+  test('le groupe précède le menu, en bas à droite, avec des cibles de 44 px', async ({ page }) => {
+    await page.goto('/');
+    const premier = await page.evaluate(() => document.body.firstElementChild.className);
+    expect(premier).toBe('preferences');
+    const boutons = page.getByRole('group', { name: 'Préférences d’affichage' }).getByRole('button');
+    await expect(boutons).toHaveCount(2);
+    const { width, height } = page.viewportSize();
+    for (const bouton of await boutons.all()) {
+      const box = await bouton.boundingBox();
+      expect(box.width).toBeGreaterThanOrEqual(44);
+      expect(box.height).toBeGreaterThanOrEqual(44);
+      expect(box.x + box.width).toBeGreaterThan(width / 2);
+      expect(box.y + box.height).toBeGreaterThan(height / 2);
+    }
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('button', { name: /^Thème/ })).toBeFocused();
+  });
+
+  test('le thème tourne Auto, Clair, Sombre et se garde au rechargement', async ({ page }) => {
+    await page.goto('/');
+    const racine = page.locator('html');
+    const bouton = page.getByRole('button', { name: /^Thème/ });
+    await expect(bouton).toHaveAccessibleName('Thème : automatique');
+    await bouton.click();
+    await expect(racine).toHaveAttribute('data-theme', 'light');
+    await expect(bouton).toHaveAccessibleName('Thème : clair');
+    expect(await violations(page)).toEqual([]);
+    await bouton.click();
+    await expect(racine).toHaveAttribute('data-theme', 'dark');
+    expect(await violations(page)).toEqual([]);
+    await page.reload();
+    await expect(racine).toHaveAttribute('data-theme', 'dark');
+    await page.getByRole('button', { name: /^Thème/ }).click();
+    await expect(racine).not.toHaveAttribute('data-theme');
+  });
+
+  for (const { nom, chemin } of pages) {
+    test(`chaque réglage passe axe sur ${nom}`, async ({ page }) => {
+      await page.goto(chemin);
+      await page.getByRole('button', { name: 'Accessibilité' }).click();
+      const dialogue = page.getByRole('dialog', { name: 'Accessibilité' });
+      await expect(dialogue).toBeVisible();
+      for (const [libelle, attribut] of REGLAGES) {
+        await dialogue.getByLabel(libelle).check();
+        await expect(page.locator('html')).toHaveAttribute(attribut, '');
+        expect(await violations(page)).toEqual([]);
+      }
+      await page.keyboard.press('Escape');
+      await expect(dialogue).toBeHidden();
+      await expect(page.getByRole('button', { name: 'Accessibilité' })).toBeFocused();
+      // réglages mémorisés
+      await page.reload();
+      for (const [, attribut] of REGLAGES) {
+        await expect(page.locator('html')).toHaveAttribute(attribut, '');
+      }
+    });
+
+    // Texte agrandi (A11Y-06) avec le contraste élevé, thème sombre forcé.
+    test(`reflow à 320 px avec texte agrandi sur ${nom}`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 640 });
+      await page.goto(chemin);
+      await page.evaluate(() => {
+        document.documentElement.setAttribute('data-large-text', '');
+        document.documentElement.setAttribute('data-high-contrast', '');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      });
+      const debordement = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(debordement).toBeLessThanOrEqual(0);
+      expect(await violations(page)).toEqual([]);
+    });
+  }
+});

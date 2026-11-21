@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path';
 import { fetchProjects, injectProjects } from '../js/realisations.js';
 import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
+import { injectPreferences } from './preferences.js';
 import { injectSeo, sitemapXml } from './seo.js';
 
 // Fichiers publiés sur GitHub Pages.
@@ -68,7 +69,10 @@ export async function buildSite({
   for (const file of PAGES) {
     const path = join(out, file);
     const html = injectMentions(
-      injectPartage(injectSeo(String(readFileSync(path)), file), file),
+      injectPartage(
+        injectPreferences(injectSeo(String(readFileSync(path)), file)),
+        file,
+      ),
       env,
     );
     writeFileSync(path, injectVersion(html, version));
