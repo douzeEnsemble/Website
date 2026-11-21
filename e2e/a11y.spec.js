@@ -88,3 +88,19 @@ for (const { nom, chemin } of pages) {
     expect(colonnes.size).toBe(2);
   });
 }
+
+// Page introuvable : servie par GitHub Pages à toute adresse inconnue. Elle n'a
+// pas de bouton de partage (une adresse inconnue n'a rien à partager).
+test('axe : aucune violation sur la page introuvable', async ({ page }) => {
+  await page.goto('/404.html');
+  expect(await violations(page)).toEqual([]);
+});
+
+test('reflow à 320 px sur la page introuvable', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.goto('/404.html');
+  const debordement = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(debordement).toBeLessThanOrEqual(0);
+});
