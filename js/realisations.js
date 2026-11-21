@@ -1,7 +1,7 @@
 export const PROFILE_URL = 'https://github.com/RenaudDouze';
 export const REPOS_URL =
   'https://api.github.com/users/RenaudDouze/repos?sort=pushed&per_page=100';
-export const LIMIT = 6;
+export const LIMIT = 7;
 export const PAGES_HOST = 'renauddouze.github.io';
 
 // Adresse où le projet est publié : son site déclaré sur GitHub, sinon sa

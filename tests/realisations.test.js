@@ -31,7 +31,7 @@ describe('constantes', () => {
     expect(REPOS_URL).toBe(
       'https://api.github.com/users/RenaudDouze/repos?sort=pushed&per_page=100',
     );
-    expect(LIMIT).toBe(6);
+    expect(LIMIT).toBe(7);
     expect(MARKER_START).toBe('<!-- projets:debut -->');
     expect(MARKER_END).toBe('<!-- projets:fin -->');
     expect(PAGES_HOST).toBe('renauddouze.github.io');
@@ -201,7 +201,7 @@ describe('fetchProjects', () => {
     vi.fn().mockResolvedValue({ ok, status, json: async () => body });
 
   it('récupère les derniers projets publiés', async () => {
-    const repos = Array.from({ length: 8 }, (_, i) => repo(`p${i}`));
+    const repos = Array.from({ length: 9 }, (_, i) => repo(`p${i}`));
     repos.unshift(repo('fork', { fork: true }));
     const fetchFn = respond(repos);
     const projects = await fetchProjects(fetchFn);
@@ -212,6 +212,7 @@ describe('fetchProjects', () => {
       'p3',
       'p4',
       'p5',
+      'p6',
     ]);
     expect(fetchFn).toHaveBeenCalledWith(REPOS_URL, {
       headers: { Accept: 'application/vnd.github+json' },
