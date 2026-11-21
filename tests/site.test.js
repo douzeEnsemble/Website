@@ -345,6 +345,15 @@ describe('init', () => {
     expect(win.frames).toHaveLength(1);
   });
 
+  it('ne fait pas rebondir le titre si les animations sont réduites dans les préférences', () => {
+    document.documentElement.setAttribute('data-reduce-motion', '');
+    init(win, sequence(0.5, 0.49, 0, 0, 0, 0));
+    title.dispatchEvent(new MouseEvent('dblclick'));
+    document.documentElement.removeAttribute('data-reduce-motion');
+    expect(title.style.position).toBe('');
+    expect(win.frames).toHaveLength(0);
+  });
+
   it('ne fait pas rebondir le titre si l’utilisateur réduit les animations', () => {
     win = fakeWindow({ reduce: true });
     init(win, sequence(0.5, 0.49, 0, 0, 0, 0));

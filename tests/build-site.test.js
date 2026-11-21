@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { MENTIONS_MARKER } from '../scripts/mentions.js';
 import { PARTAGE_MARKER } from '../scripts/partage.js';
+import { PREFERENCES_MARKER } from '../scripts/preferences.js';
 import { SEO_MARKER, sitemapXml } from '../scripts/seo.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -44,7 +45,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'js', 'main.js'), 'js');
   writeFileSync(
     join(root, 'contact', 'index.html'),
-    `contact ${PARTAGE_MARKER} ${VERSION_PLACEHOLDER}`,
+    `contact ${PREFERENCES_MARKER} ${PARTAGE_MARKER} ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(
     join(root, 'prestations', 'index.html'),
@@ -155,6 +156,8 @@ describe('buildSite', () => {
     expect(contact).toContain('<dialog class="partage"');
     expect(contact).toContain('https://www.douzeensemble.fr/contact/');
     expect(contact).not.toContain(PARTAGE_MARKER);
+    expect(contact).toContain('<dialog class="preferences-dialogue"');
+    expect(contact).not.toContain(PREFERENCES_MARKER);
     expect(contact.endsWith(' <span class="app-version">v1.2.3</span>')).toBe(true);
     expect(readFileSync(join(out, 'prestations', 'index.html'), 'utf8')).toBe(
       'prestations <span class="app-version">v1.2.3</span>',

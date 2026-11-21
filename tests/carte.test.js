@@ -367,4 +367,13 @@ describe('init', () => {
     tick();
     expect(rotation()).toBe(180);
   });
+
+  it('retourne d’un coup si l’animation est réduite dans les préférences', () => {
+    document.documentElement.setAttribute('data-reduce-motion', '');
+    mount();
+    document.documentElement.removeAttribute('data-reduce-motion');
+    document.querySelector('.carte-retourner').click();
+    tick();
+    expect(rotation()).toBe(180);
+  });
 });

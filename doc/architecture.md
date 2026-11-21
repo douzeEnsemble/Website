@@ -15,4 +15,4 @@ Une exception se documente à côté de la règle (`pathNot` + raison), jamais p
 
 ## Pièges
 
-- `js/main.js`, `js/contact-main.js`, `js/carte-main.js` et `js/partage-main.js` sont les points d'entrée chargés par les pages HTML : ils sont déclarés comme exceptions de `no-orphans`, jamais supprimés par erreur.
+- `js/main.js`, `js/contact-main.js`, `js/carte-main.js`, `js/partage-main.js` et `js/preferences-main.js` sont les points d'entrée chargés par les pages HTML : ils sont déclarés comme exceptions de `no-orphans`, jamais supprimés par erreur.

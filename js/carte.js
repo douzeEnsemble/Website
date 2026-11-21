@@ -1,3 +1,5 @@
+import { REDUCE_MOTION_ATTRIBUTE } from './preferences.js';
+
 // Carte de visite en 3D : la logique de rotation est pure (testée à l'exacte
 // valeur), la coque `init` ne fait que relier le DOM et les événements.
 export const DRAG_FACTOR = 0.6;
@@ -63,7 +65,9 @@ export function init(win, doc) {
   const card = doc.querySelector('.carte-objet');
   const shadow = doc.querySelector('.carte-ombre');
   const [rectoSheen, versoSheen] = doc.querySelectorAll('.carte-reflet');
-  const reduceMotion = win.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion =
+    win.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    doc.documentElement.hasAttribute(REDUCE_MOTION_ATTRIBUTE);
 
   // Tranche : des couches fines empilées de -THICKNESS à +THICKNESS px.
   for (let z = -THICKNESS; z <= THICKNESS; z += 1) {
