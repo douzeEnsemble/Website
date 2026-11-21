@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`, `carte/`, `apropos/`), style dans `style.css`, comportement en modules ES dans `js/`.
+Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`, `carte/`, `apropos/`, `404.html` en chemins absolus), style dans `style.css` (couleurs en variables, thème sombre via `prefers-color-scheme`, animations coupées sous `prefers-reduced-motion`), comportement en modules ES dans `js/`. Fichiers statiques publiés : `robots.txt`, `favicon.svg`, `apple-touch-icon.png`, `og.png` (aperçu 1200 × 630 des liens partagés).
 
 ## Commandes
 
@@ -15,6 +15,7 @@ Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. P
 
 - `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js`, `partage-main.js` sont les points d'entrée) ; `site.js`, `realisations.js` et `carte.js` (rotation 3D de la carte de visite) et `partage.js` (fenêtre de partage) portent la logique.
 - `scripts/partage.js` génère à la construction le QR code (SVG, dépendance `qrcode-generator`) et la fenêtre de partage de chaque page, aux marqueurs `<!--PARTAGE-->` et `<!--QR-ACCUEIL-->` des pages HTML.
+- `scripts/seo.js` remplit au build le marqueur `<!--SEO-->` de chaque page (description, adresse canonique, Open Graph, icônes) depuis la table `SEO`, dont le titre doit rester identique à la balise `<title>` de la page (vérifié par les tests), et écrit `sitemap.xml`. Une nouvelle page s'ajoute à `SEO`, à `PAGES`, à `lint:html` et à `e2e/a11y.spec.js`.
 - `scripts/mentions.js` remplit au build le marqueur `<!--MENTIONS-->` de `apropos/` depuis les variables GitHub `SIREN` (9 chiffres, sinon omis), `RAISON_SOCIALE`, `FORME_JURIDIQUE`, `ADRESSE`, `DIRECTEUR_PUBLICATION` (variables du dépôt, pas des secrets : ces données sont publiques ; une variable vide masque sa ligne). Les valeurs sont échappées.
 - `scripts/build-site.js` copie les fichiers publiés (`SITE_FILES`) et injecte les réalisations récupérées via l'API GitHub au moment du build ; `scripts/build.js` le lance.
 - Détail des règles de dépendances : `doc/architecture.md`.

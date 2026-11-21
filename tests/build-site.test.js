@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { MENTIONS_MARKER } from '../scripts/mentions.js';
 import { PARTAGE_MARKER } from '../scripts/partage.js';
+import { SEO_MARKER, sitemapXml } from '../scripts/seo.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -31,7 +32,14 @@ function fakeRepo() {
     mkdirSync(join(root, dir));
   }
   writeFileSync(join(root, 'CNAME'), 'www.douzeensemble.fr');
-  writeFileSync(join(root, 'index.html'), `accueil ${VERSION_PLACEHOLDER}`);
+  writeFileSync(
+    join(root, 'index.html'),
+    `<head>${SEO_MARKER}</head>accueil ${VERSION_PLACEHOLDER}`,
+  );
+  writeFileSync(join(root, '404.html'), `introuvable ${VERSION_PLACEHOLDER}`);
+  for (const file of ['robots.txt', 'favicon.svg', 'apple-touch-icon.png', 'og.png']) {
+    writeFileSync(join(root, file), file);
+  }
   writeFileSync(join(root, 'style.css'), 'css');
   writeFileSync(join(root, 'js', 'main.js'), 'js');
   writeFileSync(
@@ -64,6 +72,11 @@ describe('SITE_FILES', () => {
     expect(SITE_FILES).toEqual([
       'CNAME',
       'index.html',
+      '404.html',
+      'robots.txt',
+      'favicon.svg',
+      'apple-touch-icon.png',
+      'og.png',
       'style.css',
       'js',
       'contact',
@@ -85,6 +98,7 @@ describe('PAGES', () => {
       REALISATIONS_PAGE,
       join('carte', 'index.html'),
       join('apropos', 'index.html'),
+      '404.html',
     ]);
   });
 });
@@ -122,9 +136,19 @@ describe('buildSite', () => {
     expect(projects).toEqual([project]);
     expect(fetchFn.mock.calls[0][1].headers.Authorization).toBe('Bearer jeton');
     expect(readFileSync(join(out, 'CNAME'), 'utf8')).toBe('www.douzeensemble.fr');
-    expect(readFileSync(join(out, 'index.html'), 'utf8')).toBe(
-      'accueil <span class="app-version">v1.2.3</span>',
+    const accueil = readFileSync(join(out, 'index.html'), 'utf8');
+    expect(accueil).toContain(
+      '<link rel="canonical" href="https://www.douzeensemble.fr/">',
     );
+    expect(accueil).not.toContain(SEO_MARKER);
+    expect(accueil.endsWith('accueil <span class="app-version">v1.2.3</span>')).toBe(true);
+    expect(readFileSync(join(out, '404.html'), 'utf8')).toBe(
+      'introuvable <span class="app-version">v1.2.3</span>',
+    );
+    for (const file of ['robots.txt', 'favicon.svg', 'apple-touch-icon.png', 'og.png']) {
+      expect(readFileSync(join(out, file), 'utf8')).toBe(file);
+    }
+    expect(readFileSync(join(out, 'sitemap.xml'), 'utf8')).toBe(sitemapXml());
     expect(readFileSync(join(out, 'style.css'), 'utf8')).toBe('css');
     expect(readFileSync(join(out, 'js', 'main.js'), 'utf8')).toBe('js');
     const contact = readFileSync(join(out, 'contact', 'index.html'), 'utf8');

@@ -3,11 +3,17 @@ import { join, resolve } from 'node:path';
 import { fetchProjects, injectProjects } from '../js/realisations.js';
 import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
+import { injectSeo, sitemapXml } from './seo.js';
 
 // Fichiers publiés sur GitHub Pages.
 export const SITE_FILES = [
   'CNAME',
   'index.html',
+  '404.html',
+  'robots.txt',
+  'favicon.svg',
+  'apple-touch-icon.png',
+  'og.png',
   'style.css',
   'js',
   'contact',
@@ -28,6 +34,7 @@ export const PAGES = [
   REALISATIONS_PAGE,
   join('carte', 'index.html'),
   join('apropos', 'index.html'),
+  '404.html',
 ];
 export const VERSION_PLACEHOLDER = '<span class="app-version">dev</span>';
 
@@ -39,7 +46,8 @@ export function injectVersion(html, version) {
 }
 
 // Copie le site dans `output` (relatif à `root`), y écrit les cartes des
-// réalisations et le numéro de version.
+// réalisations, les balises de référencement, le plan du site et le numéro de
+// version.
 export async function buildSite({
   root,
   out: output,
@@ -60,10 +68,11 @@ export async function buildSite({
   for (const file of PAGES) {
     const path = join(out, file);
     const html = injectMentions(
-      injectPartage(String(readFileSync(path)), file),
+      injectPartage(injectSeo(String(readFileSync(path)), file), file),
       env,
     );
     writeFileSync(path, injectVersion(html, version));
   }
+  writeFileSync(join(out, 'sitemap.xml'), sitemapXml());
   return projects;
 }
