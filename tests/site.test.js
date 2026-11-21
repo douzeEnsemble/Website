@@ -9,7 +9,6 @@ import {
   bounceStep,
   createKonamiTracker,
   init,
-  randomPalette,
   startBounce,
 } from '../js/site.js';
 
@@ -87,56 +86,6 @@ describe('constantes', () => {
 
   it('suit le réglage « réduire les animations »', () => {
     expect(REDUCED_MOTION).toBe('(prefers-reduced-motion: reduce)');
-  });
-});
-
-describe('randomPalette', () => {
-  it('donne un fond sombre et un texte clair', () => {
-    expect(randomPalette(sequence(0.5, 0.49))).toEqual({
-      background: 'hsl(180 70% 15%)',
-      color: 'hsl(0 80% 85%)',
-    });
-  });
-
-  it('donne un fond clair et un texte sombre', () => {
-    expect(randomPalette(sequence(0.1, 0.5))).toEqual({
-      background: 'hsl(36 70% 92%)',
-      color: 'hsl(216 80% 20%)',
-    });
-  });
-
-  // Contraste WCAG 2 entre le fond et le texte, pour chacune des 360 teintes.
-  it.each([
-    ['sombre', 0.1],
-    ['clair', 0.9],
-  ])('garde un contraste d’au moins 4,5:1 sur fond %s, quelle que soit la teinte', (_, theme) => {
-    const rgb = (css) => {
-      const [h, s, l] = css.match(/[\d.]+/g).map(Number);
-      const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
-      const f = (n) => {
-        const k = (n + h / 30) % 12;
-        return l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
-      };
-      return [f(0), f(8), f(4)].map((v) => Math.round(v * 255));
-    };
-    const luminance = (css) => {
-      const [r, g, b] = rgb(css).map((v) => {
-        const c = v / 255;
-        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-      });
-      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    };
-    for (let hue = 0; hue < 360; hue += 1) {
-      const { background, color } = randomPalette(sequence((hue + 0.5) / 360, theme));
-      const [claire, sombre] = [luminance(background), luminance(color)].sort((a, b) => b - a);
-      expect((claire + 0.05) / (sombre + 0.05), `teinte ${hue}`).toBeGreaterThanOrEqual(4.5);
-    }
-  });
-
-  it('arrondit la teinte vers le bas', () => {
-    expect(randomPalette(sequence(0.9999, 0.9)).background).toBe(
-      'hsl(359 70% 92%)',
-    );
   });
 });
 
@@ -264,6 +213,13 @@ describe('startBounce', () => {
     expect(title.style.transform).toBe('translate(100px, 200px)');
   });
 
+  it('garde la place du titre avec une cale de même hauteur', () => {
+    startBounce(title, win, sequence(0, 0));
+    const spacer = title.previousElementSibling;
+    expect(spacer.tagName).toBe('DIV');
+    expect(spacer.style.height).toBe('100px');
+  });
+
   it('se déplace selon un angle et une vitesse aléatoires', () => {
     // angle 0 -> vers la droite, vitesse = 1000 * (0.9 + 0.5 * 0.6) = 1200 px/s
     startBounce(title, win, sequence(0, 0.5));
@@ -330,6 +286,7 @@ describe('startBounce', () => {
     await Promise.resolve();
     expect(done).toHaveBeenCalledTimes(1);
     expect(title.getAttribute('style')).toBe('');
+    expect(title.previousElementSibling).toBeNull();
   });
 });
 
@@ -347,18 +304,16 @@ describe('init', () => {
   const press = (key) =>
     document.dispatchEvent(new KeyboardEvent('keydown', { key }));
 
-  it('applique des couleurs aléatoires', () => {
+  it('ne pose aucune couleur avant le Konami code', () => {
     init(win, sequence(0.5, 0.49));
-    expect(document.body.style.background).toBe('rgb(11, 65, 65)');
-    expect(document.body.style.color).toBe('rgb(247, 186, 186)');
-    expect(title.style.color).toBe('');
+    expect(document.body.getAttribute('style')).toBeNull();
+    expect(title.getAttribute('style')).toBeNull();
   });
 
   it('passe aux couleurs Everyone is awesome avec le Konami code', () => {
     init(win, sequence(0.5, 0.49));
     KONAMI.forEach(press);
     expect(document.body.classList.contains('awesome')).toBe(true);
-    expect(document.body.style.color).toBe('');
     expect(document.body.style.background).toContain('linear-gradient');
     expect(document.body.style.background).toContain('rgb(5, 19, 29)');
   });
