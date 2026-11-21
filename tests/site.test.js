@@ -3,6 +3,7 @@ import {
   AWESOME_COLORS,
   BOUNCE_DURATION,
   KONAMI,
+  REDUCED_MOTION,
   RETURN_DURATION,
   awesomeGradient,
   bounceStep,
@@ -17,11 +18,17 @@ const sequence = (...values) => {
   return () => queue.shift();
 };
 
-function fakeWindow({ width = 1000, height = 800 } = {}) {
+function fakeWindow({ width = 1000, height = 800, reduce = false } = {}) {
   const frames = [];
   const timers = [];
+  const queries = [];
   return {
     document,
+    queries,
+    matchMedia: (query) => {
+      queries.push(query);
+      return { matches: reduce };
+    },
     innerWidth: width,
     innerHeight: height,
     frames,
@@ -77,20 +84,24 @@ describe('constantes', () => {
     expect(BOUNCE_DURATION).toBe(2500);
     expect(RETURN_DURATION).toBe(500);
   });
+
+  it('suit le réglage « réduire les animations »', () => {
+    expect(REDUCED_MOTION).toBe('(prefers-reduced-motion: reduce)');
+  });
 });
 
 describe('randomPalette', () => {
   it('donne un fond sombre et un texte clair', () => {
     expect(randomPalette(sequence(0.5, 0.49))).toEqual({
-      background: 'hsl(180 70% 18%)',
-      color: 'hsl(0 80% 78%)',
+      background: 'hsl(180 70% 15%)',
+      color: 'hsl(0 80% 85%)',
     });
   });
 
   it('donne un fond clair et un texte sombre', () => {
     expect(randomPalette(sequence(0.1, 0.5))).toEqual({
-      background: 'hsl(36 70% 88%)',
-      color: 'hsl(216 80% 24%)',
+      background: 'hsl(36 70% 92%)',
+      color: 'hsl(216 80% 20%)',
     });
   });
 
@@ -98,7 +109,7 @@ describe('randomPalette', () => {
   it.each([
     ['sombre', 0.1],
     ['clair', 0.9],
-  ])('garde un contraste d’au moins 3:1 sur fond %s, quelle que soit la teinte', (_, theme) => {
+  ])('garde un contraste d’au moins 4,5:1 sur fond %s, quelle que soit la teinte', (_, theme) => {
     const rgb = (css) => {
       const [h, s, l] = css.match(/[\d.]+/g).map(Number);
       const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
@@ -118,13 +129,13 @@ describe('randomPalette', () => {
     for (let hue = 0; hue < 360; hue += 1) {
       const { background, color } = randomPalette(sequence((hue + 0.5) / 360, theme));
       const [claire, sombre] = [luminance(background), luminance(color)].sort((a, b) => b - a);
-      expect((claire + 0.05) / (sombre + 0.05), `teinte ${hue}`).toBeGreaterThanOrEqual(3);
+      expect((claire + 0.05) / (sombre + 0.05), `teinte ${hue}`).toBeGreaterThanOrEqual(4.5);
     }
   });
 
   it('arrondit la teinte vers le bas', () => {
     expect(randomPalette(sequence(0.9999, 0.9)).background).toBe(
-      'hsl(359 70% 88%)',
+      'hsl(359 70% 92%)',
     );
   });
 });
@@ -338,15 +349,16 @@ describe('init', () => {
 
   it('applique des couleurs aléatoires', () => {
     init(win, sequence(0.5, 0.49));
-    expect(document.body.style.background).toBe('rgb(14, 78, 78)');
-    expect(title.style.color).toBe('rgb(244, 154, 154)');
+    expect(document.body.style.background).toBe('rgb(11, 65, 65)');
+    expect(document.body.style.color).toBe('rgb(247, 186, 186)');
+    expect(title.style.color).toBe('');
   });
 
   it('passe aux couleurs Everyone is awesome avec le Konami code', () => {
     init(win, sequence(0.5, 0.49));
     KONAMI.forEach(press);
     expect(document.body.classList.contains('awesome')).toBe(true);
-    expect(title.style.color).toBe('');
+    expect(document.body.style.color).toBe('');
     expect(document.body.style.background).toContain('linear-gradient');
     expect(document.body.style.background).toContain('rgb(5, 19, 29)');
   });
@@ -376,5 +388,14 @@ describe('init', () => {
     title.dispatchEvent(new MouseEvent('dblclick'));
     expect(title.style.position).toBe('fixed');
     expect(win.frames).toHaveLength(1);
+  });
+
+  it('ne fait pas rebondir le titre si l’utilisateur réduit les animations', () => {
+    win = fakeWindow({ reduce: true });
+    init(win, sequence(0.5, 0.49, 0, 0, 0, 0));
+    title.dispatchEvent(new MouseEvent('dblclick'));
+    expect(win.queries).toEqual([REDUCED_MOTION]);
+    expect(title.style.position).toBe('');
+    expect(win.frames).toHaveLength(0);
   });
 });

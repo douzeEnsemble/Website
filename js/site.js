@@ -31,17 +31,20 @@ export const BOUNCE_DURATION = 2500;
 export const RETURN_DURATION = 500;
 
 // Fond et texte de teintes opposées, l'un clair et l'autre sombre. Les
-// luminosités (88/24 % et 18/78 %) garantissent un contraste d'au moins 3:1,
-// seuil WCAG AA du grand texte (le titre), pour les 360 teintes : à 30 % et
-// 75 %, un texte jaune sur fond bleu (ou l'inverse) tombait à 2,3:1.
+// luminosités (92/20 % et 15/85 %) garantissent un contraste d'au moins 4,5:1,
+// seuil WCAG AA du texte courant (l'accroche sous le titre), pour les 360
+// teintes : à 88/24 % et 18/78 %, on tombait à 3,4:1.
 export function randomPalette(random) {
   const hue = Math.floor(random() * 360);
   const dark = random() < 0.5;
   return {
-    background: `hsl(${hue} 70% ${dark ? 18 : 88}%)`,
-    color: `hsl(${(hue + 180) % 360} 80% ${dark ? 78 : 24}%)`,
+    background: `hsl(${hue} 70% ${dark ? 15 : 92}%)`,
+    color: `hsl(${(hue + 180) % 360} 80% ${dark ? 85 : 20}%)`,
   };
 }
+
+// Réglage « réduire les animations » du système : pas de rebond.
+export const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
 export function awesomeGradient(colors) {
   const width = 100 / colors.length;
@@ -146,20 +149,21 @@ export function init(win, random) {
   const { body } = win.document;
   const title = win.document.querySelector('h1');
 
+  // Le titre et l'accroche héritent de la couleur du texte.
   const palette = randomPalette(random);
   body.style.background = palette.background;
-  title.style.color = palette.color;
+  body.style.color = palette.color;
 
   const konami = createKonamiTracker(KONAMI, () => {
     body.style.background = awesomeGradient(AWESOME_COLORS);
-    title.style.color = '';
+    body.style.color = '';
     body.classList.add('awesome');
   });
   win.document.addEventListener('keydown', (event) => konami(event.key));
 
   let bouncing = false;
   title.addEventListener('dblclick', async () => {
-    if (bouncing) {
+    if (bouncing || win.matchMedia(REDUCED_MOTION).matches) {
       return;
     }
     bouncing = true;
