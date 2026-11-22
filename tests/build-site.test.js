@@ -29,7 +29,7 @@ const respond = (body, ok = true) =>
 
 function fakeRepo() {
   const root = mkdtempSync(join(tmpdir(), 'site-'));
-  for (const dir of ['js', 'contact', 'prestations', 'realisations', 'carte', 'apropos', 'tests']) {
+  for (const dir of ['js', 'contact', 'prestations', 'points-forts', 'realisations', 'carte', 'apropos', 'tests']) {
     mkdirSync(join(root, dir));
   }
   writeFileSync(join(root, 'CNAME'), 'www.douzeensemble.fr');
@@ -50,6 +50,10 @@ function fakeRepo() {
   writeFileSync(
     join(root, 'prestations', 'index.html'),
     `prestations ${VERSION_PLACEHOLDER}`,
+  );
+  writeFileSync(
+    join(root, 'points-forts', 'index.html'),
+    `points-forts ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(
     join(root, 'carte', 'index.html'),
@@ -82,6 +86,7 @@ describe('SITE_FILES', () => {
       'js',
       'contact',
       'prestations',
+      'points-forts',
       'realisations',
       'carte',
       'apropos',
@@ -96,6 +101,7 @@ describe('PAGES', () => {
       'index.html',
       join('contact', 'index.html'),
       join('prestations', 'index.html'),
+      join('points-forts', 'index.html'),
       REALISATIONS_PAGE,
       join('carte', 'index.html'),
       join('apropos', 'index.html'),
