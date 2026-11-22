@@ -472,15 +472,32 @@ body.awesome .accroche {
    le défilement, plus grand que les autres boutons. */
 .prestations .prestations-contact {
   position: sticky;
-  bottom: 0;
-  margin: 1rem -1.25rem 0;
-  padding: 1rem 1.25rem;
+
+  /* Le remplissage bas de .prestations (2rem) réduit la zone de collage :
+     le décalage négatif ramène le bouton au bord de l'écran. */
+  bottom: -2rem;
+  margin: 1rem -1.25rem -2rem;
+  padding: 1rem 1.25rem 1.5rem;
   background: linear-gradient(transparent, var(--fond) 40%);
 }
 
+/* Petit écran : le bouton se place au-dessus des boutons de préférences,
+   fixés en bas à droite, au lieu de passer dessous. */
+@media (width <= 40rem) {
+  .prestations .prestations-contact {
+    padding-bottom: 5rem;
+  }
+}
+
 .prestations-contact .prestations-cta {
+  background: var(--fond);
   padding: 0.6em 1.6em;
   font-size: 1.3rem;
+}
+
+.prestations-contact .prestations-cta:hover,
+.prestations-contact .prestations-cta:focus-visible {
+  background: color-mix(in srgb, currentcolor 18%, var(--fond));
 }
 
 /* Page introuvable (404.html). */
