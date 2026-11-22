@@ -66,27 +66,25 @@ for (const { nom, chemin } of pages) {
     expect(debordement).toBeLessThanOrEqual(0);
   });
 
-  // Le menu est fixe : il ne crée pas de défilement, mais il peut sortir de
-  // l'écran ou passer sous le bouton de partage. Il doit rester entier.
-  test(`menu entier et sans chevauchement à 320 px sur ${nom}`, async ({ page }) => {
+  // Petit écran : une barre avec un bouton « Menu » qui ouvre la liste. La
+  // barre reste entière, à droite du bouton de partage, et la liste fermée
+  // n'occupe aucune place.
+  test(`menu replié en barre à 320 px sur ${nom}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 640 });
     await page.goto(chemin);
-    const menu = await page.locator('.menu').boundingBox();
+    const bouton = page.locator('.menu-bouton');
     const partage = await page.locator('.partage-ouvrir').boundingBox();
-    expect(menu.x).toBeGreaterThanOrEqual(0);
-    expect(menu.x + menu.width).toBeLessThanOrEqual(320);
-    expect(menu.x).toBeGreaterThanOrEqual(partage.x + partage.width);
-    for (const lien of await page.locator('.menu a').all()) {
-      const { height } = await lien.boundingBox();
-      // un lien ne se replie jamais sur plusieurs lignes
-      expect(height).toBeLessThan(30);
-    }
-    // deux colonnes alignées, pas une ligne de texte qui se replie
-    const colonnes = new Set();
-    for (const lien of await page.locator('.menu a').all()) {
-      colonnes.add(Math.round((await lien.boundingBox()).x));
-    }
-    expect(colonnes.size).toBe(2);
+    const box = await bouton.boundingBox();
+    expect(box.x).toBeGreaterThanOrEqual(partage.x + partage.width);
+    expect(box.x + box.width).toBeLessThanOrEqual(320);
+    expect(box.height).toBeGreaterThanOrEqual(44);
+    await expect(bouton).toHaveAttribute('aria-expanded', 'false');
+    await expect(page.locator('.menu a').first()).toBeHidden();
+    await bouton.click();
+    await expect(bouton).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.locator('.menu a').first()).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.menu a').first()).toBeHidden();
   });
 }
 
