@@ -19,13 +19,6 @@
   --sous-menu: 3.5rem;
 }
 
-/* Petit écran : le menu passe sur quatre lignes (voir .menu ul). */
-@media (width <= 40rem) {
-  :root {
-    --sous-menu: 6.5rem;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --fond: #0f1419;
@@ -203,14 +196,77 @@ body.awesome .accroche {
   white-space: nowrap;
 }
 
-/* Petit écran : deux colonnes alignées (quatre entrées au plus), pour que le
-   menu ne ressemble pas à une phrase qui passe à la ligne. */
+/* Petit écran : une barre pleine largeur avec un bouton « Menu » (créé par
+   js/menu.js) ; la liste se déroule dessous. Sans script, la liste reste
+   affichée. Le fond plein et le z-index gardent le contenu sous la barre. */
+.menu-bouton {
+  display: none;
+}
+
 @media (width <= 40rem) {
+  .menu {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.3rem 0.9rem 0.3rem 3.5rem;
+    border-bottom: 1px solid var(--bordure);
+    background: var(--fond);
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+
+  .menu-bouton {
+    display: block;
+    min-width: 5.5rem;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 1px solid currentcolor;
+    border-radius: 2rem;
+    background: var(--fond);
+    color: var(--texte);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .menu-bouton::after {
+    content: ' ▾';
+  }
+
+  .menu-bouton[aria-expanded='true']::after {
+    content: ' ▴';
+  }
+
   .menu ul {
-    display: grid;
-    grid-template-rows: repeat(4, auto);
-    grid-auto-flow: column;
-    justify-content: end;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: block;
+    max-height: calc(100vh - var(--sous-menu));
+    padding: 0.25rem 1.25rem 0.75rem;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--bordure);
+    background: var(--fond);
+    box-shadow: 0 8px 16px var(--ombre);
+  }
+
+  .menu:has(.menu-bouton[aria-expanded='false']) ul {
+    display: none;
+  }
+
+  .menu li {
+    border-bottom: 1px solid var(--filet);
+  }
+
+  .menu a {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--texte);
+    font-size: 1rem;
   }
 }
 
@@ -746,6 +802,7 @@ body.awesome .accroche {
    28 px minimum, visible au survol et au focus). */
 .partage-ouvrir {
   position: fixed;
+  z-index: 11;
   top: 0.6rem;
   left: 0.9rem;
   display: flex;
