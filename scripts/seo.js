@@ -19,6 +19,11 @@ export const SEO = {
     description:
       'Sites et applications sur mesure, conseil en communication numérique, maintenance et gestion de sites : les prestations de douzeEnsemble.',
   },
+  [join('points-forts', 'index.html')]: {
+    title: 'Points forts · douzeEnsemble',
+    description:
+      'Analyse, adaptivité, sécurité numérique, évolutivité et maintenance : les points forts de douzeEnsemble.',
+  },
   [join('realisations', 'index.html')]: {
     title: 'Réalisations · douzeEnsemble',
     description:
