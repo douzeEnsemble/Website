@@ -22,7 +22,7 @@ export const SEO = {
   [join('points-forts', 'index.html')]: {
     title: 'Points forts · douzeEnsemble',
     description:
-      'Analyse, adaptivité, sécurité numérique, évolutivité et maintenance : les points forts de douzeEnsemble.',
+      'Analyse, adaptivité, sécurité numérique, maintenance et qualité du code : les points forts de douzeEnsemble.',
   },
   [join('realisations', 'index.html')]: {
     title: 'Réalisations · douzeEnsemble',
