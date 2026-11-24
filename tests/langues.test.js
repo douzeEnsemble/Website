@@ -213,12 +213,12 @@ describe.each([['anglais', EN], ['marseillais', MRS]])('pages en %s', (_nom, lan
     expect(html).toContain('href="prestations/"');
   });
 
-  it('la carte de visite garde le nom de la marque et traduit les acteurs du déroulé', () => {
+  it('la carte de visite garde le nom de la marque et garde douzeEnsemble comme acteur du déroulé', () => {
     expect(translateHtml(frenchPage(join('carte', 'index.html')), langue)).toContain(
       '<p class="carte-marque">douze<span>Ensemble</span></p>',
     );
     expect(translateHtml(frenchPage(join('deroule', 'index.html')), langue)).toContain(
-      `<span class="etape-acteur">${traduire('etape-acteur">Moi', langue).replace('etape-acteur">', '')}</span>`,
+      '<span class="etape-acteur">douzeEnsemble</span>',
     );
   });
 });

@@ -143,7 +143,6 @@ export const TEXTES_EN = {
   'Première version, puis allers-retours jusqu’à votre accord.':
     'A first version, then back and forth until you agree.',
   'etape-acteur">Ensemble': 'etape-acteur">Together',
-  'etape-acteur">Moi': 'etape-acteur">Me',
   'etape-acteur">Vous': 'etape-acteur">You',
   'Écoute du besoin, ou immersion dans votre activité pour le découvrir, pendant environ 1 h.':
     'Listening to your need, or immersion in your business to discover it, for about 1 hour.',
@@ -152,7 +151,7 @@ export const TEXTES_EN = {
   'Travail sur vos retours à partir de cette première version ou de ces maquettes.':
     'Working on your feedback from this first version or these mock-ups.',
   'Itérations sur plusieurs versions.': 'Iterations over several versions.',
-  'Validation de la première version finale.': 'Approval of the first final version.',
+  'Validation de la version définitive.': 'Approval of the final version.',
   'Mise en ligne.': 'Going live.',
   'Au quotidien': 'Day to day',
   'Pendant quelques semaines, puis dans la durée.': 'For a few weeks, then for the long run.',
@@ -162,7 +161,7 @@ export const TEXTES_EN = {
   'Une nouvelle idée ? Le cycle repart, en plus court.': 'A new idea? The cycle starts again, shorter.',
   'Amélioration avec de nouvelles idées*.': 'Improvement with new ideas*.',
   'Développement.': 'Development.',
-  'Validation sur l’environnement de tests (recette).': 'Approval on the test environment (staging).',
+  'Validation avant la mise en ligne.': 'Approval before going live.',
   '* Selon la complexité de l’idée et le temps qu’elle demande, toutes les idées ne peuvent pas être retenues ni réalisées dans le même délai.':
     '* Depending on how complex an idea is and how much time it takes, not every idea can be accepted or delivered within the same timeframe.',
 

@@ -143,7 +143,6 @@ export const TEXTES_MRS = {
   'Première version, puis allers-retours jusqu’à votre accord.':
     'Une première version, puis on fait des allers-retours jusqu’à ce que tu dises oui.',
   'etape-acteur">Ensemble': 'etape-acteur">Ensemble, té',
-  'etape-acteur">Moi': 'etape-acteur">Moi',
   'etape-acteur">Vous': 'etape-acteur">Toi',
   'Écoute du besoin, ou immersion dans votre activité pour le découvrir, pendant environ 1 h.':
     'J’écoute ton besoin, ou je viens voir ton métier de près pour le comprendre, pendant à peu près 1 h.',
@@ -152,7 +151,7 @@ export const TEXTES_MRS = {
   'Travail sur vos retours à partir de cette première version ou de ces maquettes.':
     'On travaille sur tes retours à partir de cette première version ou de ces maquettes.',
   'Itérations sur plusieurs versions.': 'On refait ça sur plusieurs versions.',
-  'Validation de la première version finale.': 'Tu valides la première version finale.',
+  'Validation de la version définitive.': 'Tu valides la version définitive.',
   'Mise en ligne.': 'Mise en ligne.',
   'Au quotidien': 'Tous les jours',
   'Pendant quelques semaines, puis dans la durée.': 'Pendant quelques semaines, puis pour longtemps.',
@@ -162,7 +161,7 @@ export const TEXTES_MRS = {
   'Une nouvelle idée ? Le cycle repart, en plus court.': 'Une nouvelle idée ? Ça repart, mais en plus court.',
   'Amélioration avec de nouvelles idées*.': 'On améliore avec de nouvelles idées*.',
   'Développement.': 'Développement.',
-  'Validation sur l’environnement de tests (recette).': 'Tu valides sur l’environnement de tests (la recette).',
+  'Validation avant la mise en ligne.': 'Tu valides avant la mise en ligne.',
   '* Selon la complexité de l’idée et le temps qu’elle demande, toutes les idées ne peuvent pas être retenues ni réalisées dans le même délai.':
     '* Ça dépend de la complexité de l’idée et du temps qu’elle prend : on ne peut pas prendre toutes les idées, ni les faire toutes dans le même délai, peuchère.',
 
