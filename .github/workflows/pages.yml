@@ -1,7 +1,6 @@
 name: Déploiement GitHub Pages
 
-# Construit le site (cartes des réalisations générées depuis l'API GitHub)
-# et le publie sur GitHub Pages une fois la CI verte sur main, et chaque matin.
+# Construit le site et le publie sur GitHub Pages une fois la CI verte sur main.
 # Pas de déclenchement direct sur push : on ne déploie jamais un commit dont
 # lint/tests/mutation/audit ont échoué.
 on:
@@ -9,8 +8,6 @@ on:
     workflows: [CI]
     types: [completed]
     branches: [main]
-  schedule:
-    - cron: '0 5 * * *'
   workflow_dispatch:
 
 permissions:
@@ -47,7 +44,6 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Mentions légales de la page À propos (variables du dépôt)
           SIREN: ${{ vars.SIREN }}
           RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}

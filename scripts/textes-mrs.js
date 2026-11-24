@@ -34,8 +34,8 @@ export const TEXTES_MRS = {
     'L’analyse, l’adaptation, l’accessibilité, la sécurité, tes données respectées, le temps réel, l’hébergement, l’entretien et du code bien propre : les atouts de douzeEnsemble.',
   'De l’écoute de votre besoin à la mise en ligne, puis aux mises à jour et aux évolutions : le déroulé d’un projet avec douzeEnsemble.':
     'De l’écoute de ton besoin jusqu’à la mise en ligne, puis les mises à jour et les nouveautés : comment ça se passe, un projet avec douzeEnsemble.',
-  'Les derniers projets en ligne de douzeEnsemble, avec leur code source sur GitHub.':
-    'Les derniers projets de douzeEnsemble qui sont en ligne, avec leur code source sur GitHub, vé.',
+  'Les applications de douzeEnsemble, rangées par usage : le quotidien, les fêtes, les jeux.':
+    'Les applis de douzeEnsemble, rangées par usage : tous les jours, les fêtes, les jeux.',
   'Contactez Renaud, de douzeEnsemble, pour parler de votre projet de site internet ou d’application.':
     'Appelle Renaud, de douzeEnsemble, pour causer de ton projet de site ou d’appli.',
   'La carte de visite de douzeEnsemble : les coordonnées de Renaud et un QR code vers le site.':
@@ -166,6 +166,28 @@ export const TEXTES_MRS = {
     '* Ça dépend de la complexité de l’idée et du temps qu’elle prend : on ne peut pas prendre toutes les idées, ni les faire toutes dans le même délai, peuchère.',
 
   // Réalisations
+  'Pour le quotidien': 'Pour tous les jours',
+  'Pour les fêtes': 'Pour les fêtes, té',
+  'Compagnons de jeu': 'Les copains de jeu',
+  'Pour essayer': 'Pour goûter',
+  'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
+    'La liste de courses que toute la famille remplit en même temps, sans créer de compte, vé.',
+  'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
+    'Le planning des repas en commun : qui cuisine, ce qu’on a aimé, avec des photos, té.',
+  'Des compteurs pour tout compter, même sans connexion, à garder sur son téléphone.':
+    'Des compteurs pour tout compter, même sans réseau, à garder sur son téléphone.',
+  'La liste de cadeaux de Noël partagée : qui offre quoi, à quel prix, sans doublon.':
+    'La liste des cadeaux de Noël en commun : qui offre quoi, à quel prix, sans doublon, peuchère.',
+  'Une liste de souhaits à partager, où les invités réservent un cadeau en secret.':
+    'Une liste d’envies à partager, où les invités réservent un cadeau en cachette.',
+  'Le suivi de sa collection de Pokémon : album, Pokédex et formes alternatives.':
+    'Pour suivre sa collection de Pokémon : l’album, le Pokédex et les formes alternatives.',
+  'La carte interactive d’un monde Minecraft, avec ses lieux et ses trois dimensions.':
+    'La carte interactive d’un monde Minecraft, avec ses coins et ses trois dimensions.',
+  'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
+    'Un bingo avec tes propres mots, des grilles à imprimer et le gagnant repéré tout seul.',
+  'Une vitrine de petites applications à tester : roue de tirage, sondage, stock, réservation de repas.':
+    'Une vitrine de petites applis à essayer : roue de tirage, sondage, stock, réservation de repas.',
   'Les projets sur GitHub': 'Les projets sur GitHub',
   'Voir le site': 'Va voir le site',
 

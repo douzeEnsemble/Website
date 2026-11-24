@@ -7,8 +7,7 @@ import { SEO_MARKER, sitemapXml } from '../scripts/seo.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { MARKER_END, MARKER_START } from '../js/realisations.js';
+import { beforeEach, describe, expect, it } from 'vitest';
 import {
   PAGES,
   REALISATIONS_PAGE,
@@ -17,16 +16,6 @@ import {
   buildSite,
   injectVersion,
 } from '../scripts/build-site.js';
-
-const project = {
-  name: 'site',
-  homepage: 'https://site.example',
-  fork: false,
-  archived: false,
-};
-
-const respond = (body, ok = true) =>
-  vi.fn().mockResolvedValue({ ok, status: 500, json: async () => body });
 
 function fakeRepo() {
   const root = mkdtempSync(join(tmpdir(), 'site-'));
@@ -72,7 +61,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'package.json'), '{}');
   writeFileSync(
     join(root, REALISATIONS_PAGE),
-    `<ul>${MARKER_START}<li>repli</li>${MARKER_END}</ul>${VERSION_PLACEHOLDER}`,
+    `realisations ${VERSION_PLACEHOLDER}`,
   );
   return root;
 }
@@ -142,7 +131,6 @@ describe('buildSite', () => {
     await buildSite({
       root,
       out,
-      fetchFn: respond([]),
       version: 'v1',
       dates: { 'index.html': '2026-11-24' },
     });
@@ -151,17 +139,12 @@ describe('buildSite', () => {
     );
   });
 
-  it('copie le site et y écrit les cartes', async () => {
-    const fetchFn = respond([project]);
-    const projects = await buildSite({
+  it('copie le site et y écrit les pages', async () => {
+    await buildSite({
       root,
       out,
-      fetchFn,
-      token: 'jeton',
       version: 'v1.2.3',
     });
-    expect(projects).toEqual([project]);
-    expect(fetchFn.mock.calls[0][1].headers.Authorization).toBe('Bearer jeton');
     expect(readFileSync(join(out, 'CNAME'), 'utf8')).toBe('www.douzeensemble.fr');
     const accueil = readFileSync(join(out, 'index.html'), 'utf8');
     expect(accueil).toContain(
@@ -188,22 +171,17 @@ describe('buildSite', () => {
     expect(readFileSync(join(out, 'prestations', 'index.html'), 'utf8')).toBe(
       'prestations <span class="app-version">v1.2.3</span>',
     );
-    const page = readFileSync(join(out, REALISATIONS_PAGE), 'utf8');
-    expect(page).toContain('<span class="app-version">v1.2.3</span>');
-    expect(page).toContain('<strong class="carte-nom">site</strong>');
-    expect(page).not.toContain('repli');
+    expect(readFileSync(join(out, REALISATIONS_PAGE), 'utf8')).toBe(
+      'realisations <span class="app-version">v1.2.3</span>',
+    );
     expect(existsSync(join(out, 'tests'))).toBe(false);
     expect(existsSync(join(out, 'package.json'))).toBe(false);
-    expect(readFileSync(join(root, REALISATIONS_PAGE), 'utf8')).toContain(
-      'repli',
-    );
   });
 
   it('écrit les mentions légales dans la page À propos', async () => {
     await buildSite({
       root,
       out,
-      fetchFn: respond([project]),
       env: { SIREN: '123456789', ADRESSE: '1 rue <A>' },
     });
     const page = readFileSync(join(out, 'apropos', 'index.html'), 'utf8');
@@ -216,7 +194,6 @@ describe('buildSite', () => {
     await buildSite({
       root,
       out,
-      fetchFn: respond([project]),
       version: 'v1.2.3',
       env: { SIREN: '123456789' },
     });
@@ -238,16 +215,12 @@ describe('buildSite', () => {
     expect(contact).not.toContain(LANGUES_MARKER);
   });
 
-  it('traduit les cartes des réalisations et les mentions légales', async () => {
+  it('traduit les mentions légales', async () => {
     await buildSite({
       root,
       out,
-      fetchFn: respond([project]),
       env: { SIREN: '123456789', ADRESSE: '1 rue' },
     });
-    const realisations = readFileSync(join(out, 'en', REALISATIONS_PAGE), 'utf8');
-    expect(realisations).toContain('>Visit the site<');
-    expect(readFileSync(join(out, REALISATIONS_PAGE), 'utf8')).toContain('>Voir le site<');
     const apropos = readFileSync(join(out, 'en', 'apropos', 'index.html'), 'utf8');
     expect(apropos).toContain('<dt>Address</dt><dd>1 rue</dd>');
     expect(apropos).toContain('Entry in the Annuaire des Entreprises');
@@ -255,25 +228,19 @@ describe('buildSite', () => {
 
   it('vide le dossier de sortie avant de construire', async () => {
     mkdirSync(join(out, 'ancien'), { recursive: true });
-    await buildSite({ root, out, fetchFn: respond([project]) });
+    await buildSite({ root, out });
     expect(existsSync(join(out, 'ancien'))).toBe(false);
   });
 
   it('place une sortie relative dans la racine', async () => {
-    await buildSite({ root, out: 'sortie', fetchFn: respond([project]) });
+    await buildSite({ root, out: 'sortie' });
     expect(existsSync(join(root, 'sortie', 'index.html'))).toBe(true);
   });
 
   it('crée les dossiers parents de la sortie', async () => {
     out = join(root, 'a', 'b');
-    await buildSite({ root, out, fetchFn: respond([project]) });
+    await buildSite({ root, out });
     expect(existsSync(join(out, 'index.html'))).toBe(true);
   });
 
-  it('n’écrit rien si GitHub ne répond pas', async () => {
-    await expect(
-      buildSite({ root, out, fetchFn: respond([], false) }),
-    ).rejects.toThrow('API GitHub : 500');
-    expect(existsSync(out)).toBe(false);
-  });
 });
