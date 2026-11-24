@@ -394,18 +394,32 @@ body.awesome .accroche {
   text-align: center;
 }
 
+/* Catégories de projets, chacune avec sa grille de cartes. */
+.categorie {
+  margin-top: 2.5rem;
+}
+
+.categorie h2 {
+  margin: 0;
+  text-align: left;
+}
+
+.realisations-autres {
+  margin: 2.5rem 0 0;
+}
+
 /* Cartes des projets : style sobre, les couleurs restent pour le Konami code. */
-#projets {
+.projets {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1.25rem;
-  margin: 2rem 0 0;
+  margin: 1rem 0 0;
   padding: 0;
   list-style: none;
   text-align: left;
 }
 
-#projets .carte-projet {
+.projets .carte-projet {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -420,7 +434,7 @@ body.awesome .accroche {
   transition: box-shadow 0.2s;
 }
 
-#projets .carte-projet:hover {
+.projets .carte-projet:hover {
   box-shadow: 0 0.5rem 1.25rem var(--ombre);
 }
 
@@ -532,22 +546,22 @@ body.awesome .accroche {
 /* Une teinte par carte, en rotation (--k) : le fond, les tags et le numéro
    en dérivent, dans les thèmes clair et sombre. */
 .prestation:nth-child(4n + 1),
-#projets li:nth-child(4n + 1) {
+.projets li:nth-child(4n + 1) {
   --k: #fe8a18;
 }
 
 .prestation:nth-child(4n + 2),
-#projets li:nth-child(4n + 2) {
+.projets li:nth-child(4n + 2) {
   --k: #2e86de;
 }
 
 .prestation:nth-child(4n + 3),
-#projets li:nth-child(4n + 3) {
+.projets li:nth-child(4n + 3) {
   --k: #17a589;
 }
 
 .prestation:nth-child(4n),
-#projets li:nth-child(4n) {
+.projets li:nth-child(4n) {
   --k: #d63384;
 }
 
@@ -1002,8 +1016,8 @@ body.awesome .accroche {
     transition-duration: 0.01ms !important;
   }
 
-  #projets a:hover,
-  #projets a:focus-visible {
+  .projets a:hover,
+  .projets a:focus-visible {
     transform: none;
   }
 }
@@ -1022,8 +1036,8 @@ body.awesome .accroche {
   transition-duration: 0.01ms !important;
 }
 
-:root[data-reduce-motion] #projets a:hover,
-:root[data-reduce-motion] #projets a:focus-visible {
+:root[data-reduce-motion] .projets a:hover,
+:root[data-reduce-motion] .projets a:focus-visible {
   transform: none;
 }
 

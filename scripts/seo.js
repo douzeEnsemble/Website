@@ -33,7 +33,7 @@ export const SEO = {
   [join('realisations', 'index.html')]: {
     title: 'Réalisations · douzeEnsemble',
     description:
-      'Les derniers projets en ligne de douzeEnsemble, avec leur code source sur GitHub.',
+      'Les applications de douzeEnsemble, rangées par usage : le quotidien, les fêtes, les jeux.',
   },
   [join('contact', 'index.html')]: {
     title: 'Contact · douzeEnsemble',

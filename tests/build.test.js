@@ -10,8 +10,6 @@ vi.mock('../.github/scripts/app-version.mjs', () => ({
 }));
 
 const repoRoot = process.cwd();
-let fetchFn;
-let log;
 
 // Copie du dépôt dans un dossier temporaire, pour ne rien écrire ici.
 function fakeCheckout() {
@@ -24,34 +22,22 @@ function fakeCheckout() {
 
 beforeEach(() => {
   vi.resetModules();
-  fetchFn = vi.fn().mockResolvedValue({
-    ok: true,
-    json: async () => [
-      { name: 'site', homepage: 'https://site.example', fork: false },
-    ],
-  });
-  vi.stubGlobal('fetch', fetchFn);
-  vi.stubEnv('GITHUB_TOKEN', 'jeton');
-  log = vi.spyOn(console, 'log').mockImplementation(() => {});
 });
 
 afterEach(() => {
   vi.restoreAllMocks();
-  vi.unstubAllGlobals();
   vi.unstubAllEnvs();
 });
 
-it('construit le site dans _site par défaut, avec le jeton GitHub', async () => {
+it('construit le site dans _site par défaut', async () => {
   const dir = fakeCheckout();
   vi.spyOn(process, 'cwd').mockReturnValue(dir);
   vi.stubEnv('SITE_OUT', undefined);
   await import('../scripts/build.js');
-  expect(fetchFn.mock.calls[0][1].headers.Authorization).toBe('Bearer jeton');
   const page = readFileSync(join(dir, '_site', 'realisations', 'index.html'));
-  expect(page.toString()).toContain('carte-nom">site<');
+  expect(page.toString()).toContain('carte-nom">Pokenini<');
   const accueil = readFileSync(join(dir, '_site', 'index.html'));
   expect(accueil.toString()).toContain('<span class="app-version">v9.9.9</span>');
-  expect(log).toHaveBeenCalledWith('1 réalisations générées');
 });
 
 it('construit le site dans SITE_OUT', async () => {

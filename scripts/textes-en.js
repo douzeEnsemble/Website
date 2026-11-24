@@ -34,8 +34,8 @@ export const TEXTES_EN = {
     'Analysis, adaptability, accessibility, security, data privacy, real time, hosting, maintenance and code quality: the strengths of douzeEnsemble.',
   'De l’écoute de votre besoin à la mise en ligne, puis aux mises à jour et aux évolutions : le déroulé d’un projet avec douzeEnsemble.':
     'From listening to your needs to going live, then updates and new features: how a project unfolds with douzeEnsemble.',
-  'Les derniers projets en ligne de douzeEnsemble, avec leur code source sur GitHub.':
-    'The latest projects online by douzeEnsemble, with their source code on GitHub.',
+  'Les applications de douzeEnsemble, rangées par usage : le quotidien, les fêtes, les jeux.':
+    'The douzeEnsemble apps, grouped by use: everyday life, the holidays, games.',
   'Contactez Renaud, de douzeEnsemble, pour parler de votre projet de site internet ou d’application.':
     'Get in touch with Renaud, from douzeEnsemble, to talk about your website or application project.',
   'La carte de visite de douzeEnsemble : les coordonnées de Renaud et un QR code vers le site.':
@@ -166,6 +166,28 @@ export const TEXTES_EN = {
     '* Depending on how complex an idea is and how much time it takes, not every idea can be accepted or delivered within the same timeframe.',
 
   // Réalisations
+  'Pour le quotidien': 'For everyday life',
+  'Pour les fêtes': 'For the holidays',
+  'Compagnons de jeu': 'Gaming companions',
+  'Pour essayer': 'To try out',
+  'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
+    'The shopping list the whole family fills in at the same time, with no account to create.',
+  'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
+    'The shared meal planner: who cooks, what everyone liked, with photos.',
+  'Des compteurs pour tout compter, même sans connexion, à garder sur son téléphone.':
+    'Counters for counting anything, even offline, to keep on your phone.',
+  'La liste de cadeaux de Noël partagée : qui offre quoi, à quel prix, sans doublon.':
+    'The shared Christmas gift list: who gives what, at what price, with no duplicates.',
+  'Une liste de souhaits à partager, où les invités réservent un cadeau en secret.':
+    'A wish list to share, where guests secretly reserve a gift.',
+  'Le suivi de sa collection de Pokémon : album, Pokédex et formes alternatives.':
+    'Keep track of your Pokémon collection: album, Pokédex and alternate forms.',
+  'La carte interactive d’un monde Minecraft, avec ses lieux et ses trois dimensions.':
+    'The interactive map of a Minecraft world, with its places and its three dimensions.',
+  'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
+    'A bingo with your own words, printable grids and automatic detection of the winner.',
+  'Une vitrine de petites applications à tester : roue de tirage, sondage, stock, réservation de repas.':
+    'A showcase of small apps to try: prize wheel, poll, stock, meal booking.',
   'Les projets sur GitHub': 'Projects on GitHub',
   'Voir le site': 'Visit the site',
 

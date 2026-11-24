@@ -1,7 +1,6 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
-import { fetchProjects, injectProjects } from '../js/realisations.js';
-import { LANGUES, injectLangues, traduire, translateHtml } from './langues.js';
+import { LANGUES, injectLangues, translateHtml } from './langues.js';
 import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
 import { injectPreferences } from './preferences.js';
@@ -54,18 +53,14 @@ export function injectVersion(html, version) {
 
 // Copie le site dans `output` (relatif à `root`), puis écrit chaque page dans
 // chaque langue (français à la racine, autres langues dans leur dossier) avec
-// les cartes des réalisations, les balises de référencement, le plan du site et
-// le numéro de version.
+// les balises de référencement, le plan du site et le numéro de version.
 export async function buildSite({
   root,
   out: output,
-  fetchFn,
-  token,
   version,
   env = {},
   dates = {},
 }) {
-  const projects = await fetchProjects(fetchFn, token);
   const out = resolve(root, output);
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
@@ -91,14 +86,10 @@ export async function buildSite({
         ),
         langue,
       );
-      if (file === REALISATIONS_PAGE) {
-        html = injectProjects(html, projects, traduire('Voir le site', langue));
-      }
       html = injectMentions(html, env, langue);
       mkdirSync(dirname(target), { recursive: true });
       writeFileSync(target, injectVersion(html, version));
     }
   }
   writeFileSync(join(out, 'sitemap.xml'), sitemapXml(dates));
-  return projects;
 }

@@ -59,10 +59,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       # Les tests portent sur le site construit, pas sur les sources (CI-14).
-      # Les cartes des réalisations viennent de l'API GitHub.
       - run: npm run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Mentions légales de la page À propos (variables du dépôt)
           SIREN: ${{ vars.SIREN }}
           RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}
@@ -128,11 +126,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      # Même build que le déploiement (les cartes des réalisations viennent de
-      # l'API GitHub) : une erreur de build se voit avant le merge.
+      # Même build que le déploiement : une erreur de build se voit avant le merge.
       - run: npm run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Mentions légales de la page À propos (variables du dépôt)
           SIREN: ${{ vars.SIREN }}
           RAISON_SOCIALE: ${{ vars.RAISON_SOCIALE }}

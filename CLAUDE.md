@@ -7,19 +7,19 @@ Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. P
 - `npm run lint` : ESLint (`lint:js`), Stylelint (`lint:css`), html-validate (`lint:html`) et contrôle d'architecture dependency-cruiser (`lint:arch`).
 - `npm test` : Vitest sous jsdom avec couverture (seuil 100 % sur `js/` et `scripts/`).
 - `npm run test:mutation` : Stryker, seuil 100 %.
-- `npm run build` : `scripts/build.js` génère `_site/` (fichiers publiés + liste des réalisations).
-- `npm run test:e2e` : Playwright (axe-core, reflow à 320 px) contre le site construit `_site/`, servi par `python3 -m http.server` (CI-14) ; lancer `GITHUB_TOKEN=$(gh auth token) npm run build` avant. Le menu et la version, discrets par choix de design, sont exemptés du contraste (voir `e2e/a11y.spec.js`).
+- `npm run build` : `scripts/build.js` génère `_site/` (fichiers publiés, pages traduites).
+- `npm run test:e2e` : Playwright (axe-core, reflow à 320 px) contre le site construit `_site/`, servi par `python3 -m http.server` (CI-14) ; lancer `npm run build` avant. Le menu et la version, discrets par choix de design, sont exemptés du contraste (voir `e2e/a11y.spec.js`).
 - Lancer un seul test : `npx vitest run tests/site.test.js -t "<nom du test>"`.
 
 ## Architecture
 
-- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js`, `partage-main.js` sont les points d'entrée) ; `site.js`, `realisations.js` et `carte.js` (rotation 3D de la carte de visite) et `partage.js` (fenêtre de partage) portent la logique.
+- `js/` : modules ES chargés par les pages (`main.js`, `contact-main.js`, `carte-main.js`, `partage-main.js` sont les points d'entrée) ; `site.js`, `carte.js` (rotation 3D de la carte de visite) et `partage.js` (fenêtre de partage) portent la logique.
 - `scripts/partage.js` génère à la construction le QR code (SVG, dépendance `qrcode-generator`) et la fenêtre de partage de chaque page, aux marqueurs `<!--PARTAGE-->` et `<!--QR-ACCUEIL-->` des pages HTML.
 - `scripts/preferences.js` génère au build, au marqueur `<!--PREFERENCES-->` (premier élément du `<body>` de chaque page, 404 comprise), le groupe de boutons thème Auto/Clair/Sombre + accessibilité (bas à droite) et son dialogue (A11Y-11) ; `js/preferences.js` applique les choix (`data-theme`, `data-large-text`, `data-high-contrast`, `data-reduce-motion` sur `<html>`, lus par `style.css`) et les garde dans `localStorage`.
 - `scripts/seo.js` remplit au build le marqueur `<!--SEO-->` de chaque page (description, adresse canonique, Open Graph, icônes) depuis la table `SEO`, dont le titre doit rester identique à la balise `<title>` de la page (vérifié par les tests), et écrit `sitemap.xml` (avec `lastmod` tiré du dernier commit de chaque page, `scripts/lastmod.js`) ; elle ajoute aussi le JSON-LD (WebSite sur l’accueil, fil d’Ariane ailleurs). Une nouvelle page s'ajoute à `SEO`, à `PAGES`, à `lint:html`, à `e2e/a11y.spec.js` et aux dictionnaires de langue.
 - `scripts/langues.js` porte le multilingue : le français est la langue source des pages, `build-site.js` écrit chaque page en français (racine), en anglais (`en/`) et en marseillais (`mrs/`) en traduisant le HTML à partir des dictionnaires `scripts/textes-en.js` et `scripts/textes-mrs.js` (texte français exact → texte traduit ; une clé peut commencer après un guillemet pour viser un seul élément, voir `etape-acteur">Ensemble`). Un texte ajouté à une page doit l'être dans les deux dictionnaires, sinon `tests/langues.test.js` échoue (texte non traduit, clé inutile, clés différentes) ; les dictionnaires sont exclus de la mutation (données). Les chaînes assemblées par les scripts passent par `traduire()`, celles que lit `js/` sont posées en `data-*` sur le HTML (`data-copie`, `data-label-*`), jamais écrites en dur dans `js/`. Le sélecteur de langue est au marqueur `<!--LANGUES-->` du pied de page ; la page 404 reste en français seule (GitHub Pages n'en sert qu'une). `seo.js` écrit canonique, `hreflang` et plan du site par langue.
 - `scripts/mentions.js` remplit au build le marqueur `<!--MENTIONS-->` de `apropos/` depuis les variables GitHub `SIREN` (9 chiffres, sinon omis), `RAISON_SOCIALE`, `FORME_JURIDIQUE`, `ADRESSE`, `DIRECTEUR_PUBLICATION` (variables du dépôt, pas des secrets : ces données sont publiques ; une variable vide masque sa ligne). Les valeurs sont échappées.
-- `scripts/build-site.js` copie les fichiers publiés (`SITE_FILES`) et injecte les réalisations récupérées via l'API GitHub au moment du build ; `scripts/build.js` le lance.
+- `scripts/build-site.js` copie les fichiers publiés (`SITE_FILES`) et écrit les pages dans chaque langue ; la liste des réalisations est écrite en dur dans `realisations/index.html`, rangée par catégorie (un projet ajouté s'y écrit et se traduit dans les deux dictionnaires) ; `scripts/build.js` le lance.
 - Détail des règles de dépendances : `doc/architecture.md`.
 
 ## Philosophie de test
@@ -30,7 +30,7 @@ Tout `js/` et `scripts/` est couvert à 100 % et muté à 100 % ; un mutant équ
 
 - `ci.yml` : Linter, Tests unitaires + couverture, Mutation testing, Audit des dépendances, Build de production ; `codeql.yml` et `audit.yml` en complément.
 - La mutation (un seul job) ne tourne que la nuit (2 h UTC) et en `workflow_dispatch` ; elle est sautée sur PR et push, le check requis passe donc sans elle (MUT-10). Si elle échoue la nuit, corriger dans la PR suivante (GIT-04). `build` garde `if: !failure() && !cancelled()` sans quoi il serait sauté avec elle.
-- `pages.yml` déploie sur GitHub Pages quand la CI réussit sur `main`, et chaque jour (les réalisations viennent de l'API GitHub).
+- `pages.yml` déploie sur GitHub Pages quand la CI réussit sur `main`.
 - Ruleset de `main` : `.github/rulesets/main.json`.
 
 ## Documentation, versioning and architecture rules
