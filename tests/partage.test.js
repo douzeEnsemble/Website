@@ -66,7 +66,7 @@ describe('init', () => {
     document.body.innerHTML =
       (built
         ? `<button class="partage-ouvrir">Partager</button>
-           <dialog class="partage">
+           <dialog class="partage" data-copie="Copié !" data-selection="Sélectionné !" data-echec="Raté !">
              <input class="partage-url" value="${URL}">
              <button class="partage-copier">Copier</button>
              <button class="partage-partager" hidden>Partager</button>
@@ -139,7 +139,7 @@ describe('init', () => {
     $('.partage-copier').click();
     await flush();
     expect(nav.clipboard.writeText).toHaveBeenCalledWith(URL);
-    expect($('.partage-etat').textContent).toBe('Lien copié.');
+    expect($('.partage-etat').textContent).toBe('Copié !');
   });
 
   it('sélectionne le lien quand la copie est refusée', async () => {
@@ -149,9 +149,7 @@ describe('init', () => {
     $('.partage-copier').click();
     await flush();
     expect(select).toHaveBeenCalledTimes(1);
-    expect($('.partage-etat').textContent).toBe(
-      'Lien sélectionné : copiez-le avec Ctrl+C.',
-    );
+    expect($('.partage-etat').textContent).toBe('Sélectionné !');
   });
 
   it('sélectionne le lien quand le presse-papiers n’existe pas', async () => {
@@ -159,7 +157,7 @@ describe('init', () => {
     mount();
     $('.partage-copier').click();
     await flush();
-    expect($('.partage-etat').textContent).toMatch(/^Lien sélectionné/);
+    expect($('.partage-etat').textContent).toBe('Sélectionné !');
   });
 
   it('garde le bouton Partager caché sans partage natif', () => {
@@ -203,9 +201,7 @@ describe('init', () => {
       mount();
       $('.partage-partager').click();
       await flush();
-      expect($('.partage-etat').textContent).toBe(
-        'Le partage a échoué : copiez le lien.',
-      );
+      expect($('.partage-etat').textContent).toBe('Raté !');
     });
   });
 });

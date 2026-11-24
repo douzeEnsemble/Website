@@ -1,14 +1,10 @@
 // Préférences d'affichage (A11Y-11) : thème Auto / Clair / Sombre et trois
 // réglages d'accessibilité, mémorisés dans le navigateur et appliqués par des
 // attributs sur <html> que lit style.css. Le HTML (groupe de boutons et
-// dialogue) est écrit à la construction par scripts/preferences.js.
+// dialogue) est écrit à la construction par scripts/preferences.js, qui porte
+// aussi, traduits, les libellés du bouton de thème (`data-label-*`).
 export const STORAGE_KEY = 'douzeensemble:preferences';
 export const THEMES = ['auto', 'light', 'dark'];
-export const THEME_LABELS = {
-  auto: 'Thème : automatique',
-  light: 'Thème : clair',
-  dark: 'Thème : sombre',
-};
 export const REDUCE_MOTION_ATTRIBUTE = 'data-reduce-motion';
 export const FLAG_ATTRIBUTES = {
   largeText: 'data-large-text',
@@ -69,7 +65,10 @@ export function init(win, doc) {
 
   const showTheme = () => {
     themeButton.dataset.theme = preferences.theme;
-    themeButton.setAttribute('aria-label', THEME_LABELS[preferences.theme]);
+    themeButton.setAttribute(
+      'aria-label',
+      themeButton.getAttribute(`data-label-${preferences.theme}`),
+    );
   };
   const update = () => {
     applyPreferences(root, preferences);

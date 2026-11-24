@@ -241,3 +241,17 @@ describe('fetchProjects', () => {
     );
   });
 });
+
+describe('libellé du lien', () => {
+  const repo = { name: 'site', homepage: 'https://site.example' };
+
+  it('prend le libellé donné', () => {
+    expect(projectCard(repo, 'Visit')).toContain('href="https://site.example">Visit<span');
+    expect(injectProjects(`${MARKER_START}${MARKER_END}`, [repo], 'Visit')).toContain('>Visit<span');
+  });
+
+  it('garde « Voir le site » par défaut', () => {
+    expect(projectCard(repo)).toContain('>Voir le site<span');
+    expect(injectProjects(`${MARKER_START}${MARKER_END}`, [repo])).toContain('>Voir le site<span');
+  });
+});

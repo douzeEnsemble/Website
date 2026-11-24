@@ -66,3 +66,14 @@ describe('injectPreferences', () => {
     expect(injectPreferences('rien')).toBe('rien');
   });
 });
+
+describe('libellés du bouton de thème', () => {
+  it('porte un libellé par thème, pour le script', () => {
+    const button = new DOMParser()
+      .parseFromString(preferencesHtml(), 'text/html')
+      .querySelector('.preferences-theme');
+    expect(button.getAttribute('data-label-auto')).toBe('Thème : automatique');
+    expect(button.getAttribute('data-label-light')).toBe('Thème : clair');
+    expect(button.getAttribute('data-label-dark')).toBe('Thème : sombre');
+  });
+});

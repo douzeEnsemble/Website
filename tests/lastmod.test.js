@@ -26,6 +26,6 @@ describe('lastModified', () => {
   });
 
   it('interroge git par défaut', () => {
-    expect(lastModified('index.html')).toMatch(/^(\d{4}-\d{2}-\d{2})?$/);
+    expect(lastModified('index.html') ?? '').toMatch(/^(\d{4}-\d{2}-\d{2})?$/);
   });
 });

@@ -1,3 +1,5 @@
+import { LANGUE_PAR_DEFAUT, traduire } from './langues.js';
+
 export const MENTIONS_MARKER = '<!--MENTIONS-->';
 
 const ANNUAIRE_URL = 'https://annuaire-entreprises.data.gouv.fr/entreprise/';
@@ -25,24 +27,26 @@ export function escapeHtml(text) {
 
 const row = (label, value) => `<dt>${label}</dt><dd>${value}</dd>`;
 
-export function mentionsHtml(env) {
+// Les intitulés sont traduits ; les valeurs, qui viennent de l'environnement,
+// restent telles quelles.
+export function mentionsHtml(env, langue = LANGUE_PAR_DEFAUT) {
   const rows = [];
   for (const [name, label] of MENTIONS_FIELDS) {
     const value = (env[name] ?? '').trim();
-    if (value) rows.push(row(label, escapeHtml(value)));
+    if (value) rows.push(row(traduire(label, langue), escapeHtml(value)));
   }
   const siren = (env.SIREN ?? '').trim();
   if (SIREN_FORMAT.test(siren)) {
     rows.push(
       row(
         'SIREN',
-        `${siren} · <a class="mentions-lien" href="${ANNUAIRE_URL}${siren}" target="_blank" rel="noopener noreferrer">Fiche sur l’Annuaire des Entreprises<span class="invisible"> (nouvel onglet)</span> ↗</a>`,
+        `${siren} · <a class="mentions-lien" href="${ANNUAIRE_URL}${siren}" target="_blank" rel="noopener noreferrer">${traduire('Fiche sur l’Annuaire des Entreprises', langue)}<span class="invisible">${traduire(' (nouvel onglet)', langue)}</span> ↗</a>`,
       ),
     );
   }
   return rows.join('\n        ');
 }
 
-export function injectMentions(html, env) {
-  return html.replace(MENTIONS_MARKER, () => mentionsHtml(env));
+export function injectMentions(html, env, langue = LANGUE_PAR_DEFAUT) {
+  return html.replace(MENTIONS_MARKER, () => mentionsHtml(env, langue));
 }

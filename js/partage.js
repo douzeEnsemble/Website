@@ -1,5 +1,6 @@
 // Fenêtre de partage : le QR code et le lien sont écrits à la construction
-// (scripts/partage.js) ; ici, seulement l'ouverture, la copie et le partage.
+// (scripts/partage.js, qui porte aussi les messages, traduits, en `data-*`) ;
+// ici, seulement l'ouverture, la copie et le partage.
 export const DEFAULT_COLORS = { background: '#fff', color: '#05131d' };
 export const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 export const DARK_TEXT = '#05131d';
@@ -52,10 +53,10 @@ export function init(win, doc) {
   dialog.querySelector('.partage-copier').addEventListener('click', async () => {
     try {
       await win.navigator.clipboard.writeText(input.value);
-      status.textContent = 'Lien copié.';
+      status.textContent = dialog.dataset.copie;
     } catch {
       input.select();
-      status.textContent = 'Lien sélectionné : copiez-le avec Ctrl+C.';
+      status.textContent = dialog.dataset.selection;
     }
   });
 
@@ -66,7 +67,7 @@ export function init(win, doc) {
         await win.navigator.share({ title: doc.title, url: input.value });
       } catch (error) {
         if (error.name !== 'AbortError') {
-          status.textContent = 'Le partage a échoué : copiez le lien.';
+          status.textContent = dialog.dataset.echec;
         }
       }
     });

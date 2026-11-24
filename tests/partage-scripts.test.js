@@ -1,4 +1,6 @@
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { LANGUES } from '../scripts/langues.js';
 import {
   PARTAGE_MARKER,
   QR_ACCUEIL_MARKER,
@@ -66,7 +68,9 @@ describe('partageHtml', () => {
 
   it('contient le bouton, la fenêtre native et le lien à copier', () => {
     expect(html).toContain('class="partage-ouvrir" aria-label="Partager cette page"');
-    expect(html).toContain('<dialog class="partage" aria-labelledby="partage-titre">');
+    expect(html).toContain(
+      '<dialog class="partage" aria-labelledby="partage-titre" data-copie="Lien copié." data-selection="Lien sélectionné : copiez-le avec Ctrl+C." data-echec="Le partage a échoué : copiez le lien.">',
+    );
     expect(html).toContain('<h2 id="partage-titre" class="invisible">Partager cette page</h2>');
     expect(html).toContain(
       'value="https://www.douzeensemble.fr/contact/" aria-label="Adresse de la page"',
@@ -118,5 +122,35 @@ describe('injectPartage', () => {
 
   it('laisse intacte une page sans marqueur', () => {
     expect(injectPartage('<p>x $& y</p>', 'index.html')).toBe('<p>x $& y</p>');
+  });
+});
+
+describe('partage dans une autre langue', () => {
+  const contact = join('contact', 'index.html');
+
+  it('donne l’adresse de la page dans sa langue', () => {
+    expect(pageUrl(contact, LANGUES[1])).toBe('https://www.douzeensemble.fr/en/contact/');
+    expect(pageUrl('index.html', LANGUES[2])).toBe('https://www.douzeensemble.fr/mrs/');
+    expect(pageUrl(contact, LANGUES[0])).toBe('https://www.douzeensemble.fr/contact/');
+  });
+
+  it('traduit l’étiquette du QR code, sans toucher à l’adresse', () => {
+    const html = partageHtml('https://www.douzeensemble.fr/en/contact/', LANGUES[1]);
+    expect(html).toContain('aria-label="QR code of https://www.douzeensemble.fr/en/contact/"');
+    expect(html).toContain('value="https://www.douzeensemble.fr/en/contact/"');
+  });
+
+  it('pointe le QR de la carte vers l’accueil de la langue', () => {
+    expect(qrAccueilHtml(LANGUES[1])).toBe(
+      `<div class="carte-qr">${qrSvg('https://www.douzeensemble.fr/en/', 'QR code vers la page d’accueil')}</div>`,
+    );
+    expect(qrAccueilHtml()).toBe(qrAccueilHtml(LANGUES[0]));
+  });
+
+  it('injecte la page dans la langue demandée', () => {
+    const html = injectPartage(`${PARTAGE_MARKER}${QR_ACCUEIL_MARKER}`, contact, LANGUES[2]);
+    expect(html).toContain('value="https://www.douzeensemble.fr/mrs/contact/"');
+    expect(html).toContain(qrAccueilHtml(LANGUES[2]));
+    expect(html).toContain('aria-label="QR code de https://www.douzeensemble.fr/mrs/contact/"');
   });
 });

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PAGES } from '../scripts/build-site.js';
+import { LANGUES } from '../scripts/langues.js';
 import {
   IMAGE_ALT,
   IMAGE_URL,
@@ -46,6 +47,10 @@ describe('seoHtml', () => {
   it('écrit les balises de l’accueil', () => {
     expect(seoHtml('index.html')).toBe(`<meta name="description" content="${SEO['index.html'].description}">
     <link rel="canonical" href="https://www.douzeensemble.fr/">
+    <link rel="alternate" hreflang="fr" href="https://www.douzeensemble.fr/">
+    <link rel="alternate" hreflang="en" href="https://www.douzeensemble.fr/en/">
+    <link rel="alternate" hreflang="fr-FR-x-mrs" href="https://www.douzeensemble.fr/mrs/">
+    <link rel="alternate" hreflang="x-default" href="https://www.douzeensemble.fr/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="douzeEnsemble">
@@ -60,6 +65,27 @@ describe('seoHtml', () => {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"douzeEnsemble","url":"https://www.douzeensemble.fr/","inLanguage":"fr"}</script>`);
+  });
+
+  it('écrit l’adresse, la langue et les versions de la page dans chaque langue', () => {
+    const html = seoHtml(join('contact', 'index.html'), LANGUES[1]);
+    expect(html).toContain(
+      '<link rel="canonical" href="https://www.douzeensemble.fr/en/contact/">',
+    );
+    expect(html).toContain('<meta property="og:locale" content="en_GB">');
+    expect(html).toContain(
+      '<meta property="og:url" content="https://www.douzeensemble.fr/en/contact/">',
+    );
+    expect(html).toContain(
+      '<link rel="alternate" hreflang="fr" href="https://www.douzeensemble.fr/contact/">',
+    );
+    expect(html).toContain(
+      '<link rel="alternate" hreflang="fr-FR-x-mrs" href="https://www.douzeensemble.fr/mrs/contact/">',
+    );
+    expect(html).toContain(
+      '<link rel="alternate" hreflang="x-default" href="https://www.douzeensemble.fr/contact/">',
+    );
+    expect(html).toContain('"item":"https://www.douzeensemble.fr/en/"');
   });
 
   it('utilise l’adresse et le titre de la page', () => {
@@ -82,6 +108,19 @@ describe('jsonLd', () => {
       url: 'https://www.douzeensemble.fr/',
       inLanguage: 'fr',
     });
+  });
+
+  it('écrit la langue et les adresses de la langue demandée', () => {
+    expect(jsonLd('index.html', LANGUES[2])).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'douzeEnsemble',
+      url: 'https://www.douzeensemble.fr/mrs/',
+      inLanguage: 'fr-FR-x-mrs',
+    });
+    const [accueil, page] = jsonLd(join('contact', 'index.html'), LANGUES[1]).itemListElement;
+    expect(accueil.item).toBe('https://www.douzeensemble.fr/en/');
+    expect(page.item).toBe('https://www.douzeensemble.fr/en/contact/');
   });
 
   it('écrit un fil d’Ariane pour les autres pages', () => {
@@ -120,30 +159,51 @@ describe('injectSeo', () => {
 });
 
 describe('sitemapXml', () => {
-  it('liste l’adresse de chaque page référencée', () => {
-    expect(sitemapXml()).toBe(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.douzeensemble.fr/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/prestations/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/points-forts/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/deroule/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/realisations/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/contact/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/carte/</loc></url>
-  <url><loc>https://www.douzeensemble.fr/apropos/</loc></url>
-</urlset>
-`);
+  const xml = sitemapXml();
+
+  it('écrit une entrée par ligne, sans séparateur entre elles', () => {
+    const lignes = xml.split('\n');
+    expect(lignes).toHaveLength(Object.keys(SEO).length * LANGUES.length + 4);
+    expect(lignes.slice(2, -3).every((l) => /^ {2}<url>.*<\/url>$/.test(l))).toBe(true);
+    expect(xml.endsWith('</url>\n</urlset>\n')).toBe(true);
+  });
+
+  it('déclare l’espace de noms des liens alternatifs', () => {
+    expect(xml).toContain(
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    );
+  });
+
+  it('liste chaque page référencée dans chaque langue', () => {
+    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    expect(locs).toHaveLength(Object.keys(SEO).length * LANGUES.length);
+    expect(locs.slice(0, 4)).toEqual([
+      'https://www.douzeensemble.fr/',
+      'https://www.douzeensemble.fr/en/',
+      'https://www.douzeensemble.fr/mrs/',
+      'https://www.douzeensemble.fr/prestations/',
+    ]);
+    expect(locs).toContain('https://www.douzeensemble.fr/mrs/apropos/');
+  });
+
+  it('relie chaque page à ses versions dans les autres langues', () => {
+    expect(xml).toContain(
+      '<url><loc>https://www.douzeensemble.fr/en/contact/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://www.douzeensemble.fr/contact/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.douzeensemble.fr/en/contact/"/><xhtml:link rel="alternate" hreflang="fr-FR-x-mrs" href="https://www.douzeensemble.fr/mrs/contact/"/></url>',
+    );
   });
 });
 
 describe('sitemapXml avec dates', () => {
-  it('ajoute la date de dernière modification des pages datées', () => {
+  it('ajoute la date de dernière modification des pages datées, dans chaque langue', () => {
     const xml = sitemapXml({ 'index.html': '2026-11-24' });
     expect(xml).toContain(
-      '<url><loc>https://www.douzeensemble.fr/</loc><lastmod>2026-11-24</lastmod></url>',
+      '<url><loc>https://www.douzeensemble.fr/</loc><lastmod>2026-11-24</lastmod><xhtml:link',
     );
     expect(xml).toContain(
-      '<url><loc>https://www.douzeensemble.fr/contact/</loc></url>',
+      '<url><loc>https://www.douzeensemble.fr/mrs/</loc><lastmod>2026-11-24</lastmod><xhtml:link',
+    );
+    expect(xml).toContain(
+      '<url><loc>https://www.douzeensemble.fr/contact/</loc><xhtml:link',
     );
   });
 });

@@ -3,7 +3,8 @@
   "testRunner": "vitest",
   "mutate": [
     "js/**/*.js",
-    "scripts/**/*.js"
+    "scripts/**/*.js",
+    "!scripts/textes-*.js"
   ],
   "reporters": [
     "clear-text",

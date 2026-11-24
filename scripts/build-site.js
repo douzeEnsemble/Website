@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fetchProjects, injectProjects } from '../js/realisations.js';
+import { LANGUES, injectLangues, traduire, translateHtml } from './langues.js';
 import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
 import { injectPreferences } from './preferences.js';
@@ -27,6 +28,7 @@ export const SITE_FILES = [
 ];
 
 export const REALISATIONS_PAGE = join('realisations', 'index.html');
+export const NOT_FOUND_PAGE = '404.html';
 
 // Pages qui affichent la version du projet (VER-09) : leur pied de page porte
 // VERSION_PLACEHOLDER, remplacé à la construction par le dernier tag v*.
@@ -39,7 +41,7 @@ export const PAGES = [
   REALISATIONS_PAGE,
   join('carte', 'index.html'),
   join('apropos', 'index.html'),
-  '404.html',
+  NOT_FOUND_PAGE,
 ];
 export const VERSION_PLACEHOLDER = '<span class="app-version">dev</span>';
 
@@ -50,9 +52,10 @@ export function injectVersion(html, version) {
   );
 }
 
-// Copie le site dans `output` (relatif à `root`), y écrit les cartes des
-// réalisations, les balises de référencement, le plan du site et le numéro de
-// version.
+// Copie le site dans `output` (relatif à `root`), puis écrit chaque page dans
+// chaque langue (français à la racine, autres langues dans leur dossier) avec
+// les cartes des réalisations, les balises de référencement, le plan du site et
+// le numéro de version.
 export async function buildSite({
   root,
   out: output,
@@ -69,18 +72,32 @@ export async function buildSite({
   for (const file of SITE_FILES) {
     cpSync(join(root, file), join(out, file), { recursive: true });
   }
-  const page = join(out, REALISATIONS_PAGE);
-  writeFileSync(page, injectProjects(String(readFileSync(page)), projects));
-  for (const file of PAGES) {
-    const path = join(out, file);
-    const html = injectMentions(
-      injectPartage(
-        injectPreferences(injectSeo(String(readFileSync(path)), file)),
-        file,
-      ),
-      env,
-    );
-    writeFileSync(path, injectVersion(html, version));
+  for (const langue of LANGUES) {
+    for (const file of PAGES) {
+      // La page d'erreur n'existe qu'en français : GitHub Pages n'en sert qu'une.
+      if (file === NOT_FOUND_PAGE && langue.dir) continue;
+      const target = join(out, langue.dir, file);
+      let html = translateHtml(
+        injectLangues(
+          injectPartage(
+            injectPreferences(
+              injectSeo(String(readFileSync(join(root, file))), file, langue),
+            ),
+            file,
+            langue,
+          ),
+          file,
+          langue,
+        ),
+        langue,
+      );
+      if (file === REALISATIONS_PAGE) {
+        html = injectProjects(html, projects, traduire('Voir le site', langue));
+      }
+      html = injectMentions(html, env, langue);
+      mkdirSync(dirname(target), { recursive: true });
+      writeFileSync(target, injectVersion(html, version));
+    }
   }
   writeFileSync(join(out, 'sitemap.xml'), sitemapXml(dates));
   return projects;
