@@ -137,6 +137,19 @@ describe('buildSite', () => {
     out = join(root, '_site');
   });
 
+  it('écrit la date de modification des pages dans le plan du site', async () => {
+    await buildSite({
+      root,
+      out,
+      fetchFn: respond([]),
+      version: 'v1',
+      dates: { 'index.html': '2026-11-24' },
+    });
+    expect(readFileSync(join(out, 'sitemap.xml'), 'utf8')).toBe(
+      sitemapXml({ 'index.html': '2026-11-24' }),
+    );
+  });
+
   it('copie le site et y écrit les cartes', async () => {
     const fetchFn = respond([project]);
     const projects = await buildSite({

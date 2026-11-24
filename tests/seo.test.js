@@ -9,6 +9,7 @@ import {
   SEO,
   SEO_MARKER,
   injectSeo,
+  jsonLd,
   seoHtml,
   sitemapXml,
 } from '../scripts/seo.js';
@@ -48,7 +49,7 @@ describe('seoHtml', () => {
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="douzeEnsemble">
-    <meta property="og:title" content="douzeEnsemble">
+    <meta property="og:title" content="douzeEnsemble · Sites et applications sur mesure">
     <meta property="og:description" content="${SEO['index.html'].description}">
     <meta property="og:url" content="https://www.douzeensemble.fr/">
     <meta property="og:image" content="https://www.douzeensemble.fr/og.png">
@@ -57,7 +58,8 @@ describe('seoHtml', () => {
     <meta property="og:image:alt" content="${IMAGE_ALT}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">`);
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"douzeEnsemble","url":"https://www.douzeensemble.fr/","inLanguage":"fr"}</script>`);
   });
 
   it('utilise l’adresse et le titre de la page', () => {
@@ -68,6 +70,39 @@ describe('seoHtml', () => {
     expect(html).toContain(
       '<meta property="og:title" content="Contact · douzeEnsemble">',
     );
+  });
+});
+
+describe('jsonLd', () => {
+  it('décrit le site pour l’accueil', () => {
+    expect(jsonLd('index.html')).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'douzeEnsemble',
+      url: 'https://www.douzeensemble.fr/',
+      inLanguage: 'fr',
+    });
+  });
+
+  it('écrit un fil d’Ariane pour les autres pages', () => {
+    expect(jsonLd(join('contact', 'index.html'))).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Accueil',
+          item: 'https://www.douzeensemble.fr/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Contact',
+          item: 'https://www.douzeensemble.fr/contact/',
+        },
+      ],
+    });
   });
 });
 
@@ -98,5 +133,17 @@ describe('sitemapXml', () => {
   <url><loc>https://www.douzeensemble.fr/apropos/</loc></url>
 </urlset>
 `);
+  });
+});
+
+describe('sitemapXml avec dates', () => {
+  it('ajoute la date de dernière modification des pages datées', () => {
+    const xml = sitemapXml({ 'index.html': '2026-11-24' });
+    expect(xml).toContain(
+      '<url><loc>https://www.douzeensemble.fr/</loc><lastmod>2026-11-24</lastmod></url>',
+    );
+    expect(xml).toContain(
+      '<url><loc>https://www.douzeensemble.fr/contact/</loc></url>',
+    );
   });
 });

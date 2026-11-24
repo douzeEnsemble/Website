@@ -60,6 +60,7 @@ export async function buildSite({
   token,
   version,
   env = {},
+  dates = {},
 }) {
   const projects = await fetchProjects(fetchFn, token);
   const out = resolve(root, output);
@@ -81,6 +82,6 @@ export async function buildSite({
     );
     writeFileSync(path, injectVersion(html, version));
   }
-  writeFileSync(join(out, 'sitemap.xml'), sitemapXml());
+  writeFileSync(join(out, 'sitemap.xml'), sitemapXml(dates));
   return projects;
 }

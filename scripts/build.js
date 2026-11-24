@@ -1,5 +1,6 @@
 import { appVersion } from '../.github/scripts/app-version.mjs';
-import { buildSite } from './build-site.js';
+import { PAGES, buildSite } from './build-site.js';
+import { lastModified } from './lastmod.js';
 
 const projects = await buildSite({
   root: process.cwd(),
@@ -8,5 +9,8 @@ const projects = await buildSite({
   token: process.env.GITHUB_TOKEN,
   version: appVersion(),
   env: process.env,
+  dates: Object.fromEntries(
+    PAGES.map((file) => [file, lastModified(file)]),
+  ),
 });
 console.log(`${projects.length} réalisations générées`);
