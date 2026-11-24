@@ -91,6 +91,7 @@ describe('sitemapXml', () => {
   <url><loc>https://www.douzeensemble.fr/</loc></url>
   <url><loc>https://www.douzeensemble.fr/prestations/</loc></url>
   <url><loc>https://www.douzeensemble.fr/points-forts/</loc></url>
+  <url><loc>https://www.douzeensemble.fr/deroule/</loc></url>
   <url><loc>https://www.douzeensemble.fr/realisations/</loc></url>
   <url><loc>https://www.douzeensemble.fr/contact/</loc></url>
   <url><loc>https://www.douzeensemble.fr/carte/</loc></url>

@@ -24,6 +24,11 @@ export const SEO = {
     description:
       'Analyse, adaptivité, accessibilité, sécurité, respect des données, temps réel, hébergement, maintenance et qualité du code : les points forts de douzeEnsemble.',
   },
+  [join('deroule', 'index.html')]: {
+    title: 'Déroulé d’un projet · douzeEnsemble',
+    description:
+      'De l’écoute de votre besoin à la mise en ligne, puis aux mises à jour et aux évolutions : le déroulé d’un projet avec douzeEnsemble.',
+  },
   [join('realisations', 'index.html')]: {
     title: 'Réalisations · douzeEnsemble',
     description:
