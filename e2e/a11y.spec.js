@@ -32,6 +32,7 @@ const pages = [
   { nom: 'accueil', chemin: '/' },
   { nom: 'prestations', chemin: '/prestations/' },
   { nom: 'points forts', chemin: '/points-forts/' },
+  { nom: 'déroulé d’un projet', chemin: '/deroule/' },
   { nom: 'réalisations', chemin: '/realisations/' },
   { nom: 'contact', chemin: '/contact/' },
   { nom: 'carte de visite', chemin: '/carte/' },
@@ -90,7 +91,7 @@ for (const { nom, chemin } of pages) {
 
 // Pages longues : le contenu commence et défile sous le menu fixe, jamais
 // dessous, sur ordinateur comme sur mobile, avec ou sans texte agrandi.
-const PAGES_LONGUES = ['/prestations/', '/points-forts/', '/realisations/', '/apropos/'];
+const PAGES_LONGUES = ['/prestations/', '/points-forts/', '/deroule/', '/realisations/', '/apropos/'];
 const LARGEURS = [320, 375, 900, 1280];
 
 for (const chemin of PAGES_LONGUES) {

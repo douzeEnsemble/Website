@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Déroulé d’un projet · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" src="../js/partage-main.js"></script>
+    <script type="module" src="../js/preferences-main.js"></script>
+    <script type="module" src="../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../prestations/">Prestations</a></li>
+        <li><a href="../points-forts/">Points forts</a></li>
+        <li><a href="./" aria-current="page">Déroulé d’un projet</a></li>
+        <li><a href="../realisations/">Réalisations</a></li>
+        <li><a href="../contact/">Contact</a></li>
+        <li><a href="../carte/">Carte de visite</a></li>
+        <li><a href="../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations deroule">
+      <h1>Déroulé d’un projet</h1>
+      <p class="prestations-intro">Qui fait quoi, et dans quel ordre : de la première rencontre aux évolutions futures, vous gardez la main à chaque étape.</p>
+      <section class="phase">
+        <h2>Création</h2>
+        <p class="phase-intro">Première version, puis allers-retours jusqu’à votre accord.</p>
+        <ol class="etapes">
+          <li class="etape" data-acteur="ensemble">
+            <div class="etape-carte">
+              <span class="etape-acteur">Ensemble</span>
+              <p>Écoute du besoin, ou immersion dans votre activité pour le découvrir, pendant environ 1 h.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="moi">
+            <div class="etape-carte">
+              <span class="etape-acteur">Moi</span>
+              <p>Développement d’une première version et/ou de maquettes.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="ensemble">
+            <div class="etape-carte">
+              <span class="etape-acteur">Ensemble</span>
+              <p>Travail sur vos retours à partir de cette première version ou de ces maquettes.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="ensemble">
+            <div class="etape-carte">
+              <span class="etape-acteur">Ensemble</span>
+              <p>Itérations sur plusieurs versions.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="vous">
+            <div class="etape-carte">
+              <span class="etape-acteur">Vous</span>
+              <p>Validation de la première version finale.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="moi">
+            <div class="etape-carte">
+              <span class="etape-acteur">Moi</span>
+              <p>Mise en ligne.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="phase">
+        <h2>Au quotidien</h2>
+        <p class="phase-intro">Pendant quelques semaines, puis dans la durée.</p>
+        <ol class="etapes">
+          <li class="etape" data-acteur="moi">
+            <div class="etape-carte">
+              <span class="etape-acteur">Moi</span>
+              <p>Mises à jour de sécurité.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="phase">
+        <h2>Évolutions</h2>
+        <p class="phase-intro">Une nouvelle idée ? Le cycle repart, en plus court.</p>
+        <ol class="etapes">
+          <li class="etape" data-acteur="ensemble">
+            <div class="etape-carte">
+              <span class="etape-acteur">Ensemble</span>
+              <p>Amélioration avec de nouvelles idées, sous réserve de la complexité et du temps disponible.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="moi">
+            <div class="etape-carte">
+              <span class="etape-acteur">Moi</span>
+              <p>Développement.</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="vous">
+            <div class="etape-carte">
+              <span class="etape-acteur">Vous</span>
+              <p>Validation sur l’environnement de tests (recette).</p>
+            </div>
+          </li>
+          <li class="etape" data-acteur="moi">
+            <div class="etape-carte">
+              <span class="etape-acteur">Moi</span>
+              <p>Mise en ligne.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <p class="prestations-contact"><a class="prestations-cta" href="../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+    </footer>
+  </body>
+</html>

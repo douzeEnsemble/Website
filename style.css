@@ -1120,3 +1120,168 @@ html {
 :root[data-high-contrast] .partage-ouvrir {
   opacity: 1;
 }
+
+/* Déroulé d'un projet : trois phases, chacune une frise sur un axe central.
+   Mes étapes à gauche, les vôtres à droite, les étapes communes au centre ;
+   la pastille porte le numéro romain de l'étape. */
+.phase {
+  margin: 2rem 0 0;
+  text-align: left;
+}
+
+.phase h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.phase-intro {
+  margin: 0.25rem 0 1.5rem;
+  color: var(--texte-doux);
+  text-align: center;
+}
+
+.etapes {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: etape;
+}
+
+/* Axe central. */
+.etapes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0.125rem;
+  margin-left: -0.0625rem;
+  background: var(--bordure);
+}
+
+.etape {
+  --k: #fe8a18;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2.25rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  counter-increment: etape;
+}
+
+.etape[data-acteur='moi'] {
+  --k: #2e86de;
+}
+
+.etape[data-acteur='vous'] {
+  --k: #17a589;
+}
+
+/* Pastille : le numéro de l'étape. */
+.etape::before {
+  content: counter(etape, upper-roman);
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0.125rem solid var(--k);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--k) 18%, var(--surface));
+  color: var(--texte);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.etape-carte {
+  grid-row: 1;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 0.0625rem solid var(--bordure);
+  border-top: 0.25rem solid var(--k);
+  border-radius: 0.75rem;
+  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
+  color: var(--texte);
+}
+
+.etape[data-acteur='moi'] .etape-carte {
+  grid-column: 1;
+  text-align: right;
+}
+
+.etape[data-acteur='vous'] .etape-carte {
+  grid-column: 3;
+}
+
+/* Étape commune : centrée sous sa pastille. */
+.etape[data-acteur='ensemble'] {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.etape[data-acteur='ensemble']::before {
+  grid-column: 1;
+}
+
+.etape[data-acteur='ensemble'] .etape-carte {
+  grid-column: 1;
+  grid-row: 2;
+  box-sizing: border-box;
+  width: min(100%, 26rem);
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.etape-acteur {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--k) 22%, var(--surface));
+  color: var(--texte);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.etape p {
+  margin: 0.35rem 0 0;
+  line-height: 1.45;
+}
+
+/* Petit écran : une seule colonne, l'axe passe à gauche. */
+@media (width <= 40rem) {
+  .etapes::before {
+    left: 1.125rem;
+  }
+
+  .etape,
+  .etape[data-acteur='ensemble'] {
+    grid-template-columns: 2.25rem 1fr;
+    justify-items: stretch;
+  }
+
+  .etape::before,
+  .etape[data-acteur='ensemble']::before {
+    grid-column: 1;
+  }
+
+  .etape .etape-carte,
+  .etape[data-acteur='moi'] .etape-carte,
+  .etape[data-acteur='vous'] .etape-carte,
+  .etape[data-acteur='ensemble'] .etape-carte {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    margin-top: 0;
+    text-align: left;
+  }
+}
