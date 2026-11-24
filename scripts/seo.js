@@ -10,7 +10,7 @@ export const IMAGE_ALT = 'douzeEnsemble : sites, applications et accompagnement 
 // les résultats des moteurs de recherche et dans l'aperçu des liens partagés.
 export const SEO = {
   'index.html': {
-    title: 'douzeEnsemble',
+    title: 'douzeEnsemble · Sites et applications sur mesure',
     description:
       'douzeEnsemble conçoit des sites internet et des applications sur mesure, et vous accompagne au quotidien dans votre présence numérique.',
   },
@@ -51,8 +51,37 @@ export const SEO = {
   },
 };
 
+// Données structurées (JSON-LD) d'une page : le site pour l'accueil, un fil
+// d'Ariane (Accueil > page) pour les autres.
+export function jsonLd(file) {
+  const url = pageUrl(file);
+  if (file === 'index.html') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'douzeEnsemble',
+      url,
+      inLanguage: 'fr',
+    };
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: SEO[file].title.split(' · ')[0],
+        item: url,
+      },
+    ],
+  };
+}
+
 // Balises d'en-tête d'une page : description, adresse canonique, aperçu Open
-// Graph (LinkedIn, WhatsApp, Facebook…) et carte Twitter, icônes.
+// Graph (LinkedIn, WhatsApp, Facebook…) et carte Twitter, icônes, données
+// structurées.
 export function seoHtml(file) {
   const { title, description } = SEO[file];
   const url = pageUrl(file);
@@ -70,17 +99,22 @@ export function seoHtml(file) {
     <meta property="og:image:alt" content="${IMAGE_ALT}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">`;
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script type="application/ld+json">${JSON.stringify(jsonLd(file))}</script>`;
 }
 
 export function injectSeo(html, file) {
   return html.replace(SEO_MARKER, () => seoHtml(file));
 }
 
-// Plan du site pour les moteurs de recherche : une entrée par page référencée.
-export function sitemapXml() {
+// Plan du site pour les moteurs de recherche : une entrée par page référencée,
+// avec la date de dernière modification quand elle est connue (`dates`).
+export function sitemapXml(dates = {}) {
   const urls = Object.keys(SEO)
-    .map((file) => `  <url><loc>${pageUrl(file)}</loc></url>\n`)
+    .map((file) => {
+      const lastmod = dates[file] ? `<lastmod>${dates[file]}</lastmod>` : '';
+      return `  <url><loc>${pageUrl(file)}</loc>${lastmod}</url>\n`;
+    })
     .join('');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
