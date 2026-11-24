@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -158,11 +157,22 @@ const INVARIANT = new Set([
   '123456789 · ', ' ↗', '↗', 'dev', 'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
 ]);
 
-// Texte des éléments (hors scripts) d’une page.
-const textNodes = (html) =>
-  [...html.replace(/<script[\s\S]*?<\/script>|<!--[\s\S]*?-->|<style[\s\S]*?<\/style>/g, '').matchAll(/>([^<>]*\S[^<>]*)</g)].map(
-    (m) => m[1],
-  );
+// Texte des éléments (hors scripts et styles) d'une page, lu dans le DOM.
+const textNodes = (html) => {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const texts = [];
+  const walk = (node) => {
+    for (const child of node.childNodes) {
+      if (child.nodeType === 3 && child.textContent.trim()) {
+        texts.push(child.textContent);
+      } else if (!['SCRIPT', 'STYLE'].includes(child.nodeName)) {
+        walk(child);
+      }
+    }
+  };
+  walk(doc);
+  return texts;
+};
 
 describe('dictionnaires', () => {
   it('ont les mêmes clés en anglais et en marseillais', () => {
