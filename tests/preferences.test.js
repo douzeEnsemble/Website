@@ -4,7 +4,6 @@ import {
   REDUCE_MOTION_ATTRIBUTE,
   STORAGE_KEY,
   THEMES,
-  THEME_LABELS,
   applyPreferences,
   init,
   nextTheme,
@@ -26,11 +25,6 @@ describe('constantes', () => {
   it('liste les thèmes, leurs libellés et les attributs', () => {
     expect(STORAGE_KEY).toBe('douzeensemble:preferences');
     expect(THEMES).toEqual(['auto', 'light', 'dark']);
-    expect(THEME_LABELS).toEqual({
-      auto: 'Thème : automatique',
-      light: 'Thème : clair',
-      dark: 'Thème : sombre',
-    });
     expect(REDUCE_MOTION_ATTRIBUTE).toBe('data-reduce-motion');
     expect(FLAG_ATTRIBUTES).toEqual({
       largeText: 'data-large-text',

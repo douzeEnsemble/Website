@@ -38,7 +38,7 @@ export function preferencesHtml() {
       `<label class="preferences-case"><input type="checkbox" data-preference="${name}"> ${label}</label>`,
   ).join('\n          ');
   return `<div class="preferences" role="group" aria-label="Préférences d’affichage">
-      <button type="button" class="preferences-bouton preferences-theme" aria-label="Thème : automatique">${THEME_ICONS}</button>
+      <button type="button" class="preferences-bouton preferences-theme" aria-label="Thème : automatique" data-label-auto="Thème : automatique" data-label-light="Thème : clair" data-label-dark="Thème : sombre">${THEME_ICONS}</button>
       <button type="button" class="preferences-bouton preferences-accessibilite" aria-label="Accessibilité">${ACCESSIBILITY_ICON}</button>
     </div>
     <dialog class="preferences-dialogue" aria-labelledby="preferences-titre">

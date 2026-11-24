@@ -28,7 +28,7 @@ async function violations(page) {
   );
 }
 
-const pages = [
+const pagesFrancaises = [
   { nom: 'accueil', chemin: '/' },
   { nom: 'prestations', chemin: '/prestations/' },
   { nom: 'points forts', chemin: '/points-forts/' },
@@ -38,6 +38,19 @@ const pages = [
   { nom: 'carte de visite', chemin: '/carte/' },
   { nom: 'à propos', chemin: '/apropos/' },
 ];
+
+// Chaque page passe aussi en anglais et en marseillais (`/en/`, `/mrs/`).
+const LANGUES = [
+  { prefixe: '', suffixe: '' },
+  { prefixe: '/en', suffixe: ' (anglais)' },
+  { prefixe: '/mrs', suffixe: ' (marseillais)' },
+];
+const pages = LANGUES.flatMap(({ prefixe, suffixe }) =>
+  pagesFrancaises.map(({ nom, chemin }) => ({
+    nom: `${nom}${suffixe}`,
+    chemin: `${prefixe}${chemin}`,
+  })),
+);
 
 for (const { nom, chemin } of pages) {
   test(`axe : aucune violation sur ${nom}`, async ({ page }) => {
@@ -175,7 +188,10 @@ test.describe('préférences d’affichage', () => {
   });
 
   for (const { nom, chemin } of pages) {
-    test(`chaque réglage passe axe sur ${nom}`, async ({ page }) => {
+    // Les libellés de ce test sont français : les autres langues passent par
+    // axe et le reflow ci-dessous.
+    const francais = !/^\/(en|mrs)\//.test(chemin);
+    (francais ? test : test.skip)(`chaque réglage passe axe sur ${nom}`, async ({ page }) => {
       await page.goto(chemin);
       await page.getByRole('button', { name: 'Accessibilité' }).click();
       const dialogue = page.getByRole('dialog', { name: 'Accessibilité' });
@@ -211,4 +227,18 @@ test.describe('préférences d’affichage', () => {
       expect(await violations(page)).toEqual([]);
     });
   }
+});
+
+// Sélecteur de langue : la même page dans chaque langue, feuille de style et
+// textes compris.
+test('le sélecteur de langue ouvre la même page en anglais, avec son style', async ({ page }) => {
+  await page.goto('/contact/');
+  await page.getByRole('link', { name: 'English' }).click();
+  await expect(page).toHaveURL(/\/en\/contact\/$/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('main h1')).toHaveText('Contact');
+  await expect(page.getByRole('button', { name: 'Show email' })).toBeVisible();
+  await expect(page.locator('.langues a[aria-current="true"]')).toHaveText('English');
+  // style.css est chargé : la liste des langues est en ligne (flex)
+  await expect(page.locator('.langues ul')).toHaveCSS('display', 'flex');
 });

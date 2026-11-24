@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { LANGUES, LANGUE_PAR_DEFAUT } from './langues.js';
 import { SITE_URL, pageUrl } from './partage.js';
 
 export const SEO_MARKER = '<!--SEO-->';
@@ -53,22 +54,27 @@ export const SEO = {
 
 // Données structurées (JSON-LD) d'une page : le site pour l'accueil, un fil
 // d'Ariane (Accueil > page) pour les autres.
-export function jsonLd(file) {
-  const url = pageUrl(file);
+export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
+  const url = pageUrl(file, langue);
   if (file === 'index.html') {
     return {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'douzeEnsemble',
       url,
-      inLanguage: 'fr',
+      inLanguage: langue.htmlLang,
     };
   }
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Accueil',
+        item: `${SITE_URL}${langue.dir}`,
+      },
       {
         '@type': 'ListItem',
         position: 2,
@@ -82,13 +88,22 @@ export function jsonLd(file) {
 // Balises d'en-tête d'une page : description, adresse canonique, aperçu Open
 // Graph (LinkedIn, WhatsApp, Facebook…) et carte Twitter, icônes, données
 // structurées.
-export function seoHtml(file) {
+// Les textes sont en français : la traduction de la page les remplace ensuite.
+export function seoHtml(file, langue = LANGUE_PAR_DEFAUT) {
   const { title, description } = SEO[file];
-  const url = pageUrl(file);
+  const url = pageUrl(file, langue);
+  const alternates = [
+    ...LANGUES.map(
+      (autre) =>
+        `<link rel="alternate" hreflang="${autre.htmlLang}" href="${pageUrl(file, autre)}">`,
+    ),
+    `<link rel="alternate" hreflang="x-default" href="${pageUrl(file)}">`,
+  ].join('\n    ');
   return `<meta name="description" content="${description}">
     <link rel="canonical" href="${url}">
+    ${alternates}
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale" content="${langue.locale}">
     <meta property="og:site_name" content="douzeEnsemble">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
@@ -100,24 +115,31 @@ export function seoHtml(file) {
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <script type="application/ld+json">${JSON.stringify(jsonLd(file))}</script>`;
+    <script type="application/ld+json">${JSON.stringify(jsonLd(file, langue))}</script>`;
 }
 
-export function injectSeo(html, file) {
-  return html.replace(SEO_MARKER, () => seoHtml(file));
+export function injectSeo(html, file, langue = LANGUE_PAR_DEFAUT) {
+  return html.replace(SEO_MARKER, () => seoHtml(file, langue));
 }
 
-// Plan du site pour les moteurs de recherche : une entrée par page référencée,
-// avec la date de dernière modification quand elle est connue (`dates`).
+// Plan du site pour les moteurs de recherche : une entrée par page référencée
+// et par langue, avec la date de dernière modification quand elle est connue
+// (`dates`) et les versions de la page dans les autres langues.
 export function sitemapXml(dates = {}) {
   const urls = Object.keys(SEO)
-    .map((file) => {
-      const lastmod = dates[file] ? `<lastmod>${dates[file]}</lastmod>` : '';
-      return `  <url><loc>${pageUrl(file)}</loc>${lastmod}</url>\n`;
-    })
+    .flatMap((file) =>
+      LANGUES.map((langue) => {
+        const lastmod = dates[file] ? `<lastmod>${dates[file]}</lastmod>` : '';
+        const links = LANGUES.map(
+          (autre) =>
+            `<xhtml:link rel="alternate" hreflang="${autre.htmlLang}" href="${pageUrl(file, autre)}"/>`,
+        ).join('');
+        return `  <url><loc>${pageUrl(file, langue)}</loc>${lastmod}${links}</url>\n`;
+      }),
+    )
     .join('');
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}</urlset>
 `;
 }

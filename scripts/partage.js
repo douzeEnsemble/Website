@@ -1,5 +1,6 @@
 import { dirname } from 'node:path';
 import qrcode from 'qrcode-generator';
+import { LANGUE_PAR_DEFAUT, traduire } from './langues.js';
 
 export const SITE_URL = 'https://www.douzeensemble.fr/';
 export const PARTAGE_MARKER = '<!--PARTAGE-->';
@@ -7,10 +8,11 @@ export const QR_ACCUEIL_MARKER = '<!--QR-ACCUEIL-->';
 
 const QUIET_ZONE = 2;
 
-// Adresse publique d'une page du site, d'après son chemin (`contact/index.html`).
-export function pageUrl(file) {
+// Adresse publique d'une page du site, d'après son chemin (`contact/index.html`)
+// et sa langue.
+export function pageUrl(file, langue = LANGUE_PAR_DEFAUT) {
   const dir = dirname(file);
-  return dir === '.' ? SITE_URL : `${SITE_URL}${dir}/`;
+  return `${SITE_URL}${langue.dir}${dir === '.' ? '' : `${dir}/`}`;
 }
 
 // QR code (correction d'erreur M) en SVG : un carré par module sombre, sur
@@ -43,14 +45,14 @@ const SHARE_ICON =
 
 // Bouton de partage et fenêtre native (<dialog>) d'une page : QR code, lien à
 // copier, bouton Partager (masqué tant que js/partage.js ne l'active pas).
-export function partageHtml(url) {
+export function partageHtml(url, langue = LANGUE_PAR_DEFAUT) {
   return `<button type="button" class="partage-ouvrir" aria-label="Partager cette page">${SHARE_ICON}</button>
-    <dialog class="partage" aria-labelledby="partage-titre">
+    <dialog class="partage" aria-labelledby="partage-titre" data-copie="Lien copié." data-selection="Lien sélectionné : copiez-le avec Ctrl+C." data-echec="Le partage a échoué : copiez le lien.">
       <div class="partage-contenu">
         <form method="dialog"><button class="partage-fermer" aria-label="Fermer">×</button></form>
         <p class="partage-marque">douzeEnsemble</p>
         <h2 id="partage-titre" class="invisible">Partager cette page</h2>
-        <div class="partage-qr">${qrSvg(url, `QR code de ${url}`)}</div>
+        <div class="partage-qr">${qrSvg(url, `${traduire('QR code de', langue)} ${url}`)}</div>
         <input class="partage-url" type="text" readonly value="${url}" aria-label="Adresse de la page">
         <div class="partage-actions">
           <button type="button" class="partage-bouton partage-copier">Copier le lien</button>
@@ -63,12 +65,12 @@ export function partageHtml(url) {
 }
 
 // QR de l'accueil, affiché au verso de la carte de visite.
-export function qrAccueilHtml() {
-  return `<div class="carte-qr">${qrSvg(SITE_URL, 'QR code vers la page d’accueil')}</div>`;
+export function qrAccueilHtml(langue = LANGUE_PAR_DEFAUT) {
+  return `<div class="carte-qr">${qrSvg(`${SITE_URL}${langue.dir}`, 'QR code vers la page d’accueil')}</div>`;
 }
 
-export function injectPartage(html, file) {
+export function injectPartage(html, file, langue = LANGUE_PAR_DEFAUT) {
   return html
-    .replace(PARTAGE_MARKER, () => partageHtml(pageUrl(file)))
-    .replace(QR_ACCUEIL_MARKER, () => qrAccueilHtml());
+    .replace(PARTAGE_MARKER, () => partageHtml(pageUrl(file, langue), langue))
+    .replace(QR_ACCUEIL_MARKER, () => qrAccueilHtml(langue));
 }

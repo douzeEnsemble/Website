@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { LANGUES_MARKER } from '../scripts/langues.js';
 import { MENTIONS_MARKER } from '../scripts/mentions.js';
 import { PARTAGE_MARKER } from '../scripts/partage.js';
 import { PREFERENCES_MARKER } from '../scripts/preferences.js';
@@ -35,7 +36,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'CNAME'), 'www.douzeensemble.fr');
   writeFileSync(
     join(root, 'index.html'),
-    `<head>${SEO_MARKER}</head>accueil ${VERSION_PLACEHOLDER}`,
+    `<head>${SEO_MARKER}</head>${LANGUES_MARKER}accueil ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(join(root, '404.html'), `introuvable ${VERSION_PLACEHOLDER}`);
   for (const file of ['robots.txt', 'favicon.svg', 'apple-touch-icon.png', 'og.png']) {
@@ -45,7 +46,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'js', 'main.js'), 'js');
   writeFileSync(
     join(root, 'contact', 'index.html'),
-    `contact ${PREFERENCES_MARKER} ${PARTAGE_MARKER} ${VERSION_PLACEHOLDER}`,
+    `contact ${PREFERENCES_MARKER} ${PARTAGE_MARKER} ${LANGUES_MARKER} ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(
     join(root, 'prestations', 'index.html'),
@@ -209,6 +210,47 @@ describe('buildSite', () => {
     expect(page).toContain('<dd>1 rue &lt;A&gt;</dd>');
     expect(page).toContain('/entreprise/123456789"');
     expect(page).not.toContain(MENTIONS_MARKER);
+  });
+
+  it('écrit chaque page dans chaque langue, sauf la page introuvable', async () => {
+    await buildSite({
+      root,
+      out,
+      fetchFn: respond([project]),
+      version: 'v1.2.3',
+      env: { SIREN: '123456789' },
+    });
+    for (const dossier of ['en', 'mrs']) {
+      for (const file of PAGES.filter((p) => p !== '404.html')) {
+        expect(existsSync(join(out, dossier, file))).toBe(true);
+      }
+      expect(existsSync(join(out, dossier, '404.html'))).toBe(false);
+    }
+    const accueil = readFileSync(join(out, 'en', 'index.html'), 'utf8');
+    expect(accueil).toContain(
+      '<link rel="canonical" href="https://www.douzeensemble.fr/en/">',
+    );
+    expect(accueil).toContain('<nav class="langues" aria-label="Language">');
+    expect(accueil.endsWith('accueil <span class="app-version">v1.2.3</span>')).toBe(true);
+    const contact = readFileSync(join(out, 'mrs', 'contact', 'index.html'), 'utf8');
+    expect(contact).toContain('https://www.douzeensemble.fr/mrs/contact/');
+    expect(contact).toContain('data-copie="Lien copié, c’est bon."');
+    expect(contact).not.toContain(LANGUES_MARKER);
+  });
+
+  it('traduit les cartes des réalisations et les mentions légales', async () => {
+    await buildSite({
+      root,
+      out,
+      fetchFn: respond([project]),
+      env: { SIREN: '123456789', ADRESSE: '1 rue' },
+    });
+    const realisations = readFileSync(join(out, 'en', REALISATIONS_PAGE), 'utf8');
+    expect(realisations).toContain('>Visit the site<');
+    expect(readFileSync(join(out, REALISATIONS_PAGE), 'utf8')).toContain('>Voir le site<');
+    const apropos = readFileSync(join(out, 'en', 'apropos', 'index.html'), 'utf8');
+    expect(apropos).toContain('<dt>Address</dt><dd>1 rue</dd>');
+    expect(apropos).toContain('Entry in the Annuaire des Entreprises');
   });
 
   it('vide le dossier de sortie avant de construire', async () => {

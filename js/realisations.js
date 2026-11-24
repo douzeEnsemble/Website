@@ -39,7 +39,7 @@ export function escapeHtml(text) {
 }
 
 // Une carte par projet, en HTML statique.
-export function projectCard(project) {
+export function projectCard(project, label = 'Voir le site') {
   const url = publishedUrl(project);
   const parts = [
     `<strong class="carte-nom">${escapeHtml(project.name)}</strong>`,
@@ -60,20 +60,20 @@ export function projectCard(project) {
   parts.push(`<span class="carte-infos">${escapeHtml(infos.join(' · '))}</span>`);
   const name = escapeHtml(project.name);
   parts.push(
-    `<a class="carte-lien" href="${escapeHtml(url)}">Voir le site` +
+    `<a class="carte-lien" href="${escapeHtml(url)}">${label}` +
       `<span class="invisible"> ${name}</span><span aria-hidden="true"> ↗</span></a>`,
   );
   return `<li><div class="carte-projet">${parts.join('')}</div></li>`;
 }
 
 // Remplace le contenu entre les marqueurs de la page par les cartes.
-export function injectProjects(html, projects) {
+export function injectProjects(html, projects, label) {
   const start = html.indexOf(MARKER_START);
   const end = html.indexOf(MARKER_END, start);
   if (start === -1 || end === -1) {
     throw new Error('Marqueurs des projets introuvables');
   }
-  const cards = projects.map((project) => `\n        ${projectCard(project)}`);
+  const cards = projects.map((project) => `\n        ${projectCard(project, label)}`);
   return (
     html.slice(0, start + MARKER_START.length) +
     cards.join('') +

@@ -1,5 +1,6 @@
 // @vitest-environment node
 import { describe, expect, it } from 'vitest';
+import { LANGUES } from '../scripts/langues.js';
 import {
   MENTIONS_FIELDS,
   MENTIONS_MARKER,
@@ -74,5 +75,26 @@ describe('injectMentions', () => {
     expect(injectMentions(MENTIONS_MARKER, { ADRESSE: '$&' })).toBe(
       '<dt>Adresse</dt><dd>$&amp;</dd>',
     );
+  });
+});
+
+describe('mentions traduites', () => {
+  const env = { ADRESSE: '1 rue', SIREN: '123456789' };
+
+  it('traduit les intitulés mais pas les valeurs', () => {
+    const html = mentionsHtml(env, LANGUES[1]);
+    expect(html).toContain('<dt>Address</dt><dd>1 rue</dd>');
+    expect(html).toContain('<dt>SIREN</dt>');
+    expect(html).toContain('Entry in the Annuaire des Entreprises<span class="invisible"> (new tab)</span> ↗');
+  });
+
+  it('laisse le français par défaut', () => {
+    expect(mentionsHtml(env)).toBe(mentionsHtml(env, LANGUES[0]));
+    expect(mentionsHtml(env)).toContain('<dt>Adresse</dt>');
+  });
+
+  it('traduit dans la page', () => {
+    expect(injectMentions(MENTIONS_MARKER, env, LANGUES[2])).toContain('<dt>Adresse</dt><dd>1 rue</dd>');
+    expect(injectMentions(MENTIONS_MARKER, env, LANGUES[1])).toContain('<dt>Address</dt>');
   });
 });
