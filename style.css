@@ -42,6 +42,14 @@
      commencent en dessous, le titre n'est jamais caché. */
   --sous-menu: 3.5rem;
   --police-titre: 'Bricolage Grotesque', sans-serif;
+
+  /* Effet de survol commun à toutes les cartes (voir « Survol des cartes ») :
+     ombre et bordure teintée partout, levée et flèche en plus seulement quand
+     la carte entière est un lien. */
+  --survol-duree: 0.2s;
+  --survol-ombre: 0 0.5rem 1.25rem var(--ombre);
+  --survol-levee: translateY(-0.125rem);
+  --survol-avance: translateX(0.25rem);
 }
 
 /* Thème choisi par le visiteur : il l'emporte sur le réglage du système. */
@@ -230,19 +238,10 @@ body.awesome h1 {
   color: var(--texte);
   font-family: sans-serif;
   text-decoration: none;
-  transition:
-    box-shadow 0.2s,
-    transform 0.2s;
 }
 
 .bento-contact .bento-carte {
   background: color-mix(in srgb, var(--k) 24%, var(--surface));
-}
-
-.bento-carte:hover,
-.bento-carte:focus-visible {
-  box-shadow: 0 0.5rem 1.25rem var(--ombre);
-  transform: translateY(-0.125rem);
 }
 
 .bento-carte h2 {
@@ -264,12 +263,7 @@ body.awesome h1 {
   color: var(--orange-texte);
   font-size: 1.3rem;
   font-weight: bold;
-  transition: transform 0.2s;
-}
-
-.bento-carte:hover .bento-fleche,
-.bento-carte:focus-visible .bento-fleche {
-  transform: translateX(0.25rem);
+  transition: transform var(--survol-duree);
 }
 
 /* Trois écrans de téléphone en éventail. */
@@ -595,11 +589,6 @@ body.awesome .menu :where(a) {
   border-radius: 0.75rem;
   background: color-mix(in srgb, var(--k) 10%, var(--surface));
   color: var(--texte);
-  transition: box-shadow 0.2s;
-}
-
-.projets .carte-projet:hover {
-  box-shadow: 0 0.5rem 1.25rem var(--ombre);
 }
 
 .carte-nom {
@@ -1276,13 +1265,10 @@ body.awesome .menu :where(a) {
     transition-duration: 0.01ms !important;
   }
 
-  .projets a:hover,
-  .projets a:focus-visible,
-  .bento-carte:hover,
-  .bento-carte:focus-visible,
-  .bento-carte:hover .bento-fleche,
-  .bento-carte:focus-visible .bento-fleche {
-    transform: none;
+  /* Survol des cartes sans mouvement : l'ombre et la bordure restent. */
+  :root {
+    --survol-levee: none;
+    --survol-avance: none;
   }
 }
 
@@ -1300,13 +1286,9 @@ body.awesome .menu :where(a) {
   transition-duration: 0.01ms !important;
 }
 
-:root[data-reduce-motion] .projets a:hover,
-:root[data-reduce-motion] .projets a:focus-visible,
-:root[data-reduce-motion] .bento-carte:hover,
-:root[data-reduce-motion] .bento-carte:focus-visible,
-:root[data-reduce-motion] .bento-carte:hover .bento-fleche,
-:root[data-reduce-motion] .bento-carte:focus-visible .bento-fleche {
-  transform: none;
+:root[data-reduce-motion] {
+  --survol-levee: none;
+  --survol-avance: none;
 }
 
 /* Préférences d'affichage (A11Y-11) : groupe fixé en bas à droite, boutons
@@ -1602,4 +1584,54 @@ html {
   color: var(--texte-pale);
   font-size: 0.85rem;
   text-align: center;
+}
+
+/* Survol des cartes : un seul effet sur tout le site. Toutes les cartes
+   prennent une ombre et une bordure teintée de leur couleur (--k) ; seules
+   celles qui sont entièrement un lien (bento de l'accueil) se lèvent et
+   avancent leur flèche, pour ne pas faire passer une carte de texte pour un
+   bouton. Le survol ne joue qu'avec une souris (pas d'état collé au toucher) ;
+   le clavier déclenche le même effet par le focus. */
+:where(.bento-carte, .carte-projet, .prestation, .etape-carte) {
+  --survol-bordure: color-mix(in srgb, var(--k) 50%, var(--bordure));
+
+  transition:
+    border-color var(--survol-duree),
+    box-shadow var(--survol-duree),
+    transform var(--survol-duree);
+}
+
+@media (hover: hover) {
+  .bento-carte:hover,
+  .carte-projet:hover,
+  .prestation:hover,
+  .etape-carte:hover {
+    border-inline-color: var(--survol-bordure);
+    border-bottom-color: var(--survol-bordure);
+    box-shadow: var(--survol-ombre);
+  }
+
+  .bento-carte:hover {
+    transform: var(--survol-levee);
+  }
+
+  .bento-carte:hover .bento-fleche {
+    transform: var(--survol-avance);
+  }
+}
+
+.bento-carte:focus-visible,
+.carte-projet:focus-within,
+.prestation:focus-within {
+  border-inline-color: var(--survol-bordure);
+  border-bottom-color: var(--survol-bordure);
+  box-shadow: var(--survol-ombre);
+}
+
+.bento-carte:focus-visible {
+  transform: var(--survol-levee);
+}
+
+.bento-carte:focus-visible .bento-fleche {
+  transform: var(--survol-avance);
 }
