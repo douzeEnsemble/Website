@@ -44,6 +44,7 @@ const pagesFrancaises = [
   { nom: 'MoreMobsHeadsChecklist', chemin: '/realisations/moremobsheadschecklist/' },
   { nom: 'Pokenini', chemin: '/realisations/pokenini/' },
   { nom: 'Quine', chemin: '/realisations/quine/' },
+  { nom: 'qui suis-je', chemin: '/qui-suis-je/' },
   { nom: 'contact', chemin: '/contact/' },
   { nom: 'carte de visite', chemin: '/carte/' },
   { nom: 'à propos', chemin: '/apropos/' },
@@ -121,6 +122,7 @@ const PAGES_LONGUES = [
   '/deroule/',
   '/realisations/',
   '/realisations/koikimanke/',
+  '/qui-suis-je/',
   '/apropos/',
 ];
 const LARGEURS = [320, 375, 900, 1280];

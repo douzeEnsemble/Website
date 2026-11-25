@@ -456,6 +456,20 @@ export const TEXTES_EN = {
   'Activez JavaScript pour faire tourner la carte.': 'Enable JavaScript to rotate the card.',
   'QR code vers la page d’accueil': 'QR code to the home page',
 
+  // Qui suis-je
+  'Qui suis-je · douzeEnsemble': 'About me · douzeEnsemble',
+  'Qui suis-je': 'About me',
+  'Renaud, développeur de sites internet depuis 2009 et expert PHP et Symfony, veut créer son entreprise pour des projets utiles, proches des utilisateurs.': 'Renaud, a web developer since 2009 and a PHP and Symfony expert, wants to start his own business to work on useful projects, close to the people who use them.',
+  'Je suis Renaud, développeur de sites internet depuis 2009.': 'I am Renaud, and I have been building websites since 2009.',
+  'Développeur depuis 2009': 'A developer since 2009',
+  'Voilà plus de quinze ans que je conçois, développe et fais évoluer des sites internet. J’aime toujours autant voir une idée devenir un site qui fonctionne.': 'For more than fifteen years I have been designing, building and improving websites. I still love watching an idea turn into a website that works.',
+  'Expert PHP et Symfony': 'PHP and Symfony expert',
+  'PHP et Symfony sont mes outils de tous les jours. Je les connais en profondeur, et c’est avec eux que je construis des sites solides, qui durent et évoluent sans tout refaire.': 'PHP and Symfony are my everyday tools. I know them inside out, and I use them to build solid websites that last and grow without starting over.',
+  'Des projets utiles': 'Useful projects',
+  'J’ai envie de créer mon entreprise pour me consacrer à des projets qui servent vraiment, au quotidien, à celles et ceux qui les utilisent.': 'I want to start my own business so I can focus on projects that truly help the people who use them, every day.',
+  'Proche des utilisateurs': 'Close to the users',
+  'Je préfère travailler au plus près des personnes qui utiliseront le site : les écouter, comprendre leurs usages et avancer avec elles.': 'I like to work as closely as possible with the people who will use the website: listening to them, understanding how they work and moving forward together.',
+
   // À propos
   'Page de contact': 'Contact page',
   'Hébergeur': 'Host',

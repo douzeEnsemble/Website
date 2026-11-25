@@ -457,6 +457,20 @@ export const TEXTES_MRS = {
   'Activez JavaScript pour faire tourner la carte.': 'Active JavaScript pour faire tourner la carte, té.',
   'QR code vers la page d’accueil': 'QR code pour aller à la page d’accueil',
 
+  // Qui suis-je
+  'Qui suis-je · douzeEnsemble': 'C’est qui, Renaud ? · douzeEnsemble',
+  'Qui suis-je': 'C’est qui, Renaud ?',
+  'Renaud, développeur de sites internet depuis 2009 et expert PHP et Symfony, veut créer son entreprise pour des projets utiles, proches des utilisateurs.': 'Renaud, il fait des sites internet depuis 2009, c’est un cador du PHP et de Symfony, et il veut monter son entreprise pour faire des projets qui servent, tout près des gens.',
+  'Je suis Renaud, développeur de sites internet depuis 2009.': 'Moi c’est Renaud, et des sites internet, j’en fabrique depuis 2009, té.',
+  'Développeur depuis 2009': 'Développeur depuis 2009, rien que ça',
+  'Voilà plus de quinze ans que je conçois, développe et fais évoluer des sites internet. J’aime toujours autant voir une idée devenir un site qui fonctionne.': 'Ça fait plus de quinze ans que je dessine, que je fabrique et que je fais grandir des sites internet. Et voir une idée devenir un site qui marche, ça me fait toujours autant plaisir, fan de chichourle.',
+  'Expert PHP et Symfony': 'Un cador du PHP et de Symfony',
+  'PHP et Symfony sont mes outils de tous les jours. Je les connais en profondeur, et c’est avec eux que je construis des sites solides, qui durent et évoluent sans tout refaire.': 'PHP et Symfony, c’est mes outils de tous les jours. Je les connais par cœur, et avec eux je te fais des sites costauds, qui durent et qui grandissent sans tout casser.',
+  'Des projets utiles': 'Des projets qui servent',
+  'J’ai envie de créer mon entreprise pour me consacrer à des projets qui servent vraiment, au quotidien, à celles et ceux qui les utilisent.': 'J’ai envie de monter mon entreprise pour faire des projets qui servent vraiment, tous les jours, à ceux qui s’en servent.',
+  'Proche des utilisateurs': 'Tout près des gens',
+  'Je préfère travailler au plus près des personnes qui utiliseront le site : les écouter, comprendre leurs usages et avancer avec elles.': 'Moi, je préfère travailler collé à ceux qui vont se servir du site : les écouter, comprendre comment ils font, et avancer avec eux.',
+
   // À propos
   'Page de contact': 'Page de contact',
   'Hébergeur': 'Celui qui héberge',
