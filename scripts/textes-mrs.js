@@ -476,7 +476,7 @@ export const TEXTES_MRS = {
   'Qui suis-je': 'C’est qui, Renaud ?',
   'J’ai mon BAFA perfectionnement en petite enfance.': 'J’ai mon BAFA perfectionnement en petite enfance, rien que ça.',
   'Né à Marseille': 'Né à Marseille, té',
-  'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix et je transpire aux Milles.': 'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix et je transpire aux Milles. Un vrai minot du coin.',
+  'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix-en-Provence et je transpire aux Milles.': 'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix-en-Provence et je transpire aux Milles. Un vrai minot du coin.',
   'Pourquoi « douzeEnsemble »': 'Pourquoi « douzeEnsemble », té ?',
   'Un jeu de mots, presque une référence au « Tous ensemble » qu’on entend chanter au stade.': 'Un jeu de mots, presque le « Tous ensemble » qu’on chante au Vélodrome, fan de chichourle.',
   'Et douze ? Un délire qui date : le nombre 12 revenait sans arrêt, c’est devenu une blague, puis mon pseudo, RenaudDouze, clin d’œil à la voiture citée dans « Je danse le Mia ».': 'Et douze ? Un vieux délire : le 12 revenait tout le temps, c’est devenu une blague, puis mon pseudo, RenaudDouze, pour la voiture de « Je danse le Mia ». Ça, c’est de chez nous.',
