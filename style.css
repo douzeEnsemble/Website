@@ -429,7 +429,7 @@ body.awesome .accroche {
   border: 0.0625rem solid var(--bordure);
   border-top: 0.25rem solid var(--k);
   border-radius: 0.75rem;
-  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
+  background: color-mix(in srgb, var(--k) 10%, var(--surface));
   color: var(--texte);
   transition: box-shadow 0.2s;
 }
@@ -505,7 +505,7 @@ body.awesome .accroche {
   border: 0.0625rem solid var(--bordure);
   border-top: 0.25rem solid var(--k);
   border-radius: 0.75rem;
-  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
+  background: color-mix(in srgb, var(--k) 10%, var(--surface));
   color: var(--texte);
 }
 
@@ -1292,7 +1292,7 @@ html {
   border: 0.0625rem solid var(--bordure);
   border-top: 0.25rem solid var(--k);
   border-radius: 0.75rem;
-  background: linear-gradient(color-mix(in srgb, var(--k) 14%, var(--surface)), var(--surface) 55%);
+  background: color-mix(in srgb, var(--k) 10%, var(--surface));
   color: var(--texte);
 }
 
