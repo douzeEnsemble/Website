@@ -108,6 +108,8 @@ export const SEO = {
 };
 
 const ORGANISATION_ID = `${SITE_URL}#organisation`;
+// Villes où l'entreprise intervient.
+const ZONE_DE_SERVICE = ['Aix-en-Provence', 'Lambesc'];
 const DESCRIPTION_ORGANISATION =
   'Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.';
 
@@ -140,7 +142,7 @@ export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
             name: 'Renaud',
             url: pageUrl(join('qui-suis-je', 'index.html'), langue),
           },
-          areaServed: 'FR',
+          areaServed: ZONE_DE_SERVICE.map((name) => ({ '@type': 'City', name })),
           sameAs: ['https://github.com/douzeEnsemble'],
         },
       ],

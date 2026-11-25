@@ -124,7 +124,10 @@ describe('jsonLd', () => {
         name: 'Renaud',
         url: 'https://www.douzeensemble.fr/qui-suis-je/',
       },
-      areaServed: 'FR',
+      areaServed: [
+        { '@type': 'City', name: 'Aix-en-Provence' },
+        { '@type': 'City', name: 'Lambesc' },
+      ],
       sameAs: ['https://github.com/douzeEnsemble'],
     });
   });
