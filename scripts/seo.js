@@ -107,17 +107,43 @@ export const SEO = {
   },
 };
 
-// Données structurées (JSON-LD) d'une page : le site pour l'accueil, un fil
-// d'Ariane (Accueil > page) pour les autres.
+const ORGANISATION_ID = `${SITE_URL}#organisation`;
+const DESCRIPTION_ORGANISATION =
+  'Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.';
+
+// Données structurées (JSON-LD) d'une page : le site et l'entreprise (reliés
+// par `@id`) pour l'accueil, un fil d'Ariane (Accueil > page) pour les autres.
 export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
   const url = pageUrl(file, langue);
   if (file === 'index.html') {
     return {
       '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'douzeEnsemble',
-      url,
-      inLanguage: langue.htmlLang,
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          '@id': `${SITE_URL}#site`,
+          name: 'douzeEnsemble',
+          url,
+          inLanguage: langue.htmlLang,
+          publisher: { '@id': ORGANISATION_ID },
+        },
+        {
+          '@type': 'ProfessionalService',
+          '@id': ORGANISATION_ID,
+          name: 'douzeEnsemble',
+          url: SITE_URL,
+          logo: `${SITE_URL}apple-touch-icon.png`,
+          image: IMAGE_URL,
+          description: DESCRIPTION_ORGANISATION,
+          founder: {
+            '@type': 'Person',
+            name: 'Renaud',
+            url: pageUrl(join('qui-suis-je', 'index.html'), langue),
+          },
+          areaServed: 'FR',
+          sameAs: ['https://github.com/douzeEnsemble'],
+        },
+      ],
     };
   }
   return {
