@@ -147,7 +147,7 @@ describe('PAGES', () => {
     ]);
     const liste = readFileSync(REALISATIONS_PAGE, 'utf8');
     for (const nom of DETAILS) {
-      expect(liste).toContain(`<a class="carte-lien" href="${nom}/">Détails et captures<`);
+      expect(liste).toContain(`<a class="lien-fleche" href="${nom}/">Détails et captures<`);
     }
     for (const page of DETAIL_PAGES) {
       const html = readFileSync(page, 'utf8');
