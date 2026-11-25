@@ -95,7 +95,7 @@ export const TEXTES_EN = {
   'Et les points faibles ?': 'And the weaknesses?',
   'Retour aux points forts': 'Back to strengths',
   'Personne n’est parfait. Voici des compétences bien réelles, mais qui ne serviront à rien pour votre site.': 'Nobody is perfect. Here are some very real skills that will be of no use whatsoever for your website.',
-  'Menuiserie, bricolage, karaoké, jardinage et pilotage d’avion : les compétences de douzeEnsemble qui ne serviront pas à votre site.': 'Woodworking, DIY, karaoke, gardening and flying planes: the douzeEnsemble skills your website will never need.',
+  'Menuiserie, karaoké, jardinage, pilotage, mécanique, peinture, guitare et pêche au gros : les compétences de douzeEnsemble loin du web.': 'Woodworking, karaoke, gardening, flying, mechanics, painting, guitar and big-game fishing: douzeEnsemble skills far from the web.',
   'Menuiserie et bricolage': 'Woodworking and DIY',
   'Du meuble sur mesure à la petite réparation : le bois, la scie et la visseuse n’ont pas de secret.': 'From custom furniture to small repairs: wood, saws and drills hold no secrets.',
   'Karaoké': 'Karaoke',
@@ -104,6 +104,14 @@ export const TEXTES_EN = {
   'Les tomates poussent, les courgettes envahissent, le basilic résiste.': 'Tomatoes grow, courgettes take over, the basil holds on.',
   'Pilotage d’avion': 'Flying planes',
   'Aux commandes d’un avion léger, cap tenu et atterrissage en douceur. Votre site, lui, reste au sol.': 'At the controls of a light aircraft, holding course and landing gently. Your website stays on the ground.',
+  'Mécanique': 'Mechanics',
+  'La vidange faite maison et le pneu changé avant l’arrivée de la dépanneuse.': 'Oil changes done at home and the tyre swapped before the tow truck arrives.',
+  'Peinture et rénovation': 'Painting and renovation',
+  'Des murs refaits sans une trace de rouleau. Ou presque.': 'Walls redone without a single roller mark. Almost.',
+  'Guitare': 'Guitar',
+  'Quelques accords autour du feu, et toujours une chanson de plus à la demande.': 'A few chords around the campfire, and always one more song on request.',
+  'Pêche au gros': 'Big-game fishing',
+  'Des heures en mer pour un seul poisson. Votre site demandera bien moins de patience.': 'Hours at sea for a single fish. Your website will need far less patience.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':

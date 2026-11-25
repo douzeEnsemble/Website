@@ -28,7 +28,7 @@ export const SEO = {
   [join('points-faibles', 'index.html')]: {
     title: 'Points faibles · douzeEnsemble',
     description:
-      'Menuiserie, bricolage, karaoké, jardinage et pilotage d’avion : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
+      'Menuiserie, karaoké, jardinage, pilotage, mécanique, peinture, guitare et pêche au gros : les compétences de douzeEnsemble loin du web.',
   },
   [join('deroule', 'index.html')]: {
     title: 'Déroulé d’un projet · douzeEnsemble',
