@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PlusUn · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../js/partage-main.js"></script>
+    <script type="module" src="../../js/preferences-main.js"></script>
+    <script type="module" src="../../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../../">Accueil</a></li>
+        <li><a href="../../prestations/">Prestations</a></li>
+        <li><a href="../../points-forts/">Points forts</a></li>
+        <li><a href="../../deroule/">Déroulé d’un projet</a></li>
+        <li><a href="../" aria-current="true">Réalisations</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../carte/">Carte de visite</a></li>
+        <li><a href="../../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations realisation">
+      <p class="realisation-retour"><a class="realisation-retour-lien" href="../"><span aria-hidden="true">← </span>Toutes les réalisations</a></p>
+      <h1>PlusUn</h1>
+      <p class="prestations-intro">Des compteurs indépendants dans une application installable qui fonctionne hors ligne : pas personnalisé, objectif, probabilité et six styles d’affichage.</p>
+      <p class="realisation-liens">
+        <a class="carte-lien" href="https://plusun.douzeensemble.app/">Voir le site<span aria-hidden="true"> ↗</span></a>
+        <a class="carte-lien" href="https://github.com/douzeEnsemble/PlusUn">Code source<span aria-hidden="true"> ↗</span></a>
+      </p>
+      <ul class="prestations-liste">
+        <li class="prestation">
+          <h2>Plusieurs compteurs côte à côte</h2>
+          <p>Chaque compteur a son nom, sa couleur et son pas d’incrément. Ils s’affichent ensemble dans une grille et se réordonnent par glisser-déposer ; un appui long incrémente en rafale.</p>
+          <figure class="capture">
+            <img src="/realisations/plusun/compteurs.webp" width="760" height="300" alt="Trois compteurs côte à côte : pages lues, cafés du jour et tours de piscine" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Des réglages pour chaque compteur</h2>
+          <p>Valeur, pas d’incrément, objectif (avec une petite célébration une fois atteint), probabilité de réussite et date de début se règlent compteur par compteur.</p>
+          <figure class="capture">
+            <img src="/realisations/plusun/reglages.webp" width="390" height="780" alt="Fenêtre de réglages d’un compteur : valeur actuelle, pas d’incrément, objectif et probabilité" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Six styles d’affichage</h2>
+          <p>Odomètre, volets, 7 segments, anneau, éditorial ou pastille : chaque style a sa propre animation, avec une couleur et une image de fond au choix.</p>
+        </li>
+        <li class="prestation">
+          <h2>Une collection bien rangée</h2>
+          <p>Épinglez un compteur en tête, filtrez par nom, archivez ceux qui sont terminés et consultez les statistiques cumulées (total, moyenne, médiane) des compteurs archivés.</p>
+        </li>
+        <li class="prestation">
+          <h2>Hors ligne et synchronisable</h2>
+          <p>Les compteurs restent sur l’appareil, sans compte ni serveur : l’application s’installe et fonctionne sans réseau. Un lien, un QR code ou un fichier de sauvegarde les transfère, et un code de synchronisation facultatif les garde à jour entre appareils.</p>
+        </li>
+      </ul>
+      <p class="prestations-contact"><a class="prestations-cta" href="../../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+      <!--LANGUES-->
+    </footer>
+  </body>
+</html>

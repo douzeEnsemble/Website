@@ -191,6 +191,188 @@ export const TEXTES_MRS = {
   'Les projets sur GitHub': 'Les projets sur GitHub',
   'Voir le site': 'Va voir le site',
 
+  'Le suivi de sa collection de têtes de mobs Minecraft, avec les taux de drop et les lieux.':
+    'Le suivi de ta collection de têtes de mobs Minecraft, avec les taux de drop et les lieux, té.',
+  // Pages des réalisations
+  'Toutes les réalisations':
+    'Toutes les réalisations, té',
+  'Détails et captures':
+    'Les détails et les photos d’écran',
+  'Code source':
+    'Le code source',
+  'KoiKiManke, une liste de courses partagée en temps réel et sans compte : fonctionnalités et captures d’écran.':
+    'KoiKiManke, une liste de courses partagée en temps réel et sans compte : les fonctionnalités et les photos d’écran, vé.',
+  'KesKeJeVoeux, une liste de souhaits en lecture seule avec réservations secrètes : fonctionnalités et captures d’écran.':
+    'KesKeJeVoeux, une liste de souhaits en lecture seule avec des réservations en cachette : les fonctionnalités et les photos d’écran.',
+  'OnMangeQuoi, une liste de repas partagée en temps réel, avec planning et historique : fonctionnalités et captures d’écran.':
+    'OnMangeQuoi, une liste de repas partagée en temps réel, avec le planning et l’historique : les fonctionnalités et les photos d’écran.',
+  'MineCarte, une carte interactive de monde Minecraft avec lieux, chemins et zones : fonctionnalités et captures d’écran.':
+    'MineCarte, une carte interactive de monde Minecraft avec les lieux, les chemins et les zones : les fonctionnalités et les photos d’écran.',
+  'Une liste de courses partagée en temps réel, sans compte : un code de 6 caractères suffit pour la retrouver sur tous vos appareils.':
+    'Une liste de courses partagée en temps réel, sans compte : un code de 6 caractères et tu la retrouves sur tous tes appareils, peuchère.',
+  'Saisie rapide et catégories':
+    'Tu tapes vite, et c’est rangé par catégories',
+  'Tapez « 2 kg pommes » ou « yaourts x8 » : la quantité est détectée et affichée dans une pastille, modifiable d’un clic. Les articles se rangent par catégorie colorée et se déplacent par glisser-déposer, à la souris comme au doigt.':
+    'Tape « 2 kg pommes » ou « yaourts x8 » : la quantité est trouvée toute seule et mise dans une pastille, que tu changes d’un clic. Les articles se rangent par catégorie de couleur et se déplacent en les glissant, à la souris comme au doigt.',
+  'Liste de courses rangée en trois catégories, avec les quantités dans des pastilles vertes':
+    'Liste de courses rangée en trois catégories, avec les quantités dans des pastilles vertes',
+  'Partage sans compte':
+    'On partage sans compte',
+  'Un code à 6 caractères, un lien ou un QR code suffisent pour inviter quelqu’un. Tous les appareils connectés voient les changements à l’instant.':
+    'Un code à 6 caractères, un lien ou un QR code et tu invites qui tu veux. Tous les appareils connectés voient les changements tout de suite, té.',
+  'Fenêtre de partage d’une liste : code, QR code, lien, export et import':
+    'Fenêtre de partage d’une liste : code, QR code, lien, export et import',
+  'Photo par article, recherche, suggestions tirées de l’historique de la liste, export et import au format JSON. Une suppression se rattrape pendant 5 secondes.':
+    'Une photo par article, la recherche, des suggestions tirées de l’historique de la liste, l’export et l’import en JSON. Si tu supprimes par erreur, tu as 5 secondes pour te rattraper.',
+  'Installable et accessible':
+    'Tu l’installes et tout le monde peut s’en servir',
+  'L’application s’installe sur l’écran d’accueil et garde en mémoire la dernière version de chaque liste. Thèmes clair, sombre ou automatique, texte plus grand, contraste renforcé et animations réduites sont au choix.':
+    'L’appli s’installe sur l’écran d’accueil et garde en mémoire la dernière version de chaque liste. Thème clair, sombre ou automatique, texte plus grand, contraste renforcé et animations réduites : tu choisis.',
+  'Une liste de souhaits à partager en lecture seule : vos proches réservent un cadeau en secret, sans que vous voyiez les réservations.':
+    'Une liste de souhaits à partager en lecture seule : tes proches réservent un cadeau en cachette, sans que tu voies les réservations.',
+  'Votre liste de souhaits':
+    'Ta liste de souhaits',
+  'Chaque souhait a un nom, une description, un prix, un lien et une image. Le total se calcule tout seul, et chacun trie la liste par ordre défini ou par prix.':
+    'Chaque souhait a un nom, une description, un prix, un lien et une image. Le total se calcule tout seul, et chacun trie la liste dans l’ordre fixé ou par prix.',
+  'Liste de trois souhaits avec leur prix, le total en bas et les boutons de modification':
+    'Liste de trois souhaits avec leur prix, le total en bas et les boutons pour les changer',
+  'Des réservations secrètes':
+    'Des réservations en cachette',
+  'Les invités ouvrent la liste en lecture seule et réservent un cadeau pour éviter les doublons. La personne qui a fait la liste ne voit jamais les réservations : elles ne lui sont même pas envoyées.':
+    'Les invités ouvrent la liste en lecture seule et réservent un cadeau pour pas avoir deux fois le même. Celui qui a fait la liste ne voit jamais les réservations : elles ne lui sont même pas envoyées, peuchère.',
+  'Vue d’un invité : un cadeau est marqué « Réservé par toi » et les deux autres peuvent être réservés':
+    'Vue d’un invité : un cadeau est marqué « Réservé par toi » et les deux autres peuvent être réservés',
+  'Un accès bien gardé':
+    'Un accès bien gardé, té',
+  'Le code, le lien ou le QR code partagés ne donnent accès qu’à la lecture. Modifier la liste demande une clé d’édition personnelle, vérifiée par le serveur.':
+    'Le code, le lien ou le QR code qu’on partage donnent seulement le droit de lire. Pour changer la liste, il faut ta clé d’édition à toi, vérifiée par le serveur.',
+  'En direct et installable':
+    'En direct et à installer',
+  'Les invités voient les changements instantanément, avec le nombre de personnes connectées. L’application s’installe sur téléphone et propose des thèmes clair, sombre ou automatique et des réglages d’accessibilité.':
+    'Les invités voient les changements tout de suite, avec le nombre de personnes connectées. L’appli s’installe sur le téléphone et propose des thèmes clair, sombre ou automatique et des réglages d’accessibilité.',
+  'Une liste de repas partagée en temps réel, sans compte : on décide ensemble de ce qu’on mange, et on garde la trace de ce qu’on a aimé.':
+    'Une liste de repas partagée en temps réel, sans compte : on décide ensemble de ce qu’on mange, et on garde la trace de ce qu’on a aimé, vé.',
+  'Des repas qui avancent':
+    'Des repas qui avancent',
+  'Chaque repas suit un statut : idée, validée, commandée, rangée, non complet ou fait. La liste se filtre par statut et par temps de préparation, et se réordonne par glisser-déposer.':
+    'Chaque repas a un statut : idée, validée, commandée, rangée, non complet ou fait. On filtre la liste par statut et par temps de préparation, et on la remet dans l’ordre en glissant les repas.',
+  'Liste de quatre repas, chacun avec l’icône de son statut':
+    'Liste de quatre repas, chacun avec l’icône de son statut',
+  'Une fiche par repas':
+    'Une fiche par repas',
+  'Source (lien ou texte), temps de préparation, jour prévu, commentaire et jusqu’à 10 photos. Une fois le repas testé, il reçoit une note pour savoir s’il revient à table.':
+    'La source (lien ou texte), le temps de préparation, le jour prévu, un commentaire et jusqu’à 10 photos. Une fois le repas goûté, il reçoit une note pour savoir s’il revient à table.',
+  'Fiche d’un repas dépliée : statuts, source, temps de préparation, planification et commentaire':
+    'Fiche d’un repas dépliée : statuts, source, temps de préparation, planification et commentaire',
+  'Un planning de la semaine':
+    'Un planning de la semaine',
+  'Les repas prévus s’affichent sur une grille de la semaine, que l’on parcourt de semaine en semaine.':
+    'Les repas prévus s’affichent sur une grille de la semaine, qu’on parcourt de semaine en semaine.',
+  'Planning de la semaine avec un repas par jour, du mardi au vendredi':
+    'Planning de la semaine avec un repas par jour, du mardi au vendredi',
+  'Un historique utile':
+    'Un historique qui sert',
+  'Un repas fait quitte la liste mais reste dans l’historique, avec des statistiques (notes, temps de préparation, repas les plus refaits) et un bouton pour le reproposer plus tard.':
+    'Un repas fait sort de la liste mais reste dans l’historique, avec des statistiques (notes, temps de préparation, repas les plus refaits) et un bouton pour le reproposer plus tard.',
+  'Partagé et installable':
+    'Partagé et à installer',
+  'Un code, un lien ou un QR code ouvrent la liste sur tous les appareils, synchronisés en direct. L’application s’installe sur l’écran d’accueil et propose des réglages d’accessibilité.':
+    'Un code, un lien ou un QR code ouvrent la liste sur tous les appareils, synchronisés en direct. L’appli s’installe sur l’écran d’accueil et propose des réglages d’accessibilité.',
+  'Une carte interactive de monde Minecraft : placez vos lieux, tracez vos chemins et vos zones dans l’Overworld, le Nether et l’End.':
+    'Une carte interactive de monde Minecraft : place tes lieux, trace tes chemins et tes zones dans l’Overworld, le Nether et l’End.',
+  'Lieux et catégories':
+    'Les lieux et les catégories',
+  'Chaque lieu a un nom, une couleur, une catégorie (base, ferme, village, portail…) et ses coordonnées. Des pastilles filtrent la liste et la carte, et un bouton crée le portail correspondant dans l’autre dimension.':
+    'Chaque lieu a un nom, une couleur, une catégorie (base, ferme, village, portail…) et ses coordonnées. Des pastilles filtrent la liste et la carte, et un bouton crée le portail qui va avec dans l’autre dimension.',
+  'Carte de l’Overworld avec quatre lieux, la liste à gauche et la fiche d’un portail ouverte':
+    'Carte de l’Overworld avec quatre lieux, la liste à gauche et la fiche d’un portail ouverte',
+  'Trois dimensions':
+    'Trois dimensions',
+  'Un onglet par dimension, chacune avec son fond coloré et sa propre vue. La grille montre les blocs, les chunks et les régions, avec les coordonnées sous la souris et leur équivalent d’une dimension à l’autre.':
+    'Un onglet par dimension, chacune avec son fond de couleur et sa propre vue. La grille montre les blocs, les chunks et les régions, avec les coordonnées sous la souris et leur équivalent d’une dimension à l’autre.',
+  'Carte du Nether sur fond rouge, avec la grille des chunks et la liste des catégories':
+    'Carte du Nether sur fond rouge, avec la grille des chunks et la liste des catégories',
+  'Chemins et zones':
+    'Chemins et zones',
+  'Tracez des chemins, avec leur longueur en blocs, ou des zones, avec leur aire et leur périmètre. On les modifie point par point ou en saisissant des coordonnées.':
+    'Trace des chemins, avec leur longueur en blocs, ou des zones, avec leur aire et leur périmètre. On les change point par point ou en tapant des coordonnées.',
+  'Recherche et confort':
+    'La recherche et le confort',
+  'Une recherche globale trouve un lieu par son nom ou ses coordonnées. Les icônes d’items Minecraft reconnaissent un lieu d’un coup d’œil, et les modifications s’annulent et se rétablissent.':
+    'Une recherche globale trouve un lieu par son nom ou ses coordonnées. Les icônes d’items Minecraft font reconnaître un lieu d’un coup d’œil, et les modifications s’annulent et se rétablissent.',
+  'Des compteurs indépendants dans une application installable qui fonctionne hors ligne : pas personnalisé, objectif, probabilité et six styles d’affichage.':
+    'Des compteurs indépendants dans une appli installable qui marche hors ligne : pas personnalisé, objectif, probabilité et six styles d’affichage.',
+  'Plusieurs compteurs côte à côte':
+    'Plusieurs compteurs côte à côte',
+  'Chaque compteur a son nom, sa couleur et son pas d’incrément. Ils s’affichent ensemble dans une grille et se réordonnent par glisser-déposer ; un appui long incrémente en rafale.':
+    'Chaque compteur a son nom, sa couleur et son pas d’incrément. Ils s’affichent ensemble dans une grille et se remettent dans l’ordre en les glissant ; un appui long incrémente en rafale.',
+  'Trois compteurs côte à côte : pages lues, cafés du jour et tours de piscine':
+    'Trois compteurs côte à côte : pages lues, cafés du jour et tours de piscine',
+  'Des réglages pour chaque compteur':
+    'Des réglages pour chaque compteur',
+  'Valeur, pas d’incrément, objectif (avec une petite célébration une fois atteint), probabilité de réussite et date de début se règlent compteur par compteur.':
+    'La valeur, le pas d’incrément, l’objectif (avec une petite fête quand il est atteint), la probabilité de réussite et la date de début se règlent compteur par compteur.',
+  'Fenêtre de réglages d’un compteur : valeur actuelle, pas d’incrément, objectif et probabilité':
+    'Fenêtre de réglages d’un compteur : valeur actuelle, pas d’incrément, objectif et probabilité',
+  'Six styles d’affichage':
+    'Six styles d’affichage',
+  'Odomètre, volets, 7 segments, anneau, éditorial ou pastille : chaque style a sa propre animation, avec une couleur et une image de fond au choix.':
+    'Odomètre, volets, 7 segments, anneau, éditorial ou pastille : chaque style a sa propre animation, avec la couleur et l’image de fond que tu veux.',
+  'Une collection bien rangée':
+    'Une collection bien rangée',
+  'Épinglez un compteur en tête, filtrez par nom, archivez ceux qui sont terminés et consultez les statistiques cumulées (total, moyenne, médiane) des compteurs archivés.':
+    'Épingle un compteur en tête, filtre par nom, archive ceux qui sont finis et regarde les statistiques cumulées (total, moyenne, médiane) des compteurs archivés.',
+  'Hors ligne et synchronisable':
+    'Hors ligne et synchronisable',
+  'Les compteurs restent sur l’appareil, sans compte ni serveur : l’application s’installe et fonctionne sans réseau. Un lien, un QR code ou un fichier de sauvegarde les transfère, et un code de synchronisation facultatif les garde à jour entre appareils.':
+    'Les compteurs restent sur l’appareil, sans compte ni serveur : l’appli s’installe et marche sans réseau. Un lien, un QR code ou un fichier de sauvegarde les transfère, et un code de synchronisation facultatif les garde à jour entre appareils.',
+  'Une liste de cadeaux de Noël partagée en temps réel, sans compte : on suit les cadeaux de chaque personne, leur statut et le budget.':
+    'Une liste de cadeaux de Noël partagée en temps réel, sans compte : on suit les cadeaux de chaque personne, leur statut et le budget, té.',
+  'Un cadeau par personne':
+    'Un cadeau par personne',
+  'Les catégories sont les prénoms des personnes à qui l’on offre. Chaque cadeau se range sous son destinataire et se déplace par glisser-déposer, comme les personnes elles-mêmes.':
+    'Les catégories sont les prénoms des gens à qui on offre. Chaque cadeau se range sous celui qui le reçoit et se déplace en le glissant, comme les personnes elles-mêmes.',
+  'Statuts, prix et totaux':
+    'Statuts, prix et totaux',
+  'Chaque cadeau a un statut (idée, acheté, commandé, reçu, à plusieurs ou emballé) et un prix. Le total de chaque personne et le total général se calculent tout seuls.':
+    'Chaque cadeau a un statut (idée, acheté, commandé, reçu, à plusieurs ou emballé) et un prix. Le total de chaque personne et le total général se calculent tout seuls.',
+  'Liste de cadeaux rangés par personne, avec leur statut, leur prix et les totaux':
+    'Liste de cadeaux rangés par personne, avec leur statut, leur prix et les totaux',
+  'Photos et liens':
+    'Photos et liens',
+  'Une photo ou une capture d’écran, et un lien vers la fiche du produit, se rattachent à chaque cadeau.':
+    'Une photo ou une capture d’écran, et un lien vers la fiche du produit, s’attachent à chaque cadeau.',
+  'Partagée en direct':
+    'Partagée en direct',
+  'Un code à 6 caractères, un lien ou un QR code partagent la liste, synchronisée en direct entre tous les appareils connectés. Export et import JSON, annulation pendant 5 secondes et application installable complètent le tout.':
+    'Un code à 6 caractères, un lien ou un QR code partagent la liste, synchronisée en direct entre tous les appareils connectés. L’export et l’import en JSON, 5 secondes pour annuler et une appli installable complètent le tout.',
+  'Un tableau pour suivre sa collection de têtes de mobs Minecraft du datapack More Mob Heads : taux de drop, lieu et case « obtenue ».':
+    'Un tableau pour suivre ta collection de têtes de mobs Minecraft du datapack More Mob Heads : taux de drop, lieu et case « obtenue ».',
+  'Un tableau complet':
+    'Un tableau complet',
+  'Chaque tête indique son taux de drop sans Looting et avec Looting III, le lieu où la trouver et l’objet d’accouplement. Les colonnes se trient.':
+    'Chaque tête indique son taux de drop sans Looting et avec Looting III, le lieu où la trouver et l’objet d’accouplement. Les colonnes se trient.',
+  'Tableau des têtes de mobs filtré sur les abeilles, avec taux de drop, lieu et cases « obtenue » cochées':
+    'Tableau des têtes de mobs filtré sur les abeilles, avec taux de drop, lieu et cases « obtenue » cochées',
+  'Ma collection':
+    'Ma collection',
+  'Une case « obtenue » par tête, mémorisée dans le navigateur, avec le décompte des têtes obtenues. Des vues « obtenues » et « manquantes » montrent ce qu’il reste à trouver.':
+    'Une case « obtenue » par tête, gardée dans le navigateur, avec le compte des têtes obtenues. Des vues « obtenues » et « manquantes » montrent ce qu’il reste à trouver.',
+  'Des filtres pratiques':
+    'Des filtres pratiques',
+  'Le filtre accepte plusieurs termes séparés par des virgules (« wolf, cat, panda ») ou un nom exact.':
+    'Le filtre accepte plusieurs termes séparés par des virgules (« wolf, cat, panda ») ou un nom exact.',
+  'Pour tout le monde':
+    'Pour tout le monde',
+  'Thème automatique, clair ou sombre, texte plus grand, contraste élevé et animations réduites sont au choix.':
+    'Thème automatique, clair ou sombre, texte plus grand, contraste élevé et animations réduites : tu choisis.',
+  'PlusUn, des compteurs indépendants installables et utilisables hors ligne : fonctionnalités et captures d’écran.':
+    'PlusUn, des compteurs indépendants à installer et à utiliser hors ligne : les fonctionnalités et les photos d’écran.',
+  'DansMaHotte, une liste de cadeaux de Noël partagée en temps réel, avec prix et statuts : fonctionnalités et captures d’écran.':
+    'DansMaHotte, une liste de cadeaux de Noël partagée en temps réel, avec les prix et les statuts : les fonctionnalités et les photos d’écran.',
+  'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.':
+    'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : les fonctionnalités et les photos d’écran.',
+
   // Contact et carte de visite
   'Afficher l’email': 'Montre l’email',
   'Afficher le téléphone': 'Montre le téléphone',

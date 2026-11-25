@@ -35,6 +35,41 @@ export const SEO = {
     description:
       'Les applications de douzeEnsemble, rangées par usage : le quotidien, les fêtes, les jeux.',
   },
+  [join('realisations', 'koikimanke', 'index.html')]: {
+    title: 'KoiKiManke · douzeEnsemble',
+    description:
+      'KoiKiManke, une liste de courses partagée en temps réel et sans compte : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'keskejevoeux', 'index.html')]: {
+    title: 'KesKeJeVoeux · douzeEnsemble',
+    description:
+      'KesKeJeVoeux, une liste de souhaits en lecture seule avec réservations secrètes : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'onmangequoi', 'index.html')]: {
+    title: 'OnMangeQuoi · douzeEnsemble',
+    description:
+      'OnMangeQuoi, une liste de repas partagée en temps réel, avec planning et historique : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'minecarte', 'index.html')]: {
+    title: 'MineCarte · douzeEnsemble',
+    description:
+      'MineCarte, une carte interactive de monde Minecraft avec lieux, chemins et zones : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'plusun', 'index.html')]: {
+    title: 'PlusUn · douzeEnsemble',
+    description:
+      'PlusUn, des compteurs indépendants installables et utilisables hors ligne : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'dansmahotte', 'index.html')]: {
+    title: 'DansMaHotte · douzeEnsemble',
+    description:
+      'DansMaHotte, une liste de cadeaux de Noël partagée en temps réel, avec prix et statuts : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'moremobsheadschecklist', 'index.html')]: {
+    title: 'MoreMobsHeadsChecklist · douzeEnsemble',
+    description:
+      'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.',
+  },
   [join('contact', 'index.html')]: {
     title: 'Contact · douzeEnsemble',
     description:

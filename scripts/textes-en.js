@@ -191,6 +191,188 @@ export const TEXTES_EN = {
   'Les projets sur GitHub': 'Projects on GitHub',
   'Voir le site': 'Visit the site',
 
+  'Le suivi de sa collection de têtes de mobs Minecraft, avec les taux de drop et les lieux.':
+    'Track your collection of Minecraft mob heads, with drop rates and locations.',
+  // Pages des réalisations
+  'Toutes les réalisations':
+    'All projects',
+  'Détails et captures':
+    'Details and screenshots',
+  'Code source':
+    'Source code',
+  'KoiKiManke, une liste de courses partagée en temps réel et sans compte : fonctionnalités et captures d’écran.':
+    'KoiKiManke, a shopping list shared in real time with no account: features and screenshots.',
+  'KesKeJeVoeux, une liste de souhaits en lecture seule avec réservations secrètes : fonctionnalités et captures d’écran.':
+    'KesKeJeVoeux, a read-only wish list with secret reservations: features and screenshots.',
+  'OnMangeQuoi, une liste de repas partagée en temps réel, avec planning et historique : fonctionnalités et captures d’écran.':
+    'OnMangeQuoi, a meal list shared in real time, with a planner and a history: features and screenshots.',
+  'MineCarte, une carte interactive de monde Minecraft avec lieux, chemins et zones : fonctionnalités et captures d’écran.':
+    'MineCarte, an interactive Minecraft world map with places, paths and areas: features and screenshots.',
+  'Une liste de courses partagée en temps réel, sans compte : un code de 6 caractères suffit pour la retrouver sur tous vos appareils.':
+    'A shopping list shared in real time, with no account: a 6-character code is all it takes to find it on all your devices.',
+  'Saisie rapide et catégories':
+    'Quick entry and categories',
+  'Tapez « 2 kg pommes » ou « yaourts x8 » : la quantité est détectée et affichée dans une pastille, modifiable d’un clic. Les articles se rangent par catégorie colorée et se déplacent par glisser-déposer, à la souris comme au doigt.':
+    'Type “2 kg pommes” or “yaourts x8”: the quantity is detected and shown in a badge you can edit with one click. Items sort into coloured categories and move by drag and drop, with a mouse or a finger.',
+  'Liste de courses rangée en trois catégories, avec les quantités dans des pastilles vertes':
+    'Shopping list sorted into three categories, with quantities in green badges',
+  'Partage sans compte':
+    'Sharing without an account',
+  'Un code à 6 caractères, un lien ou un QR code suffisent pour inviter quelqu’un. Tous les appareils connectés voient les changements à l’instant.':
+    'A 6-character code, a link or a QR code is enough to invite someone. Every connected device sees changes instantly.',
+  'Fenêtre de partage d’une liste : code, QR code, lien, export et import':
+    'A list’s sharing window: code, QR code, link, export and import',
+  'Photo par article, recherche, suggestions tirées de l’historique de la liste, export et import au format JSON. Une suppression se rattrape pendant 5 secondes.':
+    'A photo for each item, search, suggestions drawn from the list’s history, JSON export and import. A deletion can be undone for 5 seconds.',
+  'Installable et accessible':
+    'Installable and accessible',
+  'L’application s’installe sur l’écran d’accueil et garde en mémoire la dernière version de chaque liste. Thèmes clair, sombre ou automatique, texte plus grand, contraste renforcé et animations réduites sont au choix.':
+    'The app installs on the home screen and keeps the latest version of each list in memory. Light, dark or automatic theme, larger text, stronger contrast and reduced animations are all optional.',
+  'Une liste de souhaits à partager en lecture seule : vos proches réservent un cadeau en secret, sans que vous voyiez les réservations.':
+    'A wish list to share read-only: your loved ones secretly reserve a gift, and you never see the reservations.',
+  'Votre liste de souhaits':
+    'Your wish list',
+  'Chaque souhait a un nom, une description, un prix, un lien et une image. Le total se calcule tout seul, et chacun trie la liste par ordre défini ou par prix.':
+    'Each wish has a name, a description, a price, a link and an image. The total adds up on its own, and everyone sorts the list by set order or by price.',
+  'Liste de trois souhaits avec leur prix, le total en bas et les boutons de modification':
+    'List of three wishes with their prices, the total at the bottom and the edit buttons',
+  'Des réservations secrètes':
+    'Secret reservations',
+  'Les invités ouvrent la liste en lecture seule et réservent un cadeau pour éviter les doublons. La personne qui a fait la liste ne voit jamais les réservations : elles ne lui sont même pas envoyées.':
+    'Guests open the list read-only and reserve a gift to avoid duplicates. The person who made the list never sees the reservations: they are not even sent to them.',
+  'Vue d’un invité : un cadeau est marqué « Réservé par toi » et les deux autres peuvent être réservés':
+    'A guest’s view: one gift is marked “Réservé par toi” (reserved by you) and the other two can be reserved',
+  'Un accès bien gardé':
+    'Well-guarded access',
+  'Le code, le lien ou le QR code partagés ne donnent accès qu’à la lecture. Modifier la liste demande une clé d’édition personnelle, vérifiée par le serveur.':
+    'The shared code, link or QR code only give read access. Editing the list takes a personal edit key, checked by the server.',
+  'En direct et installable':
+    'Live and installable',
+  'Les invités voient les changements instantanément, avec le nombre de personnes connectées. L’application s’installe sur téléphone et propose des thèmes clair, sombre ou automatique et des réglages d’accessibilité.':
+    'Guests see changes instantly, along with the number of people connected. The app installs on a phone and offers light, dark or automatic themes and accessibility settings.',
+  'Une liste de repas partagée en temps réel, sans compte : on décide ensemble de ce qu’on mange, et on garde la trace de ce qu’on a aimé.':
+    'A meal list shared in real time, with no account: you decide together what to eat, and keep track of what you liked.',
+  'Des repas qui avancent':
+    'Meals that move forward',
+  'Chaque repas suit un statut : idée, validée, commandée, rangée, non complet ou fait. La liste se filtre par statut et par temps de préparation, et se réordonne par glisser-déposer.':
+    'Each meal has a status: idea, approved, ordered, put away, incomplete or done. The list filters by status and by preparation time, and reorders by drag and drop.',
+  'Liste de quatre repas, chacun avec l’icône de son statut':
+    'List of four meals, each with its status icon',
+  'Une fiche par repas':
+    'A card for each meal',
+  'Source (lien ou texte), temps de préparation, jour prévu, commentaire et jusqu’à 10 photos. Une fois le repas testé, il reçoit une note pour savoir s’il revient à table.':
+    'Source (link or text), preparation time, planned day, comment and up to 10 photos. Once the meal has been tried, it gets a rating to decide whether it comes back to the table.',
+  'Fiche d’un repas dépliée : statuts, source, temps de préparation, planification et commentaire':
+    'An expanded meal card: statuses, source, preparation time, scheduling and comment',
+  'Un planning de la semaine':
+    'A weekly planner',
+  'Les repas prévus s’affichent sur une grille de la semaine, que l’on parcourt de semaine en semaine.':
+    'Planned meals appear on a weekly grid that you browse week by week.',
+  'Planning de la semaine avec un repas par jour, du mardi au vendredi':
+    'Weekly planner with one meal a day, from Tuesday to Friday',
+  'Un historique utile':
+    'A useful history',
+  'Un repas fait quitte la liste mais reste dans l’historique, avec des statistiques (notes, temps de préparation, repas les plus refaits) et un bouton pour le reproposer plus tard.':
+    'A finished meal leaves the list but stays in the history, with statistics (ratings, preparation times, most repeated meals) and a button to suggest it again later.',
+  'Partagé et installable':
+    'Shared and installable',
+  'Un code, un lien ou un QR code ouvrent la liste sur tous les appareils, synchronisés en direct. L’application s’installe sur l’écran d’accueil et propose des réglages d’accessibilité.':
+    'A code, a link or a QR code opens the list on every device, synchronised live. The app installs on the home screen and offers accessibility settings.',
+  'Une carte interactive de monde Minecraft : placez vos lieux, tracez vos chemins et vos zones dans l’Overworld, le Nether et l’End.':
+    'An interactive map of a Minecraft world: place your locations and draw your paths and areas in the Overworld, the Nether and the End.',
+  'Lieux et catégories':
+    'Places and categories',
+  'Chaque lieu a un nom, une couleur, une catégorie (base, ferme, village, portail…) et ses coordonnées. Des pastilles filtrent la liste et la carte, et un bouton crée le portail correspondant dans l’autre dimension.':
+    'Each place has a name, a colour, a category (base, farm, village, portal…) and its coordinates. Badges filter the list and the map, and a button creates the matching portal in the other dimension.',
+  'Carte de l’Overworld avec quatre lieux, la liste à gauche et la fiche d’un portail ouverte':
+    'Overworld map with four places, the list on the left and a portal’s card open',
+  'Trois dimensions':
+    'Three dimensions',
+  'Un onglet par dimension, chacune avec son fond coloré et sa propre vue. La grille montre les blocs, les chunks et les régions, avec les coordonnées sous la souris et leur équivalent d’une dimension à l’autre.':
+    'One tab per dimension, each with its own coloured background and its own view. The grid shows blocks, chunks and regions, with the coordinates under the mouse and their equivalent in the other dimension.',
+  'Carte du Nether sur fond rouge, avec la grille des chunks et la liste des catégories':
+    'Map of the Nether on a red background, with the chunk grid and the list of categories',
+  'Chemins et zones':
+    'Paths and areas',
+  'Tracez des chemins, avec leur longueur en blocs, ou des zones, avec leur aire et leur périmètre. On les modifie point par point ou en saisissant des coordonnées.':
+    'Draw paths, with their length in blocks, or areas, with their surface and perimeter. Edit them point by point or by typing coordinates.',
+  'Recherche et confort':
+    'Search and comfort',
+  'Une recherche globale trouve un lieu par son nom ou ses coordonnées. Les icônes d’items Minecraft reconnaissent un lieu d’un coup d’œil, et les modifications s’annulent et se rétablissent.':
+    'A global search finds a place by name or coordinates. Minecraft item icons make a place recognisable at a glance, and changes can be undone and redone.',
+  'Des compteurs indépendants dans une application installable qui fonctionne hors ligne : pas personnalisé, objectif, probabilité et six styles d’affichage.':
+    'Independent counters in an installable app that works offline: custom step, goal, probability and six display styles.',
+  'Plusieurs compteurs côte à côte':
+    'Several counters side by side',
+  'Chaque compteur a son nom, sa couleur et son pas d’incrément. Ils s’affichent ensemble dans une grille et se réordonnent par glisser-déposer ; un appui long incrémente en rafale.':
+    'Each counter has its own name, colour and increment step. They appear together in a grid and reorder by drag and drop; a long press increments in bursts.',
+  'Trois compteurs côte à côte : pages lues, cafés du jour et tours de piscine':
+    'Three counters side by side: pages read, coffees of the day and swimming laps',
+  'Des réglages pour chaque compteur':
+    'Settings for each counter',
+  'Valeur, pas d’incrément, objectif (avec une petite célébration une fois atteint), probabilité de réussite et date de début se règlent compteur par compteur.':
+    'Value, increment step, goal (with a small celebration once reached), success probability and start date are set counter by counter.',
+  'Fenêtre de réglages d’un compteur : valeur actuelle, pas d’incrément, objectif et probabilité':
+    'A counter’s settings window: current value, increment step, goal and probability',
+  'Six styles d’affichage':
+    'Six display styles',
+  'Odomètre, volets, 7 segments, anneau, éditorial ou pastille : chaque style a sa propre animation, avec une couleur et une image de fond au choix.':
+    'Odometer, flip panels, 7 segments, ring, editorial or badge: each style has its own animation, with a colour and a background image of your choice.',
+  'Une collection bien rangée':
+    'A well-kept collection',
+  'Épinglez un compteur en tête, filtrez par nom, archivez ceux qui sont terminés et consultez les statistiques cumulées (total, moyenne, médiane) des compteurs archivés.':
+    'Pin a counter to the top, filter by name, archive finished ones and view the combined statistics (total, average, median) of archived counters.',
+  'Hors ligne et synchronisable':
+    'Offline and syncable',
+  'Les compteurs restent sur l’appareil, sans compte ni serveur : l’application s’installe et fonctionne sans réseau. Un lien, un QR code ou un fichier de sauvegarde les transfère, et un code de synchronisation facultatif les garde à jour entre appareils.':
+    'Counters stay on the device, with no account or server: the app installs and works without a network. A link, a QR code or a backup file transfers them, and an optional sync code keeps them up to date across devices.',
+  'Une liste de cadeaux de Noël partagée en temps réel, sans compte : on suit les cadeaux de chaque personne, leur statut et le budget.':
+    'A Christmas gift list shared in real time, with no account: keep track of each person’s gifts, their status and the budget.',
+  'Un cadeau par personne':
+    'A gift for each person',
+  'Les catégories sont les prénoms des personnes à qui l’on offre. Chaque cadeau se range sous son destinataire et se déplace par glisser-déposer, comme les personnes elles-mêmes.':
+    'The categories are the first names of the people you give to. Each gift is filed under its recipient and moves by drag and drop, just like the people themselves.',
+  'Statuts, prix et totaux':
+    'Statuses, prices and totals',
+  'Chaque cadeau a un statut (idée, acheté, commandé, reçu, à plusieurs ou emballé) et un prix. Le total de chaque personne et le total général se calculent tout seuls.':
+    'Each gift has a status (idea, bought, ordered, received, group gift or wrapped) and a price. Each person’s total and the grand total add up on their own.',
+  'Liste de cadeaux rangés par personne, avec leur statut, leur prix et les totaux':
+    'Gift list sorted by person, with their status, price and totals',
+  'Photos et liens':
+    'Photos and links',
+  'Une photo ou une capture d’écran, et un lien vers la fiche du produit, se rattachent à chaque cadeau.':
+    'A photo or a screenshot, and a link to the product page, can be attached to each gift.',
+  'Partagée en direct':
+    'Shared live',
+  'Un code à 6 caractères, un lien ou un QR code partagent la liste, synchronisée en direct entre tous les appareils connectés. Export et import JSON, annulation pendant 5 secondes et application installable complètent le tout.':
+    'A 6-character code, a link or a QR code shares the list, synchronised live across all connected devices. JSON export and import, a 5-second undo and an installable app complete the picture.',
+  'Un tableau pour suivre sa collection de têtes de mobs Minecraft du datapack More Mob Heads : taux de drop, lieu et case « obtenue ».':
+    'A table to track your collection of Minecraft mob heads from the More Mob Heads datapack: drop rate, location and an “obtained” checkbox.',
+  'Un tableau complet':
+    'A complete table',
+  'Chaque tête indique son taux de drop sans Looting et avec Looting III, le lieu où la trouver et l’objet d’accouplement. Les colonnes se trient.':
+    'Each head shows its drop rate without Looting and with Looting III, where to find it and the breeding item. Columns can be sorted.',
+  'Tableau des têtes de mobs filtré sur les abeilles, avec taux de drop, lieu et cases « obtenue » cochées':
+    'Table of mob heads filtered on bees, with drop rate, location and ticked “obtained” checkboxes',
+  'Ma collection':
+    'My collection',
+  'Une case « obtenue » par tête, mémorisée dans le navigateur, avec le décompte des têtes obtenues. Des vues « obtenues » et « manquantes » montrent ce qu’il reste à trouver.':
+    'An “obtained” checkbox per head, remembered in the browser, with a count of heads obtained. “Obtained” and “missing” views show what is left to find.',
+  'Des filtres pratiques':
+    'Handy filters',
+  'Le filtre accepte plusieurs termes séparés par des virgules (« wolf, cat, panda ») ou un nom exact.':
+    'The filter accepts several comma-separated terms (“wolf, cat, panda”) or an exact name.',
+  'Pour tout le monde':
+    'For everyone',
+  'Thème automatique, clair ou sombre, texte plus grand, contraste élevé et animations réduites sont au choix.':
+    'Automatic, light or dark theme, larger text, high contrast and reduced animations are all optional.',
+  'PlusUn, des compteurs indépendants installables et utilisables hors ligne : fonctionnalités et captures d’écran.':
+    'PlusUn, independent counters you can install and use offline: features and screenshots.',
+  'DansMaHotte, une liste de cadeaux de Noël partagée en temps réel, avec prix et statuts : fonctionnalités et captures d’écran.':
+    'DansMaHotte, a Christmas gift list shared in real time, with prices and statuses: features and screenshots.',
+  'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.':
+    'MoreMobsHeadsChecklist, a tracker for the Minecraft mob heads of the More Mob Heads datapack: features and screenshots.',
+
   // Contact et carte de visite
   'Afficher l’email': 'Show email',
   'Afficher le téléphone': 'Show phone number',

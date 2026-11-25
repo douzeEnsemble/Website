@@ -27,6 +27,21 @@ export const SITE_FILES = [
 ];
 
 export const REALISATIONS_PAGE = join('realisations', 'index.html');
+
+// Réalisations qui ont leur page de fonctionnalités (`realisations/<nom>/`),
+// nommées d'après leur dépôt GitHub en minuscules.
+export const DETAILS = [
+  'koikimanke',
+  'keskejevoeux',
+  'onmangequoi',
+  'minecarte',
+  'plusun',
+  'dansmahotte',
+  'moremobsheadschecklist',
+];
+export const DETAIL_PAGES = DETAILS.map((nom) =>
+  join('realisations', nom, 'index.html'),
+);
 export const NOT_FOUND_PAGE = '404.html';
 
 // Pages qui affichent la version du projet (VER-09) : leur pied de page porte
@@ -38,6 +53,7 @@ export const PAGES = [
   join('points-forts', 'index.html'),
   join('deroule', 'index.html'),
   REALISATIONS_PAGE,
+  ...DETAIL_PAGES,
   join('carte', 'index.html'),
   join('apropos', 'index.html'),
   NOT_FOUND_PAGE,

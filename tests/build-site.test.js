@@ -6,9 +6,11 @@ import { PREFERENCES_MARKER } from '../scripts/preferences.js';
 import { SEO_MARKER, sitemapXml } from '../scripts/seo.js';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
+  DETAILS,
+  DETAIL_PAGES,
   PAGES,
   REALISATIONS_PAGE,
   SITE_FILES,
@@ -59,6 +61,10 @@ function fakeRepo() {
   );
   writeFileSync(join(root, 'tests', 'x.test.js'), 'test');
   writeFileSync(join(root, 'package.json'), '{}');
+  for (const page of DETAIL_PAGES) {
+    mkdirSync(join(root, dirname(page)), { recursive: true });
+    writeFileSync(join(root, page), `détail ${VERSION_PLACEHOLDER}`);
+  }
   writeFileSync(
     join(root, REALISATIONS_PAGE),
     `realisations ${VERSION_PLACEHOLDER}`,
@@ -99,10 +105,41 @@ describe('PAGES', () => {
       join('points-forts', 'index.html'),
       join('deroule', 'index.html'),
       REALISATIONS_PAGE,
+      join('realisations', 'koikimanke', 'index.html'),
+      join('realisations', 'keskejevoeux', 'index.html'),
+      join('realisations', 'onmangequoi', 'index.html'),
+      join('realisations', 'minecarte', 'index.html'),
+      join('realisations', 'plusun', 'index.html'),
+      join('realisations', 'dansmahotte', 'index.html'),
+      join('realisations', 'moremobsheadschecklist', 'index.html'),
       join('carte', 'index.html'),
       join('apropos', 'index.html'),
       '404.html',
     ]);
+  });
+
+  it('a une page de fonctionnalités par réalisation, avec ses captures', () => {
+    expect(DETAILS).toEqual([
+      'koikimanke',
+      'keskejevoeux',
+      'onmangequoi',
+      'minecarte',
+      'plusun',
+      'dansmahotte',
+      'moremobsheadschecklist',
+    ]);
+    const liste = readFileSync(REALISATIONS_PAGE, 'utf8');
+    for (const nom of DETAILS) {
+      expect(liste).toContain(`<a class="carte-lien" href="${nom}/">Détails et captures<`);
+    }
+    for (const page of DETAIL_PAGES) {
+      const html = readFileSync(page, 'utf8');
+      const images = [...html.matchAll(/src="(\/realisations\/[^"]+)"/g)].map((m) => m[1]);
+      expect(images.length).toBeGreaterThan(0);
+      for (const image of images) {
+        expect(existsSync(join('.', image))).toBe(true);
+      }
+    }
   });
 });
 
@@ -224,6 +261,17 @@ describe('buildSite', () => {
     const apropos = readFileSync(join(out, 'en', 'apropos', 'index.html'), 'utf8');
     expect(apropos).toContain('<dt>Address</dt><dd>1 rue</dd>');
     expect(apropos).toContain('Entry in the Annuaire des Entreprises');
+  });
+
+  it('publie les pages de fonctionnalités des réalisations dans chaque langue', async () => {
+    await buildSite({ root, out, version: 'v1.2.3' });
+    for (const page of DETAIL_PAGES) {
+      for (const dossier of ['', 'en', 'mrs']) {
+        expect(readFileSync(join(out, dossier, page), 'utf8')).toBe(
+          'détail <span class="app-version">v1.2.3</span>',
+        );
+      }
+    }
   });
 
   it('vide le dossier de sortie avant de construire', async () => {
