@@ -511,6 +511,8 @@ export const TEXTES_EN = {
   ' Animations réduites': ' Reduced motion',
 
   // Partage
+  // Logo
+  'douzeEnsemble, accueil': 'douzeEnsemble, home',
   'Partager cette page': 'Share this page',
   'QR code de': 'QR code of',
   'Adresse de la page': 'Page address',

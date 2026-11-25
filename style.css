@@ -361,8 +361,8 @@ body.awesome .accroche {
   top: 1rem;
   right: 1.25rem;
 
-  /* Laisse la place du bouton de partage (en haut à gauche) : au-delà, les
-     entrées passent à la ligne au lieu de déborder de l'écran. */
+  /* Laisse la place du logo (en haut à gauche) : au-delà, les entrées
+     passent à la ligne au lieu de déborder de l'écran. */
   left: 3.5rem;
   font-family: sans-serif;
   font-size: 0.9rem;
@@ -1102,32 +1102,32 @@ body.awesome .menu :where(a) {
   opacity: 0.55;
 }
 
-/* Bouton de partage : discret comme le menu, en haut à gauche (cible de
-   28 px minimum, visible au survol et au focus). */
-.partage-ouvrir {
+/* Logo : le monogramme du favicon, en haut à gauche de chaque page, lien
+   vers l'accueil. Au-dessus de la barre du menu sur petit écran. */
+.logo {
   position: fixed;
   z-index: 11;
-  top: 0.6rem;
+  top: 0.55rem;
   left: 0.9rem;
-  display: flex;
-  padding: 0.4rem;
-  border: 0;
-  background: none;
-  color: #fff;
-  cursor: pointer;
-  mix-blend-mode: difference;
-  opacity: 0.35;
-  transition: opacity 0.2s;
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+
+  /* Un filet détache la tuile sombre d'un fond sombre. */
+  box-shadow: 0 0 0 1px var(--bordure);
 }
 
-.partage-ouvrir svg {
-  width: 1.25rem;
-  height: 1.25rem;
+.logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.partage-ouvrir:hover,
-.partage-ouvrir:focus-visible {
-  opacity: 1;
+.logo:hover,
+.logo:focus-visible {
+  outline: 0.125rem solid var(--orange-texte);
+  outline-offset: 0.2rem;
 }
 
 /* Fenêtre native <dialog> : un ticket aux couleurs de la page, posé de
@@ -1427,8 +1427,7 @@ html {
 }
 
 /* Contraste élevé : les éléments discrets deviennent pleinement visibles. */
-:root[data-high-contrast] .pied-version > *,
-:root[data-high-contrast] .partage-ouvrir {
+:root[data-high-contrast] .pied-version > * {
   opacity: 1;
 }
 

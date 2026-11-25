@@ -1,3 +1,5 @@
+import { PARTAGE_BOUTON_MARKER } from './partage.js';
+
 export const PREFERENCES_MARKER = '<!--PREFERENCES-->';
 
 const icon = (paths, className = '') =>
@@ -30,8 +32,9 @@ const REGLAGES = [
   ['reduceMotion', 'Animations réduites'],
 ];
 
-// Groupe de boutons fixé en bas à droite (thème, accessibilité) et dialogue
-// natif des réglages d'accessibilité (A11Y-11).
+// Groupe de boutons fixé en bas à droite (thème, accessibilité, puis partage,
+// posé par scripts/partage.js) et dialogue natif des réglages d'accessibilité
+// (A11Y-11).
 export function preferencesHtml() {
   const cases = REGLAGES.map(
     ([name, label]) =>
@@ -40,6 +43,7 @@ export function preferencesHtml() {
   return `<div class="preferences" role="group" aria-label="Préférences d’affichage">
       <button type="button" class="preferences-bouton preferences-theme" aria-label="Thème : automatique" data-label-auto="Thème : automatique" data-label-light="Thème : clair" data-label-dark="Thème : sombre">${THEME_ICONS}</button>
       <button type="button" class="preferences-bouton preferences-accessibilite" aria-label="Accessibilité">${ACCESSIBILITY_ICON}</button>
+      ${PARTAGE_BOUTON_MARKER}
     </div>
     <dialog class="preferences-dialogue" aria-labelledby="preferences-titre">
       <div class="preferences-contenu">

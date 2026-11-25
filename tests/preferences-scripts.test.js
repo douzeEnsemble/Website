@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
+import { PARTAGE_BOUTON_MARKER } from '../scripts/partage.js';
 import {
   PREFERENCES_MARKER,
   injectPreferences,
   preferencesHtml,
 } from '../scripts/preferences.js';
+
+const ACCESSIBILITY_END = '</svg></button>';
 
 describe('preferencesHtml', () => {
   const html = preferencesHtml();
@@ -13,6 +16,10 @@ describe('preferencesHtml', () => {
     const group = doc.querySelector('div[role="group"].preferences');
     expect(group.getAttribute('aria-label')).toBe('Préférences d’affichage');
     expect(group.querySelectorAll('button')).toHaveLength(2);
+  });
+
+  it('garde la place du bouton de partage en fin de groupe', () => {
+    expect(html).toContain(`${ACCESSIBILITY_END}\n      ${PARTAGE_BOUTON_MARKER}\n    </div>`);
   });
 
   it('donne un nom à chaque bouton d’icône', () => {

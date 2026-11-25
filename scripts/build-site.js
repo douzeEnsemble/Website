@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { LANGUES, injectLangues, translateHtml } from './langues.js';
+import { injectLogo } from './logo.js';
 import { injectMentions } from './mentions.js';
 import { injectPartage } from './partage.js';
 import { injectPreferences } from './preferences.js';
@@ -98,8 +99,12 @@ export async function buildSite({
       let html = translateHtml(
         injectLangues(
           injectPartage(
-            injectPreferences(
-              injectSeo(String(readFileSync(join(root, file))), file, langue),
+            injectLogo(
+              injectPreferences(
+                injectSeo(String(readFileSync(join(root, file))), file, langue),
+              ),
+              file,
+              langue,
             ),
             file,
             langue,

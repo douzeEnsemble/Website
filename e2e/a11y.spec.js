@@ -6,11 +6,11 @@ import { expect, test } from '@playwright/test';
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 // Exception connue, pour la seule règle `color-contrast` et seulement sur ces
-// éléments : le bouton de partage (opacité 0,35), la version et les langues (opacité 0,2) sont discrets
+// éléments : la version et les langues (opacité 0,2) sont discrètes
 // par choix de design, visibles au survol et au focus (voir style.css). Le
 // reste de la page, et toutes les autres règles sur ces éléments, restent
 // contrôlés. À reconsidérer avec le propriétaire (critère 1.4.3).
-const DISCRETS = '.pied-version > p, .pied-version .langues, .partage-ouvrir';
+const DISCRETS = '.pied-version > p, .pied-version .langues';
 
 async function violations(page) {
   const resultats = await new AxeBuilder({ page }).withTags(TAGS).analyze();
@@ -81,6 +81,20 @@ for (const { nom, chemin } of pages) {
     await expect(page.locator('.partage-ouvrir')).toBeFocused();
   });
 
+  // Le logo, en haut à gauche, ramène à l'accueil de la langue de la page.
+  test(`logo vers l’accueil sur ${nom}`, async ({ page }) => {
+    await page.goto(chemin);
+    const logo = page.locator('a.logo');
+    const box = await logo.boundingBox();
+    expect(box.x).toBeLessThan(40);
+    expect(box.y).toBeLessThan(40);
+    expect(box.width).toBeGreaterThanOrEqual(24);
+    const accueil = chemin.match(/^\/(en|mrs)\//)?.[0] ?? '/';
+    await expect(logo).toHaveAttribute('href', accueil);
+    await logo.click();
+    await expect(page).toHaveURL(new RegExp(`${accueil}$`));
+  });
+
   // A11Y-06 : reflow à 320 px, sans défilement horizontal (critère 1.4.10).
   test(`reflow à 320 px sur ${nom}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 640 });
@@ -92,15 +106,15 @@ for (const { nom, chemin } of pages) {
   });
 
   // Petit écran : une barre avec un bouton « Menu » qui ouvre la liste. La
-  // barre reste entière, à droite du bouton de partage, et la liste fermée
-  // n'occupe aucune place.
+  // barre reste entière, à droite du logo, et la liste fermée n'occupe aucune
+  // place.
   test(`menu replié en barre à 320 px sur ${nom}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 640 });
     await page.goto(chemin);
     const bouton = page.locator('.menu-bouton');
-    const partage = await page.locator('.partage-ouvrir').boundingBox();
+    const logo = await page.locator('.logo').boundingBox();
     const box = await bouton.boundingBox();
-    expect(box.x).toBeGreaterThanOrEqual(partage.x + partage.width);
+    expect(box.x).toBeGreaterThanOrEqual(logo.x + logo.width);
     expect(box.x + box.width).toBeLessThanOrEqual(320);
     expect(box.height).toBeGreaterThanOrEqual(44);
     await expect(bouton).toHaveAttribute('aria-expanded', 'false');
@@ -154,6 +168,13 @@ test('axe : aucune violation sur la page introuvable', async ({ page }) => {
   expect(await violations(page)).toEqual([]);
 });
 
+test('la page introuvable a le logo, sans bouton de partage', async ({ page }) => {
+  await page.goto('/404.html');
+  await expect(page.locator('a.logo')).toHaveAttribute('href', '/');
+  await expect(page.locator('.partage-ouvrir')).toHaveCount(0);
+  await expect(page.getByRole('group', { name: 'Préférences d’affichage' }).getByRole('button')).toHaveCount(2);
+});
+
 test('reflow à 320 px sur la page introuvable', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto('/404.html');
@@ -176,7 +197,8 @@ test.describe('préférences d’affichage', () => {
     const premier = await page.evaluate(() => document.body.firstElementChild.className);
     expect(premier).toBe('preferences');
     const boutons = page.getByRole('group', { name: 'Préférences d’affichage' }).getByRole('button');
-    await expect(boutons).toHaveCount(2);
+    // thème, accessibilité, partage
+    await expect(boutons).toHaveCount(3);
     const { width, height } = page.viewportSize();
     for (const bouton of await boutons.all()) {
       const box = await bouton.boundingBox();
