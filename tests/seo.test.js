@@ -64,7 +64,7 @@ describe('seoHtml', () => {
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"douzeEnsemble","url":"https://www.douzeensemble.fr/","inLanguage":"fr"}</script>`);
+    <script type="application/ld+json">${JSON.stringify(jsonLd('index.html'))}</script>`);
   });
 
   it('écrit l’adresse, la langue et les versions de la page dans chaque langue', () => {
@@ -100,24 +100,40 @@ describe('seoHtml', () => {
 });
 
 describe('jsonLd', () => {
-  it('décrit le site pour l’accueil', () => {
-    expect(jsonLd('index.html')).toEqual({
-      '@context': 'https://schema.org',
+  it('décrit le site et l’entreprise, reliés par @id, pour l’accueil', () => {
+    const [site, entreprise] = jsonLd('index.html')['@graph'];
+    expect(site).toEqual({
       '@type': 'WebSite',
+      '@id': 'https://www.douzeensemble.fr/#site',
       name: 'douzeEnsemble',
       url: 'https://www.douzeensemble.fr/',
       inLanguage: 'fr',
+      publisher: { '@id': 'https://www.douzeensemble.fr/#organisation' },
+    });
+    expect(entreprise).toEqual({
+      '@type': 'ProfessionalService',
+      '@id': 'https://www.douzeensemble.fr/#organisation',
+      name: 'douzeEnsemble',
+      url: 'https://www.douzeensemble.fr/',
+      logo: 'https://www.douzeensemble.fr/apple-touch-icon.png',
+      image: 'https://www.douzeensemble.fr/og.png',
+      description:
+        'Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.',
+      founder: {
+        '@type': 'Person',
+        name: 'Renaud',
+        url: 'https://www.douzeensemble.fr/qui-suis-je/',
+      },
+      areaServed: 'FR',
+      sameAs: ['https://github.com/douzeEnsemble'],
     });
   });
 
   it('écrit la langue et les adresses de la langue demandée', () => {
-    expect(jsonLd('index.html', LANGUES[2])).toEqual({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'douzeEnsemble',
-      url: 'https://www.douzeensemble.fr/mrs/',
-      inLanguage: 'fr-FR-x-mrs',
-    });
+    const [site, entreprise] = jsonLd('index.html', LANGUES[2])['@graph'];
+    expect(site.url).toBe('https://www.douzeensemble.fr/mrs/');
+    expect(site.inLanguage).toBe('fr-FR-x-mrs');
+    expect(entreprise.founder.url).toBe('https://www.douzeensemble.fr/mrs/qui-suis-je/');
     const [accueil, page] = jsonLd(join('contact', 'index.html'), LANGUES[1]).itemListElement;
     expect(accueil.item).toBe('https://www.douzeensemble.fr/en/');
     expect(page.item).toBe('https://www.douzeensemble.fr/en/contact/');
