@@ -16,6 +16,7 @@ export const SITE_FILES = [
   'apple-touch-icon.png',
   'og.png',
   'style.css',
+  'polices',
   'js',
   'contact',
   'prestations',
