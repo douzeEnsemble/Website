@@ -145,7 +145,7 @@ export const TEXTES_MRS = {
     'Sous le capot, du travail soigné et vérifié tout seul par des machines, pour un site solide qui dure.',
   'Chaque modification relue et testée': 'Chaque modification relue et testée',
   'Mise en ligne automatisée et contrôlée': 'Mise en ligne automatique et contrôlée',
-  'Code source consultable sur GitHub': 'Code source à voir sur GitHub',
+  'Code documenté et facile à reprendre': 'Du code bien expliqué, facile à reprendre',
 
   // Déroulé d’un projet
   'Qui fait quoi, et dans quel ordre : de la première rencontre aux évolutions futures, vous gardez la main à chaque étape.':
@@ -196,7 +196,6 @@ export const TEXTES_MRS = {
     'La carte interactive d’un monde Minecraft, avec ses coins et ses trois dimensions.',
   'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
     'Un bingo avec tes propres mots, des grilles à imprimer et le gagnant repéré tout seul.',
-  'Les projets sur GitHub': 'Les projets sur GitHub',
   'Voir le site': 'Va voir le site',
 
   'Le suivi de sa collection de têtes de mobs Minecraft, avec les taux de drop et les lieux.':
@@ -206,8 +205,6 @@ export const TEXTES_MRS = {
     'Toutes les réalisations, té',
   'Détails et captures':
     'Les détails et les photos d’écran',
-  'Code source':
-    'Le code source',
   'KoiKiManke, une liste de courses partagée en temps réel et sans compte : fonctionnalités et captures d’écran.':
     'KoiKiManke, une liste de courses partagée en temps réel et sans compte : les fonctionnalités et les photos d’écran, vé.',
   'KesKeJeVoeux, une liste de souhaits en lecture seule avec réservations secrètes : fonctionnalités et captures d’écran.':

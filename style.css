@@ -165,18 +165,16 @@ body.awesome h1 {
   line-height: 1.6;
 }
 
-/* Liens dans le texte (accueil, réalisations) : couleur du texte, soulignés en orange comme les
+/* Liens du texte d'accueil : couleur du texte, soulignés en orange comme les
    titres, au lieu du bleu du navigateur. :where() garde la spécificité basse. */
-.accueil-texte :where(a),
-.realisations-autres :where(a) {
+.accueil-texte :where(a) {
   color: inherit;
   text-decoration-color: var(--orange);
   text-decoration-thickness: 0.12em;
   text-underline-offset: 0.2em;
 }
 
-.accueil-texte :where(a:hover, a:focus-visible),
-.realisations-autres :where(a:hover, a:focus-visible) {
+.accueil-texte :where(a:hover, a:focus-visible) {
   color: var(--orange-texte);
 }
 
@@ -572,10 +570,6 @@ body.awesome .menu :where(a) {
 .categorie h2 {
   margin: 0;
   text-align: left;
-}
-
-.realisations-autres {
-  margin: 2.5rem 0 0;
 }
 
 /* Cartes des projets : style sobre, les couleurs restent pour le Konami code. */
