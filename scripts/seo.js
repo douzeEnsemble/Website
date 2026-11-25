@@ -28,7 +28,7 @@ export const SEO = {
   [join('points-faibles', 'index.html')]: {
     title: 'Points faibles · douzeEnsemble',
     description:
-      'Menuiserie, jardinage, pilotage, mécanique, peinture, musique et pêche au gros : là où douzeEnsemble ne vous sera d’aucune aide.',
+      'Menuiserie, jardinage, pilotage, mécanique, peinture, musique, pêche au gros et tricot : là où douzeEnsemble ne vous sera d’aucune aide.',
   },
   [join('deroule', 'index.html')]: {
     title: 'Déroulé d’un projet · douzeEnsemble',

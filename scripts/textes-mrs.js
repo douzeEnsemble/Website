@@ -96,7 +96,7 @@ export const TEXTES_MRS = {
   'Et les points faibles ?': 'Et nos faiblesses, alors ?',
   'Retour aux points forts': 'Retour à nos atouts',
   'Personne n’est parfait. Voici des domaines où mieux vaut appeler quelqu’un d’autre. Heureusement, aucun ne concerne votre site.': 'Personne il est parfait, té. Voilà les choses où vaut mieux appeler quelqu’un d’autre. Heureusement, ton site il en fait pas partie.',
-  'Menuiserie, jardinage, pilotage, mécanique, peinture, musique et pêche au gros : là où douzeEnsemble ne vous sera d’aucune aide.': 'Menuiserie, jardin, pilotage, mécanique, peinture, musique et pêche au gros : là où douzeEnsemble il sert à rien du tout.',
+  'Menuiserie, jardinage, pilotage, mécanique, peinture, musique, pêche au gros et tricot : là où douzeEnsemble ne vous sera d’aucune aide.': 'Menuiserie, jardin, pilotage, mécanique, peinture, musique, pêche au gros et tricot : là où douzeEnsemble il sert à rien du tout.',
   'Menuiserie et bricolage': 'La menuiserie et le bricolage',
   'Les étagères tiennent, mais rarement droites. Et il reste toujours des vis.': 'Les étagères elles tiennent, mais droites, c’est rare. Et il reste toujours des vis, oh fan !',
   'Jardinage': 'Le jardin',
@@ -111,6 +111,8 @@ export const TEXTES_MRS = {
   'Le solfège reste une langue étrangère, et le rythme aussi.': 'Le solfège c’est du chinois, et le rythme pareil, fan de chichourle.',
   'Pêche au gros': 'La pêche au gros',
   'Des heures en mer, et le seul gros poisson venait de la poissonnerie.': 'Des heures en mer, et le seul gros poisson il venait de chez le poissonnier. Pas la sardine du port, hein.',
+  'Tricot': 'Le tricot',
+  'Pas une écharpe terminée, mais toujours de bons conseils à donner à ma mère.': 'Pas une écharpe finie, mais des conseils à donner à ma mère, ça j’en ai toujours, té.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':

@@ -96,7 +96,7 @@ export const TEXTES_EN = {
   'Et les points faibles ?': 'And the weaknesses?',
   'Retour aux points forts': 'Back to strengths',
   'Personne n’est parfait. Voici des domaines où mieux vaut appeler quelqu’un d’autre. Heureusement, aucun ne concerne votre site.': 'Nobody is perfect. Here are a few areas where you had better call someone else. Luckily, none of them concerns your website.',
-  'Menuiserie, jardinage, pilotage, mécanique, peinture, musique et pêche au gros : là où douzeEnsemble ne vous sera d’aucune aide.': 'Woodworking, gardening, flying, mechanics, painting, music and big-game fishing: where douzeEnsemble will be no help at all.',
+  'Menuiserie, jardinage, pilotage, mécanique, peinture, musique, pêche au gros et tricot : là où douzeEnsemble ne vous sera d’aucune aide.': 'Woodworking, gardening, flying, mechanics, painting, music, big-game fishing and knitting: where douzeEnsemble will be no help at all.',
   'Menuiserie et bricolage': 'Woodworking and DIY',
   'Les étagères tiennent, mais rarement droites. Et il reste toujours des vis.': 'The shelves stay up, but rarely level. And there are always screws left over.',
   'Jardinage': 'Gardening',
@@ -111,6 +111,8 @@ export const TEXTES_EN = {
   'Le solfège reste une langue étrangère, et le rythme aussi.': 'Music theory is still a foreign language, and so is rhythm.',
   'Pêche au gros': 'Big-game fishing',
   'Des heures en mer, et le seul gros poisson venait de la poissonnerie.': 'Hours at sea, and the only big fish came from the fishmonger’s.',
+  'Tricot': 'Knitting',
+  'Pas une écharpe terminée, mais toujours de bons conseils à donner à ma mère.': 'Not a single scarf finished, but always good advice to give my mother.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':
