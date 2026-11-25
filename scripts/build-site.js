@@ -40,7 +40,6 @@ export const DETAILS = [
   'moremobsheadschecklist',
   'pokenini',
   'quine',
-  'demo',
 ];
 export const DETAIL_PAGES = DETAILS.map((nom) =>
   join('realisations', nom, 'index.html'),

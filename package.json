@@ -8,7 +8,7 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint style.css",
     "lint:arch": "depcruise js scripts",
-    "lint:html": "html-validate index.html contact/index.html realisations/index.html realisations/koikimanke/index.html realisations/keskejevoeux/index.html realisations/onmangequoi/index.html realisations/minecarte/index.html realisations/plusun/index.html realisations/dansmahotte/index.html realisations/moremobsheadschecklist/index.html realisations/pokenini/index.html realisations/quine/index.html realisations/demo/index.html prestations/index.html points-forts/index.html deroule/index.html carte/index.html apropos/index.html 404.html",
+    "lint:html": "html-validate index.html contact/index.html realisations/index.html realisations/koikimanke/index.html realisations/keskejevoeux/index.html realisations/onmangequoi/index.html realisations/minecarte/index.html realisations/plusun/index.html realisations/dansmahotte/index.html realisations/moremobsheadschecklist/index.html realisations/pokenini/index.html realisations/quine/index.html prestations/index.html points-forts/index.html deroule/index.html carte/index.html apropos/index.html 404.html",
     "test": "vitest run --coverage",
     "test:mutation": "stryker run",
     "test:e2e": "playwright test"

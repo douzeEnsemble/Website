@@ -43,7 +43,6 @@ const pagesFrancaises = [
   { nom: 'MoreMobsHeadsChecklist', chemin: '/realisations/moremobsheadschecklist/' },
   { nom: 'Pokenini', chemin: '/realisations/pokenini/' },
   { nom: 'Quine', chemin: '/realisations/quine/' },
-  { nom: 'Demo', chemin: '/realisations/demo/' },
   { nom: 'contact', chemin: '/contact/' },
   { nom: 'carte de visite', chemin: '/carte/' },
   { nom: 'à propos', chemin: '/apropos/' },
