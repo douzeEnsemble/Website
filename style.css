@@ -26,8 +26,8 @@
   --bordure: light-dark(#d5d8dc, #3a424c);
   --filet: light-dark(#eef0f2, #26303a);
   --ombre: light-dark(rgb(5 19 29 / 12%), rgb(0 0 0 / 40%));
-  --orange: #fe8a18;
-  --orange-texte: light-dark(#b85c00, #fe8a18);
+  --accent: #fe8a18;
+  --accent-texte: light-dark(#b85c00, #fe8a18);
 
   /* Échelle typographique fluide : chaque taille grandit avec la largeur de
      l'écran entre deux bornes (rem, donc suit le réglage « texte plus grand »). */
@@ -75,7 +75,55 @@
   --numero: var(--texte);
   --surface: var(--fond);
   --bordure: var(--texte);
-  --orange-texte: light-dark(#8a3d00, #ffb050);
+  --accent-texte: light-dark(#8a3d00, #ffb050);
+}
+
+/* Une couleur par page (data-page posé au build, scripts/couleurs.js) : chaque
+   section redéfinit l'accent, l'orange de la marque restant celui de l'accueil.
+   Textes ≥ 4,5:1 (≥ 7:1 en contraste élevé) sur fond clair comme sombre. */
+body[data-page='prestations'] {
+  --accent: #2f80ed;
+  --accent-texte: light-dark(#1d5fbf, #6aa8ff);
+}
+
+:root[data-high-contrast] body[data-page='prestations'] {
+  --accent-texte: light-dark(#12408a, #a8ceff);
+}
+
+body[data-page='realisations'] {
+  --accent: #27ae60;
+  --accent-texte: light-dark(#17753f, #4cd48a);
+}
+
+:root[data-high-contrast] body[data-page='realisations'] {
+  --accent-texte: light-dark(#0e5129, #8af0b5);
+}
+
+body[data-page='apropos'] {
+  --accent: #9b59d0;
+  --accent-texte: light-dark(#7a38ab, #c192f0);
+}
+
+:root[data-high-contrast] body[data-page='apropos'] {
+  --accent-texte: light-dark(#561d80, #dcb8ff);
+}
+
+body[data-page='contact'] {
+  --accent: #eb5a7b;
+  --accent-texte: light-dark(#b5304f, #ff8aa4);
+}
+
+:root[data-high-contrast] body[data-page='contact'] {
+  --accent-texte: light-dark(#8a1636, #ffb3c4);
+}
+
+body[data-page='carte'] {
+  --accent: #14b8a6;
+  --accent-texte: light-dark(#0d7d71, #46d9c8);
+}
+
+:root[data-high-contrast] body[data-page='carte'] {
+  --accent-texte: light-dark(#085a51, #7ff0e2);
 }
 
 /* Texte plus grand : tout ce qui se dimensionne en rem suit. */
@@ -136,12 +184,12 @@ h1 {
 .apropos h1 {
   font-size: var(--t-titre);
   overflow-wrap: anywhere;
-  text-decoration: underline var(--orange) 0.35rem;
+  text-decoration: underline var(--accent) 0.35rem;
   text-underline-offset: 0.5rem;
 }
 
 .accueil h1 {
-  color: var(--orange-texte);
+  color: var(--accent-texte);
 }
 
 body.awesome h1 {
@@ -181,13 +229,13 @@ body.awesome h1 {
    titres, au lieu du bleu du navigateur. :where() garde la spécificité basse. */
 .accueil-texte :where(a) {
   color: inherit;
-  text-decoration-color: var(--orange);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 0.12em;
   text-underline-offset: 0.2em;
 }
 
 .accueil-texte :where(a:hover, a:focus-visible) {
-  color: var(--orange-texte);
+  color: var(--accent-texte);
 }
 
 /* Grille bento : un grand bloc Réalisations avec des captures, des blocs plus
@@ -224,7 +272,7 @@ body.awesome h1 {
 }
 
 .bento-contact {
-  --k: var(--orange);
+  --k: var(--accent);
 }
 
 .bento-carte {
@@ -264,7 +312,7 @@ body.awesome h1 {
   position: absolute;
   right: 1.25rem;
   bottom: 0.9rem;
-  color: var(--orange-texte);
+  color: var(--accent-texte);
   font-size: var(--fleche-taille);
   font-weight: bold;
   transition: transform var(--survol-duree);
@@ -465,7 +513,7 @@ body.awesome .menu {
 .menu a:focus-visible,
 .menu a[aria-current] {
   color: var(--texte);
-  text-decoration: underline var(--orange) 0.125rem;
+  text-decoration: underline var(--accent) 0.125rem;
   text-underline-offset: 0.3em;
 }
 
@@ -1109,7 +1157,7 @@ body.awesome .menu :where(a) {
 
 .logo:hover,
 .logo:focus-visible {
-  outline: 0.125rem solid var(--orange-texte);
+  outline: 0.125rem solid var(--accent-texte);
   outline-offset: 0.2rem;
 }
 
@@ -1316,7 +1364,7 @@ html {
 
 .preferences-bouton:hover,
 .preferences-bouton:focus-visible {
-  border-color: var(--orange-texte);
+  border-color: var(--accent-texte);
 }
 
 .preferences-bouton svg {
@@ -1399,7 +1447,7 @@ html {
 .preferences-case input {
   width: 1.25rem;
   height: 1.25rem;
-  accent-color: var(--orange-texte);
+  accent-color: var(--accent-texte);
 }
 
 /* Contraste élevé : les éléments discrets deviennent pleinement visibles. */
@@ -1658,7 +1706,7 @@ p.lien-fleche-ligne {
 .lien-fleche::after {
   display: inline-block;
   margin-left: 0.3rem;
-  color: var(--orange-texte);
+  color: var(--accent-texte);
   font-size: var(--fleche-taille);
   line-height: 1;
   vertical-align: -0.1em;
@@ -1669,7 +1717,7 @@ p.lien-fleche-ligne {
 .lien-fleche:hover,
 .lien-fleche:focus-visible {
   text-decoration: underline;
-  text-decoration-color: var(--orange-texte);
+  text-decoration-color: var(--accent-texte);
   text-underline-offset: 0.2em;
 }
 
