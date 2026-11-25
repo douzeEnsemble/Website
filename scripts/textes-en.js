@@ -145,7 +145,7 @@ export const TEXTES_EN = {
     'Under the hood, careful work checked automatically, for a site that lasts.',
   'Chaque modification relue et testée': 'Every change reviewed and tested',
   'Mise en ligne automatisée et contrôlée': 'Automated and controlled deployment',
-  'Code source consultable sur GitHub': 'Source code available on GitHub',
+  'Code documenté et facile à reprendre': 'Documented code that is easy to take over',
 
   // Déroulé d’un projet
   'Qui fait quoi, et dans quel ordre : de la première rencontre aux évolutions futures, vous gardez la main à chaque étape.':
@@ -196,7 +196,6 @@ export const TEXTES_EN = {
     'The interactive map of a Minecraft world, with its places and its three dimensions.',
   'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
     'A bingo with your own words, printable grids and automatic detection of the winner.',
-  'Les projets sur GitHub': 'Projects on GitHub',
   'Voir le site': 'Visit the site',
 
   'Le suivi de sa collection de têtes de mobs Minecraft, avec les taux de drop et les lieux.':
@@ -206,8 +205,6 @@ export const TEXTES_EN = {
     'All projects',
   'Détails et captures':
     'Details and screenshots',
-  'Code source':
-    'Source code',
   'KoiKiManke, une liste de courses partagée en temps réel et sans compte : fonctionnalités et captures d’écran.':
     'KoiKiManke, a shopping list shared in real time with no account: features and screenshots.',
   'KesKeJeVoeux, une liste de souhaits en lecture seule avec réservations secrètes : fonctionnalités et captures d’écran.':
