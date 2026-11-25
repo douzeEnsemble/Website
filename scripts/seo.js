@@ -25,6 +25,11 @@ export const SEO = {
     description:
       'Analyse, adaptivité, accessibilité, sécurité, respect des données, temps réel, hébergement, maintenance et qualité du code : les points forts de douzeEnsemble.',
   },
+  [join('points-faibles', 'index.html')]: {
+    title: 'Points faibles · douzeEnsemble',
+    description:
+      'Briques, redstone, Pokémon, quine, menus de la semaine et marseillais : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
+  },
   [join('deroule', 'index.html')]: {
     title: 'Déroulé d’un projet · douzeEnsemble',
     description:
