@@ -303,7 +303,7 @@ body.awesome .accroche {
 
 .menu a:hover,
 .menu a:focus-visible,
-.menu a[aria-current="page"] {
+.menu a[aria-current] {
   text-decoration: underline;
 }
 
@@ -599,6 +599,45 @@ body.awesome .accroche {
 .prestations-contact .prestations-cta:hover,
 .prestations-contact .prestations-cta:focus-visible {
   background: color-mix(in srgb, currentcolor 18%, var(--fond));
+}
+
+/* Page d'une réalisation : lien de retour, liens vers le site et le code, et
+   captures d'écran dans les cartes de fonctionnalités. */
+.realisation-retour {
+  margin: 0.5rem 0 0;
+  text-align: left;
+}
+
+.realisation-retour-lien {
+  color: var(--texte-doux);
+}
+
+.realisation-liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0 0;
+}
+
+.realisation {
+  overflow-wrap: anywhere;
+}
+
+.realisation .prestations-liste {
+  align-items: start;
+}
+
+.capture {
+  margin: 1rem 0 0;
+  text-align: center;
+}
+
+.capture img {
+  max-width: 100%;
+  height: auto;
+  border: 0.0625rem solid var(--bordure);
+  border-radius: 0.5rem;
 }
 
 /* Page introuvable (404.html). */

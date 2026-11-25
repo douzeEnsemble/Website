@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OnMangeQuoi · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../js/partage-main.js"></script>
+    <script type="module" src="../../js/preferences-main.js"></script>
+    <script type="module" src="../../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../../">Accueil</a></li>
+        <li><a href="../../prestations/">Prestations</a></li>
+        <li><a href="../../points-forts/">Points forts</a></li>
+        <li><a href="../../deroule/">Déroulé d’un projet</a></li>
+        <li><a href="../" aria-current="true">Réalisations</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../carte/">Carte de visite</a></li>
+        <li><a href="../../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations realisation">
+      <p class="realisation-retour"><a class="realisation-retour-lien" href="../"><span aria-hidden="true">← </span>Toutes les réalisations</a></p>
+      <h1>OnMangeQuoi</h1>
+      <p class="prestations-intro">Une liste de repas partagée en temps réel, sans compte : on décide ensemble de ce qu’on mange, et on garde la trace de ce qu’on a aimé.</p>
+      <p class="realisation-liens">
+        <a class="carte-lien" href="https://renauddouze.github.io/OnMangeQuoi/">Voir le site<span aria-hidden="true"> ↗</span></a>
+        <a class="carte-lien" href="https://github.com/RenaudDouze/OnMangeQuoi">Code source<span aria-hidden="true"> ↗</span></a>
+      </p>
+      <ul class="prestations-liste">
+        <li class="prestation">
+          <h2>Des repas qui avancent</h2>
+          <p>Chaque repas suit un statut : idée, validée, commandée, rangée, non complet ou fait. La liste se filtre par statut et par temps de préparation, et se réordonne par glisser-déposer.</p>
+          <figure class="capture">
+            <img src="/realisations/onmangequoi/repas.webp" width="390" height="780" alt="Liste de quatre repas, chacun avec l’icône de son statut" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Une fiche par repas</h2>
+          <p>Source (lien ou texte), temps de préparation, jour prévu, commentaire et jusqu’à 10 photos. Une fois le repas testé, il reçoit une note pour savoir s’il revient à table.</p>
+          <figure class="capture">
+            <img src="/realisations/onmangequoi/detail.webp" width="390" height="780" alt="Fiche d’un repas dépliée : statuts, source, temps de préparation, planification et commentaire" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Un planning de la semaine</h2>
+          <p>Les repas prévus s’affichent sur une grille de la semaine, que l’on parcourt de semaine en semaine.</p>
+          <figure class="capture">
+            <img src="/realisations/onmangequoi/planning.webp" width="390" height="780" alt="Planning de la semaine avec un repas par jour, du mardi au vendredi" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Un historique utile</h2>
+          <p>Un repas fait quitte la liste mais reste dans l’historique, avec des statistiques (notes, temps de préparation, repas les plus refaits) et un bouton pour le reproposer plus tard.</p>
+        </li>
+        <li class="prestation">
+          <h2>Partagé et installable</h2>
+          <p>Un code, un lien ou un QR code ouvrent la liste sur tous les appareils, synchronisés en direct. L’application s’installe sur l’écran d’accueil et propose des réglages d’accessibilité.</p>
+        </li>
+      </ul>
+      <p class="prestations-contact"><a class="prestations-cta" href="../../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+      <!--LANGUES-->
+    </footer>
+  </body>
+</html>

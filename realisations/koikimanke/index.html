@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KoiKiManke · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../js/partage-main.js"></script>
+    <script type="module" src="../../js/preferences-main.js"></script>
+    <script type="module" src="../../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../../">Accueil</a></li>
+        <li><a href="../../prestations/">Prestations</a></li>
+        <li><a href="../../points-forts/">Points forts</a></li>
+        <li><a href="../../deroule/">Déroulé d’un projet</a></li>
+        <li><a href="../" aria-current="true">Réalisations</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../carte/">Carte de visite</a></li>
+        <li><a href="../../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations realisation">
+      <p class="realisation-retour"><a class="realisation-retour-lien" href="../"><span aria-hidden="true">← </span>Toutes les réalisations</a></p>
+      <h1>KoiKiManke</h1>
+      <p class="prestations-intro">Une liste de courses partagée en temps réel, sans compte : un code de 6 caractères suffit pour la retrouver sur tous vos appareils.</p>
+      <p class="realisation-liens">
+        <a class="carte-lien" href="https://koikimanke.douzem.workers.dev">Voir le site<span aria-hidden="true"> ↗</span></a>
+        <a class="carte-lien" href="https://github.com/RenaudDouze/KoiKiManke">Code source<span aria-hidden="true"> ↗</span></a>
+      </p>
+      <ul class="prestations-liste">
+        <li class="prestation">
+          <h2>Saisie rapide et catégories</h2>
+          <p>Tapez « 2 kg pommes » ou « yaourts x8 » : la quantité est détectée et affichée dans une pastille, modifiable d’un clic. Les articles se rangent par catégorie colorée et se déplacent par glisser-déposer, à la souris comme au doigt.</p>
+          <figure class="capture">
+            <img src="/realisations/koikimanke/liste.webp" width="390" height="780" alt="Liste de courses rangée en trois catégories, avec les quantités dans des pastilles vertes" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Partage sans compte</h2>
+          <p>Un code à 6 caractères, un lien ou un QR code suffisent pour inviter quelqu’un. Tous les appareils connectés voient les changements à l’instant.</p>
+          <figure class="capture">
+            <img src="/realisations/koikimanke/partage.webp" width="390" height="780" alt="Fenêtre de partage d’une liste : code, QR code, lien, export et import" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Au quotidien</h2>
+          <p>Photo par article, recherche, suggestions tirées de l’historique de la liste, export et import au format JSON. Une suppression se rattrape pendant 5 secondes.</p>
+        </li>
+        <li class="prestation">
+          <h2>Installable et accessible</h2>
+          <p>L’application s’installe sur l’écran d’accueil et garde en mémoire la dernière version de chaque liste. Thèmes clair, sombre ou automatique, texte plus grand, contraste renforcé et animations réduites sont au choix.</p>
+        </li>
+      </ul>
+      <p class="prestations-contact"><a class="prestations-cta" href="../../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+      <!--LANGUES-->
+    </footer>
+  </body>
+</html>

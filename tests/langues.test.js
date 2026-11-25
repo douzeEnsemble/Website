@@ -151,7 +151,7 @@ const pages = PAGES.map((file) => [file, frenchPage(file)]);
 const allFrench = pages.map(([, html]) => html).join('\n');
 
 // Noms des projets : les mêmes dans les trois langues (aussi dans le texte masqué des liens).
-const NOMS_PROJETS = ['KoiKiManke', 'OnMangeQuoi', 'PlusUn', 'DansMaHotte', 'KesKeJeVoeux', 'Pokenini', 'MineCarte', 'Quine', 'Demo'];
+const NOMS_PROJETS = ['KoiKiManke', 'OnMangeQuoi', 'PlusUn', 'DansMaHotte', 'KesKeJeVoeux', 'Pokenini', 'MineCarte', 'Quine', 'Demo', 'MoreMobsHeadsChecklist'];
 
 // Textes que les trois langues écrivent pareil.
 const INVARIANT = new Set([
@@ -159,7 +159,9 @@ const INVARIANT = new Set([
   ...NOMS_PROJETS.map((nom) => ` ${nom}`),
   'douzeEnsemble', 'Renaud', '×', '404', 'SIREN', 'valeur',
   'GitHub, Inc. (GitHub Pages)', '01', '02', '03', '04', '05', '06', '07', '08', '09',
-  '123456789 · ', ' ↗', '↗', 'dev', 'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
+  '123456789 · ', ' ↗', '↗', '← ', 'dev',
+  'PlusUn · douzeEnsemble', 'DansMaHotte · douzeEnsemble', 'MoreMobsHeadsChecklist · douzeEnsemble',
+  'KoiKiManke · douzeEnsemble', 'KesKeJeVoeux · douzeEnsemble', 'OnMangeQuoi · douzeEnsemble', 'MineCarte · douzeEnsemble', 'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
 ]);
 
 // Texte des éléments (hors scripts et styles) d'une page, lu dans le DOM.
