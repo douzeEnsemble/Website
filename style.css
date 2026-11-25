@@ -1,93 +1,54 @@
-/* Couleurs du site : thème clair par défaut, thème sombre quand le système
-   le demande. La carte de visite garde ses couleurs d'objet imprimé. */
+/* Couleurs du site : chaque variable donne sa valeur claire puis sombre
+   (light-dark()), le thème suit color-scheme : celui du système par défaut,
+   celui choisi par le visiteur (bouton en bas à droite) sinon. La carte de
+   visite garde ses couleurs d'objet imprimé. */
 :root {
-  --fond: #fff;
-  --texte: #05131d;
-  --texte-doux: #3d4650;
-  --texte-pale: #6b7480;
-  --numero: #8a9097;
-  --surface: #fff;
-  --bordure: #d5d8dc;
-  --filet: #eef0f2;
-  --ombre: rgb(5 19 29 / 12%);
-  --orange-texte: #b85c00;
+  --fond: light-dark(#fff, #0f1419);
+  --texte: light-dark(#05131d, #e8eaed);
+  --texte-doux: light-dark(#3d4650, #b4bac2);
+  --texte-pale: light-dark(#6b7480, #959ca6);
+  --numero: light-dark(#8a9097, #7d8590);
+  --surface: light-dark(#fff, #182029);
+  --bordure: light-dark(#d5d8dc, #3a424c);
+  --filet: light-dark(#eef0f2, #26303a);
+  --ombre: light-dark(rgb(5 19 29 / 12%), rgb(0 0 0 / 40%));
+  --orange: #fe8a18;
+  --orange-texte: light-dark(#b85c00, #fe8a18);
+
+  /* Échelle typographique fluide : chaque taille grandit avec la largeur de
+     l'écran entre deux bornes (rem, donc suit le réglage « texte plus grand »). */
+  --t-titre-accueil: clamp(1.5rem, 10vw, 9rem);
+  --t-titre: clamp(2rem, 1rem + 5vw, 5rem);
+  --t-sous-titre: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  --t-accroche: clamp(1rem, 0.7rem + 1.5vw, 1.6rem);
 
   color-scheme: light dark;
 
   /* Hauteur réservée au menu fixe en haut de page : les pages longues
-     commencent (et défilent) en dessous, le titre n'est jamais caché. */
+     commencent en dessous, le titre n'est jamais caché. */
   --sous-menu: 3.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --fond: #0f1419;
-    --texte: #e8eaed;
-    --texte-doux: #b4bac2;
-    --texte-pale: #959ca6;
-    --numero: #7d8590;
-    --surface: #182029;
-    --bordure: #3a424c;
-    --filet: #26303a;
-    --ombre: rgb(0 0 0 / 40%);
-    --orange-texte: #fe8a18;
-  }
-}
-
-/* Thème choisi par le visiteur (bouton en bas à droite) : il l'emporte sur le
-   réglage du système. */
-:root[data-theme='dark'] {
-  --fond: #0f1419;
-  --texte: #e8eaed;
-  --texte-doux: #b4bac2;
-  --texte-pale: #959ca6;
-  --numero: #7d8590;
-  --surface: #182029;
-  --bordure: #3a424c;
-  --filet: #26303a;
-  --ombre: rgb(0 0 0 / 40%);
-  --orange-texte: #fe8a18;
-
-  color-scheme: dark;
-}
-
+/* Thème choisi par le visiteur : il l'emporte sur le réglage du système. */
 :root[data-theme='light'] {
   color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 /* Contraste élevé : noir sur blanc ou blanc sur noir selon le thème, bordures
    franches, éléments discrets pleinement visibles. */
 :root[data-high-contrast] {
-  --texte: #000;
-  --texte-doux: #000;
-  --texte-pale: #000;
-  --numero: #000;
-  --bordure: #000;
-  --orange-texte: #8a3d00;
-}
-
-:root[data-high-contrast][data-theme='dark'] {
-  --fond: #000;
-  --texte: #fff;
-  --texte-doux: #fff;
-  --texte-pale: #fff;
-  --numero: #fff;
-  --surface: #000;
-  --bordure: #fff;
-  --orange-texte: #ffb050;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root[data-high-contrast]:not([data-theme='light']) {
-    --fond: #000;
-    --texte: #fff;
-    --texte-doux: #fff;
-    --texte-pale: #fff;
-    --numero: #fff;
-    --surface: #000;
-    --bordure: #fff;
-    --orange-texte: #ffb050;
-  }
+  --fond: light-dark(#fff, #000);
+  --texte: light-dark(#000, #fff);
+  --texte-doux: var(--texte);
+  --texte-pale: var(--texte);
+  --numero: var(--texte);
+  --surface: var(--fond);
+  --bordure: var(--texte);
+  --orange-texte: light-dark(#8a3d00, #ffb050);
 }
 
 /* Texte plus grand : tout ce qui se dimensionne en rem suit. */
@@ -95,25 +56,40 @@
   font-size: 125%;
 }
 
-html,
+/* La page défile normalement (barre d'adresse mobile qui se replie, position
+   retrouvée au retour arrière). Le contenu est centré dans la hauteur de
+   l'écran quand il est court ; le pied de page suit, en bas. */
 body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
   background: var(--fond);
   color: var(--texte);
 }
 
+main {
+  margin-block: auto;
+}
+
+/* Titres équilibrés sur leurs lignes, paragraphes sans mot seul en fin de
+   bloc. */
+h2 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 h1 {
   margin: 0;
-  font-size: 10vw;
+  font-size: var(--t-titre-accueil);
   font-family: sans-serif;
+  text-wrap: balance;
   user-select: none;
   cursor: default;
 }
@@ -122,9 +98,9 @@ h1 {
 .prestations h1,
 .realisations h1,
 .apropos h1 {
-  font-size: clamp(2rem, 10vw, 5rem);
+  font-size: var(--t-titre);
   overflow-wrap: anywhere;
-  text-decoration: underline #fe8a18 0.35rem;
+  text-decoration: underline var(--orange) 0.35rem;
   text-underline-offset: 0.5rem;
 }
 
@@ -147,7 +123,8 @@ body.awesome h1 {
 .accroche {
   margin: 0.5em 0 0;
   font-family: sans-serif;
-  font-size: clamp(1rem, 2.6vw, 1.6rem);
+  font-size: var(--t-accroche);
+  text-wrap: balance;
 }
 
 .accueil-texte {
@@ -156,6 +133,21 @@ body.awesome h1 {
   font-family: sans-serif;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Liens dans le texte (accueil, réalisations) : couleur du texte, soulignés en orange comme les
+   titres, au lieu du bleu du navigateur. :where() garde la spécificité basse. */
+.accueil-texte :where(a),
+.realisations-autres :where(a) {
+  color: inherit;
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.2em;
+}
+
+.accueil-texte :where(a:hover, a:focus-visible),
+.realisations-autres :where(a:hover, a:focus-visible) {
+  color: var(--orange-texte);
 }
 
 body.awesome .accroche {
@@ -383,12 +375,10 @@ body.awesome .accroche {
 .realisations {
   box-sizing: border-box;
   width: 100%;
-  max-height: calc(100vh - var(--sous-menu));
   margin-top: var(--sous-menu);
-  overflow-y: auto;
+  margin-bottom: 0;
 
-  /* Pleine largeur pour que la barre de défilement soit au bord droit ;
-     le contenu reste centré sur 60rem grâce au remplissage latéral. */
+  /* Contenu centré sur 60rem grâce au remplissage latéral. */
   padding: 0.5rem max(1.25rem, calc((100% - 60rem) / 2)) 2rem;
   font-family: sans-serif;
   text-align: center;
@@ -411,7 +401,7 @@ body.awesome .accroche {
 /* Cartes des projets : style sobre, les couleurs restent pour le Konami code. */
 .projets {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   gap: 1.25rem;
   margin: 1rem 0 0;
   padding: 0;
@@ -440,6 +430,7 @@ body.awesome .accroche {
 
 .carte-nom {
   font-size: 1.2rem;
+  overflow-wrap: anywhere;
 }
 
 .carte-description {
@@ -471,12 +462,10 @@ body.awesome .accroche {
 .prestations {
   box-sizing: border-box;
   width: 100%;
-  max-height: calc(100vh - var(--sous-menu));
   margin-top: var(--sous-menu);
-  overflow-y: auto;
+  margin-bottom: 0;
 
-  /* Pleine largeur pour que la barre de défilement soit au bord droit ;
-     le contenu reste centré sur 60rem grâce au remplissage latéral. */
+  /* Contenu centré sur 60rem grâce au remplissage latéral. */
   padding: 0.5rem max(1.25rem, calc((100% - 60rem) / 2)) 2rem;
   font-family: sans-serif;
   text-align: center;
@@ -485,7 +474,8 @@ body.awesome .accroche {
 .prestations-intro {
   max-width: 36rem;
   margin: 1rem auto 0;
-  font-size: 1.15rem;
+  font-size: var(--t-sous-titre);
+  text-wrap: balance;
 }
 
 /* Une carte par prestation, dans le même style sobre que les réalisations. */
@@ -575,8 +565,8 @@ body.awesome .accroche {
   position: sticky;
 
   /* Le remplissage bas de .prestations (2rem) réduit la zone de collage :
-     le décalage négatif ramène le bouton au bord de l'écran. */
-  bottom: -2rem;
+     la marge négative ramène le bouton au bord bas de la page. */
+  bottom: 0;
   margin: 1rem -1.25rem -2rem;
   padding: 1rem 1.25rem 1.5rem;
   background: linear-gradient(transparent, var(--fond) 40%);
@@ -667,12 +657,10 @@ body.awesome .accroche {
 .apropos {
   box-sizing: border-box;
   width: 100%;
-  max-height: calc(100vh - var(--sous-menu));
   margin-top: var(--sous-menu);
-  overflow-y: auto;
+  margin-bottom: 0;
 
-  /* Comme les autres pages : barre de défilement au bord droit, contenu
-     centré sur 40rem. */
+  /* Comme les autres pages : contenu centré sur 40rem. */
   padding: 0.5rem max(1.25rem, calc((100% - 40rem) / 2)) 2rem;
   font-family: sans-serif;
 }
@@ -694,13 +682,12 @@ body.awesome .accroche {
   color: inherit;
 }
 
-/* Version du projet : fixe en bas à droite, très discrète, visible au survol
-   (le body est un flex centré : un pied de page en flux se retrouverait à côté
-   du contenu). */
+/* Version du projet et langues : en bas de page, à gauche, très discrètes,
+   visibles au survol. En flux (plus fixées) : elles ne passent plus par-dessus
+   le contenu qui défile. */
 .pied-version {
-  position: fixed;
-  left: 1.25rem;
-  bottom: 0.75rem;
+  align-self: stretch;
+  padding: 2rem 1.25rem 0.75rem;
   font-family: sans-serif;
   font-size: 0.65rem;
   color: #fff;
