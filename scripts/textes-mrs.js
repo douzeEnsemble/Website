@@ -46,8 +46,9 @@ export const TEXTES_MRS = {
 
   // Accueil
   'Sites, applications et accompagnement numérique': 'Des sites, des applis et un coup de main pour le numérique',
-  'Je suis Renaud. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
-    'Moi c’est Renaud. On fabrique ensemble des sites et des applis qui te ressemblent, et après je reste à côté de toi pour les faire vivre, té.',
+  'Je suis ': 'Moi c’est ',
+  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
+    '. On fabrique ensemble des sites et des applis qui te ressemblent, et après je reste à côté de toi pour les faire vivre, té.',
   'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
     'Des applis qui servent tous les jours : les commissions, les repas, les cadeaux de Noël, les jeux.',
   'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':

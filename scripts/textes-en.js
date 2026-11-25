@@ -46,8 +46,9 @@ export const TEXTES_EN = {
 
   // Accueil
   'Sites, applications et accompagnement numérique': 'Websites, applications and digital support',
-  'Je suis Renaud. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
-    'I’m Renaud. I design websites and applications with you that truly reflect who you are, then I stay by your side to keep them alive.',
+  'Je suis ': 'I’m ',
+  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
+    '. I design websites and applications with you that truly reflect who you are, then I stay by your side to keep them alive.',
   'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
     'Applications used every day: shopping, meals, Christmas presents, games.',
   'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':
