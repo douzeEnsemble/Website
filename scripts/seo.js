@@ -11,12 +11,12 @@ export const IMAGE_ALT = 'douzeEnsemble : sites, applications et accompagnement 
 // les résultats des moteurs de recherche et dans l'aperçu des liens partagés.
 export const SEO = {
   'index.html': {
-    title: 'douzeEnsemble · Sites et applications sur mesure',
+    title: 'douzeEnsemble · Sites et applications sur mesure, Aix-en-Provence',
     description:
       'douzeEnsemble conçoit des sites internet et des applications sur mesure, et vous accompagne au quotidien dans votre présence numérique.',
   },
   [join('prestations', 'index.html')]: {
-    title: 'Prestations · douzeEnsemble',
+    title: 'Prestations – sites et applications à Aix-en-Provence · douzeEnsemble',
     description:
       'Sites et applications sur mesure, conseil en communication numérique, maintenance et gestion de sites : les prestations de douzeEnsemble.',
   },
@@ -36,7 +36,7 @@ export const SEO = {
       'De l’écoute de votre besoin à la mise en ligne, puis aux mises à jour et aux évolutions : le déroulé d’un projet avec douzeEnsemble.',
   },
   [join('realisations', 'index.html')]: {
-    title: 'Réalisations · douzeEnsemble',
+    title: 'Réalisations – applications web · douzeEnsemble',
     description:
       'Les applications de douzeEnsemble, rangées par usage : le quotidien, les fêtes, les jeux.',
   },
@@ -86,12 +86,12 @@ export const SEO = {
       'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.',
   },
   [join('contact', 'index.html')]: {
-    title: 'Contact · douzeEnsemble',
+    title: 'Contact – votre projet de site ou d’application · douzeEnsemble',
     description:
       'Contactez Renaud, de douzeEnsemble, pour parler de votre projet de site internet ou d’application.',
   },
   [join('qui-suis-je', 'index.html')]: {
-    title: 'Qui suis-je · douzeEnsemble',
+    title: 'Qui suis-je – développeur près d’Aix-en-Provence · douzeEnsemble',
     description:
       'Renaud, développeur de sites internet depuis 2009 et même avant, veut créer son entreprise pour des projets utiles, proches des utilisateurs.',
   },
@@ -161,7 +161,7 @@ export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: SEO[file].title.split(' · ')[0],
+        name: SEO[file].title.split(/ [·–] /)[0],
         item: url,
       },
     ],

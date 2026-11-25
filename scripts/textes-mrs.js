@@ -16,12 +16,12 @@ export const TEXTES_MRS = {
   'Un projet ? Parlons-en': 'Un projet ? Viens, on en cause',
 
   // Titres des pages et aperçus (SEO)
-  'douzeEnsemble · Sites et applications sur mesure': 'douzeEnsemble · Des sites et des applis sur mesure, té',
-  'Prestations · douzeEnsemble': 'Ce qu’on sait faire · douzeEnsemble',
+  'douzeEnsemble · Sites et applications sur mesure, Aix-en-Provence': 'douzeEnsemble · Des sites et des applis sur mesure, Aix-en-Provence',
+  'Prestations – sites et applications à Aix-en-Provence · douzeEnsemble': 'Ce qu’on sait faire – sites et applis à Aix-en-Provence · douzeEnsemble',
   'Points forts · douzeEnsemble': 'Nos atouts · douzeEnsemble',
   'Déroulé d’un projet · douzeEnsemble': 'Comment ça se passe, un projet · douzeEnsemble',
-  'Réalisations · douzeEnsemble': 'Ce qu’on a fait · douzeEnsemble',
-  'Contact · douzeEnsemble': 'Contact · douzeEnsemble',
+  'Réalisations – applications web · douzeEnsemble': 'Ce qu’on a fait – applis web · douzeEnsemble',
+  'Contact – votre projet de site ou d’application · douzeEnsemble': 'Contact – ton projet de site ou d’applis · douzeEnsemble',
   'Carte de visite · douzeEnsemble': 'Carte de visite · douzeEnsemble',
   'À propos · douzeEnsemble': 'Qui c’est qui cause ? · douzeEnsemble',
   'douzeEnsemble : sites, applications et accompagnement numérique':
@@ -46,8 +46,8 @@ export const TEXTES_MRS = {
   // Accueil
   'Sites, applications et accompagnement numérique': 'Des sites, des applis et un coup de main pour le numérique',
   'Je suis ': 'Moi c’est ',
-  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
-    '. On fabrique ensemble des sites et des applis qui te ressemblent, et après je reste à côté de toi pour les faire vivre, té.',
+  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre. Basé à Lambesc, j’interviens autour d’Aix-en-Provence.':
+    '. On fabrique ensemble des sites et des applis qui te ressemblent, et après je reste à côté de toi pour les faire vivre, té. Installé à Lambesc, je bouge autour d’Aix-en-Provence.',
   'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
     'Des applis qui servent tous les jours : les commissions, les repas, les cadeaux de Noël, les jeux.',
   'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':
@@ -62,8 +62,8 @@ export const TEXTES_MRS = {
     'Fabrication de sites et d’applis sur mesure, conseils pour causer sur internet, entretien et gestion de sites.',
 
   // Prestations
-  'De l’idée à la mise en ligne, puis au quotidien : un accompagnement complet pour votre présence numérique.':
-    'De l’idée jusqu’à la mise en ligne, puis tous les jours : un accompagnement complet pour ta présence sur la toile, sans te laisser en plan.',
+  'De l’idée à la mise en ligne, puis au quotidien : un accompagnement complet pour votre présence numérique. Basé à Lambesc, j’interviens autour d’Aix-en-Provence.':
+    'De l’idée jusqu’à la mise en ligne, puis tous les jours : un accompagnement complet pour ta présence sur la toile, sans te laisser en plan. Installé à Lambesc, je bouge autour d’Aix-en-Provence.',
   'Sites et applications sur mesure': 'Des sites et des applis sur mesure',
   'Conception et développement de sites internet, d’applications web et d’applications mobiles, pensés pour votre activité et vos utilisateurs.':
     'On te dessine et on te développe des sites, des applis web et des applis pour le téléphone, pensés pour ton métier et pour tes clients.',
@@ -472,7 +472,7 @@ export const TEXTES_MRS = {
   'QR code vers la page d’accueil': 'QR code pour aller à la page d’accueil',
 
   // Qui suis-je
-  'Qui suis-je · douzeEnsemble': 'C’est qui, Renaud ? · douzeEnsemble',
+  'Qui suis-je – développeur près d’Aix-en-Provence · douzeEnsemble': 'C’est qui, Renaud ? – développeur près d’Aix-en-Provence · douzeEnsemble',
   'Qui suis-je': 'C’est qui, Renaud ?',
   'J’ai mon BAFA perfectionnement en petite enfance.': 'J’ai mon BAFA perfectionnement en petite enfance, rien que ça.',
   'Né à Marseille': 'Né à Marseille, té',

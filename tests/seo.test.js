@@ -54,7 +54,7 @@ describe('seoHtml', () => {
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="douzeEnsemble">
-    <meta property="og:title" content="douzeEnsemble · Sites et applications sur mesure">
+    <meta property="og:title" content="douzeEnsemble · Sites et applications sur mesure, Aix-en-Provence">
     <meta property="og:description" content="${SEO['index.html'].description}">
     <meta property="og:url" content="https://www.douzeensemble.fr/">
     <meta property="og:image" content="https://www.douzeensemble.fr/og.png">
@@ -94,7 +94,7 @@ describe('seoHtml', () => {
       '<link rel="canonical" href="https://www.douzeensemble.fr/contact/">',
     );
     expect(html).toContain(
-      '<meta property="og:title" content="Contact · douzeEnsemble">',
+      '<meta property="og:title" content="Contact – votre projet de site ou d’application · douzeEnsemble">',
     );
   });
 });

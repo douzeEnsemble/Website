@@ -16,12 +16,12 @@ export const TEXTES_EN = {
   'Un projet ? Parlons-en': 'Got a project? Let’s talk',
 
   // Titres des pages et aperçus (SEO)
-  'douzeEnsemble · Sites et applications sur mesure': 'douzeEnsemble · Custom websites and applications',
-  'Prestations · douzeEnsemble': 'Services · douzeEnsemble',
+  'douzeEnsemble · Sites et applications sur mesure, Aix-en-Provence': 'douzeEnsemble · Custom websites and applications, Aix-en-Provence',
+  'Prestations – sites et applications à Aix-en-Provence · douzeEnsemble': 'Services – websites and applications in Aix-en-Provence · douzeEnsemble',
   'Points forts · douzeEnsemble': 'Strengths · douzeEnsemble',
   'Déroulé d’un projet · douzeEnsemble': 'How a project unfolds · douzeEnsemble',
-  'Réalisations · douzeEnsemble': 'Projects · douzeEnsemble',
-  'Contact · douzeEnsemble': 'Contact · douzeEnsemble',
+  'Réalisations – applications web · douzeEnsemble': 'Projects – web applications · douzeEnsemble',
+  'Contact – votre projet de site ou d’application · douzeEnsemble': 'Contact – your website or application project · douzeEnsemble',
   'Carte de visite · douzeEnsemble': 'Business card · douzeEnsemble',
   'À propos · douzeEnsemble': 'About · douzeEnsemble',
   'douzeEnsemble : sites, applications et accompagnement numérique':
@@ -46,8 +46,8 @@ export const TEXTES_EN = {
   // Accueil
   'Sites, applications et accompagnement numérique': 'Websites, applications and digital support',
   'Je suis ': 'I’m ',
-  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
-    '. I design websites and applications with you that truly reflect who you are, then I stay by your side to keep them alive.',
+  '. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre. Basé à Lambesc, j’interviens autour d’Aix-en-Provence.':
+    '. I design websites and applications with you that truly reflect who you are, then I stay by your side to keep them alive. Based in Lambesc, I work around Aix-en-Provence.',
   'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
     'Applications used every day: shopping, meals, Christmas presents, games.',
   'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':
@@ -62,8 +62,8 @@ export const TEXTES_EN = {
     'Design of custom websites and applications, digital communication advice, site maintenance and management.',
 
   // Prestations
-  'De l’idée à la mise en ligne, puis au quotidien : un accompagnement complet pour votre présence numérique.':
-    'From idea to launch, then day to day: complete support for your digital presence.',
+  'De l’idée à la mise en ligne, puis au quotidien : un accompagnement complet pour votre présence numérique. Basé à Lambesc, j’interviens autour d’Aix-en-Provence.':
+    'From idea to launch, then day to day: complete support for your digital presence. Based in Lambesc, I work around Aix-en-Provence.',
   'Sites et applications sur mesure': 'Custom websites and applications',
   'Conception et développement de sites internet, d’applications web et d’applications mobiles, pensés pour votre activité et vos utilisateurs.':
     'Design and development of websites, web applications and mobile applications, built around your business and your users.',
@@ -471,7 +471,7 @@ export const TEXTES_EN = {
   'QR code vers la page d’accueil': 'QR code to the home page',
 
   // Qui suis-je
-  'Qui suis-je · douzeEnsemble': 'About me · douzeEnsemble',
+  'Qui suis-je – développeur près d’Aix-en-Provence · douzeEnsemble': 'About me – web developer near Aix-en-Provence · douzeEnsemble',
   'Qui suis-je': 'About me',
   'J’ai mon BAFA perfectionnement en petite enfance.': 'I hold the advanced BAFA (French youth leader certificate) in early childhood.',
   'Né à Marseille': 'Born in Marseille',
