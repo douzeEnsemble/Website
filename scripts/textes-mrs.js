@@ -95,7 +95,7 @@ export const TEXTES_MRS = {
   'Et les points faibles ?': 'Et nos faiblesses, alors ?',
   'Retour aux points forts': 'Retour à nos atouts',
   'Personne n’est parfait. Voici des compétences bien réelles, mais qui ne serviront à rien pour votre site.': 'Personne il est parfait, té. Voilà des vrais talents, mais pour ton site, ça sert à rien de rien.',
-  'Menuiserie, bricolage, karaoké, jardinage et pilotage d’avion : les compétences de douzeEnsemble qui ne serviront pas à votre site.': 'Menuiserie, bricolage, karaoké, jardin et pilotage d’avion : les talents de douzeEnsemble qui serviront jamais à ton site.',
+  'Menuiserie, karaoké, jardinage, pilotage, mécanique, peinture, guitare et pêche au gros : les compétences de douzeEnsemble loin du web.': 'Menuiserie, karaoké, jardin, pilotage, mécanique, peinture, guitare et pêche au gros : les talents de douzeEnsemble loin du web.',
   'Menuiserie et bricolage': 'La menuiserie et le bricolage',
   'Du meuble sur mesure à la petite réparation : le bois, la scie et la visseuse n’ont pas de secret.': 'Du meuble sur mesure à la petite réparation : le bois, la scie et la visseuse, je connais bien, té.',
   'Karaoké': 'Le karaoké',
@@ -104,6 +104,14 @@ export const TEXTES_MRS = {
   'Les tomates poussent, les courgettes envahissent, le basilic résiste.': 'Les tomates poussent, les courgettes envahissent tout, le basilic tient bon, peuchère.',
   'Pilotage d’avion': 'Le pilotage d’avion',
   'Aux commandes d’un avion léger, cap tenu et atterrissage en douceur. Votre site, lui, reste au sol.': 'Aux commandes d’un petit avion, le cap tenu et l’atterrissage tout doux. Ton site, lui, il reste par terre.',
+  'Mécanique': 'La mécanique',
+  'La vidange faite maison et le pneu changé avant l’arrivée de la dépanneuse.': 'La vidange faite à la maison et la roue changée avant que la dépanneuse elle arrive.',
+  'Peinture et rénovation': 'La peinture et la rénovation',
+  'Des murs refaits sans une trace de rouleau. Ou presque.': 'Des murs refaits sans une trace de rouleau. Enfin, presque, hein.',
+  'Guitare': 'La guitare',
+  'Quelques accords autour du feu, et toujours une chanson de plus à la demande.': 'Trois accords autour du feu, et toujours une chanson de plus quand on la demande.',
+  'Pêche au gros': 'La pêche au gros',
+  'Des heures en mer pour un seul poisson. Votre site demandera bien moins de patience.': 'Des heures en mer pour un seul poisson, et après on le raconte comme la sardine qui a bouché le port.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':
