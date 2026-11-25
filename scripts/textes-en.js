@@ -214,6 +214,9 @@ export const TEXTES_EN = {
   'Pour les fêtes': 'For the holidays',
   'Compagnons de jeu': 'Gaming companions',
   'Jeux': 'Games',
+  'Démonstrations': 'Demonstrations',
+  'Une vitrine de petites applications à essayer : roue de tirage, sondage, stock et réservation de repas, avec des données fictives.':
+    'A showcase of small apps to try: prize wheel, poll, stock and meal booking, with made-up data.',
   'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
     'The shopping list the whole family fills in at the same time, with no account to create.',
   'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
