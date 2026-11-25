@@ -460,6 +460,11 @@ export const TEXTES_MRS = {
   // Qui suis-je
   'Qui suis-je · douzeEnsemble': 'C’est qui, Renaud ? · douzeEnsemble',
   'Qui suis-je': 'C’est qui, Renaud ?',
+  'Des applis que j’utilise moi-même': 'Des applis que j’utilise moi-même, té',
+  'Courses, repas, cadeaux de Noël, jeux : je développe aussi des applications pour mon propre quotidien. C’est le meilleur moyen de savoir ce qui sert vraiment.': 'Les commissions, les repas, les cadeaux de Noël, les jeux : je me fabrique aussi des applis pour tous les jours. Comme ça, je sais ce qui sert vraiment.',
+  'Voir les réalisations': 'Va voir ce qu’on a fait',
+  'En dehors du code': 'En dehors du code',
+  'Développer des sites, je sais faire. Pour tout le reste, je préfère être honnête.': 'Faire des sites, ça je sais. Pour tout le reste, je préfère te le dire franchement, peuchère.',
   'Renaud, développeur de sites internet depuis 2009 et même avant, veut créer son entreprise pour des projets utiles, proches des utilisateurs.': 'Renaud, il fait des sites internet depuis 2009 et même avant, et il veut monter son entreprise pour des projets qui servent, tout près des gens.',
   'Je suis Renaud, développeur de sites internet depuis 2009, et même avant.': 'Moi c’est Renaud, et des sites internet, j’en fabrique depuis 2009, et même avant, té.',
   'Développeur depuis 2009, et même avant': 'Développeur depuis 2009, et même avant, rien que ça',

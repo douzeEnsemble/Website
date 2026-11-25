@@ -459,6 +459,11 @@ export const TEXTES_EN = {
   // Qui suis-je
   'Qui suis-je · douzeEnsemble': 'About me · douzeEnsemble',
   'Qui suis-je': 'About me',
+  'Des applis que j’utilise moi-même': 'Apps I use myself',
+  'Courses, repas, cadeaux de Noël, jeux : je développe aussi des applications pour mon propre quotidien. C’est le meilleur moyen de savoir ce qui sert vraiment.': 'Shopping, meals, Christmas presents, games: I also build apps for my own everyday life. It is the best way to know what is really useful.',
+  'Voir les réalisations': 'See the projects',
+  'En dehors du code': 'Away from code',
+  'Développer des sites, je sais faire. Pour tout le reste, je préfère être honnête.': 'Building websites, I can do. For everything else, I would rather be honest.',
   'Renaud, développeur de sites internet depuis 2009 et même avant, veut créer son entreprise pour des projets utiles, proches des utilisateurs.': 'Renaud, a web developer since 2009 and even before, wants to start his own business for useful projects, close to the people who use them.',
   'Je suis Renaud, développeur de sites internet depuis 2009, et même avant.': 'I am Renaud, a web developer since 2009, and even before.',
   'Développeur depuis 2009, et même avant': 'A developer since 2009, and even before',
