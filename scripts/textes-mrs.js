@@ -10,6 +10,7 @@ export const TEXTES_MRS = {
   'Contact': 'Contact',
   'Carte de visite': 'Carte de visite',
   'À propos': 'Qui c’est qui cause ?',
+  'Et aussi': 'Et aussi, té',
   'Langue': 'Parlure (langue)',
   'Version ': 'Version ',
   'Un projet ? Parlons-en': 'Un projet ? Viens, on en cause',

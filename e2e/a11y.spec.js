@@ -6,11 +6,11 @@ import { expect, test } from '@playwright/test';
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 // Exception connue, pour la seule règle `color-contrast` et seulement sur ces
-// éléments : le menu et le bouton de partage (opacité 0,35) et la version (opacité 0,2) sont discrets
+// éléments : le bouton de partage (opacité 0,35), la version et les langues (opacité 0,2) sont discrets
 // par choix de design, visibles au survol et au focus (voir style.css). Le
 // reste de la page, et toutes les autres règles sur ces éléments, restent
 // contrôlés. À reconsidérer avec le propriétaire (critère 1.4.3).
-const DISCRETS = '.menu, .pied-version, .partage-ouvrir';
+const DISCRETS = '.pied-version > p, .pied-version .langues, .partage-ouvrir';
 
 async function violations(page) {
   const resultats = await new AxeBuilder({ page }).withTags(TAGS).analyze();
