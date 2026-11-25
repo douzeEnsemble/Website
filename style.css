@@ -709,6 +709,16 @@ body.awesome .menu :where(a) {
   font-size: 0.95rem;
 }
 
+/* Qui suis-je : trois cartes qui se partagent la ligne, sans carte orpheline. */
+.qui-suis-je .prestations-liste {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.qui-suis-je .prestation {
+  flex: 1 1 18rem;
+}
+
 /* Une teinte par carte, en rotation (--k) : le fond, les tags et le numéro
    en dérivent, dans les thèmes clair et sombre. */
 .prestation:nth-child(4n + 1),

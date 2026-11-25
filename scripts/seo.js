@@ -93,7 +93,7 @@ export const SEO = {
   [join('qui-suis-je', 'index.html')]: {
     title: 'Qui suis-je · douzeEnsemble',
     description:
-      'Renaud, développeur de sites internet depuis 2009 et expert PHP et Symfony, veut créer son entreprise pour des projets utiles, proches des utilisateurs.',
+      'Renaud, développeur de sites internet depuis 2009 et même avant, veut créer son entreprise pour des projets utiles, proches des utilisateurs.',
   },
   [join('carte', 'index.html')]: {
     title: 'Carte de visite · douzeEnsemble',
