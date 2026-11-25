@@ -28,7 +28,7 @@ export const SEO = {
   [join('points-faibles', 'index.html')]: {
     title: 'Points faibles · douzeEnsemble',
     description:
-      'Pétanque, meubles en kit, drap-housse, cuisine, jardin et karaoké : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
+      'Menuiserie, bricolage, karaoké, jardinage et pilotage d’avion : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
   },
   [join('deroule', 'index.html')]: {
     title: 'Déroulé d’un projet · douzeEnsemble',
