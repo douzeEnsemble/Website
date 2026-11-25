@@ -46,8 +46,18 @@ export const TEXTES_EN = {
 
   // Accueil
   'Sites, applications et accompagnement numérique': 'Websites, applications and digital support',
-  'douzeEnsemble conçoit des <a href="prestations/">sites internet et des applications sur mesure</a>, vous conseille en communication numérique et assure la maintenance de vos sites. Découvrez le <a href="deroule/">déroulé d’un projet</a>, nos <a href="realisations/">réalisations</a>, puis <a href="contact/">parlons de votre projet</a>.':
-    'douzeEnsemble designs <a href="prestations/">custom websites and applications</a>, advises you on digital communication and looks after the maintenance of your sites. Discover <a href="deroule/">how a project unfolds</a> and our <a href="realisations/">projects</a>, then <a href="contact/">let’s talk about yours</a>.',
+  'Je suis Renaud. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
+    'I’m Renaud. I design websites and applications with you that truly reflect who you are, then I stay by your side to keep them alive.',
+  'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
+    'Applications used every day: shopping, meals, Christmas presents, games.',
+  'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':
+    'Custom websites and applications, advice, maintenance and day-to-day management.',
+  'On avance ensemble : vous gardez la main à chaque étape.':
+    'We move forward together: you stay in control at every step.',
+  'Ce qui guide chaque projet, de l’analyse au suivi.':
+    'What guides every project, from analysis to follow-up.',
+  'Racontez-moi votre idée, on regarde ensemble comment la réaliser.':
+    'Tell me about your idea, and we’ll work out together how to make it happen.',
   'Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.':
     'Design of custom websites and applications, digital communication advice, site maintenance and management.',
 

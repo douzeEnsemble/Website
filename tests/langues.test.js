@@ -160,7 +160,9 @@ const INVARIANT = new Set([
   ...NOMS_PROJETS.map((nom) => `${nom} · douzeEnsemble`),
   'douzeEnsemble', 'Renaud', '×', '404', 'SIREN', 'valeur',
   'GitHub, Inc. (GitHub Pages)', '01', '02', '03', '04', '05', '06', '07', '08', '09',
-  '123456789 · ', ' ↗', '↗', '← ', 'dev',
+  '123456789 · ', ' ↗', '↗', '← ', '→', 'dev',
+  // Marque coupée en deux sur la carte de visite (douze<span>Ensemble</span>).
+  'douze',
   'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
 ]);
 

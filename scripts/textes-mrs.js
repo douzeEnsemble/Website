@@ -46,8 +46,18 @@ export const TEXTES_MRS = {
 
   // Accueil
   'Sites, applications et accompagnement numérique': 'Des sites, des applis et un coup de main pour le numérique',
-  'douzeEnsemble conçoit des <a href="prestations/">sites internet et des applications sur mesure</a>, vous conseille en communication numérique et assure la maintenance de vos sites. Découvrez le <a href="deroule/">déroulé d’un projet</a>, nos <a href="realisations/">réalisations</a>, puis <a href="contact/">parlons de votre projet</a>.':
-    'douzeEnsemble te fabrique des <a href="prestations/">sites et des applis sur mesure</a>, te conseille pour causer sur internet et s’occupe de l’entretien de tes sites. Viens voir <a href="deroule/">comment ça se passe, un projet</a>, <a href="realisations/">ce qu’on a déjà fait</a>, et après <a href="contact/">on cause de ton projet</a>, té.',
+  'Je suis Renaud. Je conçois avec vous des sites et des applications qui vous ressemblent, puis je reste à vos côtés pour les faire vivre.':
+    'Moi c’est Renaud. On fabrique ensemble des sites et des applis qui te ressemblent, et après je reste à côté de toi pour les faire vivre, té.',
+  'Des applications utilisées chaque jour : courses, repas, cadeaux de Noël, jeux.':
+    'Des applis qui servent tous les jours : les commissions, les repas, les cadeaux de Noël, les jeux.',
+  'Sites et applications sur mesure, conseil, maintenance et gestion au quotidien.':
+    'Des sites et des applis sur mesure, des conseils, l’entretien et la gestion de tous les jours.',
+  'On avance ensemble : vous gardez la main à chaque étape.':
+    'On avance ensemble : c’est toi qui gardes la main à chaque étape.',
+  'Ce qui guide chaque projet, de l’analyse au suivi.':
+    'Ce qui guide chaque projet, de l’analyse jusqu’au suivi.',
+  'Racontez-moi votre idée, on regarde ensemble comment la réaliser.':
+    'Raconte-moi ton idée, on regarde ensemble comment la faire, té.',
   'Conception de sites internet et d’applications sur mesure, conseil en communication numérique, maintenance et gestion de sites.':
     'Fabrication de sites et d’applis sur mesure, conseils pour causer sur internet, entretien et gestion de sites.',
 
