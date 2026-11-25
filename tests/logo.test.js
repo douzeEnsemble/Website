@@ -9,23 +9,15 @@ describe('logoHtml', () => {
 
   it('mène à l’accueil, avec un nom accessible', () => {
     expect(lien.getAttribute('href')).toBe('/');
-    expect(lien.getAttribute('aria-label')).toBe('douzeEnsemble, accueil');
     expect(lien.hasAttribute('aria-current')).toBe(false);
-    expect(html).toMatch(/^<a class="logo" href="\/" aria-label="douzeEnsemble, accueil"><svg /);
-  });
-
-  it('dessine le monogramme du favicon, masqué aux lecteurs d’écran', () => {
-    expect(html).toContain(
-      '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#14110f"/>',
-    );
-    expect(html).toContain(
-      '<text x="32" y="44" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="-1.5" text-anchor="middle" fill="#fffdf9">d<tspan fill="#fe8a18">E</tspan></text></svg></a>',
+    expect(html).toBe(
+      '<a class="logo" href="/"><img src="/favicon.svg" width="64" height="64" alt="douzeEnsemble, accueil"></a>',
     );
   });
 
   it('marque l’accueil comme page courante', () => {
     expect(logoHtml('index.html')).toContain(
-      '<a class="logo" href="/" aria-current="page" aria-label="douzeEnsemble, accueil">',
+      '<a class="logo" href="/" aria-current="page"><img ',
     );
   });
 

@@ -1118,8 +1118,9 @@ body.awesome .menu :where(a) {
   box-shadow: 0 0 0 1px var(--bordure);
 }
 
-.logo svg {
+.logo img {
   display: block;
+  border-radius: inherit;
   width: 100%;
   height: 100%;
 }
