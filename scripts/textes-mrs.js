@@ -512,6 +512,8 @@ export const TEXTES_MRS = {
   ' Animations réduites': ' Animations réduites',
 
   // Partage
+  // Logo
+  'douzeEnsemble, accueil': 'douzeEnsemble, l’entrée, té',
   'Partager cette page': 'Partager cette page',
   'QR code de': 'QR code de',
   'Adresse de la page': 'Adresse de la page',

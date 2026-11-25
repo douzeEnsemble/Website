@@ -5,6 +5,8 @@ import { LANGUE_PAR_DEFAUT, traduire } from './langues.js';
 export const SITE_URL = 'https://www.douzeensemble.fr/';
 export const PARTAGE_MARKER = '<!--PARTAGE-->';
 export const QR_ACCUEIL_MARKER = '<!--QR-ACCUEIL-->';
+// Place du bouton de partage dans le groupe des préférences (scripts/preferences.js).
+export const PARTAGE_BOUTON_MARKER = '<!--PARTAGE-BOUTON-->';
 
 const QUIET_ZONE = 2;
 
@@ -43,11 +45,13 @@ const SHARE_ICON =
   '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
   '<path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
 
-// Bouton de partage et fenêtre native (<dialog>) d'une page : QR code, lien à
-// copier, bouton Partager (masqué tant que js/partage.js ne l'active pas).
+// Bouton de partage, rangé avec les boutons de préférences (bas à droite).
+export const PARTAGE_BOUTON = `<button type="button" class="preferences-bouton partage-ouvrir" aria-label="Partager cette page">${SHARE_ICON}</button>`;
+
+// Fenêtre native (<dialog>) de partage d'une page : QR code, lien à copier,
+// bouton Partager (masqué tant que js/partage.js ne l'active pas).
 export function partageHtml(url, langue = LANGUE_PAR_DEFAUT) {
-  return `<button type="button" class="partage-ouvrir" aria-label="Partager cette page">${SHARE_ICON}</button>
-    <dialog class="partage" aria-labelledby="partage-titre" data-copie="Lien copié." data-selection="Lien sélectionné : copiez-le avec Ctrl+C." data-echec="Le partage a échoué : copiez le lien.">
+  return `<dialog class="partage" aria-labelledby="partage-titre" data-copie="Lien copié." data-selection="Lien sélectionné : copiez-le avec Ctrl+C." data-echec="Le partage a échoué : copiez le lien.">
       <div class="partage-contenu">
         <form method="dialog"><button class="partage-fermer" aria-label="Fermer">×</button></form>
         <p class="partage-marque">douzeEnsemble</p>
@@ -69,8 +73,11 @@ export function qrAccueilHtml(langue = LANGUE_PAR_DEFAUT) {
   return `<div class="carte-qr">${qrSvg(`${SITE_URL}${langue.dir}`, 'QR code vers la page d’accueil')}</div>`;
 }
 
+// Le bouton n'apparaît que sur les pages qui ont une fenêtre de partage (pas la 404).
 export function injectPartage(html, file, langue = LANGUE_PAR_DEFAUT) {
+  const bouton = html.includes(PARTAGE_MARKER) ? PARTAGE_BOUTON : '';
   return html
+    .replace(PARTAGE_BOUTON_MARKER, bouton)
     .replace(PARTAGE_MARKER, () => partageHtml(pageUrl(file, langue), langue))
     .replace(QR_ACCUEIL_MARKER, () => qrAccueilHtml(langue));
 }

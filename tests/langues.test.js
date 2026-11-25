@@ -13,6 +13,7 @@ import {
   translateHtml,
 } from '../scripts/langues.js';
 import { injectMentions, MENTIONS_FIELDS } from '../scripts/mentions.js';
+import { injectLogo } from '../scripts/logo.js';
 import { injectPartage } from '../scripts/partage.js';
 import { injectPreferences } from '../scripts/preferences.js';
 import { injectSeo } from '../scripts/seo.js';
@@ -140,7 +141,11 @@ const ENV = Object.fromEntries([
 const frenchPage = (file) =>
   injectMentions(
     injectLangues(
-      injectPartage(injectPreferences(injectSeo(readFileSync(file, 'utf8'), file, FR)), file, FR),
+      injectPartage(
+        injectLogo(injectPreferences(injectSeo(readFileSync(file, 'utf8'), file, FR)), file, FR),
+        file,
+        FR,
+      ),
       file,
       FR,
     ),
@@ -159,6 +164,8 @@ const INVARIANT = new Set([
   ...NOMS_PROJETS.map((nom) => ` ${nom}`),
   ...NOMS_PROJETS.map((nom) => `${nom} · douzeEnsemble`),
   'douzeEnsemble', 'Renaud', '×', '404', 'SIREN', 'valeur',
+  // Le monogramme du logo (scripts/logo.js).
+  'd', 'E',
   'GitHub, Inc. (GitHub Pages)', '01', '02', '03', '04', '05', '06', '07', '08', '09',
   '123456789 · ', ' ↗', '↗', '← ', '→', 'dev',
   // Marque coupée en deux sur la carte de visite (douze<span>Ensemble</span>).

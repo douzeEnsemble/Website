@@ -2,6 +2,8 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { LANGUES } from '../scripts/langues.js';
 import {
+  PARTAGE_BOUTON,
+  PARTAGE_BOUTON_MARKER,
   PARTAGE_MARKER,
   QR_ACCUEIL_MARKER,
   SITE_URL,
@@ -66,8 +68,8 @@ describe('qrSvg', () => {
 describe('partageHtml', () => {
   const html = partageHtml('https://www.douzeensemble.fr/contact/');
 
-  it('contient le bouton, la fenêtre native et le lien à copier', () => {
-    expect(html).toContain('class="partage-ouvrir" aria-label="Partager cette page"');
+  it('contient la fenêtre native et le lien à copier, sans le bouton', () => {
+    expect(html).not.toContain('partage-ouvrir');
     expect(html).toContain(
       '<dialog class="partage" aria-labelledby="partage-titre" data-copie="Lien copié." data-selection="Lien sélectionné : copiez-le avec Ctrl+C." data-echec="Le partage a échoué : copiez le lien.">',
     );
@@ -80,13 +82,17 @@ describe('partageHtml', () => {
   });
 
   it('dessine l’icône de partage : trois points reliés', () => {
-    expect(html).toContain(
+    expect(PARTAGE_BOUTON).toMatch(
+      /^<button type="button" class="preferences-bouton partage-ouvrir" aria-label="Partager cette page"><svg /,
+    );
+    expect(PARTAGE_BOUTON.endsWith('</svg></button>')).toBe(true);
+    expect(PARTAGE_BOUTON).toContain(
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
     );
-    expect(html).toContain(
+    expect(PARTAGE_BOUTON).toContain(
       '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>',
     );
-    expect(html).toContain('<path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>');
+    expect(PARTAGE_BOUTON).toContain('<path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>');
   });
 
   it('cache le bouton Partager tant que le script ne l’active pas', () => {
@@ -118,6 +124,17 @@ describe('injectPartage', () => {
     expect(out).toBe(
       `a ${partageHtml('https://www.douzeensemble.fr/carte/')} b ${qrAccueilHtml()} c`,
     );
+  });
+
+  it('pose le bouton dans le groupe des préférences d’une page à partager', () => {
+    expect(PARTAGE_BOUTON_MARKER).toBe('<!--PARTAGE-BOUTON-->');
+    expect(injectPartage(`a ${PARTAGE_BOUTON_MARKER} b ${PARTAGE_MARKER}`, 'index.html')).toBe(
+      `a ${PARTAGE_BOUTON} b ${partageHtml('https://www.douzeensemble.fr/')}`,
+    );
+  });
+
+  it('retire la place du bouton d’une page sans partage (404)', () => {
+    expect(injectPartage(`a ${PARTAGE_BOUTON_MARKER} b`, '404.html')).toBe('a  b');
   });
 
   it('laisse intacte une page sans marqueur', () => {
