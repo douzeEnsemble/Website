@@ -50,6 +50,10 @@
   --survol-ombre: 0 0.5rem 1.25rem var(--ombre);
   --survol-levee: translateY(-0.125rem);
   --survol-avance: translateX(0.25rem);
+
+  /* Flèche des liens de carte (bento de l'accueil, « Détails et captures »,
+     « Voir les réalisations ») : même signe, même couleur, même mouvement. */
+  --fleche-taille: 1.3rem;
 }
 
 /* Thème choisi par le visiteur : il l'emporte sur le réglage du système. */
@@ -261,7 +265,7 @@ body.awesome h1 {
   right: 1.25rem;
   bottom: 0.9rem;
   color: var(--orange-texte);
-  font-size: 1.3rem;
+  font-size: var(--fleche-taille);
   font-weight: bold;
   transition: transform var(--survol-duree);
 }
@@ -502,12 +506,6 @@ body.awesome .menu :where(a) {
   transition: background-color 0.2s;
 }
 
-/* L'action est un lien explicite, pas la carte entière. */
-.carte-lien {
-  align-self: flex-end;
-  margin-top: 0.25rem;
-}
-
 .contact .contact-bouton,
 .carte-lien,
 .carte-bouton,
@@ -708,11 +706,6 @@ body.awesome .menu :where(a) {
   flex: 1 1 18rem;
   min-width: 0;
   overflow-wrap: anywhere;
-}
-
-.qui-suis-je-lien {
-  color: inherit;
-  font-weight: 600;
 }
 
 /* Une teinte par carte, en rotation (--k) : le fond, les tags et le numéro
@@ -1633,5 +1626,54 @@ html {
 }
 
 .bento-carte:focus-visible .bento-fleche {
+  transform: var(--survol-avance);
+}
+
+/* Lien d'une carte quand la carte n'est pas un lien en entier : texte en gras
+   suivi de la flèche du bento, en bas à droite de la carte. La flèche avance
+   au survol et au focus du lien, comme sur l'accueil. */
+.prestation:has(> .lien-fleche-ligne) {
+  display: flex;
+  flex-direction: column;
+}
+
+p.lien-fleche-ligne {
+  margin: auto 0 0;
+  text-align: right;
+}
+
+.lien-fleche {
+  display: block;
+  width: fit-content;
+  margin: auto 0 0 auto;
+  color: var(--texte);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.lien-fleche-ligne .lien-fleche {
+  display: inline-block;
+}
+
+.lien-fleche::after {
+  display: inline-block;
+  margin-left: 0.3rem;
+  color: var(--orange-texte);
+  font-size: var(--fleche-taille);
+  line-height: 1;
+  vertical-align: -0.1em;
+  content: '→' / '';
+  transition: transform var(--survol-duree);
+}
+
+.lien-fleche:hover,
+.lien-fleche:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--orange-texte);
+  text-underline-offset: 0.2em;
+}
+
+.lien-fleche:hover::after,
+.lien-fleche:focus-visible::after {
   transform: var(--survol-avance);
 }
