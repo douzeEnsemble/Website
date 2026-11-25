@@ -156,7 +156,7 @@ const pages = PAGES.map((file) => [file, frenchPage(file)]);
 const allFrench = pages.map(([, html]) => html).join('\n');
 
 // Noms des projets : les mêmes dans les trois langues (aussi dans le texte masqué des liens).
-const NOMS_PROJETS = ['KoiKiManke', 'OnMangeQuoi', 'PlusUn', 'DansMaHotte', 'KesKeJeVoeux', 'Pokenini', 'MineCarte', 'Quine', 'Demo', 'MoreMobsHeadsChecklist'];
+const NOMS_PROJETS = ['KoiKiManke', 'OnMangeQuoi', 'PlusUn', 'DansMaHotte', 'KesKeJeVoeux', 'Pokenini', 'MineCarte', 'Quine', 'Demo', 'Démo', 'MoreMobsHeadsChecklist'];
 
 // Textes que les trois langues écrivent pareil.
 const INVARIANT = new Set([
