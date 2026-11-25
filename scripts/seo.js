@@ -179,16 +179,19 @@ export function injectSeo(html, file, langue = LANGUE_PAR_DEFAUT) {
 
 // Plan du site pour les moteurs de recherche : une entrée par page référencée
 // et par langue, avec la date de dernière modification quand elle est connue
-// (`dates`) et les versions de la page dans les autres langues.
+// (`dates`) et les versions de la page dans les autres langues (plus `x-default`, le français).
 export function sitemapXml(dates = {}) {
   const urls = Object.keys(SEO)
     .flatMap((file) =>
       LANGUES.map((langue) => {
         const lastmod = dates[file] ? `<lastmod>${dates[file]}</lastmod>` : '';
-        const links = LANGUES.map(
-          (autre) =>
-            `<xhtml:link rel="alternate" hreflang="${autre.htmlLang}" href="${pageUrl(file, autre)}"/>`,
-        ).join('');
+        const links = [
+          ...LANGUES.map(
+            (autre) =>
+              `<xhtml:link rel="alternate" hreflang="${autre.htmlLang}" href="${pageUrl(file, autre)}"/>`,
+          ),
+          `<xhtml:link rel="alternate" hreflang="x-default" href="${pageUrl(file)}"/>`,
+        ].join('');
         return `  <url><loc>${pageUrl(file, langue)}</loc>${lastmod}${links}</url>\n`;
       }),
     )
