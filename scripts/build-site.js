@@ -1,5 +1,6 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { injectCouleur } from './couleurs.js';
 import { LANGUES, injectLangues, translateHtml } from './langues.js';
 import { injectLogo } from './logo.js';
 import { injectMentions } from './mentions.js';
@@ -101,7 +102,11 @@ export async function buildSite({
           injectPartage(
             injectLogo(
               injectPreferences(
-                injectSeo(String(readFileSync(join(root, file))), file, langue),
+                injectSeo(
+                  injectCouleur(String(readFileSync(join(root, file))), file),
+                  file,
+                  langue,
+                ),
               ),
               file,
               langue,
