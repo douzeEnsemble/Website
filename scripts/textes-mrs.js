@@ -213,6 +213,7 @@ export const TEXTES_MRS = {
   'Pour le quotidien': 'Pour tous les jours',
   'Pour les fêtes': 'Pour les fêtes, té',
   'Compagnons de jeu': 'Les copains de jeu',
+  'Jeux': 'Les jeux',
   'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
     'La liste de courses que toute la famille remplit en même temps, sans créer de compte, vé.',
   'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
