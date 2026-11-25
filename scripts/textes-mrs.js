@@ -214,6 +214,9 @@ export const TEXTES_MRS = {
   'Pour les fêtes': 'Pour les fêtes, té',
   'Compagnons de jeu': 'Les copains de jeu',
   'Jeux': 'Les jeux',
+  'Démonstrations': 'Les démonstrations',
+  'Une vitrine de petites applications à essayer : roue de tirage, sondage, stock et réservation de repas, avec des données fictives.':
+    'Une vitrine de p’tites applis à essayer, té : roue de tirage, sondage, stock et réservation de repas, avec des données pour de faux.',
   'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
     'La liste de courses que toute la famille remplit en même temps, sans créer de compte, vé.',
   'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
