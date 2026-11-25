@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`, `carte/`, `apropos/`, `404.html` en chemins absolus), style dans `style.css` (couleurs en variables `light-dark()` qui suivent `color-scheme` : système ou choix du visiteur, échelle typographique `--t-*` en `clamp()`, la page défile normalement (pas de `main` à défilement interne), animations coupées sous `prefers-reduced-motion`), comportement en modules ES dans `js/`. Fichiers statiques publiés : `robots.txt`, `favicon.svg`, `apple-touch-icon.png`, `og.png` (aperçu 1200 × 630 des liens partagés).
+Site statique de présentation (www.douzeensemble.fr), servi par GitHub Pages. Pages HTML à la racine (`index.html`, `contact/`, `prestations/`, `realisations/`, `carte/`, `apropos/`, `404.html` en chemins absolus), style dans `style.css` (police des titres Bricolage Grotesque auto-hébergée dans `polices/` (licence OFL), couleurs en variables `light-dark()` qui suivent `color-scheme` : système ou choix du visiteur, échelle typographique `--t-*` en `clamp()`, la page défile normalement (pas de `main` à défilement interne), animations coupées sous `prefers-reduced-motion`), comportement en modules ES dans `js/`. Fichiers statiques publiés : `robots.txt`, `favicon.svg`, `apple-touch-icon.png`, `og.png` (aperçu 1200 × 630 des liens partagés).
 
 ## Commandes
 

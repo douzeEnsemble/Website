@@ -21,7 +21,7 @@ import {
 
 function fakeRepo() {
   const root = mkdtempSync(join(tmpdir(), 'site-'));
-  for (const dir of ['js', 'contact', 'prestations', 'points-forts', 'deroule', 'realisations', 'carte', 'apropos', 'tests']) {
+  for (const dir of ['js', 'polices', 'contact', 'prestations', 'points-forts', 'deroule', 'realisations', 'carte', 'apropos', 'tests']) {
     mkdirSync(join(root, dir));
   }
   writeFileSync(join(root, 'CNAME'), 'www.douzeensemble.fr');
@@ -83,6 +83,7 @@ describe('SITE_FILES', () => {
       'apple-touch-icon.png',
       'og.png',
       'style.css',
+      'polices',
       'js',
       'contact',
       'prestations',

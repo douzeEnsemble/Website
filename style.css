@@ -1,3 +1,17 @@
+/* Police des titres : Bricolage Grotesque (variable, sous-ensemble latin,
+   licence OFL dans polices/OFL.txt), auto-hébergée ; le texte courant reste
+   dans la police du système. */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('polices/bricolage-grotesque.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Couleurs du site : chaque variable donne sa valeur claire puis sombre
    (light-dark()), le thème suit color-scheme : celui du système par défaut,
    celui choisi par le visiteur (bouton en bas à droite) sinon. La carte de
@@ -27,6 +41,7 @@
   /* Hauteur réservée au menu fixe en haut de page : les pages longues
      commencent en dessous, le titre n'est jamais caché. */
   --sous-menu: 3.5rem;
+  --police-titre: 'Bricolage Grotesque', sans-serif;
 }
 
 /* Thème choisi par le visiteur : il l'emporte sur le réglage du système. */
@@ -75,6 +90,13 @@ main {
   margin-block: auto;
 }
 
+/* Titres de section, numéros et accroche dans la police des titres. */
+h2,
+.prestation-numero,
+.accroche {
+  font-family: var(--police-titre);
+}
+
 /* Titres équilibrés sur leurs lignes, paragraphes sans mot seul en fin de
    bloc. */
 h2 {
@@ -88,7 +110,9 @@ p {
 h1 {
   margin: 0;
   font-size: var(--t-titre-accueil);
-  font-family: sans-serif;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-wrap: balance;
   user-select: none;
   cursor: default;
@@ -129,7 +153,6 @@ body.awesome h1 {
 
 .accroche {
   margin: 0.5em 0 0;
-  font-family: sans-serif;
   font-size: var(--t-accroche);
   text-wrap: balance;
 }
