@@ -222,7 +222,7 @@ describe.each([['anglais', EN], ['marseillais', MRS]])('pages en %s', (_nom, lan
 
   it('la page d’accueil est traduite et garde ses liens relatifs', () => {
     const html = translateHtml(frenchPage('index.html'), langue);
-    expect(html).toContain(`<title>${traduire('douzeEnsemble · Sites et applications sur mesure', langue)}</title>`);
+    expect(html).toContain(`<title>${traduire('douzeEnsemble · Sites et applications sur mesure, Aix-en-Provence', langue)}</title>`);
     expect(html).toContain('<h1>douzeEnsemble</h1>');
     expect(html).toContain('href="prestations/"');
   });
