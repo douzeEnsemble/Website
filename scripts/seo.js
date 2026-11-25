@@ -28,7 +28,7 @@ export const SEO = {
   [join('points-faibles', 'index.html')]: {
     title: 'Points faibles · douzeEnsemble',
     description:
-      'Briques, redstone, Pokémon, quine, menus de la semaine et marseillais : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
+      'Pétanque, meubles en kit, drap-housse, cuisine, jardin et karaoké : les compétences de douzeEnsemble qui ne serviront pas à votre site.',
   },
   [join('deroule', 'index.html')]: {
     title: 'Déroulé d’un projet · douzeEnsemble',
