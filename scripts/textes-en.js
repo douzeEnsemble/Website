@@ -112,7 +112,7 @@ export const TEXTES_EN = {
   'Pêche au gros': 'Big-game fishing',
   'Des heures en mer, et le seul gros poisson venait de la poissonnerie.': 'Hours at sea, and the only big fish came from the fishmonger’s.',
   'Tricot': 'Knitting',
-  'Pas une écharpe terminée, mais toujours de bons conseils à donner à ma mère.': 'Not a single scarf finished, but always good advice to give my mother.',
+  'Les mailles, je n’y comprends rien. Si besoin, je vous conseille ma mère.': 'Stitches are a total mystery to me. If you need help, I can recommend my mother.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':
