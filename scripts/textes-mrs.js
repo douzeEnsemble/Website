@@ -89,6 +89,14 @@ export const TEXTES_MRS = {
   'Hébergement et surveillance': 'Hébergement et on garde l’œil dessus',
   'Évolutions et nouvelles fonctionnalités': 'Les nouveautés et les nouvelles fonctions',
   'Mise à jour des contenus': 'Mise à jour des contenus',
+  'Accessibilité numérique': 'Accessibilité numérique',
+  'Une accessibilité pensée dès la conception, ou corrigée sur l’existant : daltonisme, malvoyance, navigation au clavier, lecteurs d’écran, sensibilité aux animations.':
+    'Une accessibilité pensée dès le départ, ou corrigée sur l’existant : daltonisme, mauvaise vue, navigation au clavier, lecteurs d’écran, sensibilité aux animations.',
+  'Daltonisme : contrastes vérifiés automatiquement (WCAG 2.2 AA)': 'Daltonisme : contrastes vérifiés automatiquement (WCAG 2.2 AA)',
+  'Malvoyance : taille du texte et contraste réglables, thème clair ou sombre, selon le projet': 'Mauvaise vue : taille du texte et contraste réglables, thème clair ou sombre, selon le projet',
+  'Clavier : navigation sans souris et focus visible, contrôlés à l’audit': 'Clavier : navigation sans souris et focus visible, contrôlés à l’audit',
+  'Lecteurs d’écran : structure, libellés et textes alternatifs contrôlés à l’audit': 'Lecteurs d’écran : structure, libellés et textes alternatifs contrôlés à l’audit',
+  'Animations réduites selon la préférence de l’appareil, pour les personnes sensibles au mouvement': 'Moins d’animations selon la préférence de l’appareil, pour ceux que le mouvement dérange',
 
   // Points faibles
   'Points faibles · douzeEnsemble': 'Nos faiblesses · douzeEnsemble',

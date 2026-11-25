@@ -89,6 +89,14 @@ export const TEXTES_EN = {
   'Hébergement et surveillance': 'Hosting and monitoring',
   'Évolutions et nouvelles fonctionnalités': 'Improvements and new features',
   'Mise à jour des contenus': 'Content updates',
+  'Accessibilité numérique': 'Digital accessibility',
+  'Une accessibilité pensée dès la conception, ou corrigée sur l’existant : daltonisme, malvoyance, navigation au clavier, lecteurs d’écran, sensibilité aux animations.':
+    'Accessibility built in from the start, or fixed on what already exists: color blindness, low vision, keyboard navigation, screen readers, sensitivity to animations.',
+  'Daltonisme : contrastes vérifiés automatiquement (WCAG 2.2 AA)': 'Color blindness: contrast checked automatically (WCAG 2.2 AA)',
+  'Malvoyance : taille du texte et contraste réglables, thème clair ou sombre, selon le projet': 'Low vision: adjustable text size and contrast, light or dark theme, depending on the project',
+  'Clavier : navigation sans souris et focus visible, contrôlés à l’audit': 'Keyboard: mouse-free navigation and visible focus, checked during the audit',
+  'Lecteurs d’écran : structure, libellés et textes alternatifs contrôlés à l’audit': 'Screen readers: structure, labels and alternative texts checked during the audit',
+  'Animations réduites selon la préférence de l’appareil, pour les personnes sensibles au mouvement': 'Reduced animations following the device preference, for people sensitive to motion',
 
   // Points faibles
   'Points faibles · douzeEnsemble': 'Weaknesses · douzeEnsemble',
