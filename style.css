@@ -767,6 +767,15 @@ body.awesome .menu :where(a) {
   background: color-mix(in srgb, currentcolor 18%, var(--fond));
 }
 
+/* Points forts : lien discret vers la page Points faibles. */
+.points-faibles {
+  margin: 2rem 0 0;
+}
+
+.points-faibles-lien {
+  color: var(--texte-doux);
+}
+
 /* Page d'une réalisation : lien de retour, liens vers le site et le code, et
    captures d'écran dans les cartes de fonctionnalités. */
 .realisation-retour {

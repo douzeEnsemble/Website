@@ -89,6 +89,26 @@ export const TEXTES_EN = {
   'Évolutions et nouvelles fonctionnalités': 'Improvements and new features',
   'Mise à jour des contenus': 'Content updates',
 
+  // Points faibles
+  'Points faibles · douzeEnsemble': 'Weaknesses · douzeEnsemble',
+  'Points faibles': 'Weaknesses',
+  'Et les points faibles ?': 'And the weaknesses?',
+  'Retour aux points forts': 'Back to strengths',
+  'Personne n’est parfait. Voici des compétences bien réelles, mais qui ne serviront à rien pour votre site.': 'Nobody is perfect. Here are some very real skills that will be of no use whatsoever for your website.',
+  'Construction en briques': 'Brick building',
+  'Des châteaux de plusieurs milliers de pièces montés sans notice de travers, et presque sans pièce en trop.': 'Castles of several thousand pieces built without a single misread instruction, and almost no pieces left over.',
+  'Redstone sur Minecraft': 'Minecraft redstone',
+  'Des circuits plus fiables que certaines box internet. Votre site, lui, n’en a aucun besoin.': 'Circuits more reliable than some internet routers. Your website has no need for any of them.',
+  'Dresseur Pokémon': 'Pokémon trainer',
+  'Les forces et faiblesses de chaque type connues par cœur : c’est un peu le sujet de cette page.': 'The strengths and weaknesses of every type known by heart: which is rather the point of this page.',
+  'Animation de quine': 'Bingo calling',
+  'Les numéros annoncés avec l’accent et leurs surnoms : « 22, les deux cocottes ! »': 'Numbers called out with the accent and their nicknames: “22, two little ducks!”',
+  'Menus de la semaine': 'Weekly meal plans',
+  'Une réponse à « on mange quoi ce soir ? », et même sept jours à l’avance.': 'An answer to “what’s for dinner tonight?”, even seven days ahead.',
+  'Marseillais courant': 'Fluent Marseillais',
+  '« Peuchère », « fada » et « fan de chichourle » maîtrisés : la preuve, ce site existe aussi en marseillais.': '“Peuchère”, “fada” and “fan de chichourle” mastered: proof is, this site also exists in Marseillais.',
+  'Briques, redstone, Pokémon, quine, menus de la semaine et marseillais : les compétences de douzeEnsemble qui ne serviront pas à votre site.': 'Bricks, redstone, Pokémon, bingo, weekly meal plans and Marseillais: the douzeEnsemble skills your website will never need.',
+
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':
     'What guides every douzeEnsemble project, from the first analysis to long-term follow-up.',

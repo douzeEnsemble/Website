@@ -32,6 +32,7 @@ const pagesFrancaises = [
   { nom: 'accueil', chemin: '/' },
   { nom: 'prestations', chemin: '/prestations/' },
   { nom: 'points forts', chemin: '/points-forts/' },
+  { nom: 'points faibles', chemin: '/points-faibles/' },
   { nom: 'déroulé d’un projet', chemin: '/deroule/' },
   { nom: 'réalisations', chemin: '/realisations/' },
   { nom: 'KoiKiManke', chemin: '/realisations/koikimanke/' },
@@ -116,6 +117,7 @@ for (const { nom, chemin } of pages) {
 const PAGES_LONGUES = [
   '/prestations/',
   '/points-forts/',
+  '/points-faibles/',
   '/deroule/',
   '/realisations/',
   '/realisations/koikimanke/',
