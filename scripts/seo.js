@@ -80,11 +80,6 @@ export const SEO = {
     description:
       'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.',
   },
-  [join('realisations', 'demo', 'index.html')]: {
-    title: 'Demo · douzeEnsemble',
-    description:
-      'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.',
-  },
   [join('contact', 'index.html')]: {
     title: 'Contact · douzeEnsemble',
     description:

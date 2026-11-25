@@ -169,7 +169,6 @@ export const TEXTES_MRS = {
   'Pour le quotidien': 'Pour tous les jours',
   'Pour les fêtes': 'Pour les fêtes, té',
   'Compagnons de jeu': 'Les copains de jeu',
-  'Pour essayer': 'Pour goûter',
   'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
     'La liste de courses que toute la famille remplit en même temps, sans créer de compte, vé.',
   'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
@@ -186,8 +185,6 @@ export const TEXTES_MRS = {
     'La carte interactive d’un monde Minecraft, avec ses coins et ses trois dimensions.',
   'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
     'Un bingo avec tes propres mots, des grilles à imprimer et le gagnant repéré tout seul.',
-  'Une vitrine de petites applications à tester : roue de tirage, sondage, stock, réservation de repas.':
-    'Une vitrine de petites applis à essayer : roue de tirage, sondage, stock, réservation de repas.',
   'Les projets sur GitHub': 'Les projets sur GitHub',
   'Voir le site': 'Va voir le site',
 
@@ -414,42 +411,10 @@ export const TEXTES_MRS = {
     'Les grilles s’exportent en PDF, avec plusieurs cartes à donner aux joueurs.',
   'Les grilles restent sur l’appareil, et l’application s’installe et fonctionne sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.':
     'Les grilles restent sur l’appareil, et l’appli s’installe et marche sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.',
-  'Une vitrine de petites applications à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données fictives.':
-    'Une vitrine de petites applis à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données pour de faux.',
-  'Roue de tirage':
-    'Roue de tirage',
-  'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est conservé.':
-    'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est gardé.',
-  'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées':
-    'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées',
-  'Sondage':
-    'Sondage',
-  'Une question à choix unique ou multiple : on vote, on peut modifier son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.':
-    'Une question à choix unique ou multiple : on vote, on peut changer son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.',
-  'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres':
-    'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres',
-  'Gestion de stock':
-    'Gestion de stock',
-  'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.':
-    'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.',
-  'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock':
-    'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock',
-  'Réservation de repas':
-    'Réservation de repas',
-  'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.':
-    'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.',
-  'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus':
-    'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus',
-  'Des données fictives mais cohérentes':
-    'Des données pour de faux mais cohérentes',
-  'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni enregistré sur un serveur.':
-    'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni gardé sur un serveur, peuchère.',
   'Pokenini, le suivi de sa collection de Pokémon avec albums, élections et petits jeux : fonctionnalités et captures d’écran.':
     'Pokenini, le suivi de ta collection de Pokémon avec des albums, des élections et des petits jeux : les fonctionnalités et les photos d’écran.',
   'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.':
     'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : les fonctionnalités et les photos d’écran.',
-  'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.':
-    'Demo, une vitrine d’applis à essayer (roue de tirage, sondage, stock, repas) avec des données pour de faux : les fonctionnalités et les photos.',
 
   // Contact et carte de visite
   'Afficher l’email': 'Montre l’email',

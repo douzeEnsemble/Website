@@ -169,7 +169,6 @@ export const TEXTES_EN = {
   'Pour le quotidien': 'For everyday life',
   'Pour les fêtes': 'For the holidays',
   'Compagnons de jeu': 'Gaming companions',
-  'Pour essayer': 'To try out',
   'La liste de courses que toute la famille remplit en même temps, sans créer de compte.':
     'The shopping list the whole family fills in at the same time, with no account to create.',
   'Le planning des repas partagé : qui cuisine, ce qu’on a aimé, avec des photos.':
@@ -186,8 +185,6 @@ export const TEXTES_EN = {
     'The interactive map of a Minecraft world, with its places and its three dimensions.',
   'Un bingo avec ses propres mots, des grilles à imprimer et la détection automatique du gagnant.':
     'A bingo with your own words, printable grids and automatic detection of the winner.',
-  'Une vitrine de petites applications à tester : roue de tirage, sondage, stock, réservation de repas.':
-    'A showcase of small apps to try: prize wheel, poll, stock, meal booking.',
   'Les projets sur GitHub': 'Projects on GitHub',
   'Voir le site': 'Visit the site',
 
@@ -414,42 +411,10 @@ export const TEXTES_EN = {
     'Grids export to PDF, with several cards to hand to the players.',
   'Les grilles restent sur l’appareil, et l’application s’installe et fonctionne sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.':
     'Grids stay on the device, and the app installs and works without a network. An optional sync code keeps them up to date across devices.',
-  'Une vitrine de petites applications à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données fictives.':
-    'A showcase of small apps to try: prize wheel, poll, stock management and meal booking, with fictional data.',
-  'Roue de tirage':
-    'Prize wheel',
-  'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est conservé.':
-    'A wheel to spin to pick a winner at random. Slices can be added and removed, drawing is done with or without replacement and the history is kept.',
-  'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées':
-    'Prize wheel “Où déjeune-t-on ce midi ?” (where do we have lunch today?) with eight coloured slices',
-  'Sondage':
-    'Poll',
-  'Une question à choix unique ou multiple : on vote, on peut modifier son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.':
-    'A question with a single or multiple choice: you vote, you can change your vote, results appear as bars and the poll can be closed then reopened.',
-  'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres':
-    'Poll “Quel thème pour la fête de l’été ?” (which theme for the summer party?) with five choices and results as bars',
-  'Gestion de stock':
-    'Stock management',
-  'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.':
-    'A shop’s inventory, with its indicators (value, low stock, stock-outs), a search and filters, stock in and out, restocking and the movement history.',
-  'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock':
-    'A stationery shop’s inventory: indicators at the top and a list of products with their stock',
-  'Réservation de repas':
-    'Meal booking',
-  'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.':
-    'A meal to organise, with its date, venue and capacity: you book by choosing menus and allergies, a gauge shows how full it is, a summary serves the kitchen and payments are tracked.',
-  'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus':
-    'Booking for a lunch: seats gauge, form and menu choices',
-  'Des données fictives mais cohérentes':
-    'Fictional but consistent data',
-  'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni enregistré sur un serveur.':
-    'Each demo draws its data from a seed visible in the address: reloading the page or sharing the link gives exactly the same data, and “Nouvelles données” (new data) draws different ones. Nothing is sent or saved on a server.',
   'Pokenini, le suivi de sa collection de Pokémon avec albums, élections et petits jeux : fonctionnalités et captures d’écran.':
     'Pokenini, a tracker for your Pokémon collection with albums, elections and small games: features and screenshots.',
   'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.':
     'Quine, a bingo with custom grids and automatic bingo detection: features and screenshots.',
-  'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.':
-    'Demo, a showcase of apps to try (prize wheel, poll, stock, meals) with fictional data: features and screenshots.',
 
   // Contact et carte de visite
   'Afficher l’email': 'Show email',
