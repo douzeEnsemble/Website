@@ -719,6 +719,11 @@ body.awesome .menu :where(a) {
   flex: 1 1 18rem;
 }
 
+.qui-suis-je-lien {
+  color: inherit;
+  font-weight: 600;
+}
+
 /* Une teinte par carte, en rotation (--k) : le fond, les tags et le numéro
    en dérivent, dans les thèmes clair et sombre. */
 .prestation:nth-child(4n + 1),
