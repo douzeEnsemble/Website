@@ -181,8 +181,8 @@ body.awesome .accroche {
   text-decoration: none;
 }
 
-/* Menu discret : en haut à droite, presque transparent, visible au survol.
-   Le mélange « difference » garde le texte lisible sur les fonds aléatoires. */
+/* Menu : en haut à droite, cinq entrées en texte doux, la page courante
+   soulignée. Les pages secondaires sont dans le pied de page. */
 .menu {
   position: fixed;
   top: 1rem;
@@ -193,14 +193,11 @@ body.awesome .accroche {
   left: 3.5rem;
   font-family: sans-serif;
   font-size: 0.9rem;
-  mix-blend-mode: difference;
-  opacity: 0.35;
-  transition: opacity 0.2s;
 }
 
-.menu:hover,
-.menu:focus-within {
-  opacity: 1;
+/* Konami code : fond rayé, le mélange « difference » garde le menu lisible. */
+body.awesome .menu {
+  mix-blend-mode: difference;
 }
 
 .menu ul {
@@ -214,7 +211,7 @@ body.awesome .accroche {
 }
 
 .menu a {
-  color: #fff;
+  color: var(--texte-doux);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -296,7 +293,13 @@ body.awesome .accroche {
 .menu a:hover,
 .menu a:focus-visible,
 .menu a[aria-current] {
-  text-decoration: underline;
+  color: var(--texte);
+  text-decoration: underline var(--orange) 0.125rem;
+  text-underline-offset: 0.3em;
+}
+
+body.awesome .menu :where(a) {
+  color: #fff;
 }
 
 .contact {
@@ -688,26 +691,55 @@ body.awesome .accroche {
   color: inherit;
 }
 
-/* Version du projet et langues : en bas de page, à gauche, très discrètes,
-   visibles au survol. En flux (plus fixées) : elles ne passent plus par-dessus
-   le contenu qui défile. */
+/* Pied de page, en bas de page : les pages secondaires (points forts, carte
+   de visite, à propos) lisibles, puis la version et les langues, très
+   discrètes, visibles au survol. */
 .pied-version {
   align-self: stretch;
   padding: 2rem 1.25rem 0.75rem;
   font-family: sans-serif;
   font-size: 0.65rem;
+}
+
+/* Petit écran : la place des boutons de préférences, fixés en bas à droite. */
+@media (width <= 40rem) {
+  .pied-version {
+    padding-right: 7.5rem;
+  }
+}
+
+.pied-version > :where(p, .langues) {
+  margin: 0;
   color: #fff;
   mix-blend-mode: difference;
   opacity: 0.2;
   transition: opacity 0.2s;
 }
 
-.pied-version:hover {
+.pied-version > :where(p:hover, .langues:hover, .langues:focus-within) {
   opacity: 0.8;
 }
 
-.pied-version p {
-  margin: 0;
+.pied-liens ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  font-size: 0.85rem;
+  list-style: none;
+}
+
+.pied-liens :where(a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--texte-doux);
+}
+
+.pied-liens :where(a[aria-current]) {
+  color: var(--texte);
+  font-weight: bold;
 }
 
 /* Texte réservé aux lecteurs d'écran. */
@@ -1192,8 +1224,7 @@ html {
 }
 
 /* Contraste élevé : les éléments discrets deviennent pleinement visibles. */
-:root[data-high-contrast] .menu,
-:root[data-high-contrast] .pied-version,
+:root[data-high-contrast] .pied-version > *,
 :root[data-high-contrast] .partage-ouvrir {
   opacity: 1;
 }

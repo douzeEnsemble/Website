@@ -10,6 +10,7 @@ export const TEXTES_EN = {
   'Contact': 'Contact',
   'Carte de visite': 'Business card',
   'À propos': 'About',
+  'Et aussi': 'See also',
   'Langue': 'Language',
   'Version ': 'Version ',
   'Un projet ? Parlons-en': 'Got a project? Let’s talk',
