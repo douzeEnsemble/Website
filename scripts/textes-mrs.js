@@ -24,7 +24,6 @@ export const TEXTES_MRS = {
   'Contact · douzeEnsemble': 'Contact · douzeEnsemble',
   'Carte de visite · douzeEnsemble': 'Carte de visite · douzeEnsemble',
   'À propos · douzeEnsemble': 'Qui c’est qui cause ? · douzeEnsemble',
-  'Page introuvable · douzeEnsemble': 'Page perdue · douzeEnsemble',
   'douzeEnsemble : sites, applications et accompagnement numérique':
     'douzeEnsemble : des sites, des applis et un coup de main pour le numérique',
   'douzeEnsemble conçoit des sites internet et des applications sur mesure, et vous accompagne au quotidien dans votre présence numérique.':
@@ -509,11 +508,6 @@ export const TEXTES_MRS = {
   'Directeur de la publication': 'Directeur de la publication',
   'Fiche sur l’Annuaire des Entreprises': 'Fiche sur l’Annuaire des Entreprises',
   ' (nouvel onglet)': ' (nouvel onglet)',
-
-  // 404
-  'Page introuvable': 'Page perdue',
-  'Cette page n’existe pas ou a changé d’adresse.': 'Cette page n’existe pas ou elle a déménagé, peuchère.',
-  'Revenir à l’accueil': 'Retourner à l’accueil',
 
   // Préférences d’affichage
   'Préférences d’affichage': 'Comment tu veux voir le site',

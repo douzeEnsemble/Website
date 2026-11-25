@@ -188,7 +188,7 @@ describe('sitemapXml', () => {
 
   it('relie chaque page à ses versions dans les autres langues', () => {
     expect(xml).toContain(
-      '<url><loc>https://www.douzeensemble.fr/en/contact/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://www.douzeensemble.fr/contact/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.douzeensemble.fr/en/contact/"/><xhtml:link rel="alternate" hreflang="fr-FR-x-mrs" href="https://www.douzeensemble.fr/mrs/contact/"/></url>',
+      '<url><loc>https://www.douzeensemble.fr/en/contact/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://www.douzeensemble.fr/contact/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.douzeensemble.fr/en/contact/"/><xhtml:link rel="alternate" hreflang="fr-FR-x-mrs" href="https://www.douzeensemble.fr/mrs/contact/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.douzeensemble.fr/contact/"/></url>',
     );
   });
 });

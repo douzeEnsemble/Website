@@ -869,6 +869,10 @@ body.awesome .menu :where(a) {
   text-align: center;
 }
 
+.introuvable-langue {
+  margin-top: 2rem;
+}
+
 .introuvable-titre {
   font-size: 2rem;
 }

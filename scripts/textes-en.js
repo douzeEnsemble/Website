@@ -24,7 +24,6 @@ export const TEXTES_EN = {
   'Contact · douzeEnsemble': 'Contact · douzeEnsemble',
   'Carte de visite · douzeEnsemble': 'Business card · douzeEnsemble',
   'À propos · douzeEnsemble': 'About · douzeEnsemble',
-  'Page introuvable · douzeEnsemble': 'Page not found · douzeEnsemble',
   'douzeEnsemble : sites, applications et accompagnement numérique':
     'douzeEnsemble: websites, applications and digital support',
   'douzeEnsemble conçoit des sites internet et des applications sur mesure, et vous accompagne au quotidien dans votre présence numérique.':
@@ -508,11 +507,6 @@ export const TEXTES_EN = {
   'Directeur de la publication': 'Publication director',
   'Fiche sur l’Annuaire des Entreprises': 'Entry in the Annuaire des Entreprises',
   ' (nouvel onglet)': ' (new tab)',
-
-  // 404
-  'Page introuvable': 'Page not found',
-  'Cette page n’existe pas ou a changé d’adresse.': 'This page does not exist or has moved.',
-  'Revenir à l’accueil': 'Back to the home page',
 
   // Préférences d’affichage
   'Préférences d’affichage': 'Display preferences',

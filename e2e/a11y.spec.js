@@ -171,6 +171,7 @@ test('axe : aucune violation sur la page introuvable', async ({ page }) => {
 test('la page introuvable a le logo, sans bouton de partage', async ({ page }) => {
   await page.goto('/404.html');
   await expect(page.locator('a.logo')).toHaveAttribute('href', '/');
+  await expect(page.locator('main [lang="en"] a')).toHaveAttribute('href', '/en/');
   await expect(page.locator('.partage-ouvrir')).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Préférences d’affichage' }).getByRole('button')).toHaveCount(2);
 });
