@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quine · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../js/partage-main.js"></script>
+    <script type="module" src="../../js/preferences-main.js"></script>
+    <script type="module" src="../../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../../">Accueil</a></li>
+        <li><a href="../../prestations/">Prestations</a></li>
+        <li><a href="../../points-forts/">Points forts</a></li>
+        <li><a href="../../deroule/">Déroulé d’un projet</a></li>
+        <li><a href="../" aria-current="true">Réalisations</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../carte/">Carte de visite</a></li>
+        <li><a href="../../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations realisation">
+      <p class="realisation-retour"><a class="realisation-retour-lien" href="../"><span aria-hidden="true">← </span>Toutes les réalisations</a></p>
+      <h1>Quine</h1>
+      <p class="prestations-intro">Un bingo à grilles personnalisées : vos propres mots, une détection automatique du bingo et une application installable.</p>
+      <p class="realisation-liens">
+        <a class="carte-lien" href="https://quine.douzeensemble.app/">Voir le site<span aria-hidden="true"> ↗</span></a>
+        <a class="carte-lien" href="https://github.com/douzeEnsemble/Quine">Code source<span aria-hidden="true"> ↗</span></a>
+      </p>
+      <ul class="prestations-liste">
+        <li class="prestation">
+          <h2>Votre grille, vos mots</h2>
+          <p>On choisit la taille (de 3 × 3 à 5 × 5), la condition de victoire, puis on saisit une phrase ou un mot par ligne : la grille se mélange toute seule.</p>
+          <figure class="capture">
+            <img src="/realisations/quine/grille.webp" width="390" height="780" alt="Formulaire de nouvelle grille : taille 3 × 3, condition de victoire et neuf phrases" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Le bingo détecté tout seul</h2>
+          <p>On touche les cases pour les cocher ; dès qu’une ligne, une colonne ou une diagonale est complète, l’application annonce le bingo.</p>
+          <figure class="capture">
+            <img src="/realisations/quine/bingo.webp" width="390" height="780" alt="Grille de 3 × 3 dont la première ligne est cochée, avec l’annonce « Bingo ! »" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Des cartes à distribuer</h2>
+          <p>Les grilles s’exportent en PDF, avec plusieurs cartes à remettre aux joueurs.</p>
+        </li>
+        <li class="prestation">
+          <h2>Hors ligne et synchronisable</h2>
+          <p>Les grilles restent sur l’appareil, et l’application s’installe et fonctionne sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.</p>
+        </li>
+      </ul>
+      <p class="prestations-contact"><a class="prestations-cta" href="../../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+      <!--LANGUES-->
+    </footer>
+  </body>
+</html>

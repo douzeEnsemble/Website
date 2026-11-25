@@ -372,6 +372,84 @@ export const TEXTES_MRS = {
     'DansMaHotte, une liste de cadeaux de Noël partagée en temps réel, avec les prix et les statuts : les fonctionnalités et les photos d’écran.',
   'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.':
     'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : les fonctionnalités et les photos d’écran.',
+  'Suivre sa collection de Pokémon, élire son préféré et jouer : des albums, des élections et de petits jeux.':
+    'Suivre ta collection de Pokémon, élire ton préféré et jouer : des albums, des élections et des petits jeux.',
+  'Un accueil en trois parties':
+    'Un accueil en trois parties',
+  'Les albums, les élections et les jeux se choisissent depuis l’accueil. Un exemple d’albums se consulte sans compte ; voter et jouer demandent de se connecter.':
+    'Les albums, les élections et les jeux se choisissent depuis l’accueil. Un exemple d’albums se regarde sans compte ; pour voter et jouer, faut se connecter, té.',
+  'Accueil de Pokénini : les albums, « C’est quoi ton préféré ? » et les jeux':
+    'Accueil de Pokénini : les albums, « C’est quoi ton préféré ? » et les jeux',
+  'Des albums pour suivre sa collection':
+    'Des albums pour suivre ta collection',
+  'Chaque album suit l’avancement d’un dex : tous les Pokémon, toutes les formes, tous les jeux. Un tableau de statistiques compte les Pokémon capturés, à échanger, à transférer, à faire reproduire ou évoluer, à cibler, ou encore manquants.':
+    'Chaque album suit l’avancement d’un dex : tous les Pokémon, toutes les formes, tous les jeux. Un tableau de statistiques compte les Pokémon capturés, à échanger, à transférer, à faire reproduire ou évoluer, à cibler, ou encore manquants.',
+  'Statistiques d’un album : 412 Pokémon capturés sur 1 317, répartis par statut':
+    'Statistiques d’un album : 412 Pokémon capturés sur 1 317, répartis par statut',
+  'C’est quoi ton préféré ?':
+    'C’est quoi ton préféré ?',
+  'Des élections : on choisit ses Pokémon préférés dex par dex, puis on vote jusqu’à trouver son favori.':
+    'Des élections : on choisit ses Pokémon préférés dex par dex, puis on vote jusqu’à trouver son favori.',
+  'De petits jeux':
+    'Des petits jeux',
+  'Bonne Palette, Chroma ou pas et Chroma-Trouvé testent l’œil de dresseur.':
+    'Bonne Palette, Chroma ou pas et Chroma-Trouvé testent ton œil de dresseur.',
+  'Un bingo à grilles personnalisées : vos propres mots, une détection automatique du bingo et une application installable.':
+    'Un bingo à grilles personnalisées : tes propres mots, la détection automatique du bingo et une appli installable.',
+  'Votre grille, vos mots':
+    'Ta grille, tes mots',
+  'On choisit la taille (de 3 × 3 à 5 × 5), la condition de victoire, puis on saisit une phrase ou un mot par ligne : la grille se mélange toute seule.':
+    'On choisit la taille (de 3 × 3 à 5 × 5), la condition de victoire, puis on tape une phrase ou un mot par ligne : la grille se mélange toute seule.',
+  'Formulaire de nouvelle grille : taille 3 × 3, condition de victoire et neuf phrases':
+    'Formulaire de nouvelle grille : taille 3 × 3, condition de victoire et neuf phrases',
+  'Le bingo détecté tout seul':
+    'Le bingo repéré tout seul',
+  'On touche les cases pour les cocher ; dès qu’une ligne, une colonne ou une diagonale est complète, l’application annonce le bingo.':
+    'On touche les cases pour les cocher ; dès qu’une ligne, une colonne ou une diagonale est complète, l’appli annonce le bingo.',
+  'Grille de 3 × 3 dont la première ligne est cochée, avec l’annonce « Bingo ! »':
+    'Grille de 3 × 3 dont la première ligne est cochée, avec l’annonce « Bingo ! »',
+  'Des cartes à distribuer':
+    'Des cartes à distribuer',
+  'Les grilles s’exportent en PDF, avec plusieurs cartes à remettre aux joueurs.':
+    'Les grilles s’exportent en PDF, avec plusieurs cartes à donner aux joueurs.',
+  'Les grilles restent sur l’appareil, et l’application s’installe et fonctionne sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.':
+    'Les grilles restent sur l’appareil, et l’appli s’installe et marche sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.',
+  'Une vitrine de petites applications à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données fictives.':
+    'Une vitrine de petites applis à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données pour de faux.',
+  'Roue de tirage':
+    'Roue de tirage',
+  'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est conservé.':
+    'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est gardé.',
+  'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées':
+    'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées',
+  'Sondage':
+    'Sondage',
+  'Une question à choix unique ou multiple : on vote, on peut modifier son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.':
+    'Une question à choix unique ou multiple : on vote, on peut changer son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.',
+  'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres':
+    'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres',
+  'Gestion de stock':
+    'Gestion de stock',
+  'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.':
+    'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.',
+  'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock':
+    'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock',
+  'Réservation de repas':
+    'Réservation de repas',
+  'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.':
+    'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.',
+  'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus':
+    'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus',
+  'Des données fictives mais cohérentes':
+    'Des données pour de faux mais cohérentes',
+  'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni enregistré sur un serveur.':
+    'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni gardé sur un serveur, peuchère.',
+  'Pokenini, le suivi de sa collection de Pokémon avec albums, élections et petits jeux : fonctionnalités et captures d’écran.':
+    'Pokenini, le suivi de ta collection de Pokémon avec des albums, des élections et des petits jeux : les fonctionnalités et les photos d’écran.',
+  'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.':
+    'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : les fonctionnalités et les photos d’écran.',
+  'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.':
+    'Demo, une vitrine d’applis à essayer (roue de tirage, sondage, stock, repas) avec des données pour de faux : les fonctionnalités et les photos.',
 
   // Contact et carte de visite
   'Afficher l’email': 'Montre l’email',

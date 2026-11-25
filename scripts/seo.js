@@ -70,6 +70,21 @@ export const SEO = {
     description:
       'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.',
   },
+  [join('realisations', 'pokenini', 'index.html')]: {
+    title: 'Pokenini · douzeEnsemble',
+    description:
+      'Pokenini, le suivi de sa collection de Pokémon avec albums, élections et petits jeux : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'quine', 'index.html')]: {
+    title: 'Quine · douzeEnsemble',
+    description:
+      'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.',
+  },
+  [join('realisations', 'demo', 'index.html')]: {
+    title: 'Demo · douzeEnsemble',
+    description:
+      'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.',
+  },
   [join('contact', 'index.html')]: {
     title: 'Contact · douzeEnsemble',
     description:

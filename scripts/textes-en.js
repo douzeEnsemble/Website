@@ -372,6 +372,84 @@ export const TEXTES_EN = {
     'DansMaHotte, a Christmas gift list shared in real time, with prices and statuses: features and screenshots.',
   'MoreMobsHeadsChecklist, le suivi des têtes de mobs Minecraft du datapack More Mob Heads : fonctionnalités et captures d’écran.':
     'MoreMobsHeadsChecklist, a tracker for the Minecraft mob heads of the More Mob Heads datapack: features and screenshots.',
+  'Suivre sa collection de Pokémon, élire son préféré et jouer : des albums, des élections et de petits jeux.':
+    'Track your Pokémon collection, elect your favourite and play: albums, elections and small games.',
+  'Un accueil en trois parties':
+    'A home page in three parts',
+  'Les albums, les élections et les jeux se choisissent depuis l’accueil. Un exemple d’albums se consulte sans compte ; voter et jouer demandent de se connecter.':
+    'Albums, elections and games are chosen from the home page. A sample of albums can be viewed without an account; voting and playing require signing in.',
+  'Accueil de Pokénini : les albums, « C’est quoi ton préféré ? » et les jeux':
+    'Pokénini home page: albums, “C’est quoi ton préféré ?” (what’s your favourite?) and games',
+  'Des albums pour suivre sa collection':
+    'Albums to track your collection',
+  'Chaque album suit l’avancement d’un dex : tous les Pokémon, toutes les formes, tous les jeux. Un tableau de statistiques compte les Pokémon capturés, à échanger, à transférer, à faire reproduire ou évoluer, à cibler, ou encore manquants.':
+    'Each album tracks the progress of a dex: every Pokémon, every form, every game. A statistics table counts Pokémon caught, to trade, to transfer, to breed or evolve, to target, or still missing.',
+  'Statistiques d’un album : 412 Pokémon capturés sur 1 317, répartis par statut':
+    'Statistics of an album: 412 Pokémon caught out of 1,317, split by status',
+  'C’est quoi ton préféré ?':
+    'C’est quoi ton préféré ? (What’s your favourite?)',
+  'Des élections : on choisit ses Pokémon préférés dex par dex, puis on vote jusqu’à trouver son favori.':
+    'Elections: you pick your favourite Pokémon dex by dex, then vote until you find your favourite of all.',
+  'De petits jeux':
+    'Small games',
+  'Bonne Palette, Chroma ou pas et Chroma-Trouvé testent l’œil de dresseur.':
+    'Bonne Palette, Chroma ou pas and Chroma-Trouvé put a trainer’s eye to the test.',
+  'Un bingo à grilles personnalisées : vos propres mots, une détection automatique du bingo et une application installable.':
+    'A bingo with custom grids: your own words, automatic bingo detection and an installable app.',
+  'Votre grille, vos mots':
+    'Your grid, your words',
+  'On choisit la taille (de 3 × 3 à 5 × 5), la condition de victoire, puis on saisit une phrase ou un mot par ligne : la grille se mélange toute seule.':
+    'You pick the size (from 3 × 3 to 5 × 5) and the winning condition, then type one phrase or word per line: the grid shuffles itself.',
+  'Formulaire de nouvelle grille : taille 3 × 3, condition de victoire et neuf phrases':
+    'New grid form: 3 × 3 size, winning condition and nine phrases',
+  'Le bingo détecté tout seul':
+    'Bingo detected automatically',
+  'On touche les cases pour les cocher ; dès qu’une ligne, une colonne ou une diagonale est complète, l’application annonce le bingo.':
+    'You tap squares to tick them; as soon as a row, a column or a diagonal is complete, the app announces the bingo.',
+  'Grille de 3 × 3 dont la première ligne est cochée, avec l’annonce « Bingo ! »':
+    '3 × 3 grid with its first row ticked, and a “Bingo!” announcement',
+  'Des cartes à distribuer':
+    'Cards to hand out',
+  'Les grilles s’exportent en PDF, avec plusieurs cartes à remettre aux joueurs.':
+    'Grids export to PDF, with several cards to hand to the players.',
+  'Les grilles restent sur l’appareil, et l’application s’installe et fonctionne sans réseau. Un code de synchronisation facultatif les garde à jour entre appareils.':
+    'Grids stay on the device, and the app installs and works without a network. An optional sync code keeps them up to date across devices.',
+  'Une vitrine de petites applications à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données fictives.':
+    'A showcase of small apps to try: prize wheel, poll, stock management and meal booking, with fictional data.',
+  'Roue de tirage':
+    'Prize wheel',
+  'Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est conservé.':
+    'A wheel to spin to pick a winner at random. Slices can be added and removed, drawing is done with or without replacement and the history is kept.',
+  'Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées':
+    'Prize wheel “Où déjeune-t-on ce midi ?” (where do we have lunch today?) with eight coloured slices',
+  'Sondage':
+    'Poll',
+  'Une question à choix unique ou multiple : on vote, on peut modifier son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.':
+    'A question with a single or multiple choice: you vote, you can change your vote, results appear as bars and the poll can be closed then reopened.',
+  'Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres':
+    'Poll “Quel thème pour la fête de l’été ?” (which theme for the summer party?) with five choices and results as bars',
+  'Gestion de stock':
+    'Stock management',
+  'L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.':
+    'A shop’s inventory, with its indicators (value, low stock, stock-outs), a search and filters, stock in and out, restocking and the movement history.',
+  'Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock':
+    'A stationery shop’s inventory: indicators at the top and a list of products with their stock',
+  'Réservation de repas':
+    'Meal booking',
+  'Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.':
+    'A meal to organise, with its date, venue and capacity: you book by choosing menus and allergies, a gauge shows how full it is, a summary serves the kitchen and payments are tracked.',
+  'Réservation d’un déjeuner : jauge de places, formulaire et choix des menus':
+    'Booking for a lunch: seats gauge, form and menu choices',
+  'Des données fictives mais cohérentes':
+    'Fictional but consistent data',
+  'Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni enregistré sur un serveur.':
+    'Each demo draws its data from a seed visible in the address: reloading the page or sharing the link gives exactly the same data, and “Nouvelles données” (new data) draws different ones. Nothing is sent or saved on a server.',
+  'Pokenini, le suivi de sa collection de Pokémon avec albums, élections et petits jeux : fonctionnalités et captures d’écran.':
+    'Pokenini, a tracker for your Pokémon collection with albums, elections and small games: features and screenshots.',
+  'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : fonctionnalités et captures d’écran.':
+    'Quine, a bingo with custom grids and automatic bingo detection: features and screenshots.',
+  'Demo, une vitrine d’applications à essayer (roue de tirage, sondage, stock, repas) avec des données fictives : fonctionnalités et captures.':
+    'Demo, a showcase of apps to try (prize wheel, poll, stock, meals) with fictional data: features and screenshots.',
 
   // Contact et carte de visite
   'Afficher l’email': 'Show email',

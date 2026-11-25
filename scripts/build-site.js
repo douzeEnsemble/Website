@@ -38,6 +38,9 @@ export const DETAILS = [
   'plusun',
   'dansmahotte',
   'moremobsheadschecklist',
+  'pokenini',
+  'quine',
+  'demo',
 ];
 export const DETAIL_PAGES = DETAILS.map((nom) =>
   join('realisations', nom, 'index.html'),

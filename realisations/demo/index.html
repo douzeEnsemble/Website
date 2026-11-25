@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo · douzeEnsemble</title>
+    <!--SEO-->
+    <link rel="stylesheet" href="../../style.css">
+    <script type="module" src="../../js/partage-main.js"></script>
+    <script type="module" src="../../js/preferences-main.js"></script>
+    <script type="module" src="../../js/menu-main.js"></script>
+  </head>
+  <body>
+    <!--PREFERENCES-->
+    <nav class="menu" aria-label="Menu">
+      <ul>
+        <li><a href="../../">Accueil</a></li>
+        <li><a href="../../prestations/">Prestations</a></li>
+        <li><a href="../../points-forts/">Points forts</a></li>
+        <li><a href="../../deroule/">Déroulé d’un projet</a></li>
+        <li><a href="../" aria-current="true">Réalisations</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../carte/">Carte de visite</a></li>
+        <li><a href="../../apropos/">À propos</a></li>
+      </ul>
+    </nav>
+    <!--PARTAGE-->
+    <main class="prestations realisation">
+      <p class="realisation-retour"><a class="realisation-retour-lien" href="../"><span aria-hidden="true">← </span>Toutes les réalisations</a></p>
+      <h1>Demo</h1>
+      <p class="prestations-intro">Une vitrine de petites applications à essayer : roue de tirage, sondage, gestion de stock et réservation de repas, avec des données fictives.</p>
+      <p class="realisation-liens">
+        <a class="carte-lien" href="https://douzeensemble.github.io/Demo/">Voir le site<span aria-hidden="true"> ↗</span></a>
+        <a class="carte-lien" href="https://github.com/douzeEnsemble/Demo">Code source<span aria-hidden="true"> ↗</span></a>
+      </p>
+      <ul class="prestations-liste">
+        <li class="prestation">
+          <h2>Roue de tirage</h2>
+          <p>Une roue à faire tourner pour désigner un gagnant au hasard. Les cases s’ajoutent et se retirent, le tirage se fait avec ou sans remise et l’historique est conservé.</p>
+          <figure class="capture">
+            <img src="/realisations/demo/roue.webp" width="960" height="672" alt="Roue de tirage « Où déjeune-t-on ce midi ? » avec huit cases colorées" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Sondage</h2>
+          <p>Une question à choix unique ou multiple : on vote, on peut modifier son vote, les résultats s’affichent en barres et le sondage se clôt puis se rouvre.</p>
+          <figure class="capture">
+            <img src="/realisations/demo/sondage.webp" width="960" height="672" alt="Sondage « Quel thème pour la fête de l’été ? » avec cinq choix et les résultats en barres" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Gestion de stock</h2>
+          <p>L’inventaire d’une boutique, avec ses indicateurs (valeur, stocks bas, ruptures), une recherche et des filtres, les entrées et sorties, le réapprovisionnement et l’historique des mouvements.</p>
+          <figure class="capture">
+            <img src="/realisations/demo/stock.webp" width="960" height="672" alt="Inventaire d’une papeterie : indicateurs en haut et liste de produits avec leur stock" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Réservation de repas</h2>
+          <p>Un repas à organiser, avec sa date, son lieu et sa capacité : on réserve en choisissant les menus et les allergies, une jauge montre le remplissage, un récapitulatif sert la cuisine et les paiements se suivent.</p>
+          <figure class="capture">
+            <img src="/realisations/demo/repas.webp" width="960" height="672" alt="Réservation d’un déjeuner : jauge de places, formulaire et choix des menus" loading="lazy">
+          </figure>
+        </li>
+        <li class="prestation">
+          <h2>Des données fictives mais cohérentes</h2>
+          <p>Chaque démo tire ses données d’une graine visible dans l’adresse : recharger la page ou partager le lien redonne exactement les mêmes, et « Nouvelles données » en tire d’autres. Rien n’est envoyé ni enregistré sur un serveur.</p>
+        </li>
+      </ul>
+      <p class="prestations-contact"><a class="prestations-cta" href="../../contact/">Un projet ? Parlons-en</a></p>
+    </main>
+    <footer class="pied-version">
+      <p>Version <span class="app-version">dev</span></p>
+      <!--LANGUES-->
+    </footer>
+  </body>
+</html>

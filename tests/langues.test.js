@@ -157,11 +157,11 @@ const NOMS_PROJETS = ['KoiKiManke', 'OnMangeQuoi', 'PlusUn', 'DansMaHotte', 'Kes
 const INVARIANT = new Set([
   ...NOMS_PROJETS,
   ...NOMS_PROJETS.map((nom) => ` ${nom}`),
+  ...NOMS_PROJETS.map((nom) => `${nom} · douzeEnsemble`),
   'douzeEnsemble', 'Renaud', '×', '404', 'SIREN', 'valeur',
   'GitHub, Inc. (GitHub Pages)', '01', '02', '03', '04', '05', '06', '07', '08', '09',
   '123456789 · ', ' ↗', '↗', '← ', 'dev',
-  'PlusUn · douzeEnsemble', 'DansMaHotte · douzeEnsemble', 'MoreMobsHeadsChecklist · douzeEnsemble',
-  'KoiKiManke · douzeEnsemble', 'KesKeJeVoeux · douzeEnsemble', 'OnMangeQuoi · douzeEnsemble', 'MineCarte · douzeEnsemble', 'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
+  'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
 ]);
 
 // Texte des éléments (hors scripts et styles) d'une page, lu dans le DOM.

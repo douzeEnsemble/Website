@@ -112,6 +112,9 @@ describe('PAGES', () => {
       join('realisations', 'plusun', 'index.html'),
       join('realisations', 'dansmahotte', 'index.html'),
       join('realisations', 'moremobsheadschecklist', 'index.html'),
+      join('realisations', 'pokenini', 'index.html'),
+      join('realisations', 'quine', 'index.html'),
+      join('realisations', 'demo', 'index.html'),
       join('carte', 'index.html'),
       join('apropos', 'index.html'),
       '404.html',
@@ -127,6 +130,9 @@ describe('PAGES', () => {
       'plusun',
       'dansmahotte',
       'moremobsheadschecklist',
+      'pokenini',
+      'quine',
+      'demo',
     ]);
     const liste = readFileSync(REALISATIONS_PAGE, 'utf8');
     for (const nom of DETAILS) {
