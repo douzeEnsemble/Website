@@ -90,6 +90,11 @@ export const SEO = {
     description:
       'Contactez Renaud, de douzeEnsemble, pour parler de votre projet de site internet ou d’application.',
   },
+  [join('qui-suis-je', 'index.html')]: {
+    title: 'Qui suis-je · douzeEnsemble',
+    description:
+      'Renaud, développeur de sites internet depuis 2009 et expert PHP et Symfony, veut créer son entreprise pour des projets utiles, proches des utilisateurs.',
+  },
   [join('carte', 'index.html')]: {
     title: 'Carte de visite · douzeEnsemble',
     description:

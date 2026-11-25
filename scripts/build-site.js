@@ -24,6 +24,7 @@ export const SITE_FILES = [
   'points-faibles',
   'deroule',
   'realisations',
+  'qui-suis-je',
   'carte',
   'apropos',
 ];
@@ -59,6 +60,7 @@ export const PAGES = [
   join('deroule', 'index.html'),
   REALISATIONS_PAGE,
   ...DETAIL_PAGES,
+  join('qui-suis-je', 'index.html'),
   join('carte', 'index.html'),
   join('apropos', 'index.html'),
   NOT_FOUND_PAGE,
