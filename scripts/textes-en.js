@@ -475,7 +475,7 @@ export const TEXTES_EN = {
   'Qui suis-je': 'About me',
   'J’ai mon BAFA perfectionnement en petite enfance.': 'I hold the advanced BAFA (French youth leader certificate) in early childhood.',
   'Né à Marseille': 'Born in Marseille',
-  'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix et je transpire aux Milles.': 'Born in Marseille, I live in Lambesc, work in Venelles, go out in Aix and sweat it out in Les Milles.',
+  'Né à Marseille, j’habite à Lambesc, je travaille à Venelles, je sors sur Aix-en-Provence et je transpire aux Milles.': 'Born in Marseille, I live in Lambesc, work in Venelles, go out in Aix-en-Provence and sweat it out in Les Milles.',
   'Pourquoi « douzeEnsemble »': 'Why “douzeEnsemble”',
   'Un jeu de mots, presque une référence au « Tous ensemble » qu’on entend chanter au stade.': 'A play on words, almost a nod to the “Tous ensemble” (“All together”) chant you hear in football stadiums.',
   'Et douze ? Un délire qui date : le nombre 12 revenait sans arrêt, c’est devenu une blague, puis mon pseudo, RenaudDouze, clin d’œil à la voiture citée dans « Je danse le Mia ».': 'And “douze” (twelve)? A long-running joke: the number 12 kept popping up, it became a running gag, then my username, RenaudDouze, a nod to the car mentioned in the song “Je danse le Mia”.',
