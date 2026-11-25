@@ -112,7 +112,7 @@ export const TEXTES_MRS = {
   'Pêche au gros': 'La pêche au gros',
   'Des heures en mer, et le seul gros poisson venait de la poissonnerie.': 'Des heures en mer, et le seul gros poisson il venait de chez le poissonnier. Pas la sardine du port, hein.',
   'Tricot': 'Le tricot',
-  'Pas une écharpe terminée, mais toujours de bons conseils à donner à ma mère.': 'Pas une écharpe finie, mais des conseils à donner à ma mère, ça j’en ai toujours, té.',
+  'Les mailles, je n’y comprends rien. Si besoin, je vous conseille ma mère.': 'Les mailles, j’y comprends rien de rien. Si t’as besoin, je te conseille ma mère, té.',
 
   // Points forts
   'Ce qui guide chaque projet douzeEnsemble, de la première analyse au suivi dans la durée.':
