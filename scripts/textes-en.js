@@ -528,4 +528,49 @@ export const TEXTES_EN = {
   'Lien copié.': 'Link copied.',
   'Lien sélectionné : copiez-le avec Ctrl+C.': 'Link selected: copy it with Ctrl+C.',
   'Le partage a échoué : copiez le lien.': 'Sharing failed: copy the link.',
+
+  // Captures supplémentaires des réalisations
+  'Sur ordinateur': 'On a computer',
+  'Réglages d’accessibilité : texte plus grand, contraste élevé et animations réduites':
+    'Accessibility settings: larger text, high contrast and reduced motion',
+  'La liste de courses sur ordinateur : articles par catégorie et suggestions':
+    'The shopping list on a computer: items by category and suggestions',
+  'Choix du statut d’un cadeau : idée, acheté, commandé, reçu, à plusieurs ou emballé':
+    'Choosing a gift’s status: idea, bought, ordered, received, shared or wrapped',
+  'La liste de cadeaux sur ordinateur : budget par personne et total général':
+    'The gift list on a computer: budget per person and grand total',
+  'Formulaire d’un nouveau souhait : nom, description, prix, lien et image':
+    'New wish form: name, description, price, link and image',
+  'La liste de souhaits sur ordinateur, avec le tri et le total':
+    'The wish list on a computer, with sorting and the total',
+  'Historique des repas avec les statistiques par note':
+    'Meal history with statistics by rating',
+  'La liste des repas sur ordinateur, avec la fiche d’un repas dépliée':
+    'The meal list on a computer, with one meal’s details open',
+  'Six compteurs sur téléphone, avec des styles d’affichage différents':
+    'Six counters on a phone, with different display styles',
+  'La grille de compteurs sur ordinateur':
+    'The grid of counters on a computer',
+  'Grille de 4 × 4 en cours de partie sur téléphone':
+    'A 4 × 4 grid mid-game on a phone',
+  'Une partie en cours sur ordinateur':
+    'A game in progress on a computer',
+  'Création d’une grille sur ordinateur : taille, condition de victoire et cases':
+    'Creating a grid on a computer: size, winning condition and squares',
+  'Carte sur téléphone avec des lieux, un chemin et une zone':
+    'Map on a phone with places, a path and an area',
+  'La carte sur ordinateur : liste des chemins avec leur longueur en blocs':
+    'The map on a computer: list of paths with their length in blocks',
+  'Réglages d’accessibilité sur téléphone':
+    'Accessibility settings on a phone',
+  'Le tableau sur ordinateur, avec les premières têtes obtenues cochées':
+    'The table on a computer, with the first heads collected ticked',
+  'L’accueil de Pokénini sur téléphone':
+    'Pokénini’s home page on a phone',
+  'Statistiques d’un album sur téléphone':
+    'An album’s statistics on a phone',
+  'L’accueil sur ordinateur : albums, élections et jeux côte à côte':
+    'The home page on a computer: albums, elections and games side by side',
+  'Une boîte d’album sur ordinateur, avec le statut de chaque Pokémon':
+    'An album box on a computer, with each Pokémon’s status',
 };
