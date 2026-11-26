@@ -35,15 +35,18 @@ export function injectCoordonnees(html, env, langue = LANGUE_PAR_DEFAUT) {
   const rappel = [...new Set([email, telephone, national])]
     .filter(Boolean)
     .map(escapeHtml);
-  // wa.me attend le numéro international sans le « + ».
-  const whatsapp = telephone
+  // Le nom d'utilisateur (CONTACT_WHATSAPP) passe avant le numéro, que wa.me
+  // attend au format international sans le « + ».
+  const compte =
+    (env.CONTACT_WHATSAPP ?? '').trim() || international.replace('+', '');
+  const whatsapp = compte
     ? traduire('Écrire sur WhatsApp', langue)
     : '';
   return html
     .replaceAll(EMAIL_MARKER, () => lien(`mailto:${email}`, email))
     .replaceAll(TELEPHONE_MARKER, () => lien(`tel:${international}`, telephone))
     .replaceAll(WHATSAPP_MARKER, () =>
-      lien(`https://wa.me/${international.replace('+', '')}`, whatsapp),
+      lien(`https://wa.me/${compte}`, whatsapp),
     )
     .replaceAll(COORDONNEES_MARKER, () =>
       rappel.map((valeur) => ` · ${valeur}`).join(''),
