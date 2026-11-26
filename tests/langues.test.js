@@ -12,6 +12,7 @@ import {
   traduire,
   translateHtml,
 } from '../scripts/langues.js';
+import { injectCoordonnees } from '../scripts/coordonnees.js';
 import { injectMentions, MENTIONS_FIELDS } from '../scripts/mentions.js';
 import { injectLogo } from '../scripts/logo.js';
 import { injectPartage } from '../scripts/partage.js';
@@ -137,9 +138,11 @@ describe('languesHtml', () => {
 const ENV = Object.fromEntries([
   ...MENTIONS_FIELDS.map(([nom]) => [nom, 'valeur']),
   ['SIREN', '123456789'],
+  ['CONTACT_EMAIL', 'valeur'],
+  ['CONTACT_TELEPHONE', 'valeur'],
 ]);
 const frenchPage = (file) =>
-  injectMentions(
+  injectCoordonnees(injectMentions(
     injectLangues(
       injectPartage(
         injectLogo(injectPreferences(injectSeo(readFileSync(file, 'utf8'), file, FR)), file, FR),
@@ -151,7 +154,7 @@ const frenchPage = (file) =>
     ),
     ENV,
     FR,
-  );
+  ), ENV, FR);
 const pages = PAGES.map((file) => [file, frenchPage(file)]);
 const allFrench = pages.map(([, html]) => html).join('\n');
 

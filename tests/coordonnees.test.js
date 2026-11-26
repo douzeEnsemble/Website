@@ -4,6 +4,7 @@ import {
   COORDONNEES_MARKER,
   EMAIL_MARKER,
   TELEPHONE_MARKER,
+  WHATSAPP_MARKER,
   coordonnees,
   injectCoordonnees,
 } from '../scripts/coordonnees.js';
@@ -16,6 +17,7 @@ describe('coordonnees', () => {
       email: 'a@b.fr',
       telephone: '06 12.34-56 70',
       international: '+33612345670',
+      national: '06 12.34-56 70',
     });
   });
 
@@ -24,7 +26,12 @@ describe('coordonnees', () => {
   });
 
   it('reste vide sans variables', () => {
-    expect(coordonnees({})).toEqual({ email: '', telephone: '', international: '' });
+    expect(coordonnees({})).toEqual({
+      email: '',
+      telephone: '',
+      international: '',
+      national: '',
+    });
   });
 });
 
@@ -37,6 +44,25 @@ describe('injectCoordonnees', () => {
         '<a class="contact-lien" href="tel:+33612345670">06 12.34-56 70</a>|' +
         ' · a@b.fr · 06 12.34-56 70',
     );
+  });
+
+  it.each(['+33 6 12 34 56 70', '+336 12 34 56 70'])('rappelle aussi la forme nationale de %s', (numero) => {
+    const { national } = coordonnees({ CONTACT_TELEPHONE: numero });
+    expect(national).toMatch(/^06 ?12 34 56 70$/);
+    expect(injectCoordonnees(COORDONNEES_MARKER, { CONTACT_TELEPHONE: numero })).toBe(` · ${numero} · ${national}`);
+  });
+
+  it('ne touche pas un +33 en milieu de valeur', () => {
+    expect(coordonnees({ CONTACT_TELEPHONE: 'x +33 6' }).national).toBe('x +33 6');
+  });
+
+  it('lie WhatsApp au numéro, avec un libellé traduit', () => {
+    expect(injectCoordonnees(WHATSAPP_MARKER + WHATSAPP_MARKER, env)).toBe(
+      '<a class="contact-lien" href="https://wa.me/33612345670">Écrire sur WhatsApp</a>'.repeat(2),
+    );
+    const anglais = { textes: { 'Écrire sur WhatsApp': 'Message' } };
+    expect(injectCoordonnees(WHATSAPP_MARKER, env, anglais)).toContain('>Message</a>');
+    expect(injectCoordonnees(WHATSAPP_MARKER, {})).toBe('');
   });
 
   it('remplace chaque occurrence', () => {
