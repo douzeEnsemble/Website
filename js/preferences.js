@@ -19,7 +19,7 @@ export function readPreferences(storage) {
   try {
     stored = JSON.parse(storage.getItem(STORAGE_KEY));
   } catch {
-    stored = null;
+    // stockage invalide ou indisponible : valeurs par défaut
   }
   return {
     theme: THEMES.includes(stored?.theme) ? stored.theme : 'auto',

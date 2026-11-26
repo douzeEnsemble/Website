@@ -35,7 +35,7 @@ export function mentionsHtml(env, langue = LANGUE_PAR_DEFAUT) {
     const value = (env[name] ?? '').trim();
     if (value) rows.push(row(traduire(label, langue), escapeHtml(value)));
   }
-  const siren = (env.SIREN ?? '').trim();
+  const siren = env.SIREN?.trim();
   if (SIREN_FORMAT.test(siren)) {
     rows.push(
       row(

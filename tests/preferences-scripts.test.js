@@ -42,6 +42,16 @@ describe('preferencesHtml', () => {
     expect(doc.querySelector('.preferences-accessibilite svg').hasAttribute('class')).toBe(false);
   });
 
+  it('dessine chaque icône', () => {
+    for (const svg of doc.querySelectorAll('.preferences-bouton svg')) {
+      expect(svg.childElementCount).toBeGreaterThan(0);
+    }
+  });
+
+  it('sépare les réglages par un retour à la ligne', () => {
+    expect(html).toContain('</label>\n          <label');
+  });
+
   it('propose les trois réglages dans un dialogue natif nommé', () => {
     const dialog = doc.querySelector('dialog.preferences-dialogue');
     expect(dialog.getAttribute('aria-labelledby')).toBe('preferences-titre');

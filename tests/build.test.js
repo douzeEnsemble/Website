@@ -9,6 +9,10 @@ vi.mock('../.github/scripts/app-version.mjs', () => ({
   appVersion: () => 'v9.9.9',
 }));
 
+vi.mock('../scripts/lastmod.js', () => ({
+  lastModified: () => '2000-01-02',
+}));
+
 const repoRoot = process.cwd();
 
 // Copie du dépôt dans un dossier temporaire, pour ne rien écrire ici.
@@ -38,6 +42,15 @@ it('construit le site dans _site par défaut', async () => {
   expect(page.toString()).toContain('carte-nom">Pokenini<');
   const accueil = readFileSync(join(dir, '_site', 'index.html'));
   expect(accueil.toString()).toContain('<span class="app-version">v9.9.9</span>');
+});
+
+it('date les pages du plan du site', async () => {
+  const dir = fakeCheckout();
+  vi.spyOn(process, 'cwd').mockReturnValue(dir);
+  vi.stubEnv('SITE_OUT', undefined);
+  await import('../scripts/build.js');
+  const plan = readFileSync(join(dir, '_site', 'sitemap.xml'), 'utf8');
+  expect(plan).toContain('<lastmod>2000-01-02</lastmod>');
 });
 
 it('construit le site dans SITE_OUT', async () => {
