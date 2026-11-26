@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { COORDONNEES_MARKER, coordonnees } from './coordonnees.js';
 import { LANGUES, LANGUE_PAR_DEFAUT } from './langues.js';
 import { SITE_URL, pageUrl } from './partage.js';
 
@@ -89,6 +90,7 @@ export const SEO = {
     title: 'Contact – votre projet de site ou d’application · douzeEnsemble',
     description:
       'Contactez Renaud, de douzeEnsemble, pour parler de votre projet de site internet ou d’application.',
+    coordonnees: true,
   },
   [join('qui-suis-je', 'index.html')]: {
     title: 'Qui suis-je – développeur près d’Aix-en-Provence · douzeEnsemble',
@@ -99,6 +101,7 @@ export const SEO = {
     title: 'Carte de visite · douzeEnsemble',
     description:
       'La carte de visite de douzeEnsemble : les coordonnées de Renaud et un QR code vers le site.',
+    coordonnees: true,
   },
   [join('apropos', 'index.html')]: {
     title: 'À propos · douzeEnsemble',
@@ -115,8 +118,9 @@ const DESCRIPTION_ORGANISATION =
 
 // Données structurées (JSON-LD) d'une page : le site et l'entreprise (reliés
 // par `@id`) pour l'accueil, un fil d'Ariane (Accueil > page) pour les autres.
-export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
+export function jsonLd(file, langue = LANGUE_PAR_DEFAUT, env = {}) {
   const url = pageUrl(file, langue);
+  const { email, international } = coordonnees(env);
   if (file === 'index.html') {
     return {
       '@context': 'https://schema.org',
@@ -134,6 +138,9 @@ export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
           '@id': ORGANISATION_ID,
           name: 'douzeEnsemble',
           url: SITE_URL,
+          // Une valeur vide est omise du JSON (undefined).
+          email: email || undefined,
+          telephone: international || undefined,
           logo: `${SITE_URL}apple-touch-icon.png`,
           image: IMAGE_URL,
           description: DESCRIPTION_ORGANISATION,
@@ -172,8 +179,11 @@ export function jsonLd(file, langue = LANGUE_PAR_DEFAUT) {
 // Graph (LinkedIn, WhatsApp, Facebook…) et carte Twitter, icônes, données
 // structurées.
 // Les textes sont en français : la traduction de la page les remplace ensuite.
-export function seoHtml(file, langue = LANGUE_PAR_DEFAUT) {
-  const { title, description } = SEO[file];
+export function seoHtml(file, langue = LANGUE_PAR_DEFAUT, env = {}) {
+  const { title, description, coordonnees: rappel } = SEO[file];
+  // Les coordonnées suivent la description dans les résultats de recherche ;
+  // le marqueur laisse le texte traduisible.
+  const contenu = `${description}${rappel ? COORDONNEES_MARKER : ''}`;
   const url = pageUrl(file, langue);
   const alternates = [
     ...LANGUES.map(
@@ -182,14 +192,14 @@ export function seoHtml(file, langue = LANGUE_PAR_DEFAUT) {
     ),
     `<link rel="alternate" hreflang="x-default" href="${pageUrl(file)}">`,
   ].join('\n    ');
-  return `<meta name="description" content="${description}">
+  return `<meta name="description" content="${contenu}">
     <link rel="canonical" href="${url}">
     ${alternates}
     <meta property="og:type" content="website">
     <meta property="og:locale" content="${langue.locale}">
     <meta property="og:site_name" content="douzeEnsemble">
     <meta property="og:title" content="${title}">
-    <meta property="og:description" content="${description}">
+    <meta property="og:description" content="${contenu}">
     <meta property="og:url" content="${url}">
     <meta property="og:image" content="${IMAGE_URL}">
     <meta property="og:image:width" content="1200">
@@ -198,11 +208,11 @@ export function seoHtml(file, langue = LANGUE_PAR_DEFAUT) {
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <script type="application/ld+json">${JSON.stringify(jsonLd(file, langue))}</script>`;
+    <script type="application/ld+json">${JSON.stringify(jsonLd(file, langue, env))}</script>`;
 }
 
-export function injectSeo(html, file, langue = LANGUE_PAR_DEFAUT) {
-  return html.replace(SEO_MARKER, () => seoHtml(file, langue));
+export function injectSeo(html, file, langue = LANGUE_PAR_DEFAUT, env = {}) {
+  return html.replace(SEO_MARKER, () => seoHtml(file, langue, env));
 }
 
 // Plan du site pour les moteurs de recherche : une entrée par page référencée

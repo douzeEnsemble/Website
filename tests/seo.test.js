@@ -226,3 +226,29 @@ describe('sitemapXml avec dates', () => {
     );
   });
 });
+
+describe('coordonnées', () => {
+  const env = { CONTACT_EMAIL: 'a@b.fr', CONTACT_TELEPHONE: '06 12 34 56 70' };
+  const organisation = (variables) => jsonLd('index.html', LANGUES[0], variables)['@graph'][1];
+
+  it('sont dans les données structurées de l’entreprise', () => {
+    expect(organisation(env)).toMatchObject({ email: 'a@b.fr', telephone: '+33612345670' });
+    expect(injectSeo(SEO_MARKER, 'index.html', LANGUES[0], env)).toContain('"telephone":"+33612345670"');
+  });
+
+  it('sont omises sans variables', () => {
+    const json = JSON.stringify(organisation({}));
+    expect(json).not.toContain('"email"');
+    expect(json).not.toContain('"telephone"');
+  });
+
+  it.each(['contact', 'carte'])('suivent la description de la page %s', (page) => {
+    const file = join(page, 'index.html');
+    const fin = `${SEO[file].description}<!--COORDONNEES-->">`;
+    expect(seoHtml(file).split(fin)).toHaveLength(3);
+  });
+
+  it('ne suivent pas les autres descriptions', () => {
+    expect(seoHtml('index.html')).not.toContain('<!--COORDONNEES-->');
+  });
+});

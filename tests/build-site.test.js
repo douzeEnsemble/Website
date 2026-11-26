@@ -37,7 +37,7 @@ function fakeRepo() {
   writeFileSync(join(root, 'js', 'main.js'), 'js');
   writeFileSync(
     join(root, 'contact', 'index.html'),
-    `contact ${PREFERENCES_MARKER} ${PARTAGE_MARKER} ${LANGUES_MARKER} ${VERSION_PLACEHOLDER}`,
+    `contact ${SEO_MARKER} <!--EMAIL--> ${PREFERENCES_MARKER} ${PARTAGE_MARKER} ${LANGUES_MARKER} ${VERSION_PLACEHOLDER}`,
   );
   writeFileSync(
     join(root, 'prestations', 'index.html'),
@@ -267,6 +267,15 @@ describe('buildSite', () => {
     expect(contact).toContain('https://www.douzeensemble.fr/mrs/contact/');
     expect(contact).toContain('data-copie="Lien copié, c’est bon."');
     expect(contact).not.toContain(LANGUES_MARKER);
+  });
+
+  it('écrit les coordonnées en clair, dans les données structurées et en page', async () => {
+    await buildSite({ root, out, env: { CONTACT_EMAIL: 'a@b.fr' } });
+    const accueil = readFileSync(join(out, 'index.html'), 'utf8');
+    expect(accueil).toContain('"email":"a@b.fr"');
+    const contact = readFileSync(join(out, 'en', 'contact', 'index.html'), 'utf8');
+    expect(contact).toContain('<a class="contact-lien" href="mailto:a@b.fr">a@b.fr</a>');
+    expect(contact).toContain('project. · a@b.fr">');
   });
 
   it('traduit les mentions légales', async () => {

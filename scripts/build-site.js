@@ -1,5 +1,6 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { injectCoordonnees } from './coordonnees.js';
 import { injectCouleur } from './couleurs.js';
 import { LANGUES, injectLangues, translateHtml } from './langues.js';
 import { injectLogo } from './logo.js';
@@ -106,6 +107,7 @@ export async function buildSite({
                   injectCouleur(String(readFileSync(join(root, file))), file),
                   file,
                   langue,
+                  env,
                 ),
               ),
               file,
@@ -119,7 +121,7 @@ export async function buildSite({
         ),
         langue,
       );
-      html = injectMentions(html, env, langue);
+      html = injectCoordonnees(injectMentions(html, env, langue), env);
       mkdirSync(dirname(target), { recursive: true });
       writeFileSync(target, injectVersion(html, version));
     }

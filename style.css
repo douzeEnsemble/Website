@@ -536,7 +536,6 @@ body.awesome .menu :where(a) {
 }
 
 .contact-bouton,
-.carte-bouton,
 .carte-lien,
 .prestations-cta {
   display: inline-block;
@@ -554,29 +553,20 @@ body.awesome .menu :where(a) {
   transition: background-color 0.2s;
 }
 
-.contact .contact-bouton,
 .carte-lien,
-.carte-bouton,
 .carte-retourner,
 .prestations-cta {
   border-color: #fe8a18;
 }
 
-.contact .contact-bouton,
 .carte-lien,
 .prestations-cta {
   color: var(--texte);
 }
 
-.carte-bouton {
-  font-size: calc(var(--w) * 0.042);
-}
-
 /* Le survol teinte le bouton de sa propre couleur, quel que soit le fond. */
 .contact-bouton:hover,
 .contact-bouton:focus-visible,
-.carte-bouton:hover,
-.carte-bouton:focus-visible,
 .carte-lien:hover,
 .carte-lien:focus-visible,
 .prestations-cta:hover,

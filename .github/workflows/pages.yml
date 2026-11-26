@@ -50,6 +50,9 @@ jobs:
           FORME_JURIDIQUE: ${{ vars.FORME_JURIDIQUE }}
           ADRESSE: ${{ vars.ADRESSE }}
           DIRECTEUR_PUBLICATION: ${{ vars.DIRECTEUR_PUBLICATION }}
+          # Coordonnées publiées en clair (contact, carte, données structurées)
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          CONTACT_TELEPHONE: ${{ vars.CONTACT_TELEPHONE }}
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           path: _site
