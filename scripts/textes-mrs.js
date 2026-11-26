@@ -528,4 +528,49 @@ export const TEXTES_MRS = {
   'Lien copié.': 'Lien copié, c’est bon.',
   'Lien sélectionné : copiez-le avec Ctrl+C.': 'Lien sélectionné : copie-le avec Ctrl+C.',
   'Le partage a échoué : copiez le lien.': 'Le partage a raté : copie le lien.',
+
+  // Captures supplémentaires des réalisations
+  'Sur ordinateur': 'Sur l’ordi',
+  'Réglages d’accessibilité : texte plus grand, contraste élevé et animations réduites':
+    'Réglages d’accessibilité : texte plus grand, contraste élevé et animations réduites',
+  'La liste de courses sur ordinateur : articles par catégorie et suggestions':
+    'La liste de courses sur ordinateur : articles par catégorie et suggestions',
+  'Choix du statut d’un cadeau : idée, acheté, commandé, reçu, à plusieurs ou emballé':
+    'Choix du statut d’un cadeau : idée, acheté, commandé, reçu, à plusieurs ou emballé',
+  'La liste de cadeaux sur ordinateur : budget par personne et total général':
+    'La liste de cadeaux sur ordinateur : budget par personne et total général',
+  'Formulaire d’un nouveau souhait : nom, description, prix, lien et image':
+    'Formulaire d’un nouveau souhait : nom, description, prix, lien et image',
+  'La liste de souhaits sur ordinateur, avec le tri et le total':
+    'La liste de souhaits sur ordinateur, avec le tri et le total',
+  'Historique des repas avec les statistiques par note':
+    'Historique des repas avec les statistiques par note',
+  'La liste des repas sur ordinateur, avec la fiche d’un repas dépliée':
+    'La liste des repas sur ordinateur, avec la fiche d’un repas dépliée',
+  'Six compteurs sur téléphone, avec des styles d’affichage différents':
+    'Six compteurs sur téléphone, avec des styles d’affichage différents',
+  'La grille de compteurs sur ordinateur':
+    'La grille de compteurs sur ordinateur',
+  'Grille de 4 × 4 en cours de partie sur téléphone':
+    'Grille de 4 × 4 en cours de partie sur téléphone',
+  'Une partie en cours sur ordinateur':
+    'Une partie en cours sur ordinateur',
+  'Création d’une grille sur ordinateur : taille, condition de victoire et cases':
+    'Création d’une grille sur ordinateur : taille, condition de victoire et cases',
+  'Carte sur téléphone avec des lieux, un chemin et une zone':
+    'Carte sur téléphone avec des lieux, un chemin et une zone',
+  'La carte sur ordinateur : liste des chemins avec leur longueur en blocs':
+    'La carte sur ordinateur : liste des chemins avec leur longueur en blocs',
+  'Réglages d’accessibilité sur téléphone':
+    'Réglages d’accessibilité sur téléphone',
+  'Le tableau sur ordinateur, avec les premières têtes obtenues cochées':
+    'Le tableau sur ordinateur, avec les premières têtes obtenues cochées',
+  'L’accueil de Pokénini sur téléphone':
+    'L’accueil de Pokénini sur téléphone',
+  'Statistiques d’un album sur téléphone':
+    'Statistiques d’un album sur téléphone',
+  'L’accueil sur ordinateur : albums, élections et jeux côte à côte':
+    'L’accueil sur ordinateur : albums, élections et jeux côte à côte',
+  'Une boîte d’album sur ordinateur, avec le statut de chaque Pokémon':
+    'Une boîte d’album sur ordinateur, avec le statut de chaque Pokémon',
 };

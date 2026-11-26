@@ -868,6 +868,22 @@ body.awesome .menu :where(a) {
   border-radius: 0.5rem;
 }
 
+/* Captures au format ordinateur : sous les fonctionnalités, plus larges que
+   les cartes pour rester lisibles ; un clic ouvre l'image entière. */
+.galerie {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 62rem;
+  margin: 2.5rem auto 0;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.galerie img {
+  display: block;
+  width: 100%;
+}
+
 /* Page introuvable (404.html). */
 .introuvable {
   padding: 0 1.25rem;
