@@ -15,8 +15,8 @@ module.exports = {
       name: "no-orphans",
       comment: "Un fichier que rien n'importe est du code mort : le supprimer (COV-05).",
       severity: "error",
-      // Exceptions : js/main.js, js/contact-main.js, js/carte-main.js, js/partage-main.js, js/menu-main.js et js/preferences-main.js sont chargés par les balises <script type="module"> des pages HTML ; scripts/build.js est lancé par `npm run build`.
-      from: { orphan: true, pathNot: ["\\.d\\.ts$", "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts)$", "\\.config\\.(js|cjs|mjs|ts)$", "^js/(main|contact-main|carte-main|partage-main|menu-main|preferences-main)\\.js$", "^scripts/build\\.js$"] },
+      // Exceptions : js/main.js, js/carte-main.js, js/partage-main.js, js/menu-main.js et js/preferences-main.js sont chargés par les balises <script type="module"> des pages HTML ; scripts/build.js est lancé par `npm run build`.
+      from: { orphan: true, pathNot: ["\\.d\\.ts$", "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts)$", "\\.config\\.(js|cjs|mjs|ts)$", "^js/(main|carte-main|partage-main|menu-main|preferences-main)\\.js$", "^scripts/build\\.js$"] },
       to: {},
     },
   ],

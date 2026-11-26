@@ -461,10 +461,6 @@ export const TEXTES_MRS = {
     'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : les fonctionnalités et les photos d’écran.',
 
   // Contact et carte de visite
-  'Afficher l’email': 'Montre l’email',
-  'Afficher le téléphone': 'Montre le téléphone',
-  'Activez JavaScript pour afficher l’email et le téléphone.':
-    'Active JavaScript pour voir l’email et le téléphone, sinon on fait comment ?',
   'Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.':
     'Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.',
   'Retourner': 'Retourne-la',

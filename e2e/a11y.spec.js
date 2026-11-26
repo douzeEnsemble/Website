@@ -280,7 +280,6 @@ test('le sélecteur de langue ouvre la même page en anglais, avec son style', a
   await expect(page).toHaveURL(/\/en\/contact\/$/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('main h1')).toHaveText('Contact');
-  await expect(page.getByRole('button', { name: 'Show email' })).toBeVisible();
   await expect(page.locator('.langues a[aria-current="true"]')).toHaveText('English');
   // style.css est chargé : la liste des langues est en ligne (flex)
   await expect(page.locator('.langues ul')).toHaveCSS('display', 'flex');
