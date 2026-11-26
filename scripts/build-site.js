@@ -121,7 +121,7 @@ export async function buildSite({
         ),
         langue,
       );
-      html = injectCoordonnees(injectMentions(html, env, langue), env);
+      html = injectCoordonnees(injectMentions(html, env, langue), env, langue);
       mkdirSync(dirname(target), { recursive: true });
       writeFileSync(target, injectVersion(html, version));
     }
