@@ -65,6 +65,20 @@ describe('injectCoordonnees', () => {
     expect(injectCoordonnees(WHATSAPP_MARKER, {})).toBe('');
   });
 
+  it('préfère le nom d’utilisateur WhatsApp au numéro', () => {
+    for (const variables of [env, {}]) {
+      expect(
+        injectCoordonnees(WHATSAPP_MARKER, { ...variables, CONTACT_WHATSAPP: ' monNom ' }),
+      ).toContain('href="https://wa.me/monNom"');
+    }
+  });
+
+  it('revient au numéro si le nom est vide', () => {
+    expect(
+      injectCoordonnees(WHATSAPP_MARKER, { ...env, CONTACT_WHATSAPP: ' ' }),
+    ).toContain('href="https://wa.me/33612345670"');
+  });
+
   it('remplace chaque occurrence', () => {
     for (const marker of [EMAIL_MARKER, TELEPHONE_MARKER, COORDONNEES_MARKER]) {
       expect(injectCoordonnees(marker + marker, env)).not.toContain(marker);
