@@ -12,6 +12,6 @@ export function lastModified(file, run = execFileSync) {
     ).trim();
     return date || undefined;
   } catch {
-    return undefined;
+    // hors dépôt git : pas de date
   }
 }

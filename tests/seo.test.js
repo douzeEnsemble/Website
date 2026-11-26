@@ -252,3 +252,9 @@ describe('coordonnées', () => {
     expect(seoHtml('index.html')).not.toContain('<!--COORDONNEES-->');
   });
 });
+
+describe('vocabulaire des données structurées', () => {
+  it.each(['index.html', join('contact', 'index.html')])('%s : schema.org', (file) => {
+    expect(jsonLd(file)['@context']).toBe('https://schema.org');
+  });
+});
