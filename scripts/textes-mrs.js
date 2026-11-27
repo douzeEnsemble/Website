@@ -461,7 +461,6 @@ export const TEXTES_MRS = {
     'Quine, un bingo à grilles personnalisées avec détection automatique du bingo : les fonctionnalités et les photos d’écran.',
 
   // Contact et carte de visite
-  'Écrire sur WhatsApp': 'Envoie un WhatsApp',
   'Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.':
     'Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.',
   'Retourner': 'Retourne-la',

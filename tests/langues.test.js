@@ -171,7 +171,7 @@ const INVARIANT = new Set([
   '123456789 · ', ' ↗', '↗', '← ', '→', 'dev',
   // Marque coupée en deux sur la carte de visite (douze<span>Ensemble</span>).
   'douze',
-  'Français', 'English', 'Marseillais', 'www.douzeensemble.fr',
+  'Français', 'English', 'Marseillais', 'WhatsApp', 'www.douzeensemble.fr',
 ]);
 
 // Texte des éléments (hors scripts et styles) d'une page, lu dans le DOM.

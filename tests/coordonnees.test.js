@@ -66,12 +66,10 @@ describe('injectCoordonnees', () => {
     expect(coordonnees({ CONTACT_TELEPHONE: 'x +33 6' }).national).toBe('x +33 6');
   });
 
-  it('lie WhatsApp au numéro, avec un libellé traduit', () => {
+  it('lie WhatsApp au numéro, avec le même libellé partout', () => {
     expect(injectCoordonnees(WHATSAPP_MARKER + WHATSAPP_MARKER, env)).toBe(
-      `<a class="contact-lien" href="https://wa.me/33612345670">${ICONES.whatsapp}<span>Écrire sur WhatsApp</span></a>`.repeat(2),
+      `<a class="contact-lien" href="https://wa.me/33612345670">${ICONES.whatsapp}<span>WhatsApp</span></a>`.repeat(2),
     );
-    const anglais = { textes: { 'Écrire sur WhatsApp': 'Message' } };
-    expect(injectCoordonnees(WHATSAPP_MARKER, env, anglais)).toContain('<span>Message</span></a>');
     expect(injectCoordonnees(WHATSAPP_MARKER, {})).toBe('');
   });
 
