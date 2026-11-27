@@ -575,7 +575,23 @@ body.awesome .menu :where(a) {
 }
 
 .contact-lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  max-width: 100%;
   color: inherit;
+}
+
+.contact-lien svg {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* Une adresse trop longue pour l'écran passe à la ligne. */
+.contact-lien span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .realisations {

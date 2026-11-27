@@ -274,7 +274,7 @@ describe('buildSite', () => {
     const accueil = readFileSync(join(out, 'index.html'), 'utf8');
     expect(accueil).toContain('"email":"a@b.fr"');
     const contact = readFileSync(join(out, 'en', 'contact', 'index.html'), 'utf8');
-    expect(contact).toContain('<a class="contact-lien" href="mailto:a@b.fr">a@b.fr</a>');
+    expect(contact).toContain('<a class="contact-lien" href="mailto:a@b.fr">');
     expect(contact).toContain('project. · a@b.fr">');
   });
 
