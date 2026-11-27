@@ -461,7 +461,6 @@ export const TEXTES_EN = {
     'Quine, a bingo with custom grids and automatic bingo detection: features and screenshots.',
 
   // Contact et carte de visite
-  'Écrire sur WhatsApp': 'Message on WhatsApp',
   'Carte de visite. Flèches gauche et droite pour la faire tourner, Entrée pour la retourner.':
     'Business card. Left and right arrows to rotate it, Enter to flip it.',
   'Retourner': 'Flip',

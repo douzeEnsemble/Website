@@ -1,4 +1,3 @@
-import { LANGUE_PAR_DEFAUT, traduire } from './langues.js';
 import { escapeHtml } from './mentions.js';
 
 export const EMAIL_MARKER = '<!--EMAIL-->';
@@ -47,7 +46,7 @@ const lien = (href, texte, dessin) =>
 
 // Écrit les coordonnées en clair, pour les visiteurs comme pour les moteurs de
 // recherche ; une variable vide laisse sa place vide.
-export function injectCoordonnees(html, env, langue = LANGUE_PAR_DEFAUT) {
+export function injectCoordonnees(html, env) {
   const { email, telephone, international, national } = coordonnees(env);
   const rappel = [...new Set([email, telephone, national])]
     .filter(Boolean)
@@ -56,9 +55,7 @@ export function injectCoordonnees(html, env, langue = LANGUE_PAR_DEFAUT) {
   // attend au format international sans le « + ».
   const compte =
     (env.CONTACT_WHATSAPP ?? '').trim() || international.replace('+', '');
-  const whatsapp = compte
-    ? traduire('Écrire sur WhatsApp', langue)
-    : '';
+  const whatsapp = compte ? 'WhatsApp' : '';
   return html
     .replaceAll(EMAIL_MARKER, () => lien(`mailto:${email}`, email, ICONES.email))
     .replaceAll(TELEPHONE_MARKER, () =>
