@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   COORDONNEES_MARKER,
   EMAIL_MARKER,
+  ICONES,
   TELEPHONE_MARKER,
   WHATSAPP_MARKER,
   coordonnees,
@@ -35,13 +36,22 @@ describe('coordonnees', () => {
   });
 });
 
+describe('ICONES', () => {
+  it('sont des dessins distincts et décoratifs', () => {
+    for (const dessin of Object.values(ICONES)) {
+      expect(dessin).toMatch(/^<svg [^>]*aria-hidden="true"><(path|rect) .+<\/svg>$/);
+    }
+    expect(new Set(Object.values(ICONES)).size).toBe(3);
+  });
+});
+
 describe('injectCoordonnees', () => {
   const html = [EMAIL_MARKER, TELEPHONE_MARKER, COORDONNEES_MARKER].join('|');
 
   it('écrit les liens et le rappel en clair', () => {
     expect(injectCoordonnees(html, env)).toBe(
-      '<a class="contact-lien" href="mailto:a@b.fr">a@b.fr</a>|' +
-        '<a class="contact-lien" href="tel:+33612345670">06 12.34-56 70</a>|' +
+      `<a class="contact-lien" href="mailto:a@b.fr">${ICONES.email}<span>a@b.fr</span></a>|` +
+        `<a class="contact-lien" href="tel:+33612345670">${ICONES.telephone}<span>06 12.34-56 70</span></a>|` +
         ' · a@b.fr · 06 12.34-56 70',
     );
   });
@@ -58,10 +68,10 @@ describe('injectCoordonnees', () => {
 
   it('lie WhatsApp au numéro, avec un libellé traduit', () => {
     expect(injectCoordonnees(WHATSAPP_MARKER + WHATSAPP_MARKER, env)).toBe(
-      '<a class="contact-lien" href="https://wa.me/33612345670">Écrire sur WhatsApp</a>'.repeat(2),
+      `<a class="contact-lien" href="https://wa.me/33612345670">${ICONES.whatsapp}<span>Écrire sur WhatsApp</span></a>`.repeat(2),
     );
     const anglais = { textes: { 'Écrire sur WhatsApp': 'Message' } };
-    expect(injectCoordonnees(WHATSAPP_MARKER, env, anglais)).toContain('>Message</a>');
+    expect(injectCoordonnees(WHATSAPP_MARKER, env, anglais)).toContain('<span>Message</span></a>');
     expect(injectCoordonnees(WHATSAPP_MARKER, {})).toBe('');
   });
 
@@ -92,8 +102,8 @@ describe('injectCoordonnees', () => {
   it('échappe les valeurs', () => {
     const resultat = injectCoordonnees(html, { CONTACT_EMAIL: '<$&"', CONTACT_TELEPHONE: '<' });
     expect(resultat).toBe(
-      '<a class="contact-lien" href="mailto:&lt;$&amp;&quot;">&lt;$&amp;&quot;</a>|' +
-        '<a class="contact-lien" href="tel:&lt;">&lt;</a>|' +
+      `<a class="contact-lien" href="mailto:&lt;$&amp;&quot;">${ICONES.email}<span>&lt;$&amp;&quot;</span></a>|` +
+        `<a class="contact-lien" href="tel:&lt;">${ICONES.telephone}<span>&lt;</span></a>|` +
         ' · &lt;$&amp;&quot; · &lt;',
     );
   });
