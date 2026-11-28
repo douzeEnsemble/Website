@@ -14,20 +14,20 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.14.0",
+    "@axe-core/playwright": "^4.14.1",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.1",
     "@stryker-mutator/core": "^10.1.1",
     "@stryker-mutator/vitest-runner": "^10.1.1",
-    "@vitest/coverage-v8": "^5.1.1",
-    "dependency-cruiser": "^18.8.0",
+    "@vitest/coverage-v8": "^5.1.2",
+    "dependency-cruiser": "^18.9.0",
     "eslint": "^10.15.0",
     "globals": "^17.14.0",
-    "html-validate": "^11.21.1",
+    "html-validate": "^11.22.1",
     "jsdom": "^31.0.1",
     "qrcode-generator": "^2.0.4",
-    "stylelint": "^18.0.0",
-    "stylelint-config-standard": "^41.0.0",
+    "stylelint": "^18.1.0",
+    "stylelint-config-standard": "^41.1.0",
     "vitest": "^5.0.5"
   }
 }
